@@ -1,0 +1,21 @@
+export default {
+  transparent: 'rgba(0,0,0,0)',
+  whiteTransparent: 'rgba(0,0,0,0.3)',
+  greenTransparent: 'rgba(111,191,74,0.8)',
+  green: '#6FBF4A',
+  greyLine: '#5B5B5B',
+  red: '#E1251B',
+  grey: '#D2D3D4',
+  blue: '#2A7DE1',
+  yellow: '#FED925',
+  darkGrey: '#BDBDBD',
+  lightGrey: '#E7E7E8',
+  mediumGrey: '#939598',
+  lighterGrey: '#e6e7e8',
+  darkerGrey: '#d1d2d4',
+  black: '#000000',
+  white: '#FFFFFF',
+  whiteGreen: '#E4F3DC',
+  lightGreen: '#6bc04a',
+  darkGreen: '#58b23a'
+};

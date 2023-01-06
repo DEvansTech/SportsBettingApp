@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "29630197922",
+    "project_id": "pss1-bbd09",
+    "storage_bucket": "pss1-bbd09.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:29630197922:android:bd737417b9502ad27667fb",
+        "android_client_info": {
+          "package_name": "com.pss.oddsr"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "29630197922-spm7u6h31go3n9utovmndd3mr5rvp4hk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pss.oddsr",
+            "certificate_hash": "09543cdc60b579e514646ea6d895e8a3e3a8fc54"
+          }
+        },
+        {
+          "client_id": "29630197922-lgnr9b48rp7edj33j26olrer97kksupa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDASXmdx73hANBBLRfsovY3TheqVX-2qpg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "29630197922-lgnr9b48rp7edj33j26olrer97kksupa.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "29630197922-3e4oc4nrm65eh26vvs2bmsl86f4bhctv.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.pps.oddsr"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

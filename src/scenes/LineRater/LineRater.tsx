@@ -25,17 +25,19 @@ const LineRater: React.FC<Props> = props => {
   const [selectedHomeTeam, setSelectedHomeTeam] = useState(false);
   const [segementBtn, setSegementBtn] = useState('spread');
 
-  useEffect(() => {
-    if (selectedHomeTeam && selectedAwayTeam) {
-      setSelectedHomeTeam(false);
-    }
-  }, [selectedAwayTeam]);
-
-  useEffect(() => {
-    if (selectedAwayTeam && selectedHomeTeam) {
+  const handleSelectHome = () => {
+    if (!selectedHomeTeam) {
+      setSelectedHomeTeam(true);
       setSelectedAwayTeam(false);
     }
-  }, [selectedHomeTeam]);
+  };
+
+  const handleSelectAway = () => {
+    if (!selectedAwayTeam) {
+      setSelectedAwayTeam(true);
+      setSelectedHomeTeam(false);
+    }
+  };
 
   return (
     <Container style={styles.background}>
@@ -73,7 +75,7 @@ const LineRater: React.FC<Props> = props => {
                     selectedAwayTeam &&
                     styles.activeAwayTeam
                 ]}
-                onPress={() => setSelectedAwayTeam(!selectedAwayTeam)}>
+                onPress={handleSelectAway}>
                 <GrayScaleImage isFocus={selectedAwayTeam}>
                   <LoadingImage
                     source={checkTeamIcon(
@@ -107,7 +109,7 @@ const LineRater: React.FC<Props> = props => {
                     selectedHomeTeam &&
                     styles.activeHomeTeam
                 ]}
-                onPress={() => setSelectedHomeTeam(!selectedHomeTeam)}>
+                onPress={handleSelectHome}>
                 <GrayScaleImage isFocus={selectedHomeTeam}>
                   <LoadingImage
                     source={checkTeamIcon(

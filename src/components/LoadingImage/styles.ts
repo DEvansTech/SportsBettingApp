@@ -6,8 +6,7 @@ const scale = deviceWidth / 390;
 export default StyleSheet.create({
   container: {
     width: 70 * scale,
-    height: 70 * scale,
-    backgroundColor: 'white'
+    height: 70 * scale
   },
   imageOverlay: {
     width: '100%',

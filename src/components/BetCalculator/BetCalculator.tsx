@@ -51,7 +51,7 @@ const BetCalculator: React.FC<Props> = ({
           ) : (
             <Text
               style={
-                Number(rating) > 2 ? styles.betGreenText : styles.betBlackText
+                Number(rating) > 3 ? styles.betGreenText : styles.betBlackText
               }>
               {checkIntValue(value2)} {value1 && `(${checkFloatValue(value1)})`}
             </Text>

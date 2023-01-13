@@ -56,21 +56,21 @@ const BarRating: React.FC<Props> = ({
     <View style={styles.scoreView}>
       {value ? (
         <>
-          {value > 3 && team === 'home' && (
+          {/* {value > 3 && team === 'home' && (
             <RippleBar
               direction="left"
               rippleStyle={viewBar()}
               status={status === 'closed' || status === 'complete'}
             />
-          )}
+          )} */}
           <View style={[styles.barView, viewBar()]}>{getWinState()}</View>
-          {value > 3 && team === 'away' && (
+          {/* {value > 3 && team === 'away' && (
             <RippleBar
               direction="right"
               rippleStyle={viewBar()}
               status={status === 'closed' || status === 'complete'}
             />
-          )}
+          )} */}
         </>
       ) : (
         <Text style={styles.notRatedText}>Not Rated</Text>

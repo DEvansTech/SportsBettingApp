@@ -32,7 +32,6 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignSelf: 'center',
     alignItems: 'center',
-    transform: [{ scale: 0.8 }],
     opacity: 0.7
   },
   obiTabBarView: {
@@ -56,7 +55,6 @@ export default StyleSheet.create({
     fontFamily: Fonts.extraBold
   },
   selectedIcon: {
-    transform: [{ scale: 1 }],
     opacity: 1
   }
 });

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { TouchableOpacity } from 'react-native';
 import { Text, View, Icon } from 'native-base';
 import { SvgXml } from 'react-native-svg';
@@ -22,6 +22,7 @@ const Spread: React.FC<SpreadProps> = ({
   const [oddsValueSymbol, setOddsValueSymbol] = useState('');
   const [countML, setCountML] = useState(0);
   const [barState, setBarState] = useState(0);
+  const changeTimer: React.MutableRefObject<any> = useRef(null);
 
   const plusValue = () => {
     if (oddsValue >= 200) {
@@ -35,6 +36,27 @@ const Spread: React.FC<SpreadProps> = ({
     }
     setOddsValue(oddsValue + 5);
     setCountML(countML + 1);
+  };
+
+  const plusLongValue = () => {
+    const past = Date.now();
+    const rate = 500;
+    changeTimer.current = setInterval(() => {
+      const diff = Math.floor((Date.now() - past) / rate);
+      setOddsValue(prev => {
+        if (prev + (1 + diff) < 99 && prev + (1 + diff) > -99) {
+          setCountML(countML => countML + 1);
+          return 100;
+        }
+        if (prev + (1 + diff) >= 200) {
+          clearInterval(changeTimer.current);
+          changeTimer.current = null;
+          return 200;
+        }
+        setCountML(countML => countML + 1);
+        return prev + (1 + diff);
+      });
+    }, 100);
   };
 
   const minusValue = () => {
@@ -51,6 +73,32 @@ const Spread: React.FC<SpreadProps> = ({
     setCountML(countML - 1);
   };
 
+  const minusLongValue = () => {
+    const past = Date.now();
+    const rate = 500;
+    changeTimer.current = setInterval(() => {
+      const diff = Math.floor((Date.now() - past) / rate);
+      setOddsValue(prev => {
+        if (prev - (1 + diff) < 99 && prev - (1 + diff) > -99) {
+          setCountML(countML => countML - 1);
+          return -100;
+        }
+        if (prev - (1 + diff) <= -200) {
+          clearInterval(changeTimer.current);
+          changeTimer.current = null;
+          return -200;
+        }
+        setCountML(countML => countML - 1);
+        return prev - (1 + diff);
+      });
+    }, 100);
+  };
+
+  const handlePressOut = () => {
+    clearInterval(changeTimer.current);
+    changeTimer.current = null;
+  };
+
   const plusTypeValue = () => {
     if (oddsTypeValue >= 110) {
       setOddsTypeValue(110);
@@ -59,12 +107,40 @@ const Spread: React.FC<SpreadProps> = ({
     }
   };
 
+  const plusTypeLongValue = () => {
+    const past = Date.now();
+    const rate = 500;
+    changeTimer.current = setInterval(() => {
+      const diff = Math.floor((Date.now() - past) / rate);
+      setOddsTypeValue(prev => {
+        if (prev + (1 + diff) >= 110) {
+          return 110;
+        }
+        return fixedTo(prev + (1 + diff));
+      });
+    }, 100);
+  };
+
   const minusTypeValue = () => {
     if (oddsTypeValue <= -110) {
       setOddsTypeValue(-110);
     } else {
       setOddsTypeValue(fixedTo(oddsTypeValue - 0.5));
     }
+  };
+
+  const minusTypeLongValue = () => {
+    const past = Date.now();
+    const rate = 500;
+    changeTimer.current = setInterval(() => {
+      const diff = Math.floor((Date.now() - past) / rate);
+      setOddsTypeValue(prev => {
+        if (prev - (1 + diff) <= -110) {
+          return -110;
+        }
+        return fixedTo(prev - (1 + diff));
+      });
+    }, 100);
   };
 
   const fixedTo = (number: number) => {
@@ -239,6 +315,8 @@ const Spread: React.FC<SpreadProps> = ({
           <View style={styles.centerBar}>
             <TouchableOpacity
               onPress={minusTypeValue}
+              onLongPress={minusTypeLongValue}
+              onPressOut={handlePressOut}
               disabled={!selectedAwayTeam && !selectedHomeTeam}>
               <Icon type="Feather" name="minus" style={styles.barIcon} />
             </TouchableOpacity>
@@ -256,6 +334,8 @@ const Spread: React.FC<SpreadProps> = ({
             </View>
             <TouchableOpacity
               onPress={plusTypeValue}
+              onLongPress={plusTypeLongValue}
+              onPressOut={handlePressOut}
               disabled={!selectedAwayTeam && !selectedHomeTeam}>
               <Icon type="Feather" name="plus" style={styles.barIcon} />
             </TouchableOpacity>
@@ -266,6 +346,8 @@ const Spread: React.FC<SpreadProps> = ({
           <View style={styles.centerBar}>
             <TouchableOpacity
               onPress={minusValue}
+              onLongPress={minusLongValue}
+              onPressOut={handlePressOut}
               disabled={!selectedAwayTeam && !selectedHomeTeam}>
               <Icon type="Feather" name="minus" style={styles.barIcon} />
             </TouchableOpacity>
@@ -283,6 +365,8 @@ const Spread: React.FC<SpreadProps> = ({
             </View>
             <TouchableOpacity
               onPress={plusValue}
+              onLongPress={plusLongValue}
+              onPressOut={handlePressOut}
               disabled={!selectedAwayTeam && !selectedHomeTeam}>
               <Icon type="Feather" name="plus" style={styles.barIcon} />
             </TouchableOpacity>

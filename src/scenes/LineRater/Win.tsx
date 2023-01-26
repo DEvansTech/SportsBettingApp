@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useEffect, useRef } from 'react';
 import { TouchableOpacity } from 'react-native';
 import { Text, View, Icon } from 'native-base';
 import { SvgXml } from 'react-native-svg';
@@ -16,6 +16,7 @@ const Win: React.FC<WinProps> = ({
   const [rangeValue, setRangeValue] = useState(0);
   const [oddsValueSymbol, setOddsValueSymbol] = useState('');
   const [countML, setCountML] = useState(0);
+  const changeTimer: React.MutableRefObject<any> = useRef(null);
 
   const plusRange = () => {
     if (rangeValue >= 200) {
@@ -31,6 +32,27 @@ const Win: React.FC<WinProps> = ({
     setCountML(countML + 1);
   };
 
+  const plusLongRange = () => {
+    const past = Date.now();
+    const rate = 500;
+    changeTimer.current = setInterval(() => {
+      const diff = Math.floor((Date.now() - past) / rate);
+      setRangeValue(prev => {
+        if (prev + (1 + diff) < 99 && prev + (1 + diff) > -99) {
+          setCountML(countML => countML + 1);
+          return 100;
+        }
+        if (prev + (1 + diff) >= 200) {
+          clearInterval(changeTimer.current);
+          changeTimer.current = null;
+          return 200;
+        }
+        setCountML(countML => countML + 1);
+        return prev + (1 + diff);
+      });
+    }, 100);
+  };
+
   const minusRange = () => {
     if (rangeValue <= -200) {
       setRangeValue(-200);
@@ -43,6 +65,32 @@ const Win: React.FC<WinProps> = ({
     }
     setRangeValue(rangeValue - 5);
     setCountML(countML - 1);
+  };
+
+  const minusLongRange = () => {
+    const past = Date.now();
+    const rate = 500;
+    changeTimer.current = setInterval(() => {
+      const diff = Math.floor((Date.now() - past) / rate);
+      setRangeValue(prev => {
+        if (prev - (1 + diff) < 99 && prev - (1 + diff) > -99) {
+          setCountML(countML => countML - 1);
+          return -100;
+        }
+        if (prev - (1 + diff) <= -200) {
+          clearInterval(changeTimer.current);
+          changeTimer.current = null;
+          return -200;
+        }
+        setCountML(countML => countML - 1);
+        return prev - (1 + diff);
+      });
+    }, 100);
+  };
+
+  const handlePressOut = () => {
+    clearInterval(changeTimer.current);
+    changeTimer.current = null;
   };
 
   // const selectBar = (value: number | undefined) => {
@@ -206,9 +254,12 @@ const Win: React.FC<WinProps> = ({
   return (
     <View style={styles.spreadView}>
       <View style={styles.oddsBar}>
+        <Text style={styles.titleText}>MONEY LINE</Text>
         <View style={styles.centerBar}>
           <TouchableOpacity
             onPress={minusRange}
+            onLongPress={minusLongRange}
+            onPressOut={handlePressOut}
             disabled={!selectedAwayTeam && !selectedHomeTeam}>
             <Icon type="Feather" name="minus" style={styles.barIcon} />
           </TouchableOpacity>
@@ -225,6 +276,8 @@ const Win: React.FC<WinProps> = ({
           </View>
           <TouchableOpacity
             onPress={plusRange}
+            onLongPress={plusLongRange}
+            onPressOut={handlePressOut}
             disabled={!selectedAwayTeam && !selectedHomeTeam}>
             <Icon type="Feather" name="plus" style={styles.barIcon} />
           </TouchableOpacity>

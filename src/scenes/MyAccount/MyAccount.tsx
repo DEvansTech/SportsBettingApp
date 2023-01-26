@@ -375,7 +375,7 @@ const MyAccount: React.FC = () => {
               </Item>
             </View>
             <View style={styles.basicView}>
-              <Text style={styles.basicTitle}>Subscriptions</Text>
+              <Text style={styles.basicTitle}>Subscription</Text>
               <View style={styles.subscriptionView}>
                 <Text style={styles.subscriptionText}>
                   {currentProductId === 'oddsr_5999_1y' ? 'Annual' : 'Monthly'}
@@ -393,15 +393,19 @@ const MyAccount: React.FC = () => {
               </View>
               <View style={styles.subscriptionView}>
                 <Text style={styles.subscriptionText}>Purchased Date</Text>
-                <Text style={styles.subscriptionText}>
-                  {timeStamptoDateTime(purchaseDate)}
-                </Text>
+                {purchaseDate !== '' && (
+                  <Text style={styles.subscriptionText}>
+                    {timeStamptoDateTime(purchaseDate)}
+                  </Text>
+                )}
               </View>
               <View style={styles.subscriptionView}>
-                <Text style={styles.subscriptionText}>Expire Date</Text>
-                <Text style={styles.subscriptionText}>
-                  {timeStamptoDateTime(expiresDate)}
-                </Text>
+                <Text style={styles.subscriptionText}>Renewal Date</Text>
+                {expiresDate !== '' && (
+                  <Text style={styles.subscriptionText}>
+                    {timeStamptoDateTime(expiresDate)}
+                  </Text>
+                )}
               </View>
             </View>
             {initUserInfo !== userInfo && (

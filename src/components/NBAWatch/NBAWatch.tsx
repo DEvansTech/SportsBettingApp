@@ -307,34 +307,38 @@ const NBAWatch: React.FC<Props> = ({
           <View style={styles.watchBtns}>
             {saveSelection && (
               <TouchableHighlight
-                style={styles.betMatchWatch}
                 underlayColor="transparent"
                 onShowUnderlay={() => setPressGlass(true)}
                 onHideUnderlay={() => setPressGlass(!selectionState)}
                 onPress={saveToSelection}>
-                <SvgXml
-                  xml={pressGlass ? Svgs.glassGreenIcon : Svgs.watchIcon}
-                  width={40 * scale}
-                  height={25 * scale}
-                />
+                <View style={styles.betMatchWatch}>
+                  <SvgXml
+                    xml={pressGlass ? Svgs.glassGreenIcon : Svgs.watchIcon}
+                    width={40 * scale}
+                    height={35 * scale}
+                  />
+                  <Text style={styles.betMatchBtnText}>WATCHING</Text>
+                </View>
               </TouchableHighlight>
             )}
             {checkLineMasterState(data) && (
               <TouchableHighlight
-                style={styles.betMatchWatch}
                 underlayColor="transparent"
                 onShowUnderlay={() => setPressRater(true)}
                 onHideUnderlay={() => setPressRater(false)}
                 onPress={openLineRater}>
-                <SvgXml
-                  xml={
-                    pressRater
-                      ? Svgs.lineRaterGreenIcon
-                      : Svgs.lineRaterBlackIcon
-                  }
-                  width={35 * scale}
-                  height={35 * scale}
-                />
+                <View style={styles.betMatchWatch}>
+                  <SvgXml
+                    xml={
+                      pressRater
+                        ? Svgs.lineRaterGreenIcon
+                        : Svgs.lineRaterBlackIcon
+                    }
+                    width={35 * scale}
+                    height={35 * scale}
+                  />
+                  <Text style={styles.betMatchBtnText}>LINEMASTER</Text>
+                </View>
               </TouchableHighlight>
             )}
           </View>

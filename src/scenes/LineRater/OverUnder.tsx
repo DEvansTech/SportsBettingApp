@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useEffect } from 'react';
+import React, { useCallback, useState, useEffect, useRef } from 'react';
 import { TouchableOpacity } from 'react-native';
 import { Text, View, Icon } from 'native-base';
 import { SvgXml } from 'react-native-svg';
@@ -17,6 +17,7 @@ const OverUnder: React.FC<OUProps> = ({ gameData }) => {
     Number(gameData.total_last_total)
   );
   const [countML, setCountML] = useState(0);
+  const changeTimer: React.MutableRefObject<any> = useRef(null);
 
   const plusRange = (state: string, team: string) => {
     if (state === 'ou') {
@@ -57,6 +58,66 @@ const OverUnder: React.FC<OUProps> = ({ gameData }) => {
       }
     } else {
       setTotalScore(totalScore + 0.5);
+    }
+  };
+
+  const plusLongRange = (state: string, team: string) => {
+    const past = Date.now();
+    const rate = 500;
+    if (state === 'ou') {
+      if (team === 'over') {
+        setSelectOver(true);
+        setSelectUnder(false);
+      }
+      if (team === 'under') {
+        setSelectOver(false);
+        setSelectUnder(true);
+      }
+
+      if (selectOver) {
+        changeTimer.current = setInterval(() => {
+          const diff = Math.floor((Date.now() - past) / rate);
+          setOvRangeValue(prev => {
+            if (prev + (1 + diff) < 99 && prev + (1 + diff) > -99) {
+              setCountML(countML => countML + 1);
+              return 100;
+            }
+            if (prev + (1 + diff) >= 200) {
+              clearInterval(changeTimer.current);
+              changeTimer.current = null;
+              return 200;
+            }
+            setCountML(countML => countML + 1);
+            return prev + (1 + diff);
+          });
+        }, 100);
+      }
+
+      if (selectUnder) {
+        changeTimer.current = setInterval(() => {
+          const diff = Math.floor((Date.now() - past) / rate);
+          setUnRangeValue(prev => {
+            if (prev + (1 + diff) < 99 && prev + (1 + diff) > -99) {
+              setCountML(countML => countML + 1);
+              return 100;
+            }
+            if (prev + (1 + diff) >= 200) {
+              clearInterval(changeTimer.current);
+              changeTimer.current = null;
+              return 200;
+            }
+            setCountML(countML => countML + 1);
+            return prev + (1 + diff);
+          });
+        }, 100);
+      }
+    } else {
+      changeTimer.current = setInterval(() => {
+        const diff = Math.floor((Date.now() - past) / rate);
+        setTotalScore(prev => {
+          return prev + (1 + diff);
+        });
+      }, 100);
     }
   };
 
@@ -103,6 +164,74 @@ const OverUnder: React.FC<OUProps> = ({ gameData }) => {
     }
   };
 
+  const minusLongRange = (state: string, team: string) => {
+    const past = Date.now();
+    const rate = 500;
+    if (state === 'ou') {
+      if (team === 'over') {
+        setSelectOver(true);
+        setSelectUnder(false);
+      }
+      if (team === 'under') {
+        setSelectOver(false);
+        setSelectUnder(true);
+      }
+
+      if (selectOver) {
+        changeTimer.current = setInterval(() => {
+          const diff = Math.floor((Date.now() - past) / rate);
+          setOvRangeValue(prev => {
+            if (prev - (1 + diff) < 99 && prev - (1 + diff) > -99) {
+              setCountML(countML => countML - 1);
+              return -100;
+            }
+            if (prev - (1 + diff) <= -200) {
+              clearInterval(changeTimer.current);
+              changeTimer.current = null;
+              return -200;
+            }
+            setCountML(countML => countML - 1);
+            return prev - (1 + diff);
+          });
+        }, 100);
+      }
+
+      if (selectUnder) {
+        changeTimer.current = setInterval(() => {
+          const diff = Math.floor((Date.now() - past) / rate);
+          setUnRangeValue(prev => {
+            if (prev - (1 + diff) < 99 && prev - (1 + diff) > -99) {
+              setCountML(countML => countML - 1);
+              return -100;
+            }
+            if (prev - (1 + diff) <= -200) {
+              clearInterval(changeTimer.current);
+              changeTimer.current = null;
+              return -200;
+            }
+            setCountML(countML => countML - 1);
+            return prev - (1 + diff);
+          });
+        }, 100);
+      }
+    } else {
+      changeTimer.current = setInterval(() => {
+        const diff = Math.floor((Date.now() - past) / rate);
+        setTotalScore(prev => {
+          if (prev <= 0) {
+            return 0;
+          }
+          return prev - (1 + diff);
+        });
+      }, 100);
+    }
+  };
+
+  const handlePressOut = () => {
+    clearInterval(changeTimer.current);
+    changeTimer.current = null;
+  };
+
   const selectOverBar = () => {
     setSelectOver(true);
     setSelectUnder(false);
@@ -119,7 +248,7 @@ const OverUnder: React.FC<OUProps> = ({ gameData }) => {
       let result = 0;
       let startBar = 0;
       let endBar = 0;
-      console.log(value);
+
       switch (value) {
         case 1:
           endBar = basic - 34 * scale;
@@ -137,8 +266,6 @@ const OverUnder: React.FC<OUProps> = ({ gameData }) => {
           }
 
           result -= countML * 0.02;
-
-          console.log('rating=1--->', result);
 
           if (result <= 0) return endBar;
           if (result >= 1) return startBar;
@@ -165,7 +292,7 @@ const OverUnder: React.FC<OUProps> = ({ gameData }) => {
           }
 
           result -= countML * 0.02;
-          console.log('rating=2--->', result);
+
           if (result <= 0) return endBar;
           if (result >= 1) return startBar;
           if (startBar + basic * (1 - result) >= endBar) return endBar;
@@ -191,7 +318,7 @@ const OverUnder: React.FC<OUProps> = ({ gameData }) => {
           }
 
           result -= countML * 0.02;
-          console.log('rating=3--->', result);
+
           if (result <= 0) return endBar;
           if (result >= 1) return startBar;
           if (startBar + basic * (1 - result) >= endBar) return endBar;
@@ -217,7 +344,7 @@ const OverUnder: React.FC<OUProps> = ({ gameData }) => {
           }
 
           result -= countML * 0.02;
-          console.log('rating=4--->', result);
+
           if (result <= 0) return endBar;
           if (result >= 1) return startBar;
           if (startBar + basic * (1 - result) >= endBar) return endBar;
@@ -251,14 +378,20 @@ const OverUnder: React.FC<OUProps> = ({ gameData }) => {
         <View style={styles.totalBarView}>
           <Text style={[styles.titleText, styles.overBarText]}>Total</Text>
           <View style={styles.leftBar}>
-            <TouchableOpacity onPress={() => minusRange('total', '')}>
+            <TouchableOpacity
+              onPress={() => minusRange('total', '')}
+              onLongPress={() => minusLongRange('total', '')}
+              onPressOut={handlePressOut}>
               <Icon type="Feather" name="minus" style={styles.barIcon} />
             </TouchableOpacity>
             <View
               style={[styles.statusBar, styles.overTotalBar, styles.blackBar]}>
               <Text style={styles.statusText}>{totalScore}</Text>
             </View>
-            <TouchableOpacity onPress={() => plusRange('total', '')}>
+            <TouchableOpacity
+              onPress={() => plusRange('total', '')}
+              onLongPress={() => plusLongRange('total', '')}
+              onPressOut={handlePressOut}>
               <Icon type="Feather" name="plus" style={styles.barIcon} />
             </TouchableOpacity>
           </View>
@@ -266,7 +399,10 @@ const OverUnder: React.FC<OUProps> = ({ gameData }) => {
         <View style={styles.overBarView}>
           <Text style={[styles.titleText, styles.overBarText]}>Over</Text>
           <View style={styles.rightBar}>
-            <TouchableOpacity onPress={() => minusRange('ou', 'over')}>
+            <TouchableOpacity
+              onPress={() => minusRange('ou', 'over')}
+              onLongPress={() => minusLongRange('ou', 'over')}
+              onPressOut={handlePressOut}>
               <Icon type="Feather" name="minus" style={styles.barIcon} />
             </TouchableOpacity>
             <TouchableOpacity
@@ -280,7 +416,10 @@ const OverUnder: React.FC<OUProps> = ({ gameData }) => {
                 {ovRangeValue > 0 ? `+${ovRangeValue}` : ovRangeValue}
               </Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => plusRange('ou', 'over')}>
+            <TouchableOpacity
+              onPress={() => plusRange('ou', 'over')}
+              onLongPress={() => plusLongRange('ou', 'over')}
+              onPressOut={handlePressOut}>
               <Icon type="Feather" name="plus" style={styles.barIcon} />
             </TouchableOpacity>
           </View>
@@ -289,7 +428,10 @@ const OverUnder: React.FC<OUProps> = ({ gameData }) => {
       <View style={styles.overBarView}>
         <Text style={[styles.titleText, styles.overBarText]}>Under</Text>
         <View style={styles.rightBar}>
-          <TouchableOpacity onPress={() => minusRange('ou', 'under')}>
+          <TouchableOpacity
+            onPress={() => minusRange('ou', 'under')}
+            onLongPress={() => minusLongRange('ou', 'under')}
+            onPressOut={handlePressOut}>
             <Icon type="Feather" name="minus" style={styles.barIcon} />
           </TouchableOpacity>
           <TouchableOpacity
@@ -303,7 +445,10 @@ const OverUnder: React.FC<OUProps> = ({ gameData }) => {
               {unRangeValue > 0 ? `+${unRangeValue}` : unRangeValue}
             </Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => plusRange('ou', 'under')}>
+          <TouchableOpacity
+            onPress={() => plusRange('ou', 'under')}
+            onLongPress={() => plusLongRange('ou', 'under')}
+            onPressOut={handlePressOut}>
             <Icon type="Feather" name="plus" style={styles.barIcon} />
           </TouchableOpacity>
         </View>

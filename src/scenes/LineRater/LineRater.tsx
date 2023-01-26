@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
 import { StackNavigationProp } from '@react-navigation/stack';
@@ -76,7 +76,8 @@ const LineRater: React.FC<Props> = props => {
                     styles.activeAwayTeam
                 ]}
                 onPress={handleSelectAway}>
-                <GrayScaleImage isFocus={selectedAwayTeam}>
+                <GrayScaleImage
+                  isFocus={segementBtn !== 'ou' && selectedAwayTeam}>
                   <LoadingImage
                     source={checkTeamIcon(
                       sportName,
@@ -92,7 +93,9 @@ const LineRater: React.FC<Props> = props => {
                 <View
                   style={[
                     styles.teamInfoView,
-                    !selectedAwayTeam && { opacity: 0.6 }
+                    !(segementBtn !== 'ou' && selectedAwayTeam) && {
+                      opacity: 0.6
+                    }
                   ]}>
                   <Text style={styles.teamNameText}>
                     {gameData.away_team_abbr}
@@ -110,7 +113,8 @@ const LineRater: React.FC<Props> = props => {
                     styles.activeHomeTeam
                 ]}
                 onPress={handleSelectHome}>
-                <GrayScaleImage isFocus={selectedHomeTeam}>
+                <GrayScaleImage
+                  isFocus={segementBtn !== 'ou' && selectedHomeTeam}>
                   <LoadingImage
                     source={checkTeamIcon(
                       gameData.sport_name,
@@ -126,7 +130,9 @@ const LineRater: React.FC<Props> = props => {
                 <View
                   style={[
                     styles.teamInfoView,
-                    !selectedHomeTeam && { opacity: 0.6 }
+                    !(segementBtn !== 'ou' && selectedHomeTeam) && {
+                      opacity: 0.6
+                    }
                   ]}>
                   <Text style={styles.teamNameText}>
                     {gameData.home_team_abbr}

@@ -156,8 +156,7 @@ export default StyleSheet.create({
     fontFamily: Fonts.black
   },
   betMatchWatch: {
-    justifyContent: 'center',
-    flexDirection: 'row'
+    alignItems: 'center'
   },
   watchBtns: {
     width: deviceWidth * 0.4,
@@ -166,5 +165,11 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-around',
     marginTop: 20 * scale
+  },
+  betMatchBtnText: {
+    color: Colors.black,
+    fontSize: 8 * scale,
+    textTransform: 'uppercase',
+    fontFamily: Fonts.black
   }
 });

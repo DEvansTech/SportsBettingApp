@@ -71,9 +71,7 @@ const LineRater: React.FC<Props> = props => {
               <TouchableOpacity
                 style={[
                   styles.teamStatusView,
-                  segementBtn !== 'ou' &&
-                    selectedAwayTeam &&
-                    styles.activeAwayTeam
+                  segementBtn !== 'ou' && selectedAwayTeam && styles.activeTeam
                 ]}
                 onPress={handleSelectAway}>
                 <GrayScaleImage
@@ -108,9 +106,7 @@ const LineRater: React.FC<Props> = props => {
               <TouchableOpacity
                 style={[
                   styles.teamStatusView,
-                  segementBtn !== 'ou' &&
-                    selectedHomeTeam &&
-                    styles.activeHomeTeam
+                  segementBtn !== 'ou' && selectedHomeTeam && styles.activeTeam
                 ]}
                 onPress={handleSelectHome}>
                 <GrayScaleImage

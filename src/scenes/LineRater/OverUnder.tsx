@@ -249,6 +249,8 @@ const OverUnder: React.FC<OUProps> = ({ gameData }) => {
       let startBar = 0;
       let endBar = 0;
 
+      console.log(value);
+
       switch (value) {
         case 1:
           endBar = basic - 34 * scale;
@@ -355,7 +357,7 @@ const OverUnder: React.FC<OUProps> = ({ gameData }) => {
           return 0;
       }
     },
-    [countML, totalScore]
+    [countML, totalScore, selectOver, selectUnder]
   );
 
   const getBarValue = useCallback(() => {
@@ -374,6 +376,25 @@ const OverUnder: React.FC<OUProps> = ({ gameData }) => {
 
   return (
     <View style={styles.spreadView}>
+      <View style={styles.rangerView}>
+        <Text style={[styles.titleText, styles.rangerText]}>Bet Rating</Text>
+        <View style={styles.rangerScaleView}>
+          <SvgXml
+            xml={Svgs.lineMasterScale}
+            width={'100%'}
+            height={50 * scale}
+          />
+          <SvgXml
+            xml={Svgs.lineMasterCircle}
+            width={36 * scale}
+            height={36 * scale}
+            style={[
+              styles.betCircleIcon,
+              { left: positionCircle(getBarValue()) }
+            ]}
+          />
+        </View>
+      </View>
       <View style={styles.overUnderBar}>
         <View style={styles.totalBarView}>
           <Text style={[styles.titleText, styles.overBarText]}>Total</Text>
@@ -426,7 +447,6 @@ const OverUnder: React.FC<OUProps> = ({ gameData }) => {
         </View>
       </View>
       <View style={styles.overBarView}>
-        <Text style={[styles.titleText, styles.overBarText]}>Under</Text>
         <View style={styles.rightBar}>
           <TouchableOpacity
             onPress={() => minusRange('ou', 'under')}
@@ -452,31 +472,12 @@ const OverUnder: React.FC<OUProps> = ({ gameData }) => {
             <Icon type="Feather" name="plus" style={styles.barIcon} />
           </TouchableOpacity>
         </View>
+        <Text style={[styles.titleText, styles.underBarText]}>Under</Text>
       </View>
-      <View style={styles.ouRangerView}>
-        <Text style={[styles.titleText, styles.rangerText]}>Bet Rating</Text>
-        <View style={styles.rangerScaleView}>
-          <SvgXml
-            xml={Svgs.lineMasterScale}
-            width={'100%'}
-            height={50 * scale}
-          />
-          <SvgXml
-            xml={Svgs.lineMasterCircle}
-            width={36 * scale}
-            height={36 * scale}
-            style={[
-              styles.betCircleIcon,
-              { left: positionCircle(getBarValue()) }
-            ]}
-          />
-        </View>
-      </View>
-      {/* <View style={styles.ouRangerView}>
-        <Text style={[styles.titleText, styles.rangerText]}>
-          Line Movement Since Open
-        </Text>
-      </View> */}
+      <Text style={styles.description}>
+        Tap team logo for odds. Tap +/- to input lines and see movement. Press
+        and hold +/- for faster advance.
+      </Text>
     </View>
   );
 };

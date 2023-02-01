@@ -59,23 +59,19 @@ export default StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'column',
     paddingVertical: 20 * scale,
-    backgroundColor: Colors.lightGrey
+    backgroundColor: Colors.lightGrey,
+    borderWidth: 1 * scale,
+    borderColor: Colors.darkGrey
   },
   teamInfoView: {
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'column'
   },
-  activeAwayTeam: {
-    backgroundColor: Colors.white,
-    borderRightWidth: 1 * scale,
-    borderRightColor: Colors.darkGrey
+  activeTeam: {
+    backgroundColor: Colors.white
   },
-  activeHomeTeam: {
-    backgroundColor: Colors.white,
-    borderLeftWidth: 1 * scale,
-    borderLeftColor: Colors.darkGrey
-  },
+
   teamLogo: {
     width: 80 * scale,
     height: 80 * scale
@@ -219,7 +215,8 @@ export default StyleSheet.create({
     fontSize: 30 * scale
   },
   rangerView: {
-    marginTop: 60 * scale
+    marginTop: 5 * scale,
+    marginBottom: 35 * scale
   },
   rangerText: {
     textAlign: 'center'
@@ -238,20 +235,19 @@ export default StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     alignSelf: 'flex-end',
-    marginTop: 15 * scale
+    marginTop: 10 * scale
   },
   overUnderBar: {
-    marginTop: -15 * scale,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    flex: 1
+    marginTop: -35 * scale
   },
   overBarText: {
-    marginBottom: 10 * scale
+    marginBottom: 5 * scale
   },
   underBarText: {
-    marginTop: 10 * scale
+    marginTop: 5 * scale
   },
   overBar: {
     flexDirection: 'column',
@@ -264,9 +260,6 @@ export default StyleSheet.create({
   overValueBar: {
     width: 110 * scale,
     marginHorizontal: 8 * scale
-  },
-  ouRangerView: {
-    marginTop: 25 * scale
   },
   errTextView: {
     position: 'absolute',
@@ -301,5 +294,12 @@ export default StyleSheet.create({
     textAlign: 'right',
     marginTop: 5 * scale,
     marginRight: 15 * scale
+  },
+  description: {
+    fontFamily: Fonts.regular,
+    fontSize: 15 * scale,
+    textAlign: 'center',
+    paddingHorizontal: 10 * scale,
+    marginTop: 30 * scale
   }
 });

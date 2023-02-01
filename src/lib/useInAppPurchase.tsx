@@ -170,14 +170,13 @@ const useInAppPurchase = () => {
         setIsRequest(false);
         return false;
       }
+
       const receiptBody = {
         'receipt-data': lastPurchase,
         password: 'c04d2c98cac24b87b18a9862e09dd26d'
       };
-      const result: any = await validateReceiptIos({
-        receiptBody,
-        isTest: true
-      });
+      const result: any = await validateReceiptIos(receiptBody, true);
+
       if (!result?.latest_receipt_info) {
         setIsSubscribe(false);
         setIsFullAppPurchased(false);
@@ -193,6 +192,8 @@ const useInAppPurchase = () => {
 
       let expired = new Date().getTime() > expiration;
       const productId = renewalHistory[0].product_id;
+
+      console.log('expired====>', expired);
 
       if (!expired) {
         setIsSubscribe(true);

@@ -253,6 +253,25 @@ const Win: React.FC<WinProps> = ({
 
   return (
     <View style={styles.spreadView}>
+      <View style={styles.rangerView}>
+        <Text style={[styles.titleText, styles.rangerText]}>Bet Rating</Text>
+        <View style={styles.rangerScaleView}>
+          <SvgXml
+            xml={Svgs.lineMasterScale}
+            width={'100%'}
+            height={50 * scale}
+          />
+          <SvgXml
+            xml={Svgs.lineMasterCircle}
+            width={36 * scale}
+            height={36 * scale}
+            style={[
+              styles.betCircleIcon,
+              { left: positionCircle(getBarValue()) }
+            ]}
+          />
+        </View>
+      </View>
       <View style={styles.oddsBar}>
         <Text style={styles.titleText}>MONEY LINE</Text>
         <View style={styles.centerBar}>
@@ -283,32 +302,10 @@ const Win: React.FC<WinProps> = ({
           </TouchableOpacity>
         </View>
       </View>
-      {/* <View style={styles.rangerView}>
-        <Ranger
-          rangeValue={rangeValue}
-          setRangeValue={setRangeValue}
-          disabled={!selectedAwayTeam && !selectedHomeTeam}
-        />
-      </View> */}
-      <View style={styles.rangerView}>
-        <Text style={[styles.titleText, styles.rangerText]}>Bet Rating</Text>
-        <View style={styles.rangerScaleView}>
-          <SvgXml
-            xml={Svgs.lineMasterScale}
-            width={'100%'}
-            height={50 * scale}
-          />
-          <SvgXml
-            xml={Svgs.lineMasterCircle}
-            width={36 * scale}
-            height={36 * scale}
-            style={[
-              styles.betCircleIcon,
-              { left: positionCircle(getBarValue()) }
-            ]}
-          />
-        </View>
-      </View>
+      <Text style={styles.description}>
+        Tap team logo for odds. Tap +/- to input lines and see movement. Press
+        and hold +/- for faster advance.
+      </Text>
     </View>
   );
 };

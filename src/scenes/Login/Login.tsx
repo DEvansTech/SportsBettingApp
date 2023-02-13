@@ -24,7 +24,6 @@ import { SvgXml } from 'react-native-svg';
 
 import { LogoSpinner, Button as CustomButton } from '@Components';
 import { ToastMessage, existUser } from '@Lib/function';
-import useInAppPurchase from '@Lib/useInAppPurchase';
 import { Routes } from '@Navigators/routes';
 import { WEB_CLIENT_ID } from '@env';
 import { AuthContext, AuthContextType } from '@Context/AuthContext';

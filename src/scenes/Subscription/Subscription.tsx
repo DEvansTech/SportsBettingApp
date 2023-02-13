@@ -58,30 +58,31 @@ const SubscriptionScene: React.FC<Props> = props => {
           : 'All Access (1 Month)'}
       </Text>
       <Text style={styles.itemPeriod}>7 DAY FREE TRIAL. Cancel Anytime.</Text>
-      {Platform.OS === 'android' && item?.subscriptionOfferDetails?.length > 0 && (
-        <Button
-          full
-          rounded
-          light
-          onPress={() =>
-            handleSubscription(
-              item.productId,
-              item?.subscriptionOfferDetails[
+      {Platform.OS === 'android' &&
+        item?.subscriptionOfferDetails?.length > 0 && (
+          <Button
+            full
+            rounded
+            light
+            onPress={() =>
+              handleSubscription(
+                item.productId,
+                item?.subscriptionOfferDetails[
+                  item?.subscriptionOfferDetails.length - 1
+                ].offerToken
+              )
+            }
+            style={styles.subscriptionBtn}
+            key={index}>
+            <Text style={styles.subscriptionBtnText}>
+              {`${item?.subscriptionOfferDetails[
                 item?.subscriptionOfferDetails.length - 1
-              ].offerToken
-            )
-          }
-          style={styles.subscriptionBtn}
-          key={index}>
-          <Text style={styles.subscriptionBtnText}>
-            {`${item?.subscriptionOfferDetails[
-              item?.subscriptionOfferDetails.length - 1
-            ].pricingPhases.pricingPhaseList?.map(
-              (ppl: any) => ppl.formattedPrice
-            )}`}
-          </Text>
-        </Button>
-      )}
+              ].pricingPhases.pricingPhaseList?.map(
+                (ppl: any) => ppl.formattedPrice
+              )}`}
+            </Text>
+          </Button>
+        )}
 
       {Platform.OS === 'ios' && (
         <Button

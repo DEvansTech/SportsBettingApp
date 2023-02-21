@@ -82,6 +82,7 @@ const Register: React.FC = () => {
     if (appleAuth.isSupported) {
       try {
         setLoading(true);
+
         const appleAuthRequestResponse = await appleAuth.performRequest({
           requestedOperation: appleAuth.Operation.LOGIN,
           requestedScopes: [appleAuth.Scope.EMAIL, appleAuth.Scope.FULL_NAME]
@@ -97,19 +98,15 @@ const Register: React.FC = () => {
         const result = await auth().signInWithCredential(appleCredential);
 
         setDisplayName(
-          fullName?.givenName
-            ? fullName?.givenName
-            : '' + ' ' + fullName?.familyName
-            ? fullName?.familyName
-            : ''
+          (fullName?.givenName || '') + ' ' + (fullName?.familyName || '')
         );
 
         if (result?.additionalUserInfo?.isNewUser) {
           const userData = {
             uid: result.user.uid,
             email: result?.additionalUserInfo?.profile?.email,
-            firstName: fullName?.givenName ? fullName?.givenName : '',
-            lastName: fullName?.familyName ? fullName?.familyName : '',
+            firstName: fullName?.givenName || '',
+            lastName: fullName?.familyName || '',
             registerType: 'apple'
           };
 

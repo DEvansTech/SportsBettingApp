@@ -8,7 +8,7 @@ import useInAppPurchase from '@Lib/useInAppPurchase';
 import { Routes } from '@Navigators/routes';
 
 const Loading: React.FC = () => {
-  const { validate } = useInAppPurchase();
+  const { validate, setIsRequest } = useInAppPurchase();
   const navigation = useNavigation<StackNavigationProp<any, any>>();
 
   useEffect(() => {

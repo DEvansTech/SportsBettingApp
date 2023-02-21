@@ -22,7 +22,9 @@ import WatchsScene from '@Scenes/Watch';
 import MyteamScene from '@Scenes/Myteam';
 import PartnerScene from '@Scenes/Partner';
 import FeedbackScene from '@Scenes/Feedback';
+
 import { calendarDate } from '@Lib/utilities';
+
 import styles, { scale } from './styles';
 
 const options: StackNavigationOptions = {
@@ -111,6 +113,7 @@ const CustomTabButton = (props: any) => (
 export const TabNavigator: React.FC = props => {
   const { scheduleDate } = useContext(MainContext) as MainContextType;
   const todayDate = calendarDate(scheduleDate);
+
   return (
     <Tab.Navigator
       initialRouteName={Routes.Schedule}

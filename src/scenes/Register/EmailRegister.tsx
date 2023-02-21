@@ -133,7 +133,7 @@ const EmailRegister: React.FC = () => {
                   placeholder="Email address"
                   placeholderTextColor="white"
                   value={email}
-                  autoCompleteType="email"
+                  textContentType="emailAddress"
                   autoCapitalize="none"
                   onChangeText={useremail => setEmail(useremail)}
                   style={styles.input}
@@ -149,7 +149,7 @@ const EmailRegister: React.FC = () => {
                   placeholder="Password"
                   placeholderTextColor="white"
                   value={password}
-                  autoCompleteType="password"
+                  textContentType="password"
                   secureTextEntry={showPassword}
                   autoCapitalize="none"
                   onChangeText={pwd => setPassword(pwd)}

@@ -193,7 +193,7 @@ const Login: React.FC = () => {
                     placeholderTextColor="white"
                     autoCapitalize="none"
                     value={email}
-                    autoCompleteType="email"
+                    textContentType="emailAddress"
                     style={styles.input}
                     onChangeText={userEmail => setEmail(userEmail)}
                   />
@@ -209,7 +209,7 @@ const Login: React.FC = () => {
                     placeholderTextColor="white"
                     autoCapitalize="none"
                     value={password}
-                    autoCompleteType="password"
+                    textContentType="password"
                     secureTextEntry={showPassword}
                     style={styles.input}
                     returnKeyType="go"

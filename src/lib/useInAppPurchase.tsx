@@ -2,7 +2,6 @@ import { useEffect, useState, useContext } from 'react';
 import { Alert, Platform, NativeModules } from 'react-native';
 import {
   useIAP,
-  validateReceiptIos,
   validateReceiptAndroid,
   clearTransactionIOS,
   getReceiptIOS
@@ -11,7 +10,7 @@ import axios from 'axios';
 import functions from '@react-native-firebase/functions';
 import { MainContext, MainContextType } from '@Context/MainContext';
 
-const { RNIapIos, RNIapModule } = NativeModules;
+const { RNIapModule } = NativeModules;
 
 const itemSubs = Platform.select({
   default: ['oddsr_999_1m', 'oddsr_5999_1y'],
@@ -32,8 +31,8 @@ const useInAppPurchase = () => {
 
   const [isRequest, setIsRequest] = useState(false);
   const [currentProductId, setCurrentProductId] = useState('');
-  const [purchaseDate, setPurchaseDate] = useState('');
-  const [expiresDate, setExpiresDate] = useState('');
+  const [purchaseDate, setPurchaseDate] = useState<number>();
+  const [expiresDate, setExpiresDate] = useState<number>();
 
   useEffect(() => {
     (async function () {
@@ -54,7 +53,7 @@ const useInAppPurchase = () => {
           if (receipt) {
             await finishTransaction(currentPurchase, true);
             setIsSubscribe(true);
-            setIsRequest(false);
+            // setIsRequest(false);
             setCurrentProductId(currentPurchase?.productId);
           }
         }
@@ -105,29 +104,25 @@ const useInAppPurchase = () => {
       }
 
       const result: any = await getHistoryData(lastPurchase);
-
-      if (!result?.data?.latest_receipt_info) {
+      if (!result) {
         setIsSubscribe(false);
         setIsRequest(false);
         return false;
       }
 
-      const renewalHistory = result.data?.latest_receipt_info.sort(
-        (a: any, b: any) => b.expires_date_ms - a.expires_date_ms
-      );
+      const expiresTime = new Date(result.expiresDate).getTime();
+      const purchaseTime = new Date(result.purchaseDate).getTime();
 
-      const expiration = renewalHistory[0].expires_date_ms;
-
-      let expired = new Date().getTime() > expiration;
-      const productId = renewalHistory[0].product_id;
+      let expired = new Date().getTime() > expiresTime;
+      const { productId } = result;
 
       if (!expired) {
         setIsSubscribe(true);
-        setIsRequest(false);
+        // setIsRequest(false);
 
         setCurrentProductId(productId);
-        setPurchaseDate(renewalHistory[0].purchase_date_ms);
-        setExpiresDate(expiration);
+        setPurchaseDate(purchaseTime);
+        setExpiresDate(expiresTime);
         return true;
       } else {
         setIsSubscribe(false);
@@ -199,39 +194,19 @@ const useInAppPurchase = () => {
     }
   };
 
-  function getLatestPurchase() {
-    return RNIapIos.getAvailableItems().then((purchases: any) => {
-      return (
-        purchases.sort(
-          (a: any, b: any) =>
-            Number(b.transactionDate) - Number(a.transactionDate)
-        )?.[0] || null
-      );
-    });
-  }
-
   async function getHistoryData(transactionReceipt: string) {
-    const data = JSON.stringify({
-      'receipt-data': transactionReceipt,
-      password: 'c04d2c98cac24b87b18a9862e09dd26d'
-    });
-
-    const isTest = true;
-
-    const url = isTest
-      ? 'https://sandbox.itunes.apple.com/verifyReceipt'
-      : 'https://buy.itunes.apple.com/verifyReceipt';
-
     try {
-      const result: any = await axios({
-        method: 'post',
-        url,
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        data
-      });
-      return result.data;
+      const result = await axios.post(
+        'https://pss-appstore.azurewebsites.net/AppleReceipt/getHistoryData',
+        {
+          receiptString: transactionReceipt,
+          isTest: true
+        }
+      );
+      if (result.data?.latestReceiptInfo) {
+        return result.data?.latestReceiptInfo[0];
+      }
+      return null;
     } catch {
       return null;
     }
@@ -243,6 +218,7 @@ const useInAppPurchase = () => {
     currentProductId,
     expiresDate,
     purchaseDate,
+    setIsRequest,
     purchaseApp,
     validate
   };

@@ -173,7 +173,7 @@ const MyAccount: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    if (purchaseDate !== '' && expiresDate !== '') {
+    if (purchaseDate && expiresDate) {
       const userData = {
         subscription: {
           purchaseDate,
@@ -207,7 +207,7 @@ const MyAccount: React.FC = () => {
           <View style={styles.container}>
             <View style={styles.mainView}>
               <Text style={styles.userName}>
-                {userInfo?.firstName + ' ' + userInfo?.lastName}
+                {initUserInfo?.firstName + ' ' + initUserInfo?.lastName}
               </Text>
               <Text style={styles.signInDate}>
                 ODDS-R user since{' '}
@@ -393,7 +393,7 @@ const MyAccount: React.FC = () => {
               </View>
               <View style={styles.subscriptionView}>
                 <Text style={styles.subscriptionText}>Purchased Date</Text>
-                {purchaseDate !== '' && (
+                {purchaseDate && (
                   <Text style={styles.subscriptionText}>
                     {timeStamptoDateTime(purchaseDate)}
                   </Text>
@@ -401,14 +401,14 @@ const MyAccount: React.FC = () => {
               </View>
               <View style={styles.subscriptionView}>
                 <Text style={styles.subscriptionText}>Renewal Date</Text>
-                {expiresDate !== '' && (
+                {expiresDate && (
                   <Text style={styles.subscriptionText}>
                     {timeStamptoDateTime(expiresDate)}
                   </Text>
                 )}
               </View>
             </View>
-            {initUserInfo !== userInfo && (
+            {JSON.stringify(initUserInfo) !== JSON.stringify(userInfo) && (
               <Button success onPress={saveUserData} style={styles.saveButton}>
                 <Text style={styles.buttonText}>Save</Text>
               </Button>

@@ -17,8 +17,8 @@ export const timeStamptoDate = (date: string) => {
   return dateTime;
 };
 
-export const timeStamptoDateTime = (date: string) => {
-  const dateTime = moment(Number(date)).format('lll');
+export const timeStamptoDateTime = (date: number) => {
+  const dateTime = moment(date).format('lll');
   return dateTime;
 };
 

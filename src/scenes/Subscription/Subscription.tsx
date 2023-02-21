@@ -14,15 +14,20 @@ import { Images } from '@Theme';
 import styles from './styles';
 import { Props } from './types';
 
-const SubscriptionScene: React.FC<Props> = props => {
+const Subscription: React.FC<Props> = props => {
   const { state } = props?.route?.params;
-  const { subscriptions, isRequest, currentProductId, purchaseApp, validate } =
-    useInAppPurchase();
+  const {
+    subscriptions,
+    isRequest,
+    currentProductId,
+    purchaseApp,
+    validate,
+    setIsRequest
+  } = useInAppPurchase();
 
   const { isSubscribe } = useContext(MainContext) as MainContextType;
 
   const navigation = useNavigation<StackNavigationProp<any, any>>();
-  const [loadingBar, setLoadingBar] = useState(true);
 
   const handleSubscription = async (productId: string, offerToken?: string) => {
     await purchaseApp(productId, offerToken);
@@ -31,12 +36,9 @@ const SubscriptionScene: React.FC<Props> = props => {
   useEffect(() => {
     if (isSubscribe && !state) {
       navigation.navigate(Routes.Dashboard);
+      setIsRequest(false);
     }
   }, [isSubscribe]);
-
-  useEffect(() => {
-    setLoadingBar(isRequest);
-  }, [isRequest]);
 
   useEffect(() => {
     (async function () {
@@ -110,7 +112,7 @@ const SubscriptionScene: React.FC<Props> = props => {
         />
       )}
       <Spinner
-        visible={loadingBar}
+        visible={isRequest}
         textContent={'Please wait...'}
         textStyle={styles.spinnerTextStyle}
       />
@@ -129,4 +131,4 @@ const SubscriptionScene: React.FC<Props> = props => {
   );
 };
 
-export default SubscriptionScene;
+export default Subscription;

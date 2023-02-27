@@ -42,8 +42,8 @@ const Login: React.FC = () => {
     AuthContext
   ) as AuthContextType;
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('test2@gmail.com');
+  const [password, setPassword] = useState('test123!');
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(true);
 
@@ -153,7 +153,7 @@ const Login: React.FC = () => {
   useEffect(() => {
     if (user) {
       getUserName();
-      navigation.navigate(Routes.DrawerNav);
+      navigation.navigate(Routes.DrawerRoute);
     }
   }, [user]);
 

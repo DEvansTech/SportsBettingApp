@@ -77,10 +77,10 @@ const useInAppPurchase = () => {
         );
       }
       try {
+        setIsRequest(true);
         if (Platform.OS === 'ios') {
           await clearTransactionIOS();
         }
-        setIsRequest(true);
         await requestSubscription({
           sku: productId,
           ...(offerToken && {

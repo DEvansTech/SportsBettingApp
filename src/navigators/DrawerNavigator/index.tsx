@@ -8,6 +8,7 @@ import NotificationScene from '@Scenes/Notification';
 import SubscriptionScene from '@Scenes/Subscription';
 import LoadingScene from '@Scenes/Loading';
 import MyAccountScene from '@Scenes/MyAccount';
+import IntroductionScene from '@Scenes/Introduction';
 import { Routes } from '@Navigators/routes';
 import { Colors } from '@Theme';
 
@@ -37,12 +38,13 @@ export const DrawerNavigator: React.FC = () => {
       />
       <Drawer.Screen name={Routes.Subscription} component={SubscriptionScene} />
       <Drawer.Screen
-        name={Routes.Dashboard}
+        name={Routes.TabRoute}
         component={TabNavigator}
         options={{ swipeEnabled: user ? true : false }}
       />
       <Drawer.Screen name={Routes.Notification} component={NotificationScene} />
       <Drawer.Screen name={Routes.MyAccount} component={MyAccountScene} />
+      <Drawer.Screen name={Routes.Introduction} component={IntroductionScene} />
     </Drawer.Navigator>
   );
 };

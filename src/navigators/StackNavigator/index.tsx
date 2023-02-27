@@ -65,7 +65,7 @@ export const StackNavigator: React.FC = () => {
         }}
       /> */}
       <Stack.Screen
-        name={Routes.DrawerNav}
+        name={Routes.DrawerRoute}
         component={DrawerNavigator}
         options={{
           gestureEnabled: false

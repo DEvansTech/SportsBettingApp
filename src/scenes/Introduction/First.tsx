@@ -13,7 +13,7 @@ import { Images, Colors } from '@Theme';
 
 import styles from './styles';
 
-const Splash: React.FC = () => {
+const FirstScreen: React.FC = () => {
   const { setUser, user, setDisplayName } = useContext(
     AuthContext
   ) as AuthContextType;
@@ -72,26 +72,10 @@ const Splash: React.FC = () => {
         imageStyle={styles.backgroundImageStyle}>
         <Content
           contentContainerStyle={styles.contentView}
-          scrollEnabled={false}>
-          <Button
-            rounded
-            style={styles.closeBtn}
-            onPress={() => navigation.navigate(Routes.DrawerRoute)}>
-            <Text style={styles.closeBtnText}>Skip</Text>
-          </Button>
-          <View style={styles.btnView}>
-            <CustomButton
-              text="Create an account"
-              backgroundColor={Colors.green}
-              underlayColor={Colors.black}
-              onPress={() => navigateTo(Routes.Register)}
-            />
-            <CustomButton text="Sign in" onPress={logIn} />
-          </View>
-        </Content>
+          scrollEnabled={false}></Content>
       </ImageBackground>
     </Container>
   );
 };
 
-export default Splash;
+export default FirstScreen;

@@ -23,7 +23,7 @@ const UserHeader: React.FC<Props> = ({
     if (to) {
       navigation.navigate(to);
     } else {
-      navigation.navigate(Routes.Dashboard);
+      navigation.navigate(Routes.TabRoute);
     }
   };
   return (

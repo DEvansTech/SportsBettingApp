@@ -8,19 +8,20 @@ import useInAppPurchase from '@Lib/useInAppPurchase';
 import { Routes } from '@Navigators/routes';
 
 const Loading: React.FC = () => {
-  const { validate, setIsRequest } = useInAppPurchase();
+  const { validate } = useInAppPurchase();
   const navigation = useNavigation<StackNavigationProp<any, any>>();
 
   useEffect(() => {
-    navigation.navigate(Routes.Dashboard);
-    // (async function () {
-    //   const valid = await validate(true);
-    //   if (valid) {
-    //     navigation.navigate(Routes.Dashboard);
-    //   } else {
-    //     navigation.navigate(Routes.Subscription, { state: false });
-    //   }
-    // })();
+    navigation.navigate(Routes.TabRoute);
+    //   (async function () {
+    //     const valid = await validate(true);
+    //     console.log();
+    //     if (valid) {
+    //       navigation.navigate(Routes.TabRoute);
+    //     } else {
+    //       navigation.navigate(Routes.Subscription, { state: false });
+    //     }
+    //   })();
   }, []);
 
   return <LogoSpinner />;

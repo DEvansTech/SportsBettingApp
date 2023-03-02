@@ -12,16 +12,17 @@ const Loading: React.FC = () => {
   const navigation = useNavigation<StackNavigationProp<any, any>>();
 
   useEffect(() => {
-    navigation.navigate(Routes.TabRoute);
-    //   (async function () {
-    //     const valid = await validate(true);
-    //     console.log();
-    //     if (valid) {
-    //       navigation.navigate(Routes.TabRoute);
-    //     } else {
-    //       navigation.navigate(Routes.Subscription, { state: false });
-    //     }
-    //   })();
+    navigation.navigate(Routes.Introduction);
+    // navigation.navigate(Routes.TabRoute);
+    // (async function () {
+    //   const valid = await validate(true);
+    //   console.log();
+    //   if (valid) {
+    //     navigation.navigate(Routes.TabRoute);
+    //   } else {
+    //     navigation.navigate(Routes.Subscription, { state: false });
+    //   }
+    // })();
   }, []);
 
   return <LogoSpinner />;

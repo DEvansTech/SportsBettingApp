@@ -1,32 +1,75 @@
-import React, { useState, useContext } from 'react';
+import React, {
+  useState,
+  useContext,
+  useRef,
+  useCallback,
+  ReactElement
+} from 'react';
 import { Container } from 'native-base';
 
 import Carousel, { Pagination } from 'react-native-snap-carousel';
 
 import { AuthContext, AuthContextType } from '@Context/AuthContext';
 import FirstScreen from './First';
+import SecondScreen from './Second';
+import ThirdScreen from './Third';
+import FourthScreen from './Fourth';
+import FifthScreen from './Fifth';
+import SixthScreen from './Sixth';
+import SeventhScreen from './Seventh';
+import EighthScreen from './Eighth';
 
 import styles, { deviceWidth } from './styles';
 import { Colors } from '@Theme';
 
-const data = [
-  { title: 'first', component: <FirstScreen /> },
-  { title: 'first', component: <FirstScreen /> }
-];
+// const data = [
+//   { title: 'first', component: <FirstScreen /> },
+//   { title: 'second', component: <SecondScreen /> },
+//   { title: 'third', component: <ThirdScreen /> },
+//   { title: 'fourth', component: <FourthScreen /> },
+//   { title: 'fifth', component: <FifthScreen /> },
+//   { title: 'sixth', component: <SixthScreen /> },
+//   { title: 'seventh', component: <SeventhScreen /> },
+//   { title: 'eighth', component: <EighthScreen /> }
+// ];
+type ICarouselItem = {
+  item: ReactElement;
+  index: number;
+};
 
 const Introduction: React.FC = () => {
   const { user } = useContext(AuthContext) as AuthContextType;
+  const carouselRef = useRef<any>(null);
 
   const [activeSlide, setActiveSlide] = useState(0);
 
-  const _renderItem = ({ item, index }) => {
-    console.log(item, index);
-    return <>{item.component}</>;
+  const _renderItem = useCallback(({ item }: ICarouselItem) => {
+    return item;
+  }, []);
+
+  const nextPage = () => {
+    carouselRef.current?.snapToNext();
   };
+
+  const prevPage = () => {
+    carouselRef.current?.snapToPrev();
+  };
+
+  const data = [
+    <FirstScreen nextPage={nextPage} prevPage={prevPage} />,
+    <SecondScreen nextPage={nextPage} prevPage={prevPage} />,
+    <ThirdScreen nextPage={nextPage} prevPage={prevPage} />,
+    <FourthScreen nextPage={nextPage} prevPage={prevPage} />,
+    <FifthScreen nextPage={nextPage} prevPage={prevPage} />,
+    <SixthScreen nextPage={nextPage} prevPage={prevPage} />,
+    <SeventhScreen nextPage={nextPage} prevPage={prevPage} />,
+    <EighthScreen nextPage={nextPage} prevPage={prevPage} />
+  ];
 
   return (
     <Container style={styles.background}>
       <Carousel
+        ref={carouselRef}
         data={data}
         renderItem={_renderItem}
         onSnapToItem={(index: number) => setActiveSlide(index)}

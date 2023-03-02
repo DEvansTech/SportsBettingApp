@@ -34,7 +34,7 @@ const ModalCalendar: React.FC<Props> = ({
   };
 
   const onSwipe = (gestureName: string) => {
-    const { SWIPE_DOWN } = swipeDirections;
+    const { SWIPE_DOWN }: any = swipeDirections;
 
     switch (gestureName) {
       case SWIPE_DOWN:

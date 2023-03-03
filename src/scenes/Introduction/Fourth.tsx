@@ -15,27 +15,29 @@ const FourthScreen: React.FC<CarosuelProps> = ({ nextPage, prevPage }) => {
   return (
     <Container style={styles.background}>
       <Header style={styles.header} androidStatusBarColor={Colors.green}>
-        <Text style={styles.headerSubTitle}>Instructions:</Text>
-        <Text style={styles.headerTitle}>LineMaster™</Text>
-        <Icon
-          type="AntDesign"
-          name="closecircleo"
-          onPress={() => navigation.navigate(Routes.TabRoute)}
-          style={styles.closeIcon}
-        />
-        <View style={styles.controlBar}>
+        <View style={styles.headerView}>
+          <Text style={styles.headerSubTitle}>Instructions:</Text>
+          <Text style={styles.headerTitle}>LineMaster™</Text>
           <Icon
-            type="Entypo"
-            name="chevron-thin-left"
-            onPress={prevPage}
-            style={styles.controlIcon}
+            type="AntDesign"
+            name="closecircleo"
+            onPress={() => navigation.navigate(Routes.TabRoute)}
+            style={styles.closeIcon}
           />
-          <Icon
-            type="Entypo"
-            name="chevron-thin-right"
-            onPress={nextPage}
-            style={styles.controlIcon}
-          />
+          <View style={styles.controlBar}>
+            <Icon
+              type="Entypo"
+              name="chevron-thin-left"
+              onPress={prevPage}
+              style={styles.controlIcon}
+            />
+            <Icon
+              type="Entypo"
+              name="chevron-thin-right"
+              onPress={nextPage}
+              style={styles.controlIcon}
+            />
+          </View>
         </View>
       </Header>
       <Content contentContainerStyle={styles.contentView}>

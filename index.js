@@ -8,4 +8,5 @@ import App from './App';
 import 'react-native-gesture-handler';
 import { name as appName } from './app.json';
 
+global.__reanimatedWorkletInit = () => {};
 AppRegistry.registerComponent(appName, () => App);

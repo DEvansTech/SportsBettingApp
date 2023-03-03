@@ -1,6 +1,5 @@
 import { StyleSheet, Dimensions, Platform } from 'react-native';
 import { Colors, Fonts } from '@Theme';
-import { color } from 'react-native-reanimated';
 
 export const deviceWidth = Dimensions.get('window').width;
 export const deviceHeight = Dimensions.get('window').height;
@@ -19,9 +18,11 @@ export default StyleSheet.create({
     justifyContent: 'space-between',
     backgroundColor: Colors.green,
     height: 100 * scale,
-    borderColor: 'transparent',
-    marginHorizontal: 15 * scale,
-    paddingVertical: 20 * scale,
+    borderColor: 'transparent'
+  },
+  headerView: {
+    paddingHorizontal: 15 * scale,
+    paddingVertical: 10 * scale,
     position: 'relative'
   },
   subHeader: {
@@ -29,7 +30,6 @@ export default StyleSheet.create({
     paddingVertical: 15 * scale,
     paddingHorizontal: 20 * scale
   },
-
   subHeaderText: {
     color: Colors.white,
     fontSize: 25 * scale,

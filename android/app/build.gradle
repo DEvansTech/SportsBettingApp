@@ -136,7 +136,7 @@ android {
         applicationId "com.pss.oddsr"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 94
+        versionCode 96
         versionName "1.0.0"
         multiDexEnabled true
         missingDimensionStrategy 'store', 'play'
@@ -201,6 +201,11 @@ android {
 
         }
     }
+
+    packagingOptions {
+        pickFirst '**/libc++_shared.so'
+        pickFirst '**/libfbjni.so'
+    }
 }
 
 dependencies {
@@ -219,6 +224,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics'
     implementation project(':react-native-svg')
     implementation project(':react-native-iap')
+
+    implementation 'androidx.work:work-runtime-ktx:2.7.0'
 
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
       exclude group:'com.facebook.fbjni'

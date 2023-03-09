@@ -153,7 +153,7 @@ const Login: React.FC = () => {
   useEffect(() => {
     if (user) {
       getUserName();
-      navigation.navigate(Routes.DrawerNav);
+      navigation.navigate(Routes.DrawerRoute);
     }
   }, [user]);
 

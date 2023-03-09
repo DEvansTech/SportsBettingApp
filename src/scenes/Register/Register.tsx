@@ -149,7 +149,7 @@ const Register: React.FC = () => {
 
   useEffect(() => {
     if (user) {
-      navigation.navigate(Routes.DrawerNav);
+      navigation.navigate(Routes.DrawerRoute);
     }
   }, [user]);
 

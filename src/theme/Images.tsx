@@ -15,6 +15,16 @@ export default {
   ObiLogo: require('@Assets/images/ObiLogo.png'),
   Basketball: require('@Assets/images/Baskball_Update.png'),
 
+  /////
+  carousel1: require('@Assets/images/carousel1.png'),
+  carousel2: require('@Assets/images/carousel2.png'),
+  carousel3: require('@Assets/images/carousel3.png'),
+  carousel4: require('@Assets/images/carousel4.png'),
+  carousel5: require('@Assets/images/carousel5.png'),
+  carousel6: require('@Assets/images/carousel6.png'),
+  carousel7: require('@Assets/images/carousel7.png'),
+  carousel8: require('@Assets/images/carousel8.png'),
+
   // MLB //
   MLB_ARI: require('@Assets/mlb_teams/ARI_Logo.png'),
   MLB_ATL: require('@Assets/mlb_teams/ATL_Logo.png'),

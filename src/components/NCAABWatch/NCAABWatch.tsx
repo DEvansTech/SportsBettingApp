@@ -193,6 +193,7 @@ const NCAABWatch: React.FC<Props> = ({
               status={data.status}
               rating={getAwaySpreadValue(data)}
               points={data.home_points || data.away_points}
+              pushScore={checkSpreadPushAway(data)}
             />
           </View>
           <View style={styles.betTitleView}>
@@ -207,6 +208,7 @@ const NCAABWatch: React.FC<Props> = ({
               status={data.status}
               rating={getHomeSpreadValue(data)}
               points={data.home_points || data.away_points}
+              pushScore={checkSpreadPushHome(data)}
             />
             <BarRating
               value={getHomeSpreadValue(data)}
@@ -236,6 +238,7 @@ const NCAABWatch: React.FC<Props> = ({
               status={data.status}
               rating={getAwayWinValue(data)}
               points={data.home_points || data.away_points}
+              pushScore={checkWinPush(data)}
             />
           </View>
           <View style={styles.betTitleView}>
@@ -250,6 +253,7 @@ const NCAABWatch: React.FC<Props> = ({
               status={data.status}
               rating={getHomeWinValue(data)}
               points={data.home_points || data.away_points}
+              pushScore={checkWinPush(data)}
             />
             <BarRating
               value={getHomeWinValue(data)}

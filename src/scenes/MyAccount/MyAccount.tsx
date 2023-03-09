@@ -10,7 +10,8 @@ import {
   Icon,
   Button,
   Input,
-  Item
+  Item,
+  Switch
 } from 'native-base';
 import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
@@ -80,12 +81,16 @@ const MyAccount: React.FC = () => {
       return;
     }
 
-    if (userInfo?.gender && userInfo?.gender !== '') {
+    if (userInfo?.gender !== '') {
       userData.gender = userInfo?.gender;
     }
-    if (userInfo?.birthday && userInfo?.birthday !== '') {
+    if (userInfo?.birthday !== '') {
       userData.birthday = userInfo?.birthday;
     }
+
+    userData.introPage =
+      userInfo?.introPage === undefined ? false : userInfo?.introPage;
+
     const docRef = firestore().collection('users').doc(user.uid);
     docRef.get().then(thisDoc => {
       if (thisDoc.exists) {
@@ -322,6 +327,22 @@ const MyAccount: React.FC = () => {
                   placeholder="Birthday (MM/DD/YYYY)"
                 />
               </Item>
+            </View>
+            <View style={styles.basicView}>
+              <Text style={styles.basicTitle}>Introduction Page</Text>
+              <View style={styles.switchView}>
+                <Text style={styles.switchTitle}>Disable / Show</Text>
+                <Switch
+                  value={userInfo?.introPage}
+                  style={styles.switch}
+                  onValueChange={value =>
+                    setUserInfo({
+                      ...userInfo,
+                      introPage: value
+                    })
+                  }
+                />
+              </View>
             </View>
             <View
               style={[

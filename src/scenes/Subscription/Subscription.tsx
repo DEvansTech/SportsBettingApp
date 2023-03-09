@@ -29,14 +29,16 @@ const Subscription: React.FC<Props> = props => {
 
   const navigation = useNavigation<StackNavigationProp<any, any>>();
 
-  const handleSubscription = async (productId: string, offerToken?: string) => {
-    await purchaseApp(productId, offerToken);
+  const handleSubscription = (productId: string, offerToken?: string) => {
+    purchaseApp(productId, offerToken);
   };
 
   useEffect(() => {
-    if (isSubscribe && !state) {
-      navigation.navigate(Routes.Dashboard);
+    if (isSubscribe) {
       setIsRequest(false);
+      if (!state) {
+        navigation.navigate(Routes.TabRoute);
+      }
     }
   }, [isSubscribe]);
 
@@ -74,6 +76,7 @@ const Subscription: React.FC<Props> = props => {
                 ].offerToken
               )
             }
+            disabled={isRequest}
             style={styles.subscriptionBtn}
             key={index}>
             <Text style={styles.subscriptionBtnText}>
@@ -92,7 +95,7 @@ const Subscription: React.FC<Props> = props => {
           rounded
           light
           onPress={() => handleSubscription(item.productId)}
-          disabled={item.productId === currentProductId}
+          disabled={item.productId === currentProductId || isRequest}
           style={styles.subscriptionBtn}>
           <Text style={styles.subscriptionBtnText}>{item?.localizedPrice}</Text>
         </Button>
@@ -108,7 +111,7 @@ const Subscription: React.FC<Props> = props => {
           iconType="MaterialCommunityIcons"
           iconName="currency-usd-circle-outline"
           name="ODDS-R Subscriptions"
-          to={Routes.Dashboard}
+          to={Routes.TabRoute}
         />
       )}
       <Spinner

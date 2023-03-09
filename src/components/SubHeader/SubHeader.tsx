@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { TouchableOpacity } from 'react-native';
 import { Icon, Text, View } from 'native-base';
 import RNPickerSelect from 'react-native-picker-select';

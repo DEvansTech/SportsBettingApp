@@ -41,7 +41,7 @@ const Splash: React.FC = () => {
   const logIn = () => {
     if (user) {
       getUserName();
-      navigation.navigate(Routes.DrawerNav);
+      navigation.navigate(Routes.DrawerRoute);
     } else {
       navigation.navigate(Routes.Login);
     }
@@ -54,7 +54,7 @@ const Splash: React.FC = () => {
   useEffect(() => {
     if (user) {
       getUserName();
-      navigation.navigate(Routes.DrawerNav);
+      navigation.navigate(Routes.DrawerRoute);
     }
   }, [user]);
 
@@ -76,7 +76,7 @@ const Splash: React.FC = () => {
           <Button
             rounded
             style={styles.closeBtn}
-            onPress={() => navigation.navigate(Routes.DrawerNav)}>
+            onPress={() => navigation.navigate(Routes.DrawerRoute)}>
             <Text style={styles.closeBtnText}>Skip</Text>
           </Button>
           <View style={styles.btnView}>

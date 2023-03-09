@@ -9,4 +9,5 @@ export type UserType = {
   birthday?: string;
   password?: string;
   repassword?: string;
+  introPage?: boolean;
 };

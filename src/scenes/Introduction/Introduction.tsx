@@ -1,8 +1,14 @@
-import React, { useState, useRef, useCallback, ReactElement } from 'react';
+import React, {
+  useState,
+  useContext,
+  useRef,
+  useCallback,
+  ReactElement
+} from 'react';
 import { Container } from 'native-base';
-
 import Carousel, { Pagination } from 'react-native-snap-carousel';
 
+import { AuthContext, AuthContextType } from '@Context/AuthContext';
 import FirstScreen from './First';
 import SecondScreen from './Second';
 import ThirdScreen from './Third';
@@ -21,6 +27,7 @@ type ICarouselItem = {
 };
 
 const Introduction: React.FC = () => {
+  const { user } = useContext(AuthContext) as AuthContextType;
   const carouselRef = useRef<any>(null);
 
   const [activeSlide, setActiveSlide] = useState(0);

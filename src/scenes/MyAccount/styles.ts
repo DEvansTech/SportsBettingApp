@@ -125,6 +125,20 @@ export default StyleSheet.create({
     fontSize: 16 * scale,
     color: Colors.black,
     fontFamily: Fonts.regular
+  },
+  switchView: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 5 * scale,
+    paddingLeft: 5 * scale
+  },
+  switchTitle: {
+    fontSize: 16 * scale,
+    color: Colors.black
+  },
+  switch: {
+    transform: [{ scaleX: 0.8 }, { scaleY: 0.8 }]
   }
 });
 

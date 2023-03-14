@@ -25,7 +25,13 @@ import {
   getHomeWinValue,
   getOverRating,
   getUnderRating,
-  checkLineMasterState
+  checkLineMasterState,
+  checkAwaySpreadWhiteCircle,
+  checkHomeSpreadWhiteCircle,
+  checkOverWhiteCircle,
+  checkUnderWhiteCircle,
+  checkHomeWinWhiteCircle,
+  checkAwayWinWhiteCircle
 } from '@Lib/function';
 
 import { Props } from './types';
@@ -183,7 +189,7 @@ const NCAABWatch: React.FC<Props> = ({
               outCome={checkSpread(data) === 'away'}
               pushScore={checkSpreadPushAway(data)}
               points={data.home_points || data.away_points}
-              team="away"
+              whiteCircle={checkAwaySpreadWhiteCircle(data)}
             />
             <BetCalculator
               outCome={checkSpread(data) === 'away'}
@@ -216,7 +222,7 @@ const NCAABWatch: React.FC<Props> = ({
               outCome={checkSpread(data) === 'home'}
               pushScore={checkSpreadPushHome(data)}
               points={data.home_points || data.away_points}
-              team="home"
+              whiteCircle={checkHomeSpreadWhiteCircle(data)}
             />
           </View>
         </View>
@@ -228,7 +234,7 @@ const NCAABWatch: React.FC<Props> = ({
               pushScore={checkWinPush(data)}
               outCome={checkWin(data) === 'away'}
               points={data.home_points || data.away_points}
-              team="away"
+              whiteCircle={checkAwayWinWhiteCircle(data)}
             />
             <BetCalculator
               outCome={checkWin(data) === 'away'}
@@ -261,7 +267,7 @@ const NCAABWatch: React.FC<Props> = ({
               pushScore={checkWinPush(data)}
               outCome={checkWin(data) === 'home'}
               points={data.home_points || data.away_points}
-              team="home"
+              whiteCircle={checkHomeWinWhiteCircle(data)}
             />
           </View>
         </View>
@@ -273,7 +279,7 @@ const NCAABWatch: React.FC<Props> = ({
               outCome={checkOU(data) === 'away'}
               pushScore={checkOU(data)}
               points={data.home_points || data.away_points}
-              team="away"
+              whiteCircle={checkOverWhiteCircle(data)}
             />
             <BetCalculator
               outCome={checkOU(data) === 'away'}
@@ -306,7 +312,7 @@ const NCAABWatch: React.FC<Props> = ({
               outCome={checkOU(data) === 'home'}
               pushScore={checkOU(data)}
               points={data.home_points || data.away_points}
-              team="home"
+              whiteCircle={checkUnderWhiteCircle(data)}
             />
           </View>
         </View>

@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { View, Text } from 'native-base';
 import { Props } from './types';
 import styles from './styles';
-import RippleBar from './RippleBar';
+// import RippleBar from './RippleBar';
 
 const BarRating: React.FC<Props> = ({
   value,
@@ -10,9 +10,9 @@ const BarRating: React.FC<Props> = ({
   outCome,
   pushScore,
   points,
-  team
+  whiteCircle
 }) => {
-  const viewBar = () => {
+  const viewBar = useCallback(() => {
     if ((status === 'closed' || status === 'complete') && points) {
       if (Number(value) > 3) {
         if (outCome || pushScore === 'same') {
@@ -37,9 +37,9 @@ const BarRating: React.FC<Props> = ({
         return styles.greenBar;
       }
     }
-  };
+  }, []);
 
-  const getWinState = () => {
+  const getWinState = useCallback(() => {
     if ((status === 'closed' || status === 'complete') && points) {
       return (
         <Text style={styles.stateText}>
@@ -49,29 +49,15 @@ const BarRating: React.FC<Props> = ({
       );
     } else if (Number(value) === 4) {
       return <Text style={styles.stateText}>Value</Text>;
+    } else if (whiteCircle) {
+      return <View style={styles.whiteCircle} />;
     }
-  };
+  }, []);
 
   return (
     <View style={styles.scoreView}>
       {value ? (
-        <>
-          {/* {value > 3 && team === 'home' && (
-            <RippleBar
-              direction="left"
-              rippleStyle={viewBar()}
-              status={status === 'closed' || status === 'complete'}
-            />
-          )} */}
-          <View style={[styles.barView, viewBar()]}>{getWinState()}</View>
-          {/* {value > 3 && team === 'away' && (
-            <RippleBar
-              direction="right"
-              rippleStyle={viewBar()}
-              status={status === 'closed' || status === 'complete'}
-            />
-          )} */}
-        </>
+        <View style={[styles.barView, viewBar()]}>{getWinState()}</View>
       ) : (
         <Text style={styles.notRatedText}>Not Rated</Text>
       )}

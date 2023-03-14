@@ -4,7 +4,7 @@ export type Props = {
   outCome: boolean;
   pushScore?: string;
   points?: string | undefined;
-  team: string;
+  whiteCircle?: boolean;
 };
 
 export type RippleBarProps = {

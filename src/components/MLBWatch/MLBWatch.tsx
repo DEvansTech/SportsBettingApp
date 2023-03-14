@@ -19,7 +19,13 @@ import {
   getHomeWinValue,
   getOverRating,
   getUnderRating,
-  checkLineMasterState
+  checkLineMasterState,
+  checkAwaySpreadWhiteCircle,
+  checkHomeSpreadWhiteCircle,
+  checkOverWhiteCircle,
+  checkUnderWhiteCircle,
+  checkHomeWinWhiteCircle,
+  checkAwayWinWhiteCircle
 } from '@Lib/function';
 import { Svgs } from '@Theme';
 
@@ -305,7 +311,7 @@ const MLBWatch: React.FC<Props> = ({
               outCome={checkSpread() === 'away'}
               pushScore={checkSpreadPushAway()}
               points={data.home_runs || data.away_runs}
-              team="away"
+              whiteCircle={checkAwaySpreadWhiteCircle(data)}
             />
             <BetCalculator
               outCome={checkSpread() === 'away'}
@@ -336,7 +342,7 @@ const MLBWatch: React.FC<Props> = ({
               outCome={checkSpread() === 'home'}
               pushScore={checkSpreadPushHome()}
               points={data.home_runs || data.away_runs}
-              team="home"
+              whiteCircle={checkHomeSpreadWhiteCircle(data)}
             />
           </View>
         </View>
@@ -347,7 +353,7 @@ const MLBWatch: React.FC<Props> = ({
               status={data.status}
               outCome={checkWin() === 'away'}
               points={data.home_runs || data.away_runs}
-              team="away"
+              whiteCircle={checkAwayWinWhiteCircle(data)}
             />
             <BetCalculator
               outCome={checkWin() === 'away'}
@@ -377,7 +383,7 @@ const MLBWatch: React.FC<Props> = ({
               status={data.status}
               outCome={checkWin() === 'home'}
               points={data.home_runs || data.away_runs}
-              team="home"
+              whiteCircle={checkHomeWinWhiteCircle(data)}
             />
           </View>
         </View>
@@ -389,7 +395,7 @@ const MLBWatch: React.FC<Props> = ({
               outCome={checkOU() === 'away'}
               pushScore={checkOU()}
               points={data.home_runs || data.away_runs}
-              team="away"
+              whiteCircle={checkOverWhiteCircle(data)}
             />
             <BetCalculator
               outCome={checkOU() === 'away'}
@@ -422,7 +428,7 @@ const MLBWatch: React.FC<Props> = ({
               outCome={checkOU() === 'home'}
               pushScore={checkOU()}
               points={data.home_runs || data.away_runs}
-              team="home"
+              whiteCircle={checkUnderWhiteCircle(data)}
             />
           </View>
         </View>

@@ -514,3 +514,49 @@ export const checkLineMasterState = (data: GameDataType) => {
     data.algRatingUnder
   );
 };
+
+export const checkAwaySpreadWhiteCircle = (data: GameDataType) => {
+  if (
+    Number(data?.algRatingPredAwaySpread) < Number(data.spread_last_spread_away)
+  ) {
+    return true;
+  }
+  return false;
+};
+
+export const checkHomeSpreadWhiteCircle = (data: GameDataType) => {
+  if (
+    Number(data?.algRatingPredHomeSpread) < Number(data.spread_last_spread_home)
+  ) {
+    return true;
+  }
+  return false;
+};
+
+export const checkUnderWhiteCircle = (data: GameDataType) => {
+  if (Number(data?.algRatingPredTotal) < Number(data.total_last_total)) {
+    return true;
+  }
+  return false;
+};
+
+export const checkOverWhiteCircle = (data: GameDataType) => {
+  if (Number(data?.algRatingPredTotal) > Number(data.total_last_total)) {
+    return true;
+  }
+  return false;
+};
+
+export const checkHomeWinWhiteCircle = (data: GameDataType) => {
+  if (Number(data?.algRatingPredHomeSpread) < 0) {
+    return true;
+  }
+  return false;
+};
+
+export const checkAwayWinWhiteCircle = (data: GameDataType) => {
+  if (Number(data?.algRatingPredAwaySpread) < 0) {
+    return true;
+  }
+  return false;
+};

@@ -73,5 +73,12 @@ export default StyleSheet.create({
   leftBar: {
     borderTopLeftRadius: 10 * scale,
     borderBottomLeftRadius: 10 * scale
+  },
+  whiteCircle: {
+    width: 8 * scale,
+    height: 8 * scale,
+    borderRadius: 4 * scale,
+    backgroundColor: 'white',
+    position: 'absolute'
   }
 });

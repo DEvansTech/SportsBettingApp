@@ -27,5 +27,6 @@ export const Routes = {
   ContactUs: 'ContactUs',
   Privacy: 'Privacy',
   Feedback: 'Feedback',
-  Logout: 'Logout'
+  Logout: 'Logout',
+  HowToUse: 'HowToUse'
 };

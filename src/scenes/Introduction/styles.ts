@@ -144,5 +144,18 @@ export default StyleSheet.create({
   },
   mt20: {
     marginTop: 20 * scale
+  },
+  showCheck: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    paddingVertical: 10 * scale,
+    paddingHorizontal: 20 * scale,
+    alignItems: 'center'
+  },
+  messageText: {
+    fontSize: 14 * scale,
+    color: Colors.green,
+    fontFamily: Fonts.bold,
+    marginLeft: 20 * scale
   }
 });

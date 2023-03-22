@@ -10,8 +10,7 @@ import {
   Icon,
   Button,
   Input,
-  Item,
-  Switch
+  Item
 } from 'native-base';
 import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
@@ -22,7 +21,7 @@ import useInAppPurchase from '@Lib/useInAppPurchase';
 import { AuthContext, AuthContextType } from '@Context/AuthContext';
 import { UserHeader, LogoSpinner } from '@Components';
 import { ToastMessage } from '@Lib/function';
-import { timeStamptoDate, timeStamptoDateTime } from '@Lib/utilities';
+import { timeStamptoDate, timeStamptoDateTime, getAge } from '@Lib/utilities';
 import { Colors } from '@Theme';
 
 import { UserType } from './types';
@@ -84,12 +83,15 @@ const MyAccount: React.FC = () => {
     if (userInfo?.gender !== '') {
       userData.gender = userInfo?.gender;
     }
+
     if (userInfo?.birthday !== '') {
+      const age = getAge(userInfo?.birthday);
+      if (Number(age) <= 21) {
+        ToastMessage('You must be 21 years old or above', 'danger', 'bottom');
+        return;
+      }
       userData.birthday = userInfo?.birthday;
     }
-
-    userData.introPage =
-      userInfo?.introPage === undefined ? false : userInfo?.introPage;
 
     const docRef = firestore().collection('users').doc(user.uid);
     docRef.get().then(thisDoc => {
@@ -327,22 +329,6 @@ const MyAccount: React.FC = () => {
                   placeholder="Birthday (MM/DD/YYYY)"
                 />
               </Item>
-            </View>
-            <View style={styles.basicView}>
-              <Text style={styles.basicTitle}>Introduction Page</Text>
-              <View style={styles.switchView}>
-                <Text style={styles.switchTitle}>Disable / Show</Text>
-                <Switch
-                  value={userInfo?.introPage}
-                  style={styles.switch}
-                  onValueChange={value =>
-                    setUserInfo({
-                      ...userInfo,
-                      introPage: value
-                    })
-                  }
-                />
-              </View>
             </View>
             <View
               style={[

@@ -3,10 +3,12 @@ import React, {
   useContext,
   useRef,
   useCallback,
-  ReactElement
+  ReactElement,
+  useEffect
 } from 'react';
-import { Container } from 'native-base';
+import { Container, View, Text, CheckBox } from 'native-base';
 import Carousel, { Pagination } from 'react-native-snap-carousel';
+import firestore from '@react-native-firebase/firestore';
 
 import { AuthContext, AuthContextType } from '@Context/AuthContext';
 import FirstScreen from './First';
@@ -31,6 +33,7 @@ const Introduction: React.FC = () => {
   const carouselRef = useRef<any>(null);
 
   const [activeSlide, setActiveSlide] = useState(0);
+  const [checkShow, setCheckShow] = useState(false);
 
   const _renderItem = useCallback(({ item }: ICarouselItem) => {
     return item;
@@ -43,6 +46,36 @@ const Introduction: React.FC = () => {
   const prevPage = () => {
     carouselRef.current?.snapToPrev();
   };
+
+  useEffect(() => {
+    if (checkShow) {
+      (async function () {
+        const docRef = await firestore().collection('users').doc(user.uid);
+        const userData = {
+          introPage: false
+        };
+        docRef.get().then(thisDoc => {
+          if (thisDoc.exists) {
+            docRef.update(userData);
+          }
+        });
+      })();
+    }
+  }, [checkShow]);
+
+  useEffect(() => {
+    (async function () {
+      const docRef = await firestore().collection('users').doc(user.uid);
+      const userData = {
+        introPage: true
+      };
+      docRef.get().then(thisDoc => {
+        if (thisDoc.exists) {
+          docRef.update(userData);
+        }
+      });
+    })();
+  }, []);
 
   const data = [
     <FirstScreen nextPage={nextPage} prevPage={prevPage} />,
@@ -65,6 +98,14 @@ const Introduction: React.FC = () => {
         sliderWidth={deviceWidth}
         itemWidth={deviceWidth}
       />
+      <View style={styles.showCheck}>
+        <CheckBox
+          color={Colors.green}
+          checked={checkShow}
+          onPress={() => setCheckShow(!checkShow)}
+        />
+        <Text style={styles.messageText}>Do not show again on startup</Text>
+      </View>
       <Pagination
         dotsLength={data.length}
         activeDotIndex={activeSlide}

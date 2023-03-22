@@ -17,7 +17,7 @@ export default StyleSheet.create({
   },
   headerLeft: {
     marginLeft: 15 * scale,
-    flex: 0.28,
+    flex: 0.3,
     alignItems: 'center',
     justifyContent: 'flex-start'
   },
@@ -36,7 +36,7 @@ export default StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     flexDirection: 'row',
-    flex: 0.57,
+    flex: 0.55,
     marginHorizontal: 5 * scale
   },
   chevronIcon: {
@@ -69,7 +69,8 @@ export const pickerSelectStyles = (fontSize: number) =>
       borderColor: Colors.transparent,
       backgroundColor: Colors.transparent,
       color: Colors.black,
-      paddingRight: 10 * scale
+      paddingRight: 25 * scale,
+      width: '100%'
     },
     iconContainer: {
       top: 15 * scale,

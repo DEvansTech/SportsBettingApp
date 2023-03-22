@@ -123,24 +123,7 @@ export const CustomDrawerContent: React.FC<DrawerContentComponentProps> = ({
           focused={getActiveRouteState(state.routes, state.index, Routes.FAQs)}
           onPress={() => navigation.navigate(Routes.FAQs)}
         /> */}
-        {/* <DrawerItem
-          {...itemBaseStyle}
-          {...rest}
-          label="Contact Us"
-          icon={() => (
-            <Icon
-              type="MaterialCommunityIcons"
-              name="contacts-outline"
-              style={styles.icon}
-            />
-          )}
-          focused={getActiveRouteState(
-            state.routes,
-            state.index,
-            Routes.ContactUs
-          )}
-          onPress={() => navigation.navigate(Routes.ContactUs)}
-        /> */}
+
         <DrawerItem
           {...itemBaseStyle}
           {...rest}
@@ -172,6 +155,24 @@ export const CustomDrawerContent: React.FC<DrawerContentComponentProps> = ({
             Routes.Logout
           )}
           onPress={logOut}
+        />
+        <DrawerItem
+          {...itemBaseStyle}
+          {...rest}
+          label="How to use ODDS-R®"
+          icon={() => (
+            <Icon
+              type="MaterialIcons"
+              name="info-outline"
+              style={styles.icon}
+            />
+          )}
+          focused={getActiveRouteState(
+            state.routes,
+            state.index,
+            Routes.HowToUse
+          )}
+          onPress={() => navigation.navigate(Routes.Introduction)}
         />
       </View>
     </DrawerContentScrollView>

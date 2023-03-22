@@ -69,6 +69,7 @@ const SubHeader: React.FC = () => {
           onValueChange={value => setSportName(value)}
           value={sportName}
           useNativeAndroidPickerStyle={false}
+          fixAndroidTouchableBug={true}
           Icon={() => (
             <Icon
               name="chevron-down"
@@ -76,7 +77,7 @@ const SubHeader: React.FC = () => {
               color={Colors.black}
             />
           )}
-          style={pickerSelectStyles(responseFontSize(sportName, 0.29, 23))}
+          style={pickerSelectStyles(responseFontSize(sportName, 0.3, 21))}
           placeholder={placeholder}
         />
       </View>

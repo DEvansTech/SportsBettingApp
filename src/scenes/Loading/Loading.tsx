@@ -27,8 +27,8 @@ const Loading: React.FC = () => {
 
   useEffect(() => {
     (async function () {
-      // const valid = await validate(true);
-      if (true) {
+      const valid = await validate(true);
+      if (valid) {
         const showIntroPage = await getIntroPageState();
         if (showIntroPage) {
           navigation.navigate(Routes.Introduction);

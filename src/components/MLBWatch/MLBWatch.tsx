@@ -196,6 +196,11 @@ const MLBWatch: React.FC<Props> = ({
   };
 
   const getAwaySpreadValue = () => {
+    if (
+      !(data?.run_line_last_outcome_away && data?.run_line_last_spread_away)
+    ) {
+      return undefined;
+    }
     const rangeValue = Number(data?.run_line_last_outcome_away);
     const oddType =
       Number(data?.run_line_last_spread_away) > 0 ? 'plus' : 'minus';
@@ -204,6 +209,11 @@ const MLBWatch: React.FC<Props> = ({
   };
 
   const getHomeSpreadValue = () => {
+    if (
+      !(data?.run_line_last_outcome_home && data?.run_line_last_spread_home)
+    ) {
+      return undefined;
+    }
     const rangeValue = Number(data?.run_line_last_outcome_home);
     const oddType =
       Number(data?.run_line_last_spread_home) > 0 ? 'plus' : 'minus';

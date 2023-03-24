@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/core';
 import { StackNavigationProp } from '@react-navigation/stack';
@@ -135,7 +135,7 @@ const AllGames: React.FC<Props> = ({ selectedDate }) => {
     }
   };
 
-  const getFavoriteTeams = async () => {
+  const getFavoriteTeams = useCallback(async () => {
     if (user) {
       const favDoc: any = await firestore()
         .collection('favoriteTeams')
@@ -148,9 +148,9 @@ const AllGames: React.FC<Props> = ({ selectedDate }) => {
         setFavoriteTeams([]);
       }
     }
-  };
+  }, [isFocused]);
 
-  const getSelections = async () => {
+  const getSelections = useCallback(async () => {
     if (user) {
       await firestore()
         .collection('mlbSelections')
@@ -215,7 +215,7 @@ const AllGames: React.FC<Props> = ({ selectedDate }) => {
           setNbaselections([]);
         });
     }
-  };
+  }, [isFocused]);
 
   useEffect(() => {
     const mySelections = {
@@ -253,7 +253,7 @@ const AllGames: React.FC<Props> = ({ selectedDate }) => {
   useEffect(() => {
     getFavoriteTeams();
     getSelections();
-  }, [isFocused]);
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {

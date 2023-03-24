@@ -256,6 +256,17 @@ export const getMLBSpreadAwayRatingValue = (
   oddType: string
 ) => {
   let LINE = oddType === 'plus' ? 1.5 : -1.5;
+
+  if (
+    !(
+      gameData?.algRatingPredAwaySpread ||
+      gameData?.algRatingCalcYellowSpread ||
+      gameData?.algRatingMoneySpread ||
+      gameData?.algRatingCalcGreenSpread ||
+      gameData?.algRatingCalcSuperSpread
+    )
+  )
+    return undefined;
   if (
     (gameData?.algRatingPredAwaySpread || 0) - LINE <=
       (gameData?.algRatingCalcYellowSpread || 0) * -1 &&
@@ -287,6 +298,16 @@ export const getMLBSpreadHomeRatingValue = (
   oddType: string
 ) => {
   let LINE = oddType === 'plus' ? 1.5 : -1.5;
+  if (
+    !(
+      gameData?.algRatingPredHomeSpread ||
+      gameData?.algRatingCalcYellowSpread ||
+      gameData?.algRatingMoneySpread ||
+      gameData?.algRatingCalcGreenSpread ||
+      gameData?.algRatingCalcSuperSpread
+    )
+  )
+    return undefined;
   if (
     (gameData?.algRatingPredHomeSpread || 0) - LINE <=
       (gameData?.algRatingCalcYellowSpread || 0) * -1 &&

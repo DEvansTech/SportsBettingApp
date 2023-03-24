@@ -177,6 +177,9 @@ const Register: React.FC = () => {
                     text="Sign up with email"
                     onPress={() => navigation.navigate(Routes.EmailRegister)}
                   />
+                  <Text style={styles.signTitle}>
+                    Or sign up using your Google or Apple account
+                  </Text>
                   <View style={styles.socialBtns}>
                     <TouchableOpacity onPress={onGoogleResiger}>
                       <Icon
@@ -194,13 +197,13 @@ const Register: React.FC = () => {
                         />
                       </TouchableOpacity>
                     )}
-                    <TouchableOpacity>
+                    {/* <TouchableOpacity>
                       <Icon
                         type="MaterialIcons"
                         name="facebook"
                         style={styles.socialIcon}
                       />
-                    </TouchableOpacity>
+                    </TouchableOpacity> */}
                   </View>
                 </View>
                 <View style={styles.footerText}>

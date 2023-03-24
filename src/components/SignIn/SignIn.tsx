@@ -146,13 +146,13 @@ const SignIn: React.FC = () => {
                   />
                 </TouchableOpacity>
               )}
-              <TouchableOpacity>
+              {/* <TouchableOpacity>
                 <Icon
                   type="MaterialIcons"
                   name="facebook"
                   style={styles.socialIcon}
                 />
-              </TouchableOpacity>
+              </TouchableOpacity> */}
             </View>
           </View>
         </ImageBackground>

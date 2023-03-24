@@ -32,6 +32,13 @@ export default StyleSheet.create({
     marginRight: 9 * scale,
     marginTop: 3 * scale
   },
+  signTitle: {
+    fontFamily: Fonts.regular,
+    fontSize: 18 * scale,
+    marginTop: 20 * scale,
+    textAlign: 'center',
+    color: 'white'
+  },
   loginForm: {
     marginTop: deviceHeight * 0.1
   },
@@ -69,7 +76,7 @@ export default StyleSheet.create({
     marginTop: 20 * scale
   },
   loginFormBtns: {
-    marginTop: deviceHeight * 0.1
+    marginTop: deviceHeight * 0.05
   },
   loginFormNeedBtn: {
     marginTop: 20 * scale,
@@ -87,7 +94,7 @@ export default StyleSheet.create({
     marginTop: 25 * scale,
     flexDirection: 'row',
     justifyContent: 'space-around',
-    paddingHorizontal: 30 * scale
+    paddingHorizontal: 60 * scale
   },
   buttonWhiteText: {
     color: 'white',

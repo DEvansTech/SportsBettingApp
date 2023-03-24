@@ -128,16 +128,20 @@ export const TabNavigator: React.FC = props => {
         name={Routes.OBI}
         component={ObisayStackNavigator}
         options={() => ({
-          tabBarLabel: () => (
-            <Text style={[styles.labelStyle, { color: Colors.green }]}>
+          tabBarLabel: ({ color, focused }) => (
+            <Text
+              style={[
+                styles.labelStyle,
+                { color: focused ? Colors.green : color }
+              ]}>
               OBI SAYS
             </Text>
           ),
           tabBarButton: CustomTabButton,
           tabBarIcon: ({ focused }) => (
-            <View style={[styles.tabBarView, focused && styles.selectedIcon]}>
+            <View style={styles.tabBarView}>
               <SvgXml
-                xml={Svgs.obiSayIcon}
+                xml={focused ? Svgs.obiGreenIcon : Svgs.obiIcon}
                 width={40 * scale}
                 height={40 * scale}
               />
@@ -150,19 +154,29 @@ export const TabNavigator: React.FC = props => {
         name={Routes.Schedule}
         component={ScheduleStackNavigator}
         options={() => ({
-          tabBarLabel: ({ color }) => (
-            <Text style={[styles.labelStyle, { color: color }]}>SCHEDULE</Text>
+          tabBarLabel: ({ color, focused }) => (
+            <Text
+              style={[
+                styles.labelStyle,
+                { color: focused ? Colors.green : color }
+              ]}>
+              SCHEDULE
+            </Text>
           ),
           tabBarButton: CustomTabButton,
           tabBarIcon: ({ focused }) => (
-            <View style={[styles.tabBarView, focused && styles.selectedIcon]}>
+            <View style={styles.tabBarView}>
               <SvgXml
-                xml={Svgs.scheduleIcon}
+                xml={focused ? Svgs.scheduleGreenIcon : Svgs.scheduleIcon}
                 width={39 * scale}
                 height={39 * scale}
               />
-              <Text style={styles.monthText}>{todayDate[0]}</Text>
-              <Text style={styles.dateText}>{todayDate[1]}</Text>
+              <Text style={[styles.monthText, focused && styles.activeTab]}>
+                {todayDate[0]}
+              </Text>
+              <Text style={[styles.dateText, focused && styles.activeTab]}>
+                {todayDate[1]}
+              </Text>
             </View>
           )
         })}
@@ -171,14 +185,20 @@ export const TabNavigator: React.FC = props => {
         name={Routes.Watch}
         component={WatchStackNavigator}
         options={() => ({
-          tabBarLabel: ({ color }) => (
-            <Text style={[styles.labelStyle, { color: color }]}>WATCHING</Text>
+          tabBarLabel: ({ color, focused }) => (
+            <Text
+              style={[
+                styles.labelStyle,
+                { color: focused ? Colors.green : color }
+              ]}>
+              WATCHING
+            </Text>
           ),
           tabBarButton: CustomTabButton,
           tabBarIcon: ({ focused }) => (
-            <View style={[styles.tabBarView, focused && styles.selectedIcon]}>
+            <View style={styles.tabBarView}>
               <SvgXml
-                xml={Svgs.watchIcon}
+                xml={focused ? Svgs.watchGreenIcon : Svgs.watchIcon}
                 width={50 * scale}
                 height={20 * scale}
               />
@@ -192,13 +212,19 @@ export const TabNavigator: React.FC = props => {
         component={PartnerScene}
         options={() => ({
           tabBarButton: CustomTabButton,
-          tabBarLabel: ({ color }) => (
-            <Text style={[styles.labelStyle, { color: color }]}>PARTNERS</Text>
+          tabBarLabel: ({ color, focused }) => (
+            <Text
+              style={[
+                styles.labelStyle,
+                { color: focused ? Colors.green : color }
+              ]}>
+              PARTNERS
+            </Text>
           ),
           tabBarIcon: ({ focused }) => (
-            <View style={[styles.tabBarView, focused && styles.selectedIcon]}>
+            <View style={styles.tabBarView}>
               <SvgXml
-                xml={Svgs.partnerIcon}
+                xml={focused ? Svgs.partnerGreenIcon : Svgs.partnerIcon}
                 width={48 * scale}
                 height={48 * scale}
               />

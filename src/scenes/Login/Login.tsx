@@ -237,8 +237,10 @@ const Login: React.FC = () => {
                   onPress={() => navigation.navigate(Routes.Register)}>
                   <Text style={styles.buttonBlackText}>Need an Account?</Text>
                 </Button>
-                <Text style={styles.helpText}>Need help signing in?</Text>
               </View>
+              <Text style={styles.signTitle}>
+                Or sign in using your Google or Apple account
+              </Text>
               <View style={styles.socialBtns}>
                 <TouchableOpacity onPress={onGoogleLogin}>
                   <SvgXml
@@ -256,14 +258,15 @@ const Login: React.FC = () => {
                     />
                   </TouchableOpacity>
                 )}
-                <TouchableOpacity>
+                {/* <TouchableOpacity>
                   <SvgXml
                     xml={Svgs.facebookIcon}
                     width={38 * scale}
                     height={38 * scale}
                   />
-                </TouchableOpacity>
+                </TouchableOpacity> */}
               </View>
+              <Text style={styles.helpText}>Need help signing in?</Text>
             </View>
           )}
         </Content>

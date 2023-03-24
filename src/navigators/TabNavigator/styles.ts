@@ -22,7 +22,7 @@ export default StyleSheet.create({
     textAlign: 'center',
     textTransform: 'uppercase',
     fontFamily: Fonts.extraBold,
-    paddingBottom: 20 * scale
+    paddingBottom: 10 * scale
   },
   obILabel: {
     color: 'white'
@@ -31,13 +31,15 @@ export default StyleSheet.create({
     position: 'relative',
     justifyContent: 'center',
     alignSelf: 'center',
-    alignItems: 'center',
-    opacity: 0.7
+    alignItems: 'center'
   },
   obiTabBarView: {
     backgroundColor: Colors.black,
     borderTopColor: Colors.green,
     borderTopWidth: 3
+  },
+  activeTab: {
+    color: Colors.green
   },
   monthText: {
     position: 'absolute',
@@ -53,8 +55,5 @@ export default StyleSheet.create({
     bottom: 0 * scale,
     alignSelf: 'center',
     fontFamily: Fonts.extraBold
-  },
-  selectedIcon: {
-    opacity: 1
   }
 });

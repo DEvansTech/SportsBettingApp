@@ -32,11 +32,18 @@ export default StyleSheet.create({
     marginTop: deviceHeight * 0.35,
     flex: 1
   },
+  signTitle: {
+    fontFamily: Fonts.regular,
+    fontSize: 18 * scale,
+    marginTop: 20 * scale,
+    textAlign: 'center',
+    color: 'white'
+  },
   socialBtns: {
     marginTop: 25 * scale,
     flexDirection: 'row',
     justifyContent: 'space-around',
-    paddingHorizontal: 30 * scale
+    paddingHorizontal: 60 * scale
   },
   socialIcon: {
     fontSize: 40 * scale,

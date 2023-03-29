@@ -30,7 +30,7 @@ const Loading: React.FC = () => {
       // const valid = await validate(true);
       if (true) {
         const showIntroPage = await getIntroPageState();
-        if (showIntroPage) {
+        if (showIntroPage || showIntroPage === undefined) {
           navigation.navigate(Routes.Introduction);
         } else {
           navigation.navigate(Routes.TabRoute);

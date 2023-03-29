@@ -9,11 +9,10 @@ const BarRating: React.FC<Props> = ({
   status,
   outCome,
   pushScore,
-  points,
   whiteCircle
 }) => {
   const viewBar = useCallback(() => {
-    if ((status === 'closed' || status === 'complete') && points) {
+    if (status === 'closed' || status === 'complete') {
       if (Number(value) > 3) {
         if (outCome || pushScore === 'same') {
           return styles.greenBar;
@@ -37,10 +36,10 @@ const BarRating: React.FC<Props> = ({
         return styles.greenBar;
       }
     }
-  }, [value, status, outCome, pushScore, points]);
+  }, [value, status, outCome, pushScore]);
 
   const getWinState = useCallback(() => {
-    if ((status === 'closed' || status === 'complete') && points) {
+    if (status === 'closed' || status === 'complete') {
       return (
         <Text style={styles.stateText}>
           {Number(value) > 3 &&
@@ -52,7 +51,7 @@ const BarRating: React.FC<Props> = ({
     } else if (whiteCircle) {
       return <View style={styles.whiteCircle} />;
     }
-  }, [status, points, pushScore, outCome, whiteCircle]);
+  }, [status, pushScore, outCome, whiteCircle]);
 
   return (
     <View style={styles.scoreView}>

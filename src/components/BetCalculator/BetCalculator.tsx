@@ -11,7 +11,6 @@ const BetCalculator: React.FC<Props> = ({
   value2,
   status,
   rating,
-  points,
   valueType,
   pushScore
 }) => {
@@ -39,7 +38,7 @@ const BetCalculator: React.FC<Props> = ({
           style={
             matchType === 'home' ? styles.homeTextView : styles.awayTextView
           }>
-          {(status === 'closed' || status === 'complete') && points ? (
+          {status === 'closed' || status === 'complete' ? (
             <Text
               style={
                 outCome && pushScore !== 'same'

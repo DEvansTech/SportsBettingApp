@@ -235,7 +235,7 @@ export default StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     alignSelf: 'flex-end',
-    marginTop: 10 * scale
+    marginTop: 15 * scale
   },
   overUnderBar: {
     flexDirection: 'row',
@@ -244,10 +244,10 @@ export default StyleSheet.create({
     marginTop: -35 * scale
   },
   overBarText: {
-    marginBottom: 5 * scale
+    marginBottom: 10 * scale
   },
   underBarText: {
-    marginTop: 5 * scale
+    marginTop: 10 * scale
   },
   overBar: {
     flexDirection: 'column',
@@ -301,5 +301,21 @@ export default StyleSheet.create({
     textAlign: 'center',
     paddingHorizontal: 10 * scale,
     marginTop: 30 * scale
+  },
+  oddsLeftBtn: {
+    borderTopLeftRadius: 30 * scale,
+    borderBottomLeftRadius: 30 * scale,
+    paddingVertical: 10 * scale,
+    justifyContent: 'center',
+    flexDirection: 'row',
+    width: 75 * scale
+  },
+  oddsRightBtn: {
+    borderTopRightRadius: 30 * scale,
+    borderBottomRightRadius: 30 * scale,
+    paddingVertical: 10 * scale,
+    justifyContent: 'center',
+    flexDirection: 'row',
+    width: 75 * scale
   }
 });

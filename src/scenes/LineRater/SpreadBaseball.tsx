@@ -1,14 +1,15 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useEffect, useRef } from 'react';
 import { TouchableOpacity } from 'react-native';
 import { Text, View, Icon } from 'native-base';
+import { SvgXml } from 'react-native-svg';
 
 import {
   getMLBSpreadAwayRatingValue,
   getMLBSpreadHomeRatingValue
 } from '@Lib/function';
-import { Ranger } from '@Components';
+import { Svgs } from '@Theme';
 import { SpreadProps } from './types';
-import styles from './styles';
+import styles, { scale, deviceWidth } from './styles';
 
 const SpreadBaseball: React.FC<SpreadProps> = ({
   gameData,
@@ -17,36 +18,68 @@ const SpreadBaseball: React.FC<SpreadProps> = ({
 }) => {
   const [rangeValue, setRangeValue] = useState(0);
   const [oddType, setOddType] = useState('plus');
+  const [countML, setCountML] = useState(0);
+  const changeTimer: React.MutableRefObject<any> = useRef(null);
 
   const plusRange = () => {
     if (rangeValue >= 200) {
       setRangeValue(200);
-    } else {
-      setRangeValue(rangeValue + 1);
+      return;
     }
+    if (rangeValue + 5 > -99 && rangeValue + 5 < 99) {
+      setRangeValue(100);
+      setCountML(countML + 1);
+      return;
+    }
+    setRangeValue(rangeValue + 5);
+    setCountML(countML + 1);
   };
 
   const minusRange = () => {
     if (rangeValue <= -200) {
       setRangeValue(-200);
-    } else {
-      setRangeValue(rangeValue - 1);
+      return;
     }
+    if (rangeValue - 5 < 99 && rangeValue - 5 > -99) {
+      setRangeValue(-100);
+      setCountML(countML - 1);
+      return;
+    }
+    setRangeValue(rangeValue - 5);
+    setCountML(countML - 1);
   };
 
-  const selectBar = (value: number | undefined) => {
-    switch (value) {
-      case 1:
-        return styles.redBar;
-      case 2:
-        return styles.yellowBar;
-      case 3:
-        return styles.greenBar;
-      case 4:
-        return styles.greenBar;
-      default:
-        return styles.grayBar;
-    }
+  const plusLongValue = () => {
+    const past = Date.now();
+    const rate = 500;
+    changeTimer.current = setInterval(() => {
+      const diff = Math.floor((Date.now() - past) / rate);
+      setRangeValue(prev => {
+        if (prev + (1 + diff) >= 200) {
+          return 200;
+        }
+        return fixedTo(prev + (1 + diff));
+      });
+    }, 100);
+  };
+
+  const minusLongValue = () => {
+    const past = Date.now();
+    const rate = 500;
+    changeTimer.current = setInterval(() => {
+      const diff = Math.floor((Date.now() - past) / rate);
+      setRangeValue(prev => {
+        if (prev - (1 + diff) <= -200) {
+          return -200;
+        }
+        return fixedTo(prev - (1 + diff));
+      });
+    }, 100);
+  };
+
+  const handlePressOut = () => {
+    clearInterval(changeTimer.current);
+    changeTimer.current = null;
   };
 
   const getBarValue = useCallback(() => {
@@ -57,6 +90,11 @@ const SpreadBaseball: React.FC<SpreadProps> = ({
       return getMLBSpreadHomeRatingValue(gameData, rangeValue, oddType);
     }
   }, [oddType, rangeValue]);
+
+  const fixedTo = (number: number) => {
+    const k = Math.pow(10, 1);
+    return Math.round(number * k) / k;
+  };
 
   useEffect(() => {
     if (selectedAwayTeam) {
@@ -85,95 +123,199 @@ const SpreadBaseball: React.FC<SpreadProps> = ({
     }
   }, [selectedAwayTeam, selectedHomeTeam]);
 
+  const positionCircle = useCallback(
+    (value: number | undefined) => {
+      const basic = (deviceWidth - 30 * scale) / 4;
+      let result = 0;
+      let startBar = 0;
+      let endBar = 0;
+      switch (value) {
+        case 1:
+          endBar = basic - 34 * scale;
+
+          if (selectedAwayTeam || (!selectedAwayTeam && !selectedHomeTeam)) {
+            result =
+              ((gameData?.algRatingCalcYellowSpreadAway || 0) -
+                ((gameData?.algRatingPredAwaySpread || 0) - rangeValue) * -1) /
+              10;
+          }
+          if (selectedHomeTeam) {
+            result =
+              ((gameData?.algRatingCalcYellowSpread || 0) -
+                ((gameData?.algRatingPredHomeSpread || 0) - rangeValue) * -1) /
+              10;
+          }
+          result -= countML * 0.02;
+
+          if (result <= 0) return endBar;
+          if (result >= 1) return startBar;
+          if (startBar + basic * (1 - result) >= endBar) return endBar;
+
+          return startBar + basic * (1 - result);
+        case 2:
+          startBar = basic;
+          endBar = 2 * basic - 34 * scale;
+
+          if (selectedAwayTeam || (!selectedAwayTeam && !selectedHomeTeam)) {
+            result =
+              ((gameData?.algRatingCalcGreenSpreadAway || 0) -
+                ((gameData?.algRatingPredAwaySpread || 0) - rangeValue) * -1) /
+              ((gameData?.algRatingCalcGreenSpreadAway || 0) -
+                (gameData?.algRatingCalcYellowSpreadAway || 0));
+          }
+          if (selectedHomeTeam) {
+            result =
+              ((gameData?.algRatingCalcGreenSpread || 0) -
+                ((gameData?.algRatingPredHomeSpread || 0) - rangeValue) * -1) /
+              ((gameData?.algRatingCalcGreenSpread || 0) -
+                (gameData?.algRatingCalcYellowSpread || 0));
+          }
+
+          result -= countML * 0.02;
+          if (result <= 0) return endBar;
+          if (result >= 1) return startBar;
+          if (startBar + basic * (1 - result) >= endBar) return endBar;
+
+          return startBar + basic * (1 - result);
+        case 3:
+          startBar = 2 * basic;
+          endBar = 3 * basic - 34 * scale;
+
+          if (selectedAwayTeam || (!selectedAwayTeam && !selectedHomeTeam)) {
+            result =
+              ((gameData?.algRatingCalcSuperSpreadAway || 0) -
+                ((gameData?.algRatingPredAwaySpread || 0) - rangeValue) * -1) /
+              ((gameData?.algRatingCalcSuperSpreadAway || 0) -
+                (gameData?.algRatingCalcGreenSpreadAway || 0));
+          }
+          if (selectedHomeTeam) {
+            result =
+              ((gameData?.algRatingCalcSuperSpread || 0) -
+                ((gameData?.algRatingPredHomeSpread || 0) - rangeValue) * -1) /
+              ((gameData?.algRatingCalcSuperSpread || 0) -
+                (gameData?.algRatingCalcGreenSpread || 0));
+          }
+
+          result -= countML * 0.02;
+
+          if (result <= 0) return endBar;
+          if (result >= 1) return startBar;
+          if (startBar + basic * (1 - result) >= endBar) return endBar;
+
+          return startBar + basic * (1 - result);
+        case 4:
+          startBar = 3 * basic;
+          endBar = 4 * basic - 34 * scale;
+
+          if (selectedAwayTeam || (!selectedAwayTeam && !selectedHomeTeam)) {
+            result =
+              ((gameData?.algRatingCalcSuperSpreadAway || 0) +
+                10 -
+                ((gameData?.algRatingPredAwaySpread || 0) - rangeValue) * -1) /
+              10;
+          }
+          if (selectedHomeTeam) {
+            result =
+              ((gameData?.algRatingCalcSuperSpread || 0) +
+                10 -
+                ((gameData?.algRatingPredHomeSpread || 0) - rangeValue) * -1) /
+              10;
+          }
+          result -= countML * 0.02;
+
+          if (result <= 0) return endBar;
+          if (result >= 1) return startBar;
+          if (startBar + basic * (1 - result) >= endBar) return endBar;
+
+          return startBar + basic * (1 - result);
+
+        default:
+          return 0;
+      }
+    },
+    [countML, rangeValue]
+  );
+
   return (
     <View style={styles.spreadView}>
-      <Text style={[styles.titleText, styles.spreadTitle]}>Odds Type</Text>
-      <View style={styles.oddsBar}>
-        <TouchableOpacity
-          style={[
-            styles.statusBar,
-            styles.smallBar,
-            oddType === 'plus' ? styles.blackBar : styles.grayBar
-          ]}
-          onPress={() => setOddType('plus')}>
-          <Text style={styles.statusText}>+1.5</Text>
-        </TouchableOpacity>
-        {oddType === 'plus' && (
-          <View>
-            <View style={styles.rightBar}>
-              <TouchableOpacity
-                onPress={minusRange}
-                disabled={!selectedAwayTeam && !selectedHomeTeam}>
-                <Icon type="Feather" name="minus" style={styles.barIcon} />
-              </TouchableOpacity>
-              <View
-                style={[
-                  styles.mediumBar,
-                  !selectedAwayTeam && !selectedHomeTeam
-                    ? styles.grayBar
-                    : selectBar(getBarValue()),
-                  styles.statusBar
-                ]}>
-                <Text style={styles.statusText}>
-                  {rangeValue > 0 ? `+${rangeValue}` : rangeValue}
-                </Text>
-              </View>
-              <TouchableOpacity
-                onPress={plusRange}
-                disabled={!selectedAwayTeam && !selectedHomeTeam}>
-                <Icon type="Feather" name="plus" style={styles.barIcon} />
-              </TouchableOpacity>
-            </View>
-            {getBarValue() === 4 && <Text style={styles.superText}>SUPER</Text>}
+      <View style={styles.rangerView}>
+        <Text style={[styles.titleText, styles.rangerText]}>Bet Rating</Text>
+        <View style={styles.rangerScaleView}>
+          <SvgXml
+            xml={Svgs.lineMasterScale}
+            width={'100%'}
+            height={50 * scale}
+          />
+          <SvgXml
+            xml={Svgs.lineMasterCircle}
+            width={36 * scale}
+            height={36 * scale}
+            style={[
+              styles.betCircleIcon,
+              { left: positionCircle(getBarValue()) }
+            ]}
+          />
+        </View>
+      </View>
+
+      <View style={styles.spreadBarView}>
+        <View style={styles.totalBarView}>
+          <Text style={[styles.titleText, styles.overBarText]}>Odds Type</Text>
+          <View style={styles.leftBar}>
+            <TouchableOpacity
+              style={[
+                styles.oddsLeftBtn,
+                oddType === 'plus' ? styles.blackBar : styles.grayBar
+              ]}
+              onPress={() => setOddType('plus')}>
+              <Text style={styles.statusText}>+1.5</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={[
+                styles.oddsRightBtn,
+                oddType === 'minus' ? styles.blackBar : styles.grayBar
+              ]}
+              onPress={() => setOddType('minus')}>
+              <Text style={styles.statusText}>-1.5</Text>
+            </TouchableOpacity>
           </View>
-        )}
+        </View>
+        <View style={styles.overBarView}>
+          <Text style={styles.titleText}>Money line</Text>
+          <View style={styles.centerBar}>
+            <TouchableOpacity
+              onPress={minusRange}
+              onLongPress={minusLongValue}
+              disabled={!selectedAwayTeam && !selectedHomeTeam}>
+              <Icon type="Feather" name="minus" style={styles.barIcon} />
+            </TouchableOpacity>
+            <View
+              style={[
+                styles.moneyLineBar,
+                !selectedAwayTeam && !selectedHomeTeam && styles.grayBar,
+                styles.statusBar,
+                styles.blackBar
+              ]}>
+              <Text style={styles.statusText}>
+                {rangeValue > 0 ? `+${rangeValue}` : rangeValue}
+              </Text>
+            </View>
+            <TouchableOpacity
+              onPress={plusRange}
+              onLongPress={plusLongValue}
+              onPressOut={handlePressOut}
+              disabled={!selectedAwayTeam && !selectedHomeTeam}>
+              <Icon type="Feather" name="plus" style={styles.barIcon} />
+            </TouchableOpacity>
+          </View>
+        </View>
       </View>
 
       <View style={styles.oddsBar}>
-        <TouchableOpacity
-          style={[
-            styles.statusBar,
-            styles.smallBar,
-            oddType === 'minus' ? styles.blackBar : styles.grayBar
-          ]}
-          onPress={() => setOddType('minus')}>
-          <Text style={styles.statusText}>-1.5</Text>
-        </TouchableOpacity>
-        {oddType === 'minus' && (
-          <View>
-            <View style={styles.rightBar}>
-              <TouchableOpacity
-                onPress={minusRange}
-                disabled={!selectedAwayTeam && !selectedHomeTeam}>
-                <Icon type="Feather" name="minus" style={styles.barIcon} />
-              </TouchableOpacity>
-              <View
-                style={[
-                  styles.statusBar,
-                  styles.mediumBar,
-                  !selectedAwayTeam && !selectedHomeTeam
-                    ? styles.grayBar
-                    : selectBar(getBarValue())
-                ]}>
-                <Text style={styles.statusText}>
-                  {rangeValue > 0 ? `+${rangeValue}` : rangeValue}
-                </Text>
-              </View>
-              <TouchableOpacity
-                onPress={plusRange}
-                disabled={!selectedAwayTeam && !selectedHomeTeam}>
-                <Icon type="Feather" name="plus" style={styles.barIcon} />
-              </TouchableOpacity>
-            </View>
-          </View>
-        )}
-      </View>
-      <View style={styles.rangerView}>
-        <Ranger
-          rangeValue={rangeValue}
-          setRangeValue={setRangeValue}
-          disabled={!selectedAwayTeam && !selectedHomeTeam}
-        />
+        <Text style={styles.description}>
+          Tap team logo for odds. Tap +/- to input lines and see movement. Press
+          and hold +/- for faster advance.
+        </Text>
       </View>
     </View>
   );

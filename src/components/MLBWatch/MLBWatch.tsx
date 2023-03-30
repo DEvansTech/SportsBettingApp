@@ -25,7 +25,9 @@ import {
   checkOverWhiteCircle,
   checkUnderWhiteCircle,
   checkHomeWinWhiteCircle,
-  checkAwayWinWhiteCircle
+  checkAwayWinWhiteCircle,
+  checkSpreadPushAway,
+  checkSpreadPushHome
 } from '@Lib/function';
 import { Svgs } from '@Theme';
 
@@ -124,32 +126,6 @@ const MLBWatch: React.FC<Props> = ({
         }
       }
     }
-  };
-
-  const checkSpreadPushHome = () => {
-    if (data.status === 'closed' || data.status === 'complete') {
-      if (
-        Number(data.home_runs) -
-          Number(data.away_runs) +
-          Math.abs(Number(data.run_line_last_spread_home)) ===
-        0
-      )
-        return 'same';
-    }
-    return '';
-  };
-
-  const checkSpreadPushAway = () => {
-    if (data.status === 'closed' || data.status === 'complete') {
-      if (
-        Number(data.away_runs) -
-          Number(data.home_runs) +
-          Math.abs(Number(data.run_line_last_spread_away)) ===
-        0
-      )
-        return 'same';
-    }
-    return '';
   };
 
   const checkWin = () => {
@@ -325,7 +301,8 @@ const MLBWatch: React.FC<Props> = ({
               value={getAwaySpreadValue()}
               status={data.status}
               outCome={checkSpread() === 'away'}
-              pushScore={checkSpreadPushAway()}
+              pushScore={checkSpreadPushAway(data)}
+              points={data.home_runs || data.away_runs}
               whiteCircle={checkAwaySpreadWhiteCircle(data)}
             />
             <BetCalculator
@@ -335,6 +312,7 @@ const MLBWatch: React.FC<Props> = ({
               value2={data.run_line_last_outcome_away}
               status={data.status}
               rating={getAwaySpreadValue()}
+              points={data.home_runs || data.away_runs}
             />
           </View>
           <View style={styles.betTitleView}>
@@ -348,12 +326,14 @@ const MLBWatch: React.FC<Props> = ({
               value2={data.run_line_last_outcome_home}
               status={data.status}
               rating={getHomeSpreadValue()}
+              points={data.home_runs || data.away_runs}
             />
             <BarRating
               value={getHomeSpreadValue()}
               status={data.status}
               outCome={checkSpread() === 'home'}
-              pushScore={checkSpreadPushHome()}
+              pushScore={checkSpreadPushHome(data)}
+              points={data.home_runs || data.away_runs}
               whiteCircle={checkHomeSpreadWhiteCircle(data)}
             />
           </View>
@@ -364,6 +344,7 @@ const MLBWatch: React.FC<Props> = ({
               value={getAwayWinValue(data)}
               status={data.status}
               outCome={checkWin() === 'away'}
+              points={data.home_runs || data.away_runs}
               whiteCircle={checkAwayWinWhiteCircle(data)}
             />
             <BetCalculator
@@ -373,6 +354,7 @@ const MLBWatch: React.FC<Props> = ({
               value2={data.moneyline_last_outcome_away}
               status={data.status}
               rating={getAwayWinValue(data)}
+              points={data.home_runs || data.away_runs}
             />
           </View>
           <View style={styles.betTitleView}>
@@ -386,11 +368,13 @@ const MLBWatch: React.FC<Props> = ({
               value2={data.moneyline_last_outcome_home}
               status={data.status}
               rating={getHomeWinValue(data)}
+              points={data.home_runs || data.away_runs}
             />
             <BarRating
               value={getHomeWinValue(data)}
               status={data.status}
               outCome={checkWin() === 'home'}
+              points={data.home_runs || data.away_runs}
               whiteCircle={checkHomeWinWhiteCircle(data)}
             />
           </View>
@@ -402,6 +386,7 @@ const MLBWatch: React.FC<Props> = ({
               status={data.status}
               outCome={checkOU() === 'away'}
               pushScore={checkOU()}
+              points={data.home_runs || data.away_runs}
               whiteCircle={checkOverWhiteCircle(data)}
             />
             <BetCalculator
@@ -412,6 +397,7 @@ const MLBWatch: React.FC<Props> = ({
               status={data.status}
               rating={getOverRating(data)}
               valueType="OU"
+              points={data.home_runs || data.away_runs}
             />
           </View>
           <View style={styles.betTitleView}>
@@ -425,6 +411,7 @@ const MLBWatch: React.FC<Props> = ({
               value2={data.total_last_outcome_over_odds}
               status={data.status}
               rating={getUnderRating(data)}
+              points={data.home_runs || data.away_runs}
               valueType="OU"
             />
             <BarRating
@@ -432,6 +419,7 @@ const MLBWatch: React.FC<Props> = ({
               status={data.status}
               outCome={checkOU() === 'home'}
               pushScore={checkOU()}
+              points={data.home_runs || data.away_runs}
               whiteCircle={checkUnderWhiteCircle(data)}
             />
           </View>

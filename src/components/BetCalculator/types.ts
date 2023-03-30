@@ -5,6 +5,7 @@ export type Props = {
   value2: string | undefined;
   status: string | undefined;
   rating: number | undefined;
+  points?: string | undefined;
   valueType?: string | undefined;
   pushScore?: string | undefined;
 };

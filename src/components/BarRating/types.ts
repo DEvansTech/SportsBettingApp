@@ -3,6 +3,7 @@ export type Props = {
   status: string | undefined;
   outCome: boolean;
   pushScore?: string;
+  points?: string | undefined;
   whiteCircle?: boolean;
 };
 

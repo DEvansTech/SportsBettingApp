@@ -63,20 +63,6 @@ const Introduction: React.FC = () => {
     }
   }, [checkShow]);
 
-  useEffect(() => {
-    (async function () {
-      const docRef = await firestore().collection('users').doc(user.uid);
-      const userData = {
-        introPage: true
-      };
-      docRef.get().then(thisDoc => {
-        if (thisDoc.exists) {
-          docRef.update(userData);
-        }
-      });
-    })();
-  }, []);
-
   const data = [
     <FirstScreen nextPage={nextPage} prevPage={prevPage} />,
     <SecondScreen nextPage={nextPage} prevPage={prevPage} />,

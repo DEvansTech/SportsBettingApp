@@ -18,7 +18,9 @@ const SpreadBaseball: React.FC<SpreadProps> = ({
 }) => {
   const [rangeValue, setRangeValue] = useState(0);
   const [oddType, setOddType] = useState('plus');
+  const [oddsValueSymbol, setOddsValueSymbol] = useState('');
   const [countML, setCountML] = useState(0);
+  const [barState, setBarState] = useState(0);
   const changeTimer: React.MutableRefObject<any> = useRef(null);
 
   const plusRange = () => {
@@ -58,7 +60,7 @@ const SpreadBaseball: React.FC<SpreadProps> = ({
         if (prev + (1 + diff) >= 200) {
           return 200;
         }
-        return fixedTo(prev + (1 + diff));
+        return prev + (1 + diff);
       });
     }, 100);
   };
@@ -72,7 +74,7 @@ const SpreadBaseball: React.FC<SpreadProps> = ({
         if (prev - (1 + diff) <= -200) {
           return -200;
         }
-        return fixedTo(prev - (1 + diff));
+        return prev - (1 + diff);
       });
     }, 100);
   };
@@ -91,10 +93,152 @@ const SpreadBaseball: React.FC<SpreadProps> = ({
     }
   }, [oddType, rangeValue]);
 
-  const fixedTo = (number: number) => {
-    const k = Math.pow(10, 1);
-    return Math.round(number * k) / k;
-  };
+  const positionCircle = useCallback(
+    (value: number | undefined) => {
+      const basic = (deviceWidth - 30 * scale) / 4;
+      let result = 0;
+      let startBar = 0;
+      let endBar = 0;
+      switch (value) {
+        case 1:
+          endBar = basic - 34 * scale;
+
+          if (selectedAwayTeam) {
+            result =
+              ((gameData?.algRatingCalcYellowSpreadAway || 0) -
+                ((gameData?.algRatingPredAwaySpread || 0) -
+                  (oddType === 'plus' ? 1.5 : -1.5)) *
+                  -1) /
+              10;
+          }
+          if (selectedHomeTeam) {
+            result =
+              ((gameData?.algRatingCalcYellowSpread || 0) -
+                ((gameData?.algRatingPredHomeSpread || 0) -
+                  (oddType === 'plus' ? 1.5 : -1.5)) *
+                  -1) /
+              10;
+          }
+          result -= countML * 0.02;
+
+          if (result <= 0) return endBar;
+          if (result >= 1) return startBar;
+          if (startBar + basic * (1 - result) >= endBar) return endBar;
+
+          return startBar + basic * (1 - result);
+        case 2:
+          startBar = basic;
+          endBar = 2 * basic - 34 * scale;
+
+          if (selectedAwayTeam || (!selectedAwayTeam && !selectedHomeTeam)) {
+            result =
+              ((gameData?.algRatingCalcGreenSpreadAway || 0) -
+                ((gameData?.algRatingPredAwaySpread || 0) -
+                  (oddType === 'plus' ? 1.5 : -1.5)) *
+                  -1) /
+              ((gameData?.algRatingCalcGreenSpreadAway || 0) -
+                (gameData?.algRatingCalcYellowSpreadAway || 0));
+          }
+          if (selectedHomeTeam) {
+            result =
+              ((gameData?.algRatingCalcGreenSpread || 0) -
+                ((gameData?.algRatingPredHomeSpread || 0) -
+                  (oddType === 'plus' ? 1.5 : -1.5)) *
+                  -1) /
+              ((gameData?.algRatingCalcGreenSpread || 0) -
+                (gameData?.algRatingCalcYellowSpread || 0));
+          }
+
+          result -= countML * 0.02;
+          if (result <= 0) return endBar;
+          if (result >= 1) return startBar;
+          if (startBar + basic * (1 - result) >= endBar) return endBar;
+
+          return startBar + basic * (1 - result);
+        case 3:
+          startBar = 2 * basic;
+          endBar = 3 * basic - 34 * scale;
+
+          if (selectedAwayTeam || (!selectedAwayTeam && !selectedHomeTeam)) {
+            result =
+              ((gameData?.algRatingCalcSuperSpreadAway || 0) -
+                ((gameData?.algRatingPredAwaySpread || 0) -
+                  (oddType === 'plus' ? 1.5 : -1.5)) *
+                  -1) /
+              ((gameData?.algRatingCalcSuperSpreadAway || 0) -
+                (gameData?.algRatingCalcGreenSpreadAway || 0));
+          }
+          if (selectedHomeTeam) {
+            result =
+              ((gameData?.algRatingCalcSuperSpread || 0) -
+                ((gameData?.algRatingPredHomeSpread || 0) -
+                  (oddType === 'plus' ? 1.5 : -1.5)) *
+                  -1) /
+              ((gameData?.algRatingCalcSuperSpread || 0) -
+                (gameData?.algRatingCalcGreenSpread || 0));
+          }
+
+          result -= countML * 0.02;
+
+          if (result <= 0) return endBar;
+          if (result >= 1) return startBar;
+          if (startBar + basic * (1 - result) >= endBar) return endBar;
+
+          return startBar + basic * (1 - result);
+        case 4:
+          startBar = 3 * basic;
+          endBar = 4 * basic - 34 * scale;
+
+          if (selectedAwayTeam || (!selectedAwayTeam && !selectedHomeTeam)) {
+            result =
+              ((gameData?.algRatingCalcSuperSpreadAway || 0) +
+                10 -
+                ((gameData?.algRatingPredAwaySpread || 0) -
+                  (oddType === 'plus' ? 1.5 : -1.5)) *
+                  -1) /
+              10;
+          }
+          if (selectedHomeTeam) {
+            result =
+              ((gameData?.algRatingCalcSuperSpread || 0) +
+                10 -
+                ((gameData?.algRatingPredHomeSpread || 0) -
+                  (oddType === 'plus' ? 1.5 : -1.5)) *
+                  -1) /
+              10;
+          }
+          result -= countML * 0.02;
+
+          if (result <= 0) return endBar;
+          if (result >= 1) return startBar;
+          if (startBar + basic * (1 - result) >= endBar) return endBar;
+
+          return startBar + basic * (1 - result);
+
+        default:
+          return 0;
+      }
+    },
+    [countML, rangeValue]
+  );
+
+  useEffect(() => {
+    setCountML(0);
+  }, [barState]);
+
+  useEffect(() => {
+    setBarState(getBarValue() || 0);
+  });
+
+  useEffect(() => {
+    if (rangeValue >= 200) {
+      setOddsValueSymbol('>=');
+    } else if (rangeValue <= -200) {
+      setOddsValueSymbol('<=');
+    } else {
+      setOddsValueSymbol('');
+    }
+  }, [rangeValue]);
 
   useEffect(() => {
     if (selectedAwayTeam) {
@@ -122,119 +266,6 @@ const SpreadBaseball: React.FC<SpreadProps> = ({
       }
     }
   }, [selectedAwayTeam, selectedHomeTeam]);
-
-  const positionCircle = useCallback(
-    (value: number | undefined) => {
-      const basic = (deviceWidth - 30 * scale) / 4;
-      let result = 0;
-      let startBar = 0;
-      let endBar = 0;
-      switch (value) {
-        case 1:
-          endBar = basic - 34 * scale;
-
-          if (selectedAwayTeam || (!selectedAwayTeam && !selectedHomeTeam)) {
-            result =
-              ((gameData?.algRatingCalcYellowSpreadAway || 0) -
-                ((gameData?.algRatingPredAwaySpread || 0) - rangeValue) * -1) /
-              10;
-          }
-          if (selectedHomeTeam) {
-            result =
-              ((gameData?.algRatingCalcYellowSpread || 0) -
-                ((gameData?.algRatingPredHomeSpread || 0) - rangeValue) * -1) /
-              10;
-          }
-          result -= countML * 0.02;
-
-          if (result <= 0) return endBar;
-          if (result >= 1) return startBar;
-          if (startBar + basic * (1 - result) >= endBar) return endBar;
-
-          return startBar + basic * (1 - result);
-        case 2:
-          startBar = basic;
-          endBar = 2 * basic - 34 * scale;
-
-          if (selectedAwayTeam || (!selectedAwayTeam && !selectedHomeTeam)) {
-            result =
-              ((gameData?.algRatingCalcGreenSpreadAway || 0) -
-                ((gameData?.algRatingPredAwaySpread || 0) - rangeValue) * -1) /
-              ((gameData?.algRatingCalcGreenSpreadAway || 0) -
-                (gameData?.algRatingCalcYellowSpreadAway || 0));
-          }
-          if (selectedHomeTeam) {
-            result =
-              ((gameData?.algRatingCalcGreenSpread || 0) -
-                ((gameData?.algRatingPredHomeSpread || 0) - rangeValue) * -1) /
-              ((gameData?.algRatingCalcGreenSpread || 0) -
-                (gameData?.algRatingCalcYellowSpread || 0));
-          }
-
-          result -= countML * 0.02;
-          if (result <= 0) return endBar;
-          if (result >= 1) return startBar;
-          if (startBar + basic * (1 - result) >= endBar) return endBar;
-
-          return startBar + basic * (1 - result);
-        case 3:
-          startBar = 2 * basic;
-          endBar = 3 * basic - 34 * scale;
-
-          if (selectedAwayTeam || (!selectedAwayTeam && !selectedHomeTeam)) {
-            result =
-              ((gameData?.algRatingCalcSuperSpreadAway || 0) -
-                ((gameData?.algRatingPredAwaySpread || 0) - rangeValue) * -1) /
-              ((gameData?.algRatingCalcSuperSpreadAway || 0) -
-                (gameData?.algRatingCalcGreenSpreadAway || 0));
-          }
-          if (selectedHomeTeam) {
-            result =
-              ((gameData?.algRatingCalcSuperSpread || 0) -
-                ((gameData?.algRatingPredHomeSpread || 0) - rangeValue) * -1) /
-              ((gameData?.algRatingCalcSuperSpread || 0) -
-                (gameData?.algRatingCalcGreenSpread || 0));
-          }
-
-          result -= countML * 0.02;
-
-          if (result <= 0) return endBar;
-          if (result >= 1) return startBar;
-          if (startBar + basic * (1 - result) >= endBar) return endBar;
-
-          return startBar + basic * (1 - result);
-        case 4:
-          startBar = 3 * basic;
-          endBar = 4 * basic - 34 * scale;
-
-          if (selectedAwayTeam || (!selectedAwayTeam && !selectedHomeTeam)) {
-            result =
-              ((gameData?.algRatingCalcSuperSpreadAway || 0) +
-                10 -
-                ((gameData?.algRatingPredAwaySpread || 0) - rangeValue) * -1) /
-              10;
-          }
-          if (selectedHomeTeam) {
-            result =
-              ((gameData?.algRatingCalcSuperSpread || 0) +
-                10 -
-                ((gameData?.algRatingPredHomeSpread || 0) - rangeValue) * -1) /
-              10;
-          }
-          result -= countML * 0.02;
-
-          if (result <= 0) return endBar;
-          if (result >= 1) return startBar;
-          if (startBar + basic * (1 - result) >= endBar) return endBar;
-
-          return startBar + basic * (1 - result);
-
-        default:
-          return 0;
-      }
-    },
-    [countML, rangeValue]
-  );
 
   return (
     <View style={styles.spreadView}>
@@ -297,7 +328,7 @@ const SpreadBaseball: React.FC<SpreadProps> = ({
                 styles.blackBar
               ]}>
               <Text style={styles.statusText}>
-                {rangeValue > 0 ? `+${rangeValue}` : rangeValue}
+                {oddsValueSymbol} {rangeValue > 0 && '+'} {rangeValue}
               </Text>
             </View>
             <TouchableOpacity

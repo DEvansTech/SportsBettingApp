@@ -188,6 +188,7 @@ const NCAABWatch: React.FC<Props> = ({
               status={data.status}
               outCome={checkSpread(data) === 'away'}
               pushScore={checkSpreadPushAway(data)}
+              points={data.home_points || data.away_points}
               whiteCircle={checkAwaySpreadWhiteCircle(data)}
             />
             <BetCalculator
@@ -197,6 +198,7 @@ const NCAABWatch: React.FC<Props> = ({
               value2={data.spread_last_outcome_away}
               status={data.status}
               rating={getAwaySpreadValue(data)}
+              points={data.home_points || data.away_points}
               pushScore={checkSpreadPushAway(data)}
             />
           </View>
@@ -211,6 +213,7 @@ const NCAABWatch: React.FC<Props> = ({
               value2={data.spread_last_outcome_home}
               status={data.status}
               rating={getHomeSpreadValue(data)}
+              points={data.home_points || data.away_points}
               pushScore={checkSpreadPushHome(data)}
             />
             <BarRating
@@ -218,6 +221,7 @@ const NCAABWatch: React.FC<Props> = ({
               status={data.status}
               outCome={checkSpread(data) === 'home'}
               pushScore={checkSpreadPushHome(data)}
+              points={data.home_points || data.away_points}
               whiteCircle={checkHomeSpreadWhiteCircle(data)}
             />
           </View>
@@ -229,6 +233,7 @@ const NCAABWatch: React.FC<Props> = ({
               status={data.status}
               pushScore={checkWinPush(data)}
               outCome={checkWin(data) === 'away'}
+              points={data.home_points || data.away_points}
               whiteCircle={checkAwayWinWhiteCircle(data)}
             />
             <BetCalculator
@@ -238,6 +243,7 @@ const NCAABWatch: React.FC<Props> = ({
               value2={data.moneyline_last_outcome_away}
               status={data.status}
               rating={getAwayWinValue(data)}
+              points={data.home_points || data.away_points}
               pushScore={checkWinPush(data)}
             />
           </View>
@@ -252,6 +258,7 @@ const NCAABWatch: React.FC<Props> = ({
               value2={data.moneyline_last_outcome_home}
               status={data.status}
               rating={getHomeWinValue(data)}
+              points={data.home_points || data.away_points}
               pushScore={checkWinPush(data)}
             />
             <BarRating
@@ -259,6 +266,7 @@ const NCAABWatch: React.FC<Props> = ({
               status={data.status}
               pushScore={checkWinPush(data)}
               outCome={checkWin(data) === 'home'}
+              points={data.home_points || data.away_points}
               whiteCircle={checkHomeWinWhiteCircle(data)}
             />
           </View>
@@ -270,6 +278,7 @@ const NCAABWatch: React.FC<Props> = ({
               status={data.status}
               outCome={checkOU(data) === 'away'}
               pushScore={checkOU(data)}
+              points={data.home_points || data.away_points}
               whiteCircle={checkOverWhiteCircle(data)}
             />
             <BetCalculator
@@ -279,6 +288,7 @@ const NCAABWatch: React.FC<Props> = ({
               value2={data.total_last_outcome_under_odds}
               status={data.status}
               rating={getOverRating(data)}
+              points={data.home_points || data.away_points}
               valueType="OU"
             />
           </View>
@@ -293,6 +303,7 @@ const NCAABWatch: React.FC<Props> = ({
               value2={data.total_last_outcome_over_odds}
               status={data.status}
               rating={getUnderRating(data)}
+              points={data.home_points || data.away_points}
               valueType="OU"
             />
             <BarRating
@@ -300,6 +311,7 @@ const NCAABWatch: React.FC<Props> = ({
               status={data.status}
               outCome={checkOU(data) === 'home'}
               pushScore={checkOU(data)}
+              points={data.home_points || data.away_points}
               whiteCircle={checkUnderWhiteCircle(data)}
             />
           </View>

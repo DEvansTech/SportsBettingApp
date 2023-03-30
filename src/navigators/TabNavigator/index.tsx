@@ -198,7 +198,7 @@ export const TabNavigator: React.FC = props => {
           tabBarIcon: ({ focused }) => (
             <View style={styles.tabBarView}>
               <SvgXml
-                xml={focused ? Svgs.watchGreenIcon : Svgs.watchIcon}
+                xml={focused ? Svgs.watchingGreenIcon : Svgs.watchingIcon}
                 width={50 * scale}
                 height={20 * scale}
               />

@@ -127,7 +127,6 @@ const SignIn: React.FC = () => {
                 onPress={signUp}>
                 <Text style={styles.buttonBlackText}>Need an Account?</Text>
               </Button>
-              <Text style={styles.helpText}>Need help signing in?</Text>
             </View>
             <View style={styles.socialBtns}>
               <TouchableOpacity onPress={onGoogleLogin}>

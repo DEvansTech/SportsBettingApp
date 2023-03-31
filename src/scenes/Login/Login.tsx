@@ -266,7 +266,6 @@ const Login: React.FC = () => {
                   />
                 </TouchableOpacity> */}
               </View>
-              <Text style={styles.helpText}>Need help signing in?</Text>
             </View>
           )}
         </Content>

@@ -14,7 +14,10 @@ const ObiLineRater: React.FC = () => {
 
   return (
     <Container style={styles.background}>
-      <Header style={styles.header} androidStatusBarColor={Colors.black}>
+      <Header
+        style={styles.header}
+        iosBarStyle={'light-content'}
+        androidStatusBarColor={Colors.black}>
         <TouchableOpacity
           onPress={() => navigation.goBack()}
           style={styles.headerLeft}>

@@ -47,21 +47,31 @@ const Introduction: React.FC = () => {
     carouselRef.current?.snapToPrev();
   };
 
+  const handleCheckShow = async (value: boolean) => {
+    setCheckShow(!value);
+    const docRef = await firestore().collection('users').doc(user.uid);
+    const userData = {
+      introPage: !value
+    };
+    docRef.get().then(thisDoc => {
+      if (thisDoc.exists) {
+        docRef.update(userData);
+      }
+    });
+  };
+
   useEffect(() => {
-    if (checkShow) {
-      (async function () {
-        const docRef = await firestore().collection('users').doc(user.uid);
-        const userData = {
-          introPage: false
-        };
-        docRef.get().then(thisDoc => {
-          if (thisDoc.exists) {
-            docRef.update(userData);
-          }
+    (async function () {
+      await firestore()
+        .collection('users')
+        .doc(user.uid)
+        .get()
+        .then((doc: any) => {
+          console.log('doc.data().introPage==>', doc.data().introPage);
+          setCheckShow(doc.data().introPage);
         });
-      })();
-    }
-  }, [checkShow]);
+    })();
+  }, []);
 
   const data = [
     <FirstScreen nextPage={nextPage} prevPage={prevPage} />,
@@ -88,7 +98,7 @@ const Introduction: React.FC = () => {
         <CheckBox
           color={Colors.green}
           checked={checkShow}
-          onPress={() => setCheckShow(!checkShow)}
+          onPress={() => handleCheckShow(checkShow)}
         />
         <Text style={styles.messageText}>Do not show again on startup</Text>
       </View>

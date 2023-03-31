@@ -256,6 +256,7 @@ const NBAWatch: React.FC<Props> = ({
               status={data.status}
               rating={getHomeWinValue(data)}
               pushScore={checkWinPush(data)}
+              points={data.home_points || data.away_points}
             />
             <BarRating
               value={getHomeWinValue(data)}
@@ -263,6 +264,7 @@ const NBAWatch: React.FC<Props> = ({
               pushScore={checkWinPush(data)}
               outCome={checkWin(data) === 'home'}
               whiteCircle={checkHomeWinWhiteCircle(data)}
+              points={data.home_points || data.away_points}
             />
           </View>
         </View>
@@ -274,6 +276,7 @@ const NBAWatch: React.FC<Props> = ({
               outCome={checkOU(data) === 'away'}
               pushScore={checkOU(data)}
               whiteCircle={checkOverWhiteCircle(data)}
+              points={data.home_points || data.away_points}
             />
             <BetCalculator
               outCome={checkOU(data) === 'away'}
@@ -283,6 +286,7 @@ const NBAWatch: React.FC<Props> = ({
               status={data.status}
               rating={getOverRating(data)}
               valueType="OU"
+              points={data.home_points || data.away_points}
             />
           </View>
           <View style={styles.betTitleView}>
@@ -297,6 +301,7 @@ const NBAWatch: React.FC<Props> = ({
               status={data.status}
               rating={getUnderRating(data)}
               valueType="OU"
+              points={data.home_points || data.away_points}
             />
             <BarRating
               value={getUnderRating(data)}
@@ -304,6 +309,7 @@ const NBAWatch: React.FC<Props> = ({
               outCome={checkOU(data) === 'home'}
               pushScore={checkOU(data)}
               whiteCircle={checkUnderWhiteCircle(data)}
+              points={data.home_points || data.away_points}
             />
           </View>
         </View>

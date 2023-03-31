@@ -15,7 +15,10 @@ const FirstScreen: React.FC<CarosuelProps> = ({ nextPage, prevPage }) => {
 
   return (
     <Container style={styles.background}>
-      <Header style={styles.header} androidStatusBarColor={Colors.green}>
+      <Header
+        style={styles.header}
+        iosBarStyle={'light-content'}
+        androidStatusBarColor={Colors.green}>
         <View style={styles.headerView}>
           <Text style={styles.headerSubTitle}>Instructions:</Text>
           <Text style={styles.headerTitle}>Schedule</Text>

@@ -20,21 +20,6 @@ export default StyleSheet.create({
     flexGrow: 1,
     paddingHorizontal: 30 * scale
   },
-  closeBtn: {
-    position: 'absolute',
-    top: 10 * scale,
-    right: 20 * scale,
-    backgroundColor: Colors.whiteTransparent,
-    height: 28 * scale,
-    borderWidth: 0,
-    zIndex: 1
-  },
-  closeBtnText: {
-    color: 'white',
-    fontSize: 13 * scale,
-    fontFamily: Fonts.regular,
-    textTransform: 'uppercase'
-  },
   btnView: {
     marginBottom: Platform.OS === 'ios' ? 50 * scale : 70 * scale,
     justifyContent: 'flex-end',

@@ -14,10 +14,13 @@ const SeventhScreen: React.FC<CarosuelProps> = ({ nextPage, prevPage }) => {
   const navigation = useNavigation<StackNavigationProp<any, any>>();
   return (
     <Container style={styles.background}>
-      <Header style={styles.header} androidStatusBarColor={Colors.green}>
+      <Header
+        style={styles.header}
+        iosBarStyle={'light-content'}
+        androidStatusBarColor={Colors.green}>
         <View style={styles.headerView}>
           <Text style={styles.headerSubTitle}>Instructions:</Text>
-          <Text style={styles.headerTitle}>Parthners</Text>
+          <Text style={styles.headerTitle}>Partners</Text>
           <Icon
             type="AntDesign"
             name="closecircleo"

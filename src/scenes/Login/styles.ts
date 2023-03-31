@@ -83,13 +83,6 @@ export default StyleSheet.create({
     backgroundColor: Colors.white,
     height: 45 * scale
   },
-  helpText: {
-    fontSize: 16 * scale,
-    textAlign: 'center',
-    marginTop: 30 * scale,
-    color: 'white',
-    fontFamily: Fonts.regular
-  },
   socialBtns: {
     marginTop: 25 * scale,
     flexDirection: 'row',

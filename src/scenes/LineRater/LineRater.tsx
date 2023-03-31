@@ -41,7 +41,10 @@ const LineRater: React.FC<Props> = props => {
 
   return (
     <Container style={styles.background}>
-      <Header style={styles.header} androidStatusBarColor={Colors.green}>
+      <Header
+        style={styles.header}
+        iosBarStyle={'light-content'}
+        androidStatusBarColor={Colors.green}>
         <TouchableOpacity
           onPress={() => navigation.goBack()}
           style={styles.headerLeft}>

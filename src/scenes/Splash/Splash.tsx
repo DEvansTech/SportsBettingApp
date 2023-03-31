@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/core';
 import { StackNavigationProp } from '@react-navigation/stack';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
-import { Container, Content, Button, Text, View } from 'native-base';
+import { Container, Content, View } from 'native-base';
 
 import { AuthContext, AuthContextType } from '@Context/AuthContext';
 import { Button as CustomButton } from '@Components';
@@ -73,12 +73,6 @@ const Splash: React.FC = () => {
         <Content
           contentContainerStyle={styles.contentView}
           scrollEnabled={false}>
-          <Button
-            rounded
-            style={styles.closeBtn}
-            onPress={() => navigation.navigate(Routes.DrawerRoute)}>
-            <Text style={styles.closeBtnText}>Skip</Text>
-          </Button>
           <View style={styles.btnView}>
             <CustomButton
               text="Create an account"

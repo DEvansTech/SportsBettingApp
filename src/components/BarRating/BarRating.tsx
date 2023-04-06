@@ -23,7 +23,7 @@ const BarRating: React.FC<Props> = ({
       } else {
         return styles.lightGreyBar;
       }
-    } else if (value) {
+    } else if (Number(value)) {
       if (Number(value) === 1) {
         return styles.redBar;
       }

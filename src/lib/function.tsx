@@ -218,6 +218,18 @@ export const getSpreadAwayRatingValue = (
   oddsValue: number
 ) => {
   if (
+    !(
+      gameData?.algRatingPredAwaySpread &&
+      gameData?.algRatingMoneySpread &&
+      gameData?.algRatingCalcYellowSpreadAway &&
+      gameData?.algRatingCalcGreenSpreadAway &&
+      gameData?.algRatingCalcSuperSpreadAway
+    )
+  ) {
+    return undefined;
+  }
+
+  if (
     (gameData?.algRatingPredAwaySpread || 0) - oddsTypeValue <=
       (gameData?.algRatingCalcYellowSpreadAway || 0) * -1 &&
     (gameData?.algRatingPredAwaySpread || 0) - oddsTypeValue >
@@ -248,6 +260,18 @@ export const getSpreadHomeRatingValue = (
   oddsTypeValue: number,
   oddsValue: number
 ) => {
+  if (
+    !(
+      gameData?.algRatingPredHomeSpread &&
+      gameData?.algRatingMoneySpread &&
+      gameData?.algRatingCalcYellowSpread &&
+      gameData?.algRatingCalcGreenSpread &&
+      gameData?.algRatingCalcSuperSpread
+    )
+  ) {
+    return undefined;
+  }
+
   if (
     (gameData?.algRatingPredHomeSpread || 0) - oddsTypeValue <=
       (gameData?.algRatingCalcYellowSpread || 0) * -1 &&
@@ -291,8 +315,10 @@ export const getMLBSpreadAwayRatingValue = (
       gameData?.algRatingCalcGreenSpread ||
       gameData?.algRatingCalcSuperSpread
     )
-  )
+  ) {
     return undefined;
+  }
+
   if (
     (gameData?.algRatingPredAwaySpread || 0) - LINE <=
       (gameData?.algRatingCalcYellowSpread || 0) * -1 &&
@@ -369,8 +395,10 @@ export const getAwaySpreadValue = (data: GameDataType) => {
 
   const oddsTypeValue = Number(data?.spread_last_spread_away);
   const oddsValue = Number(data?.spread_last_outcome_away);
-
-  return getSpreadAwayRatingValue(data, oddsTypeValue, oddsValue);
+  if (oddsTypeValue && oddsValue) {
+    return getSpreadAwayRatingValue(data, oddsTypeValue, oddsValue);
+  }
+  return undefined;
 };
 
 export const getHomeSpreadValue = (data: GameDataType) => {
@@ -384,13 +412,28 @@ export const getHomeSpreadValue = (data: GameDataType) => {
   const oddsTypeValue = Number(data?.spread_last_spread_home);
   const oddsValue = Number(data?.spread_last_outcome_home);
 
-  return getSpreadHomeRatingValue(data, oddsTypeValue, oddsValue);
+  if (oddsTypeValue && oddsValue) {
+    return getSpreadHomeRatingValue(data, oddsTypeValue, oddsValue);
+  }
+  return undefined;
 };
 
 export const getWinAwayRatingValue = (
   gameData: GameDataType,
   rangeValue: number
 ) => {
+  if (
+    !(
+      gameData?.algRatingPredAwaySpread &&
+      gameData?.algRatingMoneyWin &&
+      gameData?.algRatingCalcYellowWinAway &&
+      gameData?.algRatingCalcGreenWinAway &&
+      gameData?.algRatingCalcSuperWinAway
+    )
+  ) {
+    return undefined;
+  }
+
   if (
     (gameData?.algRatingPredAwaySpread || 0) * -1 >=
       (gameData?.algRatingCalcYellowWinAway || 0) &&
@@ -420,6 +463,18 @@ export const getWinHomeRatingValue = (
   gameData: GameDataType,
   rangeValue: number
 ) => {
+  if (
+    !(
+      gameData?.algRatingPredHomeSpread &&
+      gameData?.algRatingMoneyWin &&
+      gameData?.algRatingCalcYellowWin &&
+      gameData?.algRatingCalcGreenWin &&
+      gameData?.algRatingCalcSuperWin
+    )
+  ) {
+    return undefined;
+  }
+
   if (
     (gameData?.algRatingPredHomeSpread || 0) * -1 >=
       (gameData?.algRatingCalcYellowWin || 0) &&
@@ -455,7 +510,10 @@ export const getAwayWinValue = (data: GameDataType) => {
   }
 
   const rangleValue = Number(data?.moneyline_last_outcome_away);
-  return getWinAwayRatingValue(data, rangleValue);
+  if (rangleValue) {
+    return getWinAwayRatingValue(data, rangleValue);
+  }
+  return undefined;
 };
 
 export const getHomeWinValue = (data: GameDataType) => {
@@ -466,7 +524,10 @@ export const getHomeWinValue = (data: GameDataType) => {
     return undefined;
   }
   const rangleValue = Number(data?.moneyline_last_outcome_home);
-  return getWinHomeRatingValue(data, rangleValue);
+  if (rangleValue) {
+    return getWinHomeRatingValue(data, rangleValue);
+  }
+  return undefined;
 };
 
 export const getOverRatingValue = (
@@ -474,6 +535,18 @@ export const getOverRatingValue = (
   totalScore: number,
   ovRangeValue: number
 ) => {
+  if (
+    !(
+      gameData?.algRatingPredTotal &&
+      gameData?.algRatingMoneyTotal &&
+      gameData?.algRatingCalcYellowOver &&
+      gameData?.algRatingCalcGreenOver &&
+      gameData?.algRatingCalcSuperOver
+    )
+  ) {
+    return undefined;
+  }
+
   if (
     (gameData?.algRatingPredTotal || 0) - totalScore >=
       (gameData?.algRatingCalcYellowOver || 0) &&
@@ -504,6 +577,18 @@ export const getUnderRatingValue = (
   totalScore: number,
   unRangeValue: number
 ) => {
+  if (
+    !(
+      gameData?.algRatingPredTotal &&
+      gameData?.algRatingMoneyTotal &&
+      gameData?.algRatingCalcYellowUnder &&
+      gameData?.algRatingCalcGreenUnder &&
+      gameData?.algRatingCalcSuperUnder
+    )
+  ) {
+    return undefined;
+  }
+
   if (
     (gameData?.algRatingPredTotal || 0) - totalScore <=
       (gameData?.algRatingCalcYellowUnder || 0) * -1 &&
@@ -539,7 +624,10 @@ export const getOverRating = (gameData: GameDataType) => {
 
   const ovRangeValue = Number(gameData?.total_last_outcome_over_odds);
   const totalScore = Number(gameData.total_last_total);
-  return getOverRatingValue(gameData, totalScore, ovRangeValue);
+  if (ovRangeValue && totalScore) {
+    return getOverRatingValue(gameData, totalScore, ovRangeValue);
+  }
+  return undefined;
 };
 
 export const getUnderRating = (gameData: GameDataType) => {
@@ -552,7 +640,10 @@ export const getUnderRating = (gameData: GameDataType) => {
 
   const unRangeValue = Number(gameData?.total_last_outcome_under_odds);
   const totalScore = Number(gameData.total_last_total);
-  return getUnderRatingValue(gameData, totalScore, unRangeValue);
+  if (unRangeValue && totalScore) {
+    return getUnderRatingValue(gameData, totalScore, unRangeValue);
+  }
+  return undefined;
 };
 
 export const checkLineMasterState = (data: GameDataType) => {
@@ -631,204 +722,3 @@ export const checkAwayWinWhiteCircle = (data: GameDataType) => {
   }
   return false;
 };
-
-const a = [
-  {
-    algRatingAwaySpread: 1,
-    algRatingAwaySpreadPct: null,
-    algRatingAwayWin: 1,
-    algRatingAwayWinPct: null,
-    algRatingCalcGreenOver: 18.4,
-    algRatingCalcGreenSpread: 5.8,
-    algRatingCalcGreenSpreadAway: 5.8,
-    algRatingCalcGreenUnder: 18.4,
-    algRatingCalcGreenWin: 5.8,
-    algRatingCalcGreenWinAway: 5.8,
-    algRatingCalcSuperOver: 24,
-    algRatingCalcSuperSpread: 7.1,
-    algRatingCalcSuperSpreadAway: 7.1,
-    algRatingCalcSuperUnder: 24,
-    algRatingCalcSuperWin: 7.1,
-    algRatingCalcSuperWinAway: 7.1,
-    algRatingCalcYellowOver: 16.6,
-    algRatingCalcYellowSpread: 4.5,
-    algRatingCalcYellowSpreadAway: 4.5,
-    algRatingCalcYellowUnder: 16.6,
-    algRatingCalcYellowWin: 4.5,
-    algRatingCalcYellowWinAway: 4.5,
-    algRatingHomeSpread: 1,
-    algRatingHomeSpreadPct: null,
-    algRatingHomeWin: 1,
-    algRatingHomeWinPct: null,
-    algRatingMoneySpread: -120,
-    algRatingMoneyTotal: -120,
-    algRatingMoneyWin: -140,
-    algRatingOver: 1,
-    algRatingOverPct: null,
-    algRatingPredAwaySpread: -1.6,
-    algRatingPredHomeSpread: 1.6,
-    algRatingPredTotal: 221.1,
-    algRatingUnder: 2,
-    algRatingUnderPct: null,
-    algRatingUpdatedLast: '2023-03-31T02:41:11.757',
-    algWinnerHomeSpread: null,
-    algWinnerHomeWin: null,
-    algWinnerOver: null,
-    awayRecord: '52-24',
-    awayTeamIcon: 'BOS_Logo.png',
-    awayTeamId: 9,
-    away_points: '140',
-    away_team_abbr: 'BOS',
-    away_team_market: 'Boston',
-    away_team_name: 'Celtics',
-    away_uuid: '583eccfa-fb46-11e1-82cb-f4ce4684ea4c',
-    bFreeOffer: false,
-    boxscoreUpdatedLast: '2023-03-31T02:19:58.523',
-    clock: null,
-    dateTimeUpdated: '2023-03-31T02:19:58.523',
-    gameID: 2491,
-    gameUTCDateTime: '2023-03-30T23:30:00',
-    game_uuid: 'a869bf1f-05b4-418f-be25-168d0a9230a9',
-    homeRecord: '55-21',
-    homeTeamIcon: 'MIL_Logo.png',
-    homeTeamId: 15,
-    home_points: '99',
-    home_team_abbr: 'MIL',
-    home_team_market: 'Milwaukee',
-    home_team_name: 'Bucks',
-    home_uuid: '583ecefd-fb46-11e1-82cb-f4ce4684ea4c',
-    location_team_abbr: null,
-    moneyline_last_outcome_away: '+114',
-    moneyline_last_outcome_home: '-135',
-    moneyline_open_outcome_away: '+135',
-    moneyline_open_outcome_home: '-155',
-    odds_generated_at_last: '2023-03-31T01:49:56+00:00',
-    odds_generated_at_orig: '2023-03-29T16:03:22+00:00',
-    period: null,
-    possession_team_abbr: null,
-    sport_name: 'NBA',
-    spread_last_outcome_away: '-110',
-    spread_last_outcome_home: '-110',
-    spread_last_spread_away: '2.0',
-    spread_last_spread_home: '-2',
-    spread_open_outcome_away: '-110',
-    spread_open_outcome_home: '-110',
-    spread_open_spread_away: '3.5',
-    spread_open_spread_home: '-3.5',
-    standingUpdatedLast: '2023-03-30T23:49:50.283',
-    status: 'complete',
-    statusId: 0,
-    total_last_outcome_over_odds: '-110',
-    total_last_outcome_over_total: '238',
-    total_last_outcome_under_odds: '-110',
-    total_last_outcome_under_total: '238',
-    total_last_total: '238',
-    total_open_outcome_over_odds: '-110',
-    total_open_outcome_over_total: '236.5',
-    total_open_outcome_under_odds: '-110',
-    total_open_outcome_under_total: '236.5',
-    total_open_total: '236.5',
-    venueCity: 'Milwaukee',
-    venueName: 'Fiserv Forum',
-    venueState: 'WI'
-  },
-  {
-    algRatingAwaySpread: 1,
-    algRatingAwaySpreadPct: null,
-    algRatingAwayWin: 1,
-    algRatingAwayWinPct: null,
-    algRatingCalcGreenOver: 18.4,
-    algRatingCalcGreenSpread: 5.8,
-    algRatingCalcGreenSpreadAway: 5.8,
-    algRatingCalcGreenUnder: 18.4,
-    algRatingCalcGreenWin: 5.8,
-    algRatingCalcGreenWinAway: 5.8,
-    algRatingCalcSuperOver: 24,
-    algRatingCalcSuperSpread: 7.1,
-    algRatingCalcSuperSpreadAway: 7.1,
-    algRatingCalcSuperUnder: 24,
-    algRatingCalcSuperWin: 7.1,
-    algRatingCalcSuperWinAway: 7.1,
-    algRatingCalcYellowOver: 16.6,
-    algRatingCalcYellowSpread: 4.5,
-    algRatingCalcYellowSpreadAway: 4.5,
-    algRatingCalcYellowUnder: 16.6,
-    algRatingCalcYellowWin: 4.5,
-    algRatingCalcYellowWinAway: 4.5,
-    algRatingHomeSpread: 2,
-    algRatingHomeSpreadPct: null,
-    algRatingHomeWin: 3,
-    algRatingHomeWinPct: null,
-    algRatingMoneySpread: -120,
-    algRatingMoneyTotal: -120,
-    algRatingMoneyWin: -140,
-    algRatingOver: 1,
-    algRatingOverPct: null,
-    algRatingPredAwaySpread: 6.7,
-    algRatingPredHomeSpread: -6.7,
-    algRatingPredTotal: 226.3,
-    algRatingUnder: 1,
-    algRatingUnderPct: null,
-    algRatingUpdatedLast: '2023-03-31T02:41:11.85',
-    algWinnerHomeSpread: null,
-    algWinnerHomeWin: null,
-    algWinnerOver: null,
-    awayRecord: '38-38',
-    awayTeamIcon: 'NOP_Logo.png',
-    awayTeamId: 23,
-    away_points: '28',
-    away_team_abbr: 'NOP',
-    away_team_market: 'New Orleans',
-    away_team_name: 'Pelicans',
-    away_uuid: '583ecc9a-fb46-11e1-82cb-f4ce4684ea4c',
-    bFreeOffer: false,
-    boxscoreUpdatedLast: null,
-    clock: '08:58',
-    dateTimeUpdated: '2023-03-31T02:34:10.127',
-    gameID: 2492,
-    gameUTCDateTime: '2023-03-31T02:00:00',
-    game_uuid: '0244f1a5-151c-4603-b5d0-e52ee59869d2',
-    homeRecord: '51-24',
-    homeTeamIcon: 'DEN_Logo.png',
-    homeTeamId: 20,
-    home_points: '23',
-    home_team_abbr: 'DEN',
-    home_team_market: 'Denver',
-    home_team_name: 'Nuggets',
-    home_uuid: '583ed102-fb46-11e1-82cb-f4ce4684ea4c',
-    location_team_abbr: null,
-    moneyline_last_outcome_away: '+106',
-    moneyline_last_outcome_home: '-126',
-    moneyline_open_outcome_away: '+320',
-    moneyline_open_outcome_home: '-390',
-    odds_generated_at_last: '2023-03-31T02:19:58+00:00',
-    odds_generated_at_orig: '2023-03-29T16:03:22+00:00',
-    period: '2',
-    possession_team_abbr: null,
-    sport_name: 'NBA',
-    spread_last_outcome_away: '-113',
-    spread_last_outcome_home: '-107',
-    spread_last_spread_away: '2.0',
-    spread_last_spread_home: '-2',
-    spread_open_outcome_away: '-110',
-    spread_open_outcome_home: '-110',
-    spread_open_spread_away: '9.0',
-    spread_open_spread_home: '-9',
-    standingUpdatedLast: '2023-03-31T02:19:58.543',
-    status: 'inprogress',
-    statusId: 0,
-    total_last_outcome_over_odds: '-110',
-    total_last_outcome_over_total: '224.5',
-    total_last_outcome_under_odds: '-110',
-    total_last_outcome_under_total: '224.5',
-    total_last_total: '224.5',
-    total_open_outcome_over_odds: '-110',
-    total_open_outcome_over_total: '232.5',
-    total_open_outcome_under_odds: '-110',
-    total_open_outcome_under_total: '232.5',
-    total_open_total: '232.5',
-    venueCity: 'Denver',
-    venueName: 'Ball Arena',
-    venueState: 'CO'
-  }
-];

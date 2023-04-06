@@ -67,7 +67,6 @@ const Introduction: React.FC = () => {
         .doc(user.uid)
         .get()
         .then((doc: any) => {
-          console.log('doc.data().introPage==>', doc.data().introPage);
           setCheckShow(doc.data().introPage);
         });
     })();
@@ -112,11 +111,9 @@ const Introduction: React.FC = () => {
           borderRadius: 5,
           backgroundColor: Colors.green
         }}
-        inactiveDotStyle={
-          {
-            // backgroundColor: Colors.black
-          }
-        }
+        inactiveDotStyle={{
+          backgroundColor: Colors.darkerGrey
+        }}
         inactiveDotOpacity={0.4}
         inactiveDotScale={0.6}
       />

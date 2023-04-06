@@ -7,7 +7,7 @@ export const scale = deviceWidth / 390;
 
 export default StyleSheet.create({
   background: {
-    backgroundColor: Colors.grey
+    backgroundColor: Colors.lightGrey
   },
   backgroundImage: {
     flex: 1,
@@ -21,7 +21,7 @@ export default StyleSheet.create({
     borderColor: 'transparent'
   },
   headerView: {
-    paddingHorizontal: 15 * scale,
+    paddingHorizontal: 12 * scale,
     paddingVertical: 10 * scale,
     position: 'relative'
   },
@@ -45,28 +45,28 @@ export default StyleSheet.create({
 
   headerSubTitle: {
     color: Colors.white,
-    fontSize: 20 * scale,
+    fontSize: 18 * scale,
     textTransform: 'uppercase',
     fontFamily: Fonts.black
   },
   headerTitle: {
     color: Colors.white,
-    fontSize: 30 * scale,
-    fontFamily: Fonts.medium,
+    fontSize: 35 * scale,
+    fontFamily: Fonts.regular,
     marginTop: 5 * scale
   },
   closeIcon: {
     fontSize: 26 * scale,
     position: 'absolute',
     top: 5 * scale,
-    right: 15 * scale,
+    right: 12 * scale,
     color: Colors.white
   },
   controlBar: {
     flexDirection: 'row',
     position: 'absolute',
     bottom: 15 * scale,
-    right: 5 * scale
+    right: 0 * scale
   },
   controlIcon: {
     fontSize: 24 * scale,
@@ -111,9 +111,8 @@ export default StyleSheet.create({
     fontSize: 16 * scale,
     color: Colors.green,
     fontFamily: Fonts.bold,
-    paddingHorizontal: 5 * scale,
-    paddingVertical: 3 * scale,
-    backgroundColor: Colors.white,
+    paddingHorizontal: 4 * scale,
+    paddingVertical: 2 * scale,
     borderWidth: 2 * scale,
     borderColor: Colors.green,
     borderRadius: 5 * scale,
@@ -122,7 +121,7 @@ export default StyleSheet.create({
   normalText: {
     fontSize: 14 * scale,
     color: Colors.black,
-    fontFamily: Fonts.regular,
+    fontFamily: Fonts.light,
     lineHeight: 23 * scale
   },
   blackBoldText: {
@@ -136,7 +135,7 @@ export default StyleSheet.create({
     fontFamily: Fonts.black
   },
   secondView: {
-    width: deviceWidth * 0.45,
+    width: deviceWidth * 0.43,
     paddingHorizontal: 10 * scale
   },
   mainIcon: {
@@ -147,9 +146,9 @@ export default StyleSheet.create({
   },
   showCheck: {
     flexDirection: 'row',
-    justifyContent: 'flex-end',
+    justifyContent: 'flex-start',
     paddingVertical: 10 * scale,
-    paddingHorizontal: 20 * scale,
+    paddingHorizontal: 12 * scale,
     alignItems: 'center'
   },
   messageText: {

@@ -12,10 +12,7 @@ import { Colors, Svgs } from '@Theme';
 import { MainContext, MainContextType } from '@Context/MainContext';
 import { Routes } from '@Navigators/routes';
 import ObisaysScence from '@Scenes/Obisays';
-import ObiMoneyScence from '@Scenes/Obisays/ObiMoney';
-import ObiBooksScence from '@Scenes/Obisays/ObiBooks';
-import ObiLineRaterScence from '@Scenes/Obisays/ObiLineRater';
-import ObiWeightScence from '@Scenes/Obisays/ObiWeight';
+import ObiDetailScence from '@Scenes/Obisays/ObiDetail';
 import ScheduleScene from '@Scenes/Schedule';
 import LineRaterScene from '@Scenes/LineRater';
 import WatchsScene from '@Scenes/Watch';
@@ -76,13 +73,7 @@ const ObisayStackNavigator = () => (
       };
     }}>
     <CustomStack.Screen name={Routes.OBI} component={ObisaysScence} />
-    <CustomStack.Screen name={Routes.OBIMoney} component={ObiMoneyScence} />
-    <CustomStack.Screen name={Routes.OBIBooks} component={ObiBooksScence} />
-    <CustomStack.Screen
-      name={Routes.OBILineRater}
-      component={ObiLineRaterScence}
-    />
-    <CustomStack.Screen name={Routes.OBIWeight} component={ObiWeightScence} />
+    <CustomStack.Screen name={Routes.OBIDetail} component={ObiDetailScence} />
     <CustomStack.Screen name={Routes.Feedback} component={FeedbackScene} />
   </CustomStack.Navigator>
 );

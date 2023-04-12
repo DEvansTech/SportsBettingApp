@@ -23,7 +23,7 @@ const BarRating: React.FC<Props> = ({
       } else {
         return styles.lightGreyBar;
       }
-    } else if (Number(value)) {
+    } else if (Number(value) > 0) {
       if (Number(value) === 1) {
         return styles.redBar;
       }
@@ -56,7 +56,7 @@ const BarRating: React.FC<Props> = ({
 
   return (
     <View style={styles.scoreView}>
-      {value ? (
+      {Number(value) > 0 ? (
         <View style={[styles.barView, viewBar()]}>{getWinState()}</View>
       ) : (
         <Text style={styles.notRatedText}>Not Rated</Text>

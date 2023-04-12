@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import schedule from './schedule/reducer';
 import watch from './watch/reducer';
 import feedback from './feedback/reducer';
+import obi from './obi/reducer';
 
 interface Action {
   type: string;
@@ -11,7 +12,8 @@ interface Action {
 const appReducer = combineReducers({
   schedule: schedule,
   watch: watch,
-  feedback: feedback
+  feedback: feedback,
+  obi: obi
 });
 
 const rootReducer = (state: any, action: Action) => {

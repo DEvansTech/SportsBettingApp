@@ -30,7 +30,8 @@ export default StyleSheet.create({
     fontSize: 20 * scale,
     fontFamily: Fonts.regular,
     color: 'white',
-    marginLeft: 10 * scale
+    paddingLeft: 10 * scale,
+    paddingRight: 20 * scale
   },
   headerSmallText: {
     fontSize: 15 * scale,
@@ -39,8 +40,7 @@ export default StyleSheet.create({
   },
   contentView: {
     position: 'relative',
-    flexGrow: 1,
-    paddingBottom: 20 * scale
+    flexGrow: 1
   },
   obisayList: {
     flexDirection: 'row',
@@ -57,7 +57,8 @@ export default StyleSheet.create({
   },
   listTitleText: {
     fontSize: 20 * scale,
-    fontFamily: Fonts.regular
+    fontFamily: Fonts.regular,
+    width: '90%'
   },
   rightArrowIcon: {
     fontSize: 25 * scale,
@@ -87,32 +88,13 @@ export default StyleSheet.create({
   descBoldText: {
     fontSize: 15 * scale,
     fontFamily: Fonts.black
-  },
-  commentBox: {
-    marginVertical: 20 * scale,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  messageBox: {
-    position: 'absolute',
-    width: deviceWidth - 170 * scale,
-    left: 35 * scale,
-    top: 16 * scale
-  },
-  obiComment: {
-    position: 'relative'
-  },
-  commentBoldText: {
+  }
+});
+
+export const HTMLStyle = StyleSheet.create({
+  p: {
     fontSize: 15 * scale,
-    fontFamily: Fonts.black,
-    color: 'white',
-    lineHeight: 22 * scale
-  },
-  commentBoldText1: {
-    fontSize: 15 * scale,
-    fontFamily: Fonts.black,
-    color: 'white',
-    lineHeight: 18 * scale
+    fontFamily: Fonts.regular,
+    lineHeight: 25 * scale
   }
 });

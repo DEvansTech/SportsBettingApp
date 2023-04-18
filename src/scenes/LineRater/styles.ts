@@ -15,7 +15,7 @@ export default StyleSheet.create({
     backgroundColor: Colors.green,
     height: 65 * scale,
     borderColor: 'transparent',
-    paddingHorizontal: 20 * scale
+    marginHorizontal: 10 * scale
   },
   headerLeft: {
     flexDirection: 'row',
@@ -193,7 +193,7 @@ export default StyleSheet.create({
   },
   statusBar: {
     borderRadius: 30 * scale,
-    paddingVertical: 10 * scale,
+    paddingVertical: 7 * scale,
     justifyContent: 'center',
     flexDirection: 'row'
   },

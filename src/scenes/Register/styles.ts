@@ -19,7 +19,7 @@ export default StyleSheet.create({
   },
   closeBtn: {
     position: 'absolute',
-    top: 10 * scale,
+    top: 0 * scale,
     right: 20 * scale
   },
   closeIcon: {
@@ -74,10 +74,12 @@ export default StyleSheet.create({
     justifyContent: 'center'
   },
   emailForm: {
-    marginTop: 40 * scale
+    marginTop: 20 * scale
   },
   emailItem: {
-    marginTop: 20 * scale,
+    flex: 1,
+    width: '100%',
+    marginTop: 15 * scale,
     borderBottomColor: 'transparent',
     borderWidth: 0
   },
@@ -107,7 +109,7 @@ export default StyleSheet.create({
     color: 'white'
   },
   emailFormBtn: {
-    marginTop: deviceHeight * 0.11
+    marginTop: 20 * scale
   },
   emailHaveBtn: {
     backgroundColor: 'white',
@@ -127,5 +129,9 @@ export default StyleSheet.create({
   },
   textFooter: {
     marginTop: 50 * scale
+  },
+  chevronIcon: {
+    fontSize: 35 * scale,
+    color: Colors.black
   }
 });

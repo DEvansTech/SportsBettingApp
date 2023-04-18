@@ -269,5 +269,53 @@ export default {
         <path style="fill:none;stroke:#FFFFFF;" d="M0.9 18.3a17 17 0 1 0 34 0a17 17 0 1 0 -34 0" />
       </g>
     </svg>
+  `,
+  greenPillValue: `
+    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 216 56" style="enable-background:new 0 0 216 56;" xml:space="preserve">
+      <g>
+        <path style="fill:#6CC04A;" d="M28,0C12.5,0,0,12.5,0,28s12.5,28,28,28h160c15.5,0,28-12.5,28-28S203.5,0,188,0H28z"/>
+      </g>
+      <g>
+      <path style="fill:#FFFFFF;" d="M165.5,34.6v-3.7h11.8v-6.8h-11.8v-3.3H179v-7.1h-22.8v28h23.3v-7.1H165.5z M138.3,42.4c4.3,0,7.6-1.2,10-3.5
+        c2.4-2.3,3.6-5.6,3.6-9.8V13.7h-9.3v15.1c0,2.1-0.4,3.5-1.1,4.5c-0.7,0.9-1.8,1.4-3.2,1.4s-2.4-0.5-3.2-1.4
+        c-0.7-0.9-1.1-2.4-1.1-4.5V13.7h-9.4v15.4c0,4.2,1.2,7.4,3.6,9.8C130.6,41.2,134,42.4,138.3,42.4 M100.4,41.7h22.1v-7.3h-12.6V13.7
+        h-9.4V41.7z M79.2,30l2.7-7l2.7,7H79.2z M89.1,41.7h9.8l-12.2-28h-9.3l-12.2,28h9.6l1.9-4.9h10.6L89.1,41.7z M59,13.7l-6.8,16.4
+        l-6.7-16.4H35.3l11.8,28h9.3l11.8-28H59z"/>
+      </g>
+    </svg>
+  `,
+  yellowPill: `
+    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 216 56" style="enable-background:new 0 0 216 56;" xml:space="preserve">
+    <g>
+      <path style="fill:#FED925;" d="M28,0C12.5,0,0,12.5,0,28s12.5,28,28,28h160c15.5,0,28-12.5,28-28S203.5,0,188,0H28z"/>
+    </g>
+    </svg>
+  `,
+  redPill: `
+    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 216 56" style="enable-background:new 0 0 216 56;" xml:space="preserve">
+      <g>
+        <path style="fill:#E1251B;" d="M28,0C12.5,0,0,12.5,0,28s12.5,28,28,28h160c15.5,0,28-12.5,28-28S203.5,0,188,0H28z"/>
+      </g>
+    </svg>
+  `,
+  yellowWhiteDotPill: `
+    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 216 56" style="enable-background:new 0 0 216 56;" xml:space="preserve">
+      <g>
+        <path style="fill:#FED925;" d="M28,0C12.5,0,0,12.5,0,28s12.5,28,28,28h160c15.5,0,28-12.5,28-28S203.5,0,188,0H28z"/>
+      </g>
+      <g>
+        <path style="fill:#FFFFFF;" d="M108,44.3c8.8,0,16-7.2,16-16c0-8.8-7.2-16-16-16s-16,7.2-16,16C92,37.1,99.2,44.3,108,44.3"/>
+      </g>
+    </svg>
+  `,
+  redWhiteDotPill: `
+    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 216 56" style="enable-background:new 0 0 216 56;" xml:space="preserve">
+      <g>
+      <path style="fill:#E1251B;" d="M28,0C12.5,0,0,12.5,0,28s12.5,28,28,28h160c15.5,0,28-12.5,28-28S203.5,0,188,0H28z"/>
+      </g>
+      <g>
+      <path style="fill:#FFFFFF;" d="M108,44.3c8.8,0,16-7.2,16-16c0-8.8-7.2-16-16-16s-16,7.2-16,16C92,37.1,99.2,44.3,108,44.3"/>
+      </g>
+    </svg>
   `
 };

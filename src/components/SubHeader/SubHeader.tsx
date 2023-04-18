@@ -8,37 +8,12 @@ import { SvgXml } from 'react-native-svg';
 import { ModalCalendar } from '@Components';
 import { MainContext, MainContextType } from '@Context/MainContext';
 import { getNextDate, getPreviousDate } from '@Lib/utilities';
+import { sportSorts } from '@Lib/constants';
 import { responseFontSize } from '@Lib/function';
 import { Colors, Svgs } from '@Theme';
 
 import styles, { pickerSelectStyles, scale } from './styles';
 
-const options = [
-  {
-    label: 'ALL',
-    value: 'all'
-  },
-  {
-    label: 'MLB',
-    value: 'mlb'
-  },
-  {
-    label: 'NBA',
-    value: 'nba'
-  },
-  {
-    label: 'NCAAB',
-    value: 'ncaab '
-  },
-  {
-    label: 'NCAAF',
-    value: 'ncaafb'
-  },
-  {
-    label: 'NFL',
-    value: 'nfl'
-  }
-];
 const placeholder = {};
 const SubHeader: React.FC = () => {
   const { setScheduleDate, scheduleDate, setSportName, sportName } = useContext(
@@ -65,7 +40,7 @@ const SubHeader: React.FC = () => {
     <View style={styles.header}>
       <View style={styles.headerLeft}>
         <RNPickerSelect
-          items={options}
+          items={sportSorts}
           onValueChange={value => setSportName(value)}
           value={sportName}
           useNativeAndroidPickerStyle={false}

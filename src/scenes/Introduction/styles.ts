@@ -77,8 +77,97 @@ export default StyleSheet.create({
     position: 'relative',
     flexGrow: 1
   },
+  quickStartContent: {
+    backgroundColor: 'white',
+    paddingHorizontal: 20 * scale,
+    paddingVertical: 25 * scale,
+    borderBottomColor: Colors.darkGrey,
+    borderBottomWidth: 0.5 * scale
+  },
+  quickStartText: {
+    fontSize: 20 * scale,
+    color: Colors.black,
+    lineHeight: 30 * scale,
+    fontFamily: Fonts.regular
+  },
   content: {
     padding: 20 * scale
+  },
+  barRatingView: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 10 * scale
+  },
+  barRatingDotView: {
+    marginTop: 10 * scale,
+    marginBottom: 0 * scale
+  },
+  barRatingTextView: {
+    marginLeft: 20 * scale
+  },
+  obisaysView: {
+    marginTop: 25 * scale,
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginLeft: 50 * scale
+  },
+  obisaysContent: {
+    backgroundColor: Colors.green,
+    borderLeftWidth: 10 * scale,
+    borderLeftColor: 'black',
+    padding: 20 * scale,
+    flex: 1
+  },
+  whiteBoldText: {
+    fontSize: 14 * scale,
+    color: Colors.white,
+    fontFamily: Fonts.black
+  },
+
+  gamesImageView: {
+    borderColor: Colors.grey,
+    borderWidth: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 30 * scale,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 10
+    },
+    shadowOpacity: 0.51,
+    shadowRadius: 13.16,
+
+    elevation: 20,
+    overflow: 'hidden',
+    marginHorizontal: 40 * scale,
+    marginTop: 20 * scale
+  },
+  gamesImage: {
+    width: '100%',
+    height: 260 * scale
+  },
+  gamesContent: {
+    marginTop: 30 * scale
+  },
+  gameDescription: {
+    flexDirection: 'row',
+    position: 'relative',
+    alignItems: 'flex-start',
+    paddingLeft: 20 * scale,
+    marginTop: 10 * scale
+  },
+  greenCircle: {
+    position: 'absolute',
+    fontSize: 5 * scale,
+    color: Colors.green,
+    top: 6 * scale,
+    left: 0
+  },
+  gameText: {
+    fontSize: 14 * scale,
+    color: Colors.black,
+    fontFamily: Fonts.light
   },
   body: {
     flexDirection: 'row',
@@ -123,6 +212,11 @@ export default StyleSheet.create({
     color: Colors.black,
     fontFamily: Fonts.light,
     lineHeight: 23 * scale
+  },
+  blackBolderText: {
+    fontSize: 16 * scale,
+    color: Colors.black,
+    fontFamily: Fonts.black
   },
   blackBoldText: {
     fontSize: 14 * scale,

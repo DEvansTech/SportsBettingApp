@@ -423,13 +423,11 @@ export const getWinAwayRatingValue = (
   rangeValue: number
 ) => {
   if (
-    !(
-      gameData?.algRatingPredAwaySpread &&
-      gameData?.algRatingMoneyWin &&
-      gameData?.algRatingCalcYellowWinAway &&
-      gameData?.algRatingCalcGreenWinAway &&
-      gameData?.algRatingCalcSuperWinAway
-    )
+    gameData?.algRatingPredAwaySpread === null ||
+    gameData?.algRatingMoneyWin === null ||
+    gameData?.algRatingCalcYellowWinAway === null ||
+    gameData?.algRatingCalcGreenWinAway === null ||
+    gameData?.algRatingCalcSuperWinAway === null
   ) {
     return undefined;
   }
@@ -464,13 +462,11 @@ export const getWinHomeRatingValue = (
   rangeValue: number
 ) => {
   if (
-    !(
-      gameData?.algRatingPredHomeSpread &&
-      gameData?.algRatingMoneyWin &&
-      gameData?.algRatingCalcYellowWin &&
-      gameData?.algRatingCalcGreenWin &&
-      gameData?.algRatingCalcSuperWin
-    )
+    gameData?.algRatingPredHomeSpread === null ||
+    gameData?.algRatingMoneyWin === null ||
+    gameData?.algRatingCalcYellowWin === null ||
+    gameData?.algRatingCalcGreenWin === null ||
+    gameData?.algRatingCalcSuperWin === null
   ) {
     return undefined;
   }

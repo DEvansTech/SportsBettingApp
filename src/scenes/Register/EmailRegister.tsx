@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import auth from '@react-native-firebase/auth';
-import { Platform } from 'react-native';
+
 import { useNavigation } from '@react-navigation/core';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { ImageBackground, TouchableOpacity, Image } from 'react-native';
@@ -12,7 +12,8 @@ import {
   Text,
   View,
   Item,
-  Input
+  Input,
+  CheckBox
 } from 'native-base';
 import { SvgXml } from 'react-native-svg';
 
@@ -65,8 +66,13 @@ const EmailRegister: React.FC = () => {
       return;
     }
 
-    emailRegister(email, password, firstName, lastName);
-    setDisplayName(firstName + ' ' + lastName);
+    emailRegister(
+      email.trim(),
+      password.trim(),
+      firstName.trim(),
+      lastName.trim()
+    );
+    setDisplayName(firstName.trim() + ' ' + lastName.trim());
   };
 
   useEffect(() => {
@@ -183,7 +189,7 @@ const EmailRegister: React.FC = () => {
             </View>
             <View style={styles.textFooter}>
               <Text style={styles.blackLabel}>
-                By continuing, you agree with the Terms of Service and Privacy
+                By continuing, you agree with our Terms of Service and Privacy
                 Policy
               </Text>
             </View>

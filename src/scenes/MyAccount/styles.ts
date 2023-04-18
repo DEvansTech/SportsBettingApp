@@ -142,30 +142,30 @@ export default StyleSheet.create({
   }
 });
 
-export const pickerSelectStyles = StyleSheet.create({
-  inputIOS: {
-    fontSize: 17 * scale,
-    letterSpacing: scale,
-    borderColor: Colors.transparent,
-    backgroundColor: Colors.transparent,
-    color: Colors.black,
-    width: deviceWidth - 70 * scale,
-    height: 30 * scale,
-    fontFamily: Fonts.regular
-  },
-  inputAndroid: {
-    fontSize: 17 * scale,
-    letterSpacing: scale,
-    height: 45 * scale,
-    borderColor: Colors.transparent,
-    backgroundColor: Colors.transparent,
-    color: Colors.black,
-    paddingRight: 30 * scale,
-    width: deviceWidth - 70 * scale,
-    fontFamily: Fonts.regular
-  },
-  iconContainer: {
-    top: 2 * scale,
-    right: 0 * scale
-  }
-});
+// export const pickerSelectStyles = StyleSheet.create({
+//   inputIOS: {
+//     fontSize: 17 * scale,
+//     letterSpacing: scale,
+//     borderColor: Colors.transparent,
+//     backgroundColor: Colors.transparent,
+//     color: Colors.black,
+//     width: deviceWidth - 70 * scale,
+//     height: 30 * scale,
+//     fontFamily: Fonts.regular
+//   },
+//   inputAndroid: {
+//     fontSize: 17 * scale,
+//     letterSpacing: scale,
+//     height: 45 * scale,
+//     borderColor: Colors.transparent,
+//     backgroundColor: Colors.transparent,
+//     color: Colors.black,
+//     paddingRight: 30 * scale,
+//     width: deviceWidth - 70 * scale,
+//     fontFamily: Fonts.regular
+//   },
+//   iconContainer: {
+//     top: 2 * scale,
+//     right: 0 * scale
+//   }
+// });

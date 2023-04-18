@@ -15,7 +15,7 @@ export default StyleSheet.create({
     backgroundColor: Colors.green,
     height: 65 * scale,
     borderColor: 'transparent',
-    paddingHorizontal: 20 * scale
+    paddingHorizontal: 10 * scale
   },
   headerLeft: {
     flexDirection: 'row',
@@ -51,7 +51,7 @@ export default StyleSheet.create({
     borderBottomWidth: 1,
     borderColor: Colors.lightGrey,
     paddingLeft: 20 * scale,
-    paddingRight: 35 * scale,
+    paddingRight: 15 * scale,
     paddingVertical: 20 * scale,
     marginTop: -1
   },

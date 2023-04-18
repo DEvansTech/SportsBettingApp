@@ -14,32 +14,19 @@ import {
 } from 'native-base';
 import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
-import RNPickerSelect from 'react-native-picker-select';
-import { TextInputMask } from 'react-native-masked-text';
 
 import useInAppPurchase from '@Lib/useInAppPurchase';
 import { AuthContext, AuthContextType } from '@Context/AuthContext';
 import { UserHeader, LogoSpinner } from '@Components';
 import { ToastMessage } from '@Lib/function';
-import { timeStamptoDate, timeStamptoDateTime, getAge } from '@Lib/utilities';
-import { Colors } from '@Theme';
+import { timeStamptoDate, timeStamptoDateTime } from '@Lib/utilities';
 
 import { UserType } from './types';
-import styles, { pickerSelectStyles } from './styles';
+import styles from './styles';
 import { Routes } from '@Navigators/routes';
 
 const MyAccount: React.FC = () => {
   const navigation = useNavigation<StackNavigationProp<any, any>>();
-  const genders = [
-    {
-      label: 'Male',
-      value: 'male'
-    },
-    {
-      label: 'Female',
-      value: 'female'
-    }
-  ];
 
   const { user } = useContext(AuthContext) as AuthContextType;
   const { currentProductId, expiresDate, purchaseDate, validate } =
@@ -69,28 +56,12 @@ const MyAccount: React.FC = () => {
     } else {
       userData.email = userInfo?.email;
     }
-    if (userInfo?.phoneNumber) {
-      userData.phoneNumber = userInfo?.phoneNumber;
-    }
     if (
       userInfo?.password !== '' &&
       userInfo?.password !== userInfo?.repassword
     ) {
       ToastMessage("Password doesn't match", 'danger', 'bottom');
       return;
-    }
-
-    if (userInfo?.gender !== '') {
-      userData.gender = userInfo?.gender;
-    }
-
-    if (userInfo?.birthday !== '') {
-      const age = getAge(userInfo?.birthday);
-      if (Number(age) <= 21) {
-        ToastMessage('You must be 21 years old or above', 'danger', 'bottom');
-        return;
-      }
-      userData.birthday = userInfo?.birthday;
     }
 
     const docRef = firestore().collection('users').doc(user.uid);
@@ -246,33 +217,6 @@ const MyAccount: React.FC = () => {
                   }
                 />
               </View>
-              <Item style={styles.itemView1}>
-                <Icon
-                  type="FontAwesome"
-                  name="intersex"
-                  style={styles.itemIcon}
-                />
-                <RNPickerSelect
-                  items={genders}
-                  onValueChange={item => {
-                    setUserInfo({ ...userInfo, gender: item });
-                  }}
-                  value={userInfo?.gender}
-                  useNativeAndroidPickerStyle={false}
-                  Icon={() => (
-                    <Icon
-                      name="chevron-down"
-                      style={styles.selectIcon}
-                      color={Colors.black}
-                    />
-                  )}
-                  style={pickerSelectStyles}
-                  placeholder={{
-                    label: 'Select a Gender...',
-                    value: null
-                  }}
-                />
-              </Item>
             </View>
             <View style={styles.basicView}>
               <Text style={styles.basicTitle}>Private Information</Text>
@@ -289,44 +233,6 @@ const MyAccount: React.FC = () => {
                   onChangeText={text =>
                     setUserInfo({ ...userInfo, email: text })
                   }
-                />
-              </Item>
-              <Item style={styles.itemView}>
-                <Icon
-                  type="MaterialIcons"
-                  name="phone-android"
-                  style={styles.itemIcon}
-                />
-                <TextInputMask
-                  type={'custom'}
-                  options={{
-                    mask: '(999) 999-9999'
-                  }}
-                  value={userInfo?.phoneNumber}
-                  onChangeText={text =>
-                    setUserInfo({ ...userInfo, phoneNumber: text })
-                  }
-                  style={styles.phoneInputView}
-                  placeholder="Phone Number"
-                />
-              </Item>
-              <Item style={styles.itemView}>
-                <Icon
-                  type="FontAwesome"
-                  name="birthday-cake"
-                  style={styles.itemIcon}
-                />
-                <TextInputMask
-                  type={'datetime'}
-                  options={{
-                    format: 'MM/DD/YYYY'
-                  }}
-                  value={userInfo?.birthday}
-                  onChangeText={text =>
-                    setUserInfo({ ...userInfo, birthday: text })
-                  }
-                  style={styles.phoneInputView}
-                  placeholder="Birthday (MM/DD/YYYY)"
                 />
               </Item>
             </View>

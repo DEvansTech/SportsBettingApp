@@ -132,7 +132,7 @@ const Login: React.FC = () => {
       ToastMessage('Please input Password', 'warning', 'bottom');
       return;
     }
-    emailLogin(email, password);
+    emailLogin(email.trim(), password.trim());
   };
 
   const getUserName = async () => {
@@ -258,13 +258,6 @@ const Login: React.FC = () => {
                     />
                   </TouchableOpacity>
                 )}
-                {/* <TouchableOpacity>
-                  <SvgXml
-                    xml={Svgs.facebookIcon}
-                    width={38 * scale}
-                    height={38 * scale}
-                  />
-                </TouchableOpacity> */}
               </View>
             </View>
           )}

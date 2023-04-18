@@ -11,7 +11,8 @@ import Carousel, { Pagination } from 'react-native-snap-carousel';
 import firestore from '@react-native-firebase/firestore';
 
 import { AuthContext, AuthContextType } from '@Context/AuthContext';
-import FirstScreen from './First';
+import QuickStart from './QuickStart';
+import Games from './Games';
 import SecondScreen from './Second';
 import ThirdScreen from './Third';
 import FourthScreen from './Fourth';
@@ -73,7 +74,8 @@ const Introduction: React.FC = () => {
   }, []);
 
   const data = [
-    <FirstScreen nextPage={nextPage} prevPage={prevPage} />,
+    <QuickStart nextPage={nextPage} prevPage={prevPage} />,
+    <Games nextPage={nextPage} prevPage={prevPage} />,
     <SecondScreen nextPage={nextPage} prevPage={prevPage} />,
     <ThirdScreen nextPage={nextPage} prevPage={prevPage} />,
     <FourthScreen nextPage={nextPage} prevPage={prevPage} />,

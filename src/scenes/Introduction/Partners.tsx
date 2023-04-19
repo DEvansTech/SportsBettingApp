@@ -10,7 +10,7 @@ import { Routes } from '@Navigators/routes';
 import { CarosuelProps } from './types';
 import styles, { scale } from './styles';
 
-const SecondScreen: React.FC<CarosuelProps> = ({ nextPage, prevPage }) => {
+const Partners: React.FC<CarosuelProps> = ({ nextPage, prevPage }) => {
   const navigation = useNavigation<StackNavigationProp<any, any>>();
   return (
     <Container style={styles.background}>
@@ -20,7 +20,7 @@ const SecondScreen: React.FC<CarosuelProps> = ({ nextPage, prevPage }) => {
         androidStatusBarColor={Colors.green}>
         <View style={styles.headerView}>
           <Text style={styles.headerSubTitle}>Instructions:</Text>
-          <Text style={styles.headerTitle}>LineMaster™</Text>
+          <Text style={styles.headerTitle}>Partners</Text>
           <Icon
             type="AntDesign"
             name="closecircleo"
@@ -44,30 +44,26 @@ const SecondScreen: React.FC<CarosuelProps> = ({ nextPage, prevPage }) => {
         </View>
       </Header>
       <Content contentContainerStyle={styles.contentView}>
-        <View style={styles.subHeader}>
-          <Text style={styles.subHeaderText}>SPREAD</Text>
-        </View>
         <View style={styles.content}>
           <View style={styles.body}>
             <View style={styles.firstView}>
               <LoadingImage
-                source={Images.carousel2}
+                source={Images.carousel7}
                 style={styles.imageView}
               />
             </View>
             <View style={styles.secondView}>
               <SvgXml
-                xml={Svgs.lineRaterBlackIcon}
+                xml={Svgs.partnerIcon}
                 width={60 * scale}
                 height={60 * scale}
                 style={styles.mainIcon}
               />
               <Text style={styles.normalText}>
-                LineMaster™ allows you to check whether a line you are seeing is
-                a Value Play. Tap the team logo, then{' '}
-                <Text style={styles.blackBoldText}>SPREAD</Text> (default), then
-                +/- on Points or Money Line to get an instant OBI evaluation
-                (green- yellow-red-deep red).
+                Partners gives you the opportunity to select a betting partner
+                where you can establish a betting account, if you choose to
+                (optional). Other featured partners and deals will be included
+                here too. To be introduced soon!
               </Text>
             </View>
           </View>
@@ -77,4 +73,4 @@ const SecondScreen: React.FC<CarosuelProps> = ({ nextPage, prevPage }) => {
   );
 };
 
-export default SecondScreen;
+export default Partners;

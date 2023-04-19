@@ -5,12 +5,12 @@ import { Container, Content, Text, View, Icon, Header } from 'native-base';
 import { SvgXml } from 'react-native-svg';
 
 import { LoadingImage } from '@Components';
-import { Colors, Images, Svgs } from '@Theme';
+import { Svgs, Colors, Images } from '@Theme';
 import { Routes } from '@Navigators/routes';
 import { CarosuelProps } from './types';
 import styles, { scale } from './styles';
 
-const SeventhScreen: React.FC<CarosuelProps> = ({ nextPage, prevPage }) => {
+const OverUnder: React.FC<CarosuelProps> = ({ nextPage, prevPage }) => {
   const navigation = useNavigation<StackNavigationProp<any, any>>();
   return (
     <Container style={styles.background}>
@@ -20,7 +20,7 @@ const SeventhScreen: React.FC<CarosuelProps> = ({ nextPage, prevPage }) => {
         androidStatusBarColor={Colors.green}>
         <View style={styles.headerView}>
           <Text style={styles.headerSubTitle}>Instructions:</Text>
-          <Text style={styles.headerTitle}>Partners</Text>
+          <Text style={styles.headerTitle}>LineMaster™</Text>
           <Icon
             type="AntDesign"
             name="closecircleo"
@@ -44,26 +44,31 @@ const SeventhScreen: React.FC<CarosuelProps> = ({ nextPage, prevPage }) => {
         </View>
       </Header>
       <Content contentContainerStyle={styles.contentView}>
+        <View style={styles.subHeader}>
+          <Text style={styles.subHeaderText}>
+            O/U <Text style={styles.subHeaderThinText}>(OVER/UNDER)</Text>
+          </Text>
+        </View>
         <View style={styles.content}>
           <View style={styles.body}>
             <View style={styles.firstView}>
               <LoadingImage
-                source={Images.carousel7}
+                source={Images.carousel4}
                 style={styles.imageView}
               />
             </View>
             <View style={styles.secondView}>
               <SvgXml
-                xml={Svgs.partnerIcon}
+                xml={Svgs.lineRaterBlackIcon}
                 width={60 * scale}
                 height={60 * scale}
                 style={styles.mainIcon}
               />
               <Text style={styles.normalText}>
-                Partners gives you the opportunity to select a betting partner
-                where you can establish a betting account, if you choose to
-                (optional). Other featured partners and deals will be included
-                here too. To be introduced soon!
+                With <Text style={styles.blackBoldText}>O/U</Text> (over/ under)
+                the individual team doesn’t matter. Tap +/- on Total, Over, or
+                Under to get an instant OBI evaluation (green- yellow-red-deep
+                red).
               </Text>
             </View>
           </View>
@@ -73,4 +78,4 @@ const SeventhScreen: React.FC<CarosuelProps> = ({ nextPage, prevPage }) => {
   );
 };
 
-export default SeventhScreen;
+export default OverUnder;

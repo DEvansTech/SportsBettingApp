@@ -10,7 +10,7 @@ import { Routes } from '@Navigators/routes';
 import { CarosuelProps } from './types';
 import styles, { scale } from './styles';
 
-const FifthScreen: React.FC<CarosuelProps> = ({ nextPage, prevPage }) => {
+const OBISays: React.FC<CarosuelProps> = ({ nextPage, prevPage }) => {
   const navigation = useNavigation<StackNavigationProp<any, any>>();
   return (
     <Container style={styles.background}>
@@ -54,7 +54,7 @@ const FifthScreen: React.FC<CarosuelProps> = ({ nextPage, prevPage }) => {
             </View>
             <View style={styles.secondView}>
               <SvgXml
-                xml={Svgs.obiSayBlackIcon}
+                xml={Svgs.obiIcon}
                 width={60 * scale}
                 height={60 * scale}
                 style={styles.mainIcon}
@@ -72,4 +72,4 @@ const FifthScreen: React.FC<CarosuelProps> = ({ nextPage, prevPage }) => {
   );
 };
 
-export default FifthScreen;
+export default OBISays;

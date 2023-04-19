@@ -5,12 +5,12 @@ import { Container, Content, Text, View, Icon, Header } from 'native-base';
 import { SvgXml } from 'react-native-svg';
 
 import { LoadingImage } from '@Components';
-import { Svgs, Colors, Images } from '@Theme';
+import { Colors, Images, Svgs } from '@Theme';
 import { Routes } from '@Navigators/routes';
 import { CarosuelProps } from './types';
 import styles, { scale } from './styles';
 
-const FourthScreen: React.FC<CarosuelProps> = ({ nextPage, prevPage }) => {
+const Spread: React.FC<CarosuelProps> = ({ nextPage, prevPage }) => {
   const navigation = useNavigation<StackNavigationProp<any, any>>();
   return (
     <Container style={styles.background}>
@@ -45,15 +45,13 @@ const FourthScreen: React.FC<CarosuelProps> = ({ nextPage, prevPage }) => {
       </Header>
       <Content contentContainerStyle={styles.contentView}>
         <View style={styles.subHeader}>
-          <Text style={styles.subHeaderText}>
-            O/U <Text style={styles.subHeaderThinText}>(OVER/UNDER)</Text>
-          </Text>
+          <Text style={styles.subHeaderText}>SPREAD</Text>
         </View>
         <View style={styles.content}>
           <View style={styles.body}>
             <View style={styles.firstView}>
               <LoadingImage
-                source={Images.carousel4}
+                source={Images.carousel2}
                 style={styles.imageView}
               />
             </View>
@@ -65,10 +63,11 @@ const FourthScreen: React.FC<CarosuelProps> = ({ nextPage, prevPage }) => {
                 style={styles.mainIcon}
               />
               <Text style={styles.normalText}>
-                With <Text style={styles.blackBoldText}>O/U</Text> (over/ under)
-                the individual team doesn’t matter. Tap +/- on Total, Over, or
-                Under to get an instant OBI evaluation (green- yellow-red-deep
-                red).
+                LineMaster™ allows you to check whether a line you are seeing is
+                a Value Play. Tap the team logo, then{' '}
+                <Text style={styles.blackBoldText}>SPREAD</Text> (default), then
+                +/- on Points or Money Line to get an instant OBI evaluation
+                (green- yellow-red-deep red).
               </Text>
             </View>
           </View>
@@ -78,4 +77,4 @@ const FourthScreen: React.FC<CarosuelProps> = ({ nextPage, prevPage }) => {
   );
 };
 
-export default FourthScreen;
+export default Spread;

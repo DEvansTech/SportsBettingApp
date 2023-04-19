@@ -10,7 +10,7 @@ import { Routes } from '@Navigators/routes';
 import { CarosuelProps } from './types';
 import styles, { scale } from './styles';
 
-const ThirdScreen: React.FC<CarosuelProps> = ({ nextPage, prevPage }) => {
+const Win: React.FC<CarosuelProps> = ({ nextPage, prevPage }) => {
   const navigation = useNavigation<StackNavigationProp<any, any>>();
   return (
     <Container style={styles.background}>
@@ -79,4 +79,4 @@ const ThirdScreen: React.FC<CarosuelProps> = ({ nextPage, prevPage }) => {
   );
 };
 
-export default ThirdScreen;
+export default Win;

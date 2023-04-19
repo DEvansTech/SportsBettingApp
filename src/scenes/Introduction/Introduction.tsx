@@ -13,13 +13,13 @@ import firestore from '@react-native-firebase/firestore';
 import { AuthContext, AuthContextType } from '@Context/AuthContext';
 import QuickStart from './QuickStart';
 import Games from './Games';
-import SecondScreen from './Second';
-import ThirdScreen from './Third';
-import FourthScreen from './Fourth';
-import FifthScreen from './Fifth';
-import SixthScreen from './Sixth';
-import SeventhScreen from './Seventh';
-import EighthScreen from './Eighth';
+import Spread from './Spread';
+import Win from './Win';
+import OverUnder from './OverUnder';
+import OBISays from './OBISays';
+import Watching from './Watching';
+import Partners from './Partners';
+import Feedback from './Feedback';
 
 import styles, { deviceWidth } from './styles';
 import { Colors } from '@Theme';
@@ -76,13 +76,13 @@ const Introduction: React.FC = () => {
   const data = [
     <QuickStart nextPage={nextPage} prevPage={prevPage} />,
     <Games nextPage={nextPage} prevPage={prevPage} />,
-    <SecondScreen nextPage={nextPage} prevPage={prevPage} />,
-    <ThirdScreen nextPage={nextPage} prevPage={prevPage} />,
-    <FourthScreen nextPage={nextPage} prevPage={prevPage} />,
-    <FifthScreen nextPage={nextPage} prevPage={prevPage} />,
-    <SixthScreen nextPage={nextPage} prevPage={prevPage} />,
-    <SeventhScreen nextPage={nextPage} prevPage={prevPage} />,
-    <EighthScreen nextPage={nextPage} prevPage={prevPage} />
+    <Spread nextPage={nextPage} prevPage={prevPage} />,
+    <Win nextPage={nextPage} prevPage={prevPage} />,
+    <OverUnder nextPage={nextPage} prevPage={prevPage} />,
+    <OBISays nextPage={nextPage} prevPage={prevPage} />,
+    <Watching nextPage={nextPage} prevPage={prevPage} />,
+    <Partners nextPage={nextPage} prevPage={prevPage} />,
+    <Feedback nextPage={nextPage} prevPage={prevPage} />
   ];
 
   return (

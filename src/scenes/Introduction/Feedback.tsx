@@ -10,7 +10,7 @@ import { Routes } from '@Navigators/routes';
 import { CarosuelProps } from './types';
 import styles, { scale } from './styles';
 
-const SixthScreen: React.FC<CarosuelProps> = ({ nextPage, prevPage }) => {
+const Feedback: React.FC<CarosuelProps> = ({ nextPage, prevPage }) => {
   const navigation = useNavigation<StackNavigationProp<any, any>>();
   return (
     <Container style={styles.background}>
@@ -20,7 +20,7 @@ const SixthScreen: React.FC<CarosuelProps> = ({ nextPage, prevPage }) => {
         androidStatusBarColor={Colors.green}>
         <View style={styles.headerView}>
           <Text style={styles.headerSubTitle}>Instructions:</Text>
-          <Text style={styles.headerTitle}>Watching</Text>
+          <Text style={styles.headerTitle}>Feedback</Text>
           <Icon
             type="AntDesign"
             name="closecircleo"
@@ -48,20 +48,20 @@ const SixthScreen: React.FC<CarosuelProps> = ({ nextPage, prevPage }) => {
           <View style={styles.body}>
             <View style={styles.firstView}>
               <LoadingImage
-                source={Images.carousel6}
+                source={Images.carousel8}
                 style={styles.imageView}
               />
             </View>
             <View style={styles.secondView}>
               <SvgXml
-                xml={Svgs.watchIcon}
-                width={60 * scale}
-                height={60 * scale}
+                xml={Svgs.commentBlackIcon}
+                width={50 * scale}
+                height={50 * scale}
                 style={styles.mainIcon}
               />
               <Text style={styles.normalText}>
-                Watching shows in one convenient place all games involving your
-                favorite teams and other games you’ve marked to keep an eye on.
+                Feedback is good! OBI want to hear from you! Tap the upper right
+                hand talk bubble to send a message, comment or request for help.
               </Text>
             </View>
           </View>
@@ -71,4 +71,4 @@ const SixthScreen: React.FC<CarosuelProps> = ({ nextPage, prevPage }) => {
   );
 };
 
-export default SixthScreen;
+export default Feedback;

@@ -60,9 +60,8 @@ const MLBWatch: React.FC<Props> = ({
           base2 = false;
           base3 = false;
           return 'Middle ' + ordinalSuffixOf(data.inning);
-        } else {
-          return 'Top ' + ordinalSuffixOf(data.inning);
         }
+        return 'Top ' + ordinalSuffixOf(data.inning);
       } else if (data.inning_half === 'B') {
         if (Number(data.outs) === 3) {
           outs = undefined;
@@ -70,9 +69,8 @@ const MLBWatch: React.FC<Props> = ({
           base2 = false;
           base3 = false;
           return 'End ' + ordinalSuffixOf(data.inning);
-        } else {
-          return 'Bottom ' + ordinalSuffixOf(data.inning);
         }
+        return 'Bottom ' + ordinalSuffixOf(data.inning);
       }
     } else if (data.status === 'closed' || data.status === 'complete') {
       base1 = false;

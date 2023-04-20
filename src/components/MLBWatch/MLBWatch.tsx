@@ -59,24 +59,12 @@ const MLBWatch: React.FC<Props> = ({
           base1 = false;
           base2 = false;
           base3 = false;
-          return ordinalSuffixOf(data.inning);
-        } else if (Number(data.outs) > 3) {
-          outs = undefined;
-          base1 = false;
-          base2 = false;
-          base3 = false;
-          return 'Mid ' + ordinalSuffixOf(data.inning);
+          return 'Middle ' + ordinalSuffixOf(data.inning);
         } else {
           return 'Top ' + ordinalSuffixOf(data.inning);
         }
       } else if (data.inning_half === 'B') {
         if (Number(data.outs) === 3) {
-          outs = undefined;
-          base1 = false;
-          base2 = false;
-          base3 = false;
-          return ordinalSuffixOf(data.inning);
-        } else if (Number(data.outs) > 3) {
           outs = undefined;
           base1 = false;
           base2 = false;

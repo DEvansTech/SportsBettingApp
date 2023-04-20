@@ -70,8 +70,8 @@ const Feedback: React.FC = () => {
   useEffect(() => {
     (async () => {
       if (states?.status === 'OK') {
-        await firestore().collection('feedbacks').doc(user.uid).set(submitData);
         setIsSendFeedback(true);
+        await firestore().collection('feedbacks').doc(user.uid).set(submitData);
       } else if (states?.status === 'FAILED') {
         ToastMessage('Please send feedback again.', 'danger', 'bottom');
       }
@@ -79,6 +79,11 @@ const Feedback: React.FC = () => {
   }, [states]);
 
   useEffect(() => {
+    getUserData();
+    setIsSendFeedback(false);
+    dispatch(handleLoading(false));
+    setFeedbackText('');
+
     const unsubscribe = navigation.addListener('focus', () => {
       getUserData();
       setIsSendFeedback(false);

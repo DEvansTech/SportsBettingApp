@@ -101,7 +101,7 @@ export default StyleSheet.create({
     paddingTop: Platform.OS === 'ios' ? 190 * scale : 150 * scale,
     alignItems: 'center',
     paddingHorizontal: 40 * scale,
-    marginTop: Platform.OS === 'ios' ? 107 * scale : 60 * scale,
+    marginTop: Platform.OS === 'ios' ? 118 * scale : 60 * scale,
     zIndex: 2
   },
   loadingView: {

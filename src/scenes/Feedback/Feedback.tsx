@@ -36,11 +36,12 @@ const Feedback: React.FC = () => {
   const { states, loading } = useSelector((state: RootState) => state.feedback);
 
   const [userInfo, setUserInfo] = useState<UserType>();
-  const [isSendFeedback, setIsSendFeedback] = useState(true);
+  const [isSendFeedback, setIsSendFeedback] = useState(false);
   const [feedbackText, setFeedbackText] = useState('');
   const [submitData, setSubmitData] = useState({});
 
   const sendFeedback = async () => {
+    Keyboard.dismiss();
     await dispatch(handleLoading(true));
     const feedback = {
       uid: userInfo?.uid,
@@ -151,20 +152,22 @@ const Feedback: React.FC = () => {
           </View>
         )
       )}
-      <KeyboardAvoidingView
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        style={styles.sendBtnView}>
-        <Button
-          full
-          rounded
-          style={[
-            feedbackText === '' ? styles.sendDisBtn : styles.sendActiveBtn
-          ]}
-          disabled={feedbackText === ''}
-          onPress={sendFeedback}>
-          <Text style={styles.sendBtnText}>Send</Text>
-        </Button>
-      </KeyboardAvoidingView>
+      {!loading && (
+        <KeyboardAvoidingView
+          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+          style={styles.sendBtnView}>
+          <Button
+            full
+            rounded
+            style={[
+              feedbackText === '' ? styles.sendDisBtn : styles.sendActiveBtn
+            ]}
+            disabled={feedbackText === ''}
+            onPress={sendFeedback}>
+            <Text style={styles.sendBtnText}>Send</Text>
+          </Button>
+        </KeyboardAvoidingView>
+      )}
     </Container>
   );
 };

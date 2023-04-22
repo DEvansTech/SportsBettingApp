@@ -112,7 +112,7 @@ export const CustomDrawerContent: React.FC<DrawerContentComponentProps> = ({
         <DrawerItem
           {...itemBaseStyle}
           {...rest}
-          label="How to use ODDS-R®"
+          label="How to use"
           icon={() => (
             <Icon
               type="MaterialIcons"
@@ -142,7 +142,7 @@ export const CustomDrawerContent: React.FC<DrawerContentComponentProps> = ({
           onPress={() => navigation.navigate(Routes.FAQs)}
         /> */}
 
-        <DrawerItem
+        {/*<DrawerItem
           {...itemBaseStyle}
           {...rest}
           label="Privacy & Terms"
@@ -156,6 +156,7 @@ export const CustomDrawerContent: React.FC<DrawerContentComponentProps> = ({
           )}
           onPress={() => navigation.navigate(Routes.Privacy)}
         />
+          */}
         <DrawerItem
           {...itemBaseStyle}
           {...rest}

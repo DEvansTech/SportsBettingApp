@@ -112,7 +112,7 @@ export const CustomDrawerContent: React.FC<DrawerContentComponentProps> = ({
         <DrawerItem
           {...itemBaseStyle}
           {...rest}
-          label="How to use"
+          label="How to Use"
           icon={() => (
             <Icon
               type="MaterialIcons"

@@ -219,7 +219,6 @@ const MyAccount: React.FC = () => {
               </View>
             </View>
             <View style={styles.basicView}>
-              <Text style={styles.basicTitle}>Private Information</Text>
               <Item style={styles.itemView}>
                 <Icon
                   type="FontAwesome"

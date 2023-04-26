@@ -227,7 +227,7 @@ const AllGames: React.FC<Props> = ({ selectedDate }) => {
     };
     dispatch(getTeamsAllGamedata(selectedDate, favoriteTeams, true));
     dispatch(getSelectionAllGameData(selectedDate, mySelections, true));
-  }, [selectedDate]);
+  }, [selectedDate, isFocused]);
 
   useEffect(() => {
     const mySelections = {
@@ -253,7 +253,7 @@ const AllGames: React.FC<Props> = ({ selectedDate }) => {
   useEffect(() => {
     getFavoriteTeams();
     getSelections();
-  }, []);
+  }, [isFocused]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -267,7 +267,7 @@ const AllGames: React.FC<Props> = ({ selectedDate }) => {
 
       dispatch(getTeamsAllGamedata(selectedDate, favoriteTeams, false));
       dispatch(getSelectionAllGameData(selectedDate, mySelections, false));
-    }, 10000);
+    }, 1000);
     if (!isFocused) {
       clearInterval(interval);
     }

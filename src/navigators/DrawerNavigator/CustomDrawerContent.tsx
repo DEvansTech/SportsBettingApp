@@ -141,8 +141,7 @@ export const CustomDrawerContent: React.FC<DrawerContentComponentProps> = ({
           focused={getActiveRouteState(state.routes, state.index, Routes.FAQs)}
           onPress={() => navigation.navigate(Routes.FAQs)}
         /> */}
-
-        <DrawerItem
+        {/* <DrawerItem
           {...itemBaseStyle}
           {...rest}
           label="Privacy & Terms"
@@ -155,7 +154,7 @@ export const CustomDrawerContent: React.FC<DrawerContentComponentProps> = ({
             Routes.Privacy
           )}
           onPress={() => navigation.navigate(Routes.Privacy)}
-        />
+        /> */}
         <DrawerItem
           {...itemBaseStyle}
           {...rest}

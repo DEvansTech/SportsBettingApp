@@ -96,67 +96,69 @@ const Feedback: React.FC = () => {
   return (
     <Container style={styles.background}>
       <UserHeader name="Feedback" to={Routes.Schedule} />
-      <View style={styles.titleView}>
-        <Text style={styles.title}>
-          We welcome your questions or commments on how to improe the{' '}
-          <Text style={styles.boldTitle}>ODDS-R </Text>
-          BetIndex applicaton experience. Please drop us a note below and we
-          hope all your bets are winners!
-        </Text>
-      </View>
-      <Content contentContainerStyle={styles.contentView} scrollEnabled>
-        <View style={styles.content}>
-          <View style={styles.feedbackContent}>
-            <View style={styles.feedbackHeader}>
-              <View style={styles.toView}>
-                <Text style={styles.subjectBoldText}>TO: </Text>
-                <Text style={styles.subjectText}>ODDS-R Support Team</Text>
-              </View>
-              <View style={styles.subjectView}>
-                <Text style={styles.subjectBoldText}>SUBJECT: </Text>
-                <Text style={styles.subjectText}>
-                  Feedback from {displayName}
-                </Text>
-              </View>
-            </View>
-            <View style={styles.msgContent}>
-              <Form>
-                <Textarea
-                  bordered
-                  placeholder="Type your message here..."
-                  style={[
-                    styles.textArea,
-                    {
-                      height: !keyBoard.keyboardShown
-                        ? deviceHeight * 0.4
-                        : Platform.OS === 'android'
-                        ? deviceHeight * 0.06
-                        : deviceHeight * 0.15
-                    }
-                  ]}
-                  value={feedbackText}
-                  onChangeText={text => setFeedbackText(text)}
-                />
-              </Form>
-            </View>
-          </View>
-        </View>
-      </Content>
       {loading ? (
         <View style={styles.loadingView}>
           <LogoSpinner />
         </View>
+      ) : isSendFeedback ? (
+        <View style={styles.thanksView}>
+          <Image source={Images.check} style={styles.checkImg} />
+          <Text style={styles.thankText}>Thank You</Text>
+          <Text style={styles.messageText}>
+            Your message has been successfully sent.
+          </Text>
+        </View>
       ) : (
-        isSendFeedback && (
-          <View style={styles.thanksView}>
-            <Image source={Images.check} style={styles.checkImg} />
-            <Text style={styles.thankText}>Thank You</Text>
-            <Text style={styles.messageText}>
-              Your message has been successfully sent.
+        <>
+          <View style={styles.titleView}>
+            <Text style={styles.title}>
+              We welcome your questions or commments on how to improe the{' '}
+              <Text style={styles.boldTitle}>ODDS-R </Text>
+              BetIndex applicaton experience. Please drop us a note below and we
+              hope all your bets are winners!
             </Text>
           </View>
-        )
+          <Content contentContainerStyle={styles.contentView} scrollEnabled>
+            <View style={styles.content}>
+              <View style={styles.feedbackContent}>
+                <View style={styles.feedbackHeader}>
+                  <View style={styles.toView}>
+                    <Text style={styles.subjectBoldText}>TO: </Text>
+                    <Text style={styles.subjectText}>ODDS-R Support Team</Text>
+                  </View>
+                  <View style={styles.subjectView}>
+                    <Text style={styles.subjectBoldText}>SUBJECT: </Text>
+                    <Text style={styles.subjectText}>
+                      Feedback from {displayName}
+                    </Text>
+                  </View>
+                </View>
+                <View style={styles.msgContent}>
+                  <Form>
+                    <Textarea
+                      bordered
+                      placeholder="Type your message here..."
+                      style={[
+                        styles.textArea,
+                        {
+                          height: !keyBoard.keyboardShown
+                            ? deviceHeight * 0.4
+                            : Platform.OS === 'android'
+                            ? deviceHeight * 0.06
+                            : deviceHeight * 0.15
+                        }
+                      ]}
+                      value={feedbackText}
+                      onChangeText={text => setFeedbackText(text)}
+                    />
+                  </Form>
+                </View>
+              </View>
+            </View>
+          </Content>
+        </>
       )}
+
       {!loading && (
         <KeyboardAvoidingView
           behavior={Platform.OS === 'ios' ? 'padding' : 'height'}

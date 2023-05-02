@@ -188,7 +188,7 @@ const EmailRegister: React.FC = () => {
               </Button>
             </View>
             <View style={styles.textFooter}>
-              <Text style={styles.disclaimer}>
+              <Text style={[styles.blackLabel, styles.italicLabel]}>
                 This product is for information and entertainment purposes only.
               </Text>
             </View>

@@ -57,9 +57,16 @@ const SpreadBaseball: React.FC<SpreadProps> = ({
     changeTimer.current = setInterval(() => {
       const diff = Math.floor((Date.now() - past) / rate);
       setRangeValue(prev => {
+        if (prev + (1 + diff) < 99 && prev + (1 + diff) > -99) {
+          setCountML(countML => countML + 1);
+          return 100;
+        }
         if (prev + (1 + diff) >= 200) {
+          clearInterval(changeTimer.current);
+          changeTimer.current = null;
           return 200;
         }
+        setCountML(countML => countML + 1);
         return prev + (1 + diff);
       });
     }, 100);
@@ -70,10 +77,18 @@ const SpreadBaseball: React.FC<SpreadProps> = ({
     const rate = 500;
     changeTimer.current = setInterval(() => {
       const diff = Math.floor((Date.now() - past) / rate);
+
       setRangeValue(prev => {
+        if (prev - (1 + diff) < 99 && prev - (1 + diff) > -99) {
+          setCountML(countML => countML - 1);
+          return -100;
+        }
         if (prev - (1 + diff) <= -200) {
+          clearInterval(changeTimer.current);
+          changeTimer.current = null;
           return -200;
         }
+        setCountML(countML => countML - 1);
         return prev - (1 + diff);
       });
     }, 100);

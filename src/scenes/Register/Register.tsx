@@ -207,9 +207,9 @@ const Register: React.FC = () => {
                   </View>
                 </View>
                 <View style={styles.footerText}>
-                  <Text style={styles.blackLabel}>
-                    By continuing, you agree with our Terms of Service and
-                    Privacy Policy
+                  <Text style={[styles.blackLabel, styles.italicLabel]}>
+                    This product is for information and entertainment purposes
+                    only.
                   </Text>
                 </View>
               </View>

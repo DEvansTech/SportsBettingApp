@@ -75,6 +75,9 @@ export default StyleSheet.create({
     fontSize: 17 * scale,
     fontFamily: Fonts.regular
   },
+  italicLabel: {
+    fontStyle: 'italic'
+  },
 
   //////////EmailResgister////////
   backgroundImage: {

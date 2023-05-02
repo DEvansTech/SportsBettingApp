@@ -93,25 +93,20 @@ export default StyleSheet.create({
     color: 'white'
   },
   thanksView: {
-    position: 'absolute',
-    flex: 1,
     backgroundColor: Colors.greenTransparent,
     width: '100%',
     height: '100%',
     paddingTop: Platform.OS === 'ios' ? 190 * scale : 150 * scale,
     alignItems: 'center',
     paddingHorizontal: 40 * scale,
-    marginTop: Platform.OS === 'ios' ? 118 * scale : 60 * scale,
     zIndex: 2
   },
   loadingView: {
-    position: 'absolute',
     backgroundColor: Colors.green,
     width: '100%',
-    height: '90%',
-    alignItems: 'center',
+    height: '85%',
     paddingHorizontal: 40 * scale,
-    marginTop: 107 * scale
+    zIndex: 10
   },
   checkImg: {
     width: 140 * scale,

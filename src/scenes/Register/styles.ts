@@ -62,6 +62,14 @@ export default StyleSheet.create({
     textAlign: 'center',
     fontFamily: Fonts.regular
   },
+  disclaimer: {
+    color: 'white',
+    fontSize: 16 * scale,
+    lineHeight: 20 * scale,
+    textAlign: 'center',
+    fontFamily: Fonts.regular,
+    fontStyle: 'italic'
+  },
   buttonText: {
     color: 'white',
     fontSize: 17 * scale,

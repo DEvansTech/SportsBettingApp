@@ -188,9 +188,8 @@ const EmailRegister: React.FC = () => {
               </Button>
             </View>
             <View style={styles.textFooter}>
-              <Text style={styles.blackLabel}>
-                By continuing, you agree with our Terms of Service and Privacy
-                Policy
+              <Text style={styles.disclaimer}>
+                This product is for information and entertainment purposes only.
               </Text>
             </View>
           </View>

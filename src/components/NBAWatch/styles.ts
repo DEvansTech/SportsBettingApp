@@ -165,5 +165,8 @@ export default StyleSheet.create({
     fontSize: 8 * scale,
     textTransform: 'uppercase',
     fontFamily: Fonts.black
+  },
+  betMatchBtnGreenText: {
+    color: Colors.green
   }
 });

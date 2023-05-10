@@ -67,7 +67,8 @@ const emailRegister = async (
         email: email,
         firstName: firstName,
         lastName: lastName,
-        registerType: 'email'
+        registerType: 'email',
+        registerDate: Date.now()
       };
       firestore().collection('users').doc(response.user.uid).set(user);
     }

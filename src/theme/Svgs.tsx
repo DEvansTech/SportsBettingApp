@@ -155,54 +155,132 @@ export default {
   obiSayBlackIcon:
     '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 24.79"><path d="M16.2,6.86s0,.09,0,0h-5.1C10,6.86,9.91,6,10.26,5.54a4.69,4.69,0,0,1,3.23-1.79l.4,0A2,2,0,0,1,15.77,5a4.44,4.44,0,0,1,.42,1.82Zm8.8,0H19.92c0-.19,0-.4,0-.64a7.9,7.9,0,0,0-.83-2.95A5.65,5.65,0,0,0,13.86,0c-.27,0-.53,0-.78,0a8.63,8.63,0,0,0-6,3.36,4.66,4.66,0,0,0-.45,4.88,4.82,4.82,0,0,0,4.54,2.41h4.51a18.21,18.21,0,0,1-1.3,4h0c-.43,1.07-.41,1.92,0,2.38l-.38.57-1.84-.71.1,1c-.2.22-.4.45-.62.67C10,20.31,8.08,21.22,6.48,21a2.8,2.8,0,0,1-2.14-1.37C3,17.55,3.86,13.91,5.65,10.61H1.47c-1.8,4.16-2,8.28-.29,11a6.53,6.53,0,0,0,4.9,3.11c.26,0,.53,0,.8,0a10.69,10.69,0,0,0,7.45-3.57,19.26,19.26,0,0,0,5.14-10.53h1.46A4.24,4.24,0,0,0,25,6.86M12,14.69a.62.62,0,0,1,.45-.6.88.88,0,0,0-.62-.26.87.87,0,1,0,0,1.73.85.85,0,0,0,.63-.27.64.64,0,0,1-.46-.6m1.17-1.55v-1a3.27,3.27,0,0,0-3.4.71l.5.51a3.43,3.43,0,0,1,2.9-.18m-2.11,5.2a10.6,10.6,0,0,1-4.45-1.61,1.87,1.87,0,0,0,.43,1.73c1.65,1.32,4-.12,4-.12" style="fill:#000" transform="translate(0)"/></svg>',
   obiIcon: `
-    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 38 41" style="enable-background:new 0 0 38 41;" xml:space="preserve">
+    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+    viewBox="0 0 38 41" style="enable-background:new 0 0 38 41;" xml:space="preserve">
       <line style="fill:none;stroke:#000000;" x1="6.3" y1="6.4" x2="6.3" y2="17.1"/>
       <g>
-        <path style="fill:none;stroke:#000000;" d="M6.3,22.5v3c0,3.5,2.8,6.3,6.3,6.3h12.7c3.5,0,6.3-2.8,6.3-6.3v-3"/>
-        <path style="fill:none;stroke:#000000;" d="M0.5,17.2c0,0,0,5.2,5.8,5.2h11.1v-5.2H0.5z"/>
-        <path style="fill:none;stroke:#000000;" d="M20.6,17.2v5.2h11h0c5.8,0,5.8-5.2,5.8-5.2H20.6z"/>
-        <path style="fill:none;stroke:#000000;" d="M24.8,31.4L24.8,31.4v-4.8H13.2v4.8c0,4,2.4,7.5,5.8,9C22.4,38.9,24.8,35.5,24.8,31.4z"/>
-        <path style="fill:none;stroke:#000000;" d="M20.6,20c-0.5-0.2-1-0.3-1.6-0.3c-0.6,0-1.1,0.1-1.6,0.3"/>
-        <path style="fill:none;stroke:#000000;stroke-linecap:round;" d="M20.5,29c-0.5,0.2-1,0.3-1.5,0.3c-0.6,0-1.1-0.1-1.5-0.3"/>
-        <path style="fill:none;stroke:#000000;stroke-linecap:round;" d="M29,14c-0.8-0.8-1.7-1.2-2.6-1.2c-0.9,0-1.8,0.5-2.6,1.2"/>
-        <path style="fill:none;stroke:#000000;" d="M10.3,4.1C10,4.1,9.8,4,9.6,3.9C9.4,3.7,9.2,3.5,9.1,3.3C9,3,8.9,2.7,8.9,2.3c0-0.4,0.1-0.7,0.2-1 c0.1-0.3,0.3-0.5,0.5-0.6c0.2-0.1,0.5-0.2,0.7-0.2c0.3,0,0.5,0.1,0.7,0.2c0.2,0.1,0.4,0.4,0.5,0.6c0.1,0.3,0.2,0.6,0.2,1 c0,0.4-0.1,0.7-0.2,1c-0.1,0.3-0.3,0.5-0.5,0.6C10.8,4,10.6,4.1,10.3,4.1z"/>
-        <path style="fill:none;stroke:#000000;" d="M18.8,4.1c-0.3,0-0.5-0.1-0.7-0.2c-0.2-0.1-0.4-0.4-0.5-0.6c-0.1-0.3-0.2-0.6-0.2-1c0-0.4,0.1-0.7,0.2-1 c0.1-0.3,0.3-0.5,0.5-0.6c0.2-0.1,0.5-0.2,0.7-0.2c0.3,0,0.5,0.1,0.7,0.2c0.2,0.1,0.4,0.4,0.5,0.6c0.1,0.3,0.2,0.6,0.2,1 c0,0.4-0.1,0.7-0.2,1c-0.1,0.3-0.3,0.5-0.5,0.6C19.3,4,19,4.1,18.8,4.1z"/>
-        <polyline style="fill:none;stroke:#000000;" points="4.8,0.6 6.2,0.6 6.2,4.6"/>
-        <polyline style="fill:none;stroke:#000000;" points="13.3,0.6 14.7,0.6 14.7,4.6"/>
-        <path style="fill:none;stroke:#000000;" d="M27.2,4.1c-0.3,0-0.5-0.1-0.7-0.2c-0.2-0.1-0.4-0.4-0.5-0.6c-0.1-0.3-0.2-0.6-0.2-1c0-0.4,0.1-0.7,0.2-1 c0.1-0.3,0.3-0.5,0.5-0.6c0.2-0.1,0.5-0.2,0.7-0.2c0.3,0,0.5,0.1,0.7,0.2c0.2,0.1,0.4,0.4,0.5,0.6c0.1,0.3,0.2,0.6,0.2,1 c0,0.4-0.1,0.7-0.2,1c-0.1,0.3-0.3,0.5-0.5,0.6C27.8,4,27.5,4.1,27.2,4.1z"/>
-        <polyline style="fill:none;stroke:#000000;" points="21.8,0.6 23.2,0.6 23.2,4.6"/>
-        <polyline style="fill:none;stroke:#000000;" points="30.3,0.6 31.7,0.6 31.7,4.6"/>
-      </g>
-      <line style="fill:none;stroke:#000000;" x1="31.7" y1="6.4" x2="31.7" y2="17.1"/>
-      <g>
-      <path d="M26.4,20.2c0.3,0,0.6-0.3,0.6-0.6c0-0.3-0.3-0.6-0.6-0.6c-0.3,0-0.6,0.3-0.6,0.6C25.8,20,26.1,20.2,26.4,20.2"/>
-      <path d="M11.6,20.2c0.3,0,0.6-0.3,0.6-0.6c0-0.3-0.3-0.6-0.6-0.6c-0.3,0-0.6,0.3-0.6,0.6C11,20,11.3,20.2,11.6,20.2"/>
+        <g>
+          <path style="fill:none;stroke:#000000;" d="M6.3,22.5v3c0,3.5,2.8,6.3,6.3,6.3h12.7c3.5,0,6.3-2.8,6.3-6.3v-3"/>
+        </g>
+        <g>
+          <path style="fill:none;stroke:#000000;" d="M0.5,17.2c0,0,0,5.2,5.8,5.2h11.1v-5.2H0.5z"/>
+        </g>
+        <g>
+          <path style="fill:none;stroke:#000000;" d="M20.6,17.2v5.2h11l0,0c5.8,0,5.8-5.2,5.8-5.2H20.6z"/>
+        </g>
+        <g>
+          <path style="fill:none;stroke:#000000;" d="M24.8,31.4L24.8,31.4v-4.8H13.2v4.8c0,4,2.4,7.5,5.8,9C22.4,38.9,24.8,35.5,24.8,31.4z"/>
+        </g>
+        <g>
+          <path style="fill:none;stroke:#000000;" d="M20.6,20c-0.5-0.2-1-0.3-1.6-0.3s-1.1,0.1-1.6,0.3"/>
+        </g>
+        <g>
+          <path style="fill:none;stroke:#000000;stroke-linecap:round;" d="M20.5,29c-0.5,0.2-1,0.3-1.5,0.3c-0.6,0-1.1-0.1-1.5-0.3"/>
+        </g>
+        <g>
+          <path style="fill:none;stroke:#000000;stroke-linecap:round;" d="M29,14c-0.8-0.8-1.7-1.2-2.6-1.2s-1.8,0.5-2.6,1.2"/>
+        </g>
+        <g>
+          <path style="fill:none;stroke:#000000;" d="M10.3,4.1C10,4.1,9.8,4,9.6,3.9C9.4,3.7,9.2,3.5,9.1,3.3C9,3,8.9,2.7,8.9,2.3s0.1-0.7,0.2-1
+            C9.2,1,9.4,0.8,9.6,0.7s0.5-0.2,0.7-0.2c0.3,0,0.5,0.1,0.7,0.2s0.4,0.4,0.5,0.6c0.1,0.3,0.2,0.6,0.2,1s-0.1,0.7-0.2,1
+            c-0.1,0.3-0.3,0.5-0.5,0.6C10.8,4,10.6,4.1,10.3,4.1z"/>
+        </g>
+        <g>
+          <path style="fill:none;stroke:#000000;" d="M18.8,4.1c-0.3,0-0.5-0.1-0.7-0.2c-0.2-0.1-0.4-0.4-0.5-0.6c-0.1-0.3-0.2-0.6-0.2-1s0.1-0.7,0.2-1
+            s0.3-0.5,0.5-0.6s0.5-0.2,0.7-0.2c0.3,0,0.5,0.1,0.7,0.2s0.4,0.4,0.5,0.6c0.1,0.3,0.2,0.6,0.2,1S20.1,3,20,3.3s-0.3,0.5-0.5,0.6
+            C19.3,4,19,4.1,18.8,4.1z"/>
+        </g>
+        <g>
+          <polyline style="fill:none;stroke:#000000;" points="4.8,0.6 6.2,0.6 6.2,4.6 		"/>
+        </g>
+        <g>
+          <polyline style="fill:none;stroke:#000000;" points="13.3,0.6 14.7,0.6 14.7,4.6 		"/>
+        </g>
+        <g>
+          <path style="fill:none;stroke:#000000;" d="M27.2,4.1c-0.3,0-0.5-0.1-0.7-0.2c-0.2-0.1-0.4-0.4-0.5-0.6c-0.1-0.3-0.2-0.6-0.2-1s0.1-0.7,0.2-1
+            s0.3-0.5,0.5-0.6s0.5-0.2,0.7-0.2c0.3,0,0.5,0.1,0.7,0.2s0.4,0.4,0.5,0.6c0.1,0.3,0.2,0.6,0.2,1s-0.1,0.7-0.2,1s-0.3,0.5-0.5,0.6
+            C27.8,4,27.5,4.1,27.2,4.1z"/>
+        </g>
+        <g>
+          <polyline style="fill:none;stroke:#000000;" points="21.8,0.6 23.2,0.6 23.2,4.6 		"/>
+        </g>
+        <g>
+          <polyline style="fill:none;stroke:#000000;" points="30.3,0.6 31.7,0.6 31.7,4.6 		"/>
+        </g>
+        </g>
+        <line style="fill:none;stroke:#000000;" x1="31.7" y1="6.4" x2="31.7" y2="17.1"/>
+        <g>
+        <g>
+          <circle style="fill:none;stroke:#000000;stroke-width:0.7;" cx="26.4" cy="19.6" r="0.3"/>
+        </g>
+        <g>
+          <circle style="fill:none;stroke:#000000;stroke-width:0.7;" cx="11.6" cy="19.6" r="0.3"/>
+        </g>
       </g>
     </svg>
   `,
   obiGreenIcon: `
-    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 38 41" style="enable-background:new 0 0 38 41;" xml:space="preserve">
+    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+    viewBox="0 0 38 41" style="enable-background:new 0 0 38 41;" xml:space="preserve">
       <line style="fill:none;stroke:#6CC04A;" x1="6.3" y1="6.4" x2="6.3" y2="17.1"/>
       <g>
-        <path style="fill:none;stroke:#6CC04A;" d="M6.3,22.5v3c0,3.5,2.8,6.3,6.3,6.3h12.7c3.5,0,6.3-2.8,6.3-6.3v-3"/>
-        <path style="fill:none;stroke:#6CC04A;" d="M0.5,17.2c0,0,0,5.2,5.8,5.2h11.1v-5.2H0.5z"/>
-        <path style="fill:none;stroke:#6CC04A;" d="M20.6,17.2v5.2h11h0c5.8,0,5.8-5.2,5.8-5.2H20.6z"/>
-        <path style="fill:none;stroke:#6CC04A;" d="M24.8,31.4L24.8,31.4v-4.8H13.2v4.8c0,4,2.4,7.5,5.8,9C22.4,38.9,24.8,35.5,24.8,31.4z"/>
-        <path style="fill:none;stroke:#6CC04A;" d="M20.6,20c-0.5-0.2-1-0.3-1.6-0.3c-0.6,0-1.1,0.1-1.6,0.3"/>
-        <path style="fill:none;stroke:#6CC04A;stroke-linecap:round;" d="M20.5,29c-0.5,0.2-1,0.3-1.5,0.3c-0.6,0-1.1-0.1-1.5-0.3"/>
-        <path style="fill:none;stroke:#6CC04A;stroke-linecap:round;" d="M29,14c-0.8-0.8-1.7-1.2-2.6-1.2c-0.9,0-1.8,0.5-2.6,1.2"/>
-        <path style="fill:none;stroke:#6CC04A;" d="M10.3,4.1C10,4.1,9.8,4,9.6,3.9C9.4,3.7,9.2,3.5,9.1,3.3C9,3,8.9,2.7,8.9,2.3c0-0.4,0.1-0.7,0.2-1 c0.1-0.3,0.3-0.5,0.5-0.6c0.2-0.1,0.5-0.2,0.7-0.2c0.3,0,0.5,0.1,0.7,0.2c0.2,0.1,0.4,0.4,0.5,0.6c0.1,0.3,0.2,0.6,0.2,1 c0,0.4-0.1,0.7-0.2,1c-0.1,0.3-0.3,0.5-0.5,0.6C10.8,4,10.6,4.1,10.3,4.1z"/>
-        <path style="fill:none;stroke:#6CC04A;" d="M18.8,4.1c-0.3,0-0.5-0.1-0.7-0.2c-0.2-0.1-0.4-0.4-0.5-0.6c-0.1-0.3-0.2-0.6-0.2-1c0-0.4,0.1-0.7,0.2-1 c0.1-0.3,0.3-0.5,0.5-0.6c0.2-0.1,0.5-0.2,0.7-0.2c0.3,0,0.5,0.1,0.7,0.2c0.2,0.1,0.4,0.4,0.5,0.6c0.1,0.3,0.2,0.6,0.2,1 c0,0.4-0.1,0.7-0.2,1c-0.1,0.3-0.3,0.5-0.5,0.6C19.3,4,19,4.1,18.8,4.1z"/>
-        <polyline style="fill:none;stroke:#6CC04A;" points="4.8,0.6 6.2,0.6 6.2,4.6"/>
-        <polyline style="fill:none;stroke:#6CC04A;" points="13.3,0.6 14.7,0.6 14.7,4.6"/>
-        <path style="fill:none;stroke:#6CC04A;" d="M27.2,4.1c-0.3,0-0.5-0.1-0.7-0.2c-0.2-0.1-0.4-0.4-0.5-0.6c-0.1-0.3-0.2-0.6-0.2-1c0-0.4,0.1-0.7,0.2-1 c0.1-0.3,0.3-0.5,0.5-0.6c0.2-0.1,0.5-0.2,0.7-0.2c0.3,0,0.5,0.1,0.7,0.2c0.2,0.1,0.4,0.4,0.5,0.6c0.1,0.3,0.2,0.6,0.2,1 c0,0.4-0.1,0.7-0.2,1c-0.1,0.3-0.3,0.5-0.5,0.6C27.8,4,27.5,4.1,27.2,4.1z"/>
-        <polyline style="fill:none;stroke:#6CC04A;" points="21.8,0.6 23.2,0.6 23.2,4.6"/>
-        <polyline style="fill:none;stroke:#6CC04A;" points="30.3,0.6 31.7,0.6 31.7,4.6"/>
-      </g>
-      <line style="fill:none;stroke:#6CC04A;" x1="31.7" y1="6.4" x2="31.7" y2="17.1"/>
-      <g>
-      <path d="M26.4,20.2c0.3,0,0.6-0.3,0.6-0.6c0-0.3-0.3-0.6-0.6-0.6c-0.3,0-0.6,0.3-0.6,0.6C25.8,20,26.1,20.2,26.4,20.2"/>
-      <path d="M11.6,20.2c0.3,0,0.6-0.3,0.6-0.6c0-0.3-0.3-0.6-0.6-0.6c-0.3,0-0.6,0.3-0.6,0.6C11,20,11.3,20.2,11.6,20.2"/>
+        <g>
+          <path style="fill:none;stroke:#6CC04A;" d="M6.3,22.5v3c0,3.5,2.8,6.3,6.3,6.3h12.7c3.5,0,6.3-2.8,6.3-6.3v-3"/>
+        </g>
+        <g>
+          <path style="fill:none;stroke:#6CC04A;" d="M0.5,17.2c0,0,0,5.2,5.8,5.2h11.1v-5.2H0.5z"/>
+        </g>
+        <g>
+          <path style="fill:none;stroke:#6CC04A;" d="M20.6,17.2v5.2h11l0,0c5.8,0,5.8-5.2,5.8-5.2H20.6z"/>
+        </g>
+        <g>
+          <path style="fill:none;stroke:#6CC04A;" d="M24.8,31.4L24.8,31.4v-4.8H13.2v4.8c0,4,2.4,7.5,5.8,9C22.4,38.9,24.8,35.5,24.8,31.4z"/>
+        </g>
+        <g>
+          <path style="fill:none;stroke:#6CC04A;" d="M20.6,20c-0.5-0.2-1-0.3-1.6-0.3s-1.1,0.1-1.6,0.3"/>
+        </g>
+        <g>
+          <path style="fill:none;stroke:#6CC04A;stroke-linecap:round;" d="M20.5,29c-0.5,0.2-1,0.3-1.5,0.3c-0.6,0-1.1-0.1-1.5-0.3"/>
+        </g>
+        <g>
+          <path style="fill:none;stroke:#6CC04A;stroke-linecap:round;" d="M29,14c-0.8-0.8-1.7-1.2-2.6-1.2s-1.8,0.5-2.6,1.2"/>
+        </g>
+        <g>
+          <path style="fill:none;stroke:#6CC04A;" d="M10.3,4.1C10,4.1,9.8,4,9.6,3.9C9.4,3.7,9.2,3.5,9.1,3.3C9,3,8.9,2.7,8.9,2.3s0.1-0.7,0.2-1
+            C9.2,1,9.4,0.8,9.6,0.7s0.5-0.2,0.7-0.2c0.3,0,0.5,0.1,0.7,0.2s0.4,0.4,0.5,0.6c0.1,0.3,0.2,0.6,0.2,1s-0.1,0.7-0.2,1
+            c-0.1,0.3-0.3,0.5-0.5,0.6C10.8,4,10.6,4.1,10.3,4.1z"/>
+        </g>
+        <g>
+          <path style="fill:none;stroke:#6CC04A;" d="M18.8,4.1c-0.3,0-0.5-0.1-0.7-0.2c-0.2-0.1-0.4-0.4-0.5-0.6c-0.1-0.3-0.2-0.6-0.2-1s0.1-0.7,0.2-1
+            s0.3-0.5,0.5-0.6s0.5-0.2,0.7-0.2c0.3,0,0.5,0.1,0.7,0.2s0.4,0.4,0.5,0.6c0.1,0.3,0.2,0.6,0.2,1S20.1,3,20,3.3s-0.3,0.5-0.5,0.6
+            C19.3,4,19,4.1,18.8,4.1z"/>
+        </g>
+        <g>
+          <polyline style="fill:none;stroke:#6CC04A;" points="4.8,0.6 6.2,0.6 6.2,4.6 		"/>
+        </g>
+        <g>
+          <polyline style="fill:none;stroke:#6CC04A;" points="13.3,0.6 14.7,0.6 14.7,4.6 		"/>
+        </g>
+        <g>
+          <path style="fill:none;stroke:#6CC04A;" d="M27.2,4.1c-0.3,0-0.5-0.1-0.7-0.2c-0.2-0.1-0.4-0.4-0.5-0.6c-0.1-0.3-0.2-0.6-0.2-1s0.1-0.7,0.2-1
+            s0.3-0.5,0.5-0.6s0.5-0.2,0.7-0.2c0.3,0,0.5,0.1,0.7,0.2s0.4,0.4,0.5,0.6c0.1,0.3,0.2,0.6,0.2,1s-0.1,0.7-0.2,1s-0.3,0.5-0.5,0.6
+            C27.8,4,27.5,4.1,27.2,4.1z"/>
+        </g>
+        <g>
+          <polyline style="fill:none;stroke:#6CC04A;" points="21.8,0.6 23.2,0.6 23.2,4.6 		"/>
+        </g>
+        <g>
+          <polyline style="fill:none;stroke:#6CC04A;" points="30.3,0.6 31.7,0.6 31.7,4.6 		"/>
+        </g>
+        </g>
+        <line style="fill:none;stroke:#6CC04A;" x1="31.7" y1="6.4" x2="31.7" y2="17.1"/>
+        <g>
+        <g>
+          <circle style="fill:none;stroke:#6CC04A;stroke-width:0.7;" cx="26.4" cy="19.6" r="0.3"/>
+        </g>
+        <g>
+          <circle style="fill:none;stroke:#6CC04A;stroke-width:0.7;" cx="11.6" cy="19.6" r="0.3"/>
+        </g>
       </g>
     </svg>
   `,
@@ -220,8 +298,23 @@ export default {
   //--schedule ---//
   glassBlackIcon:
     '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 43 16.4"><circle cx="11" cy="8.2" r="7.7" style="fill:none;stroke:#000"/><circle cx="32" cy="8.2" r="7.7" style="fill:none;stroke:#000"/><path d="M25.83,9.81a2.8,2.8,0,1,0-5.6,0" transform="translate(-1.53 -1.61)" style="fill:none;stroke:#000"/><line x1="0.5" y1="8.2" x2="3.3" y2="8.2" style="fill:none;stroke:#000;stroke-linecap:round"/><line x1="39.7" y1="8.2" x2="42.5" y2="8.2" style="fill:none;stroke:#000;stroke-linecap:round"/></svg>',
-  glassGreenIcon:
-    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 17.4"><circle cx="11.5" cy="8.7" r="7.7" style="fill:none;stroke:#6cc04a;stroke-width:2px"/><circle cx="32.5" cy="8.7" r="7.7" style="fill:none;stroke:#6cc04a;stroke-width:2px"/><path d="M25.83,9.81a2.8,2.8,0,1,0-5.6,0" transform="translate(-1.03 -1.11)" style="fill:none;stroke:#6cc04a;stroke-width:2px"/><line x1="1" y1="8.7" x2="3.8" y2="8.7" style="fill:none;stroke:#6cc04a;stroke-linecap:round;stroke-width:2px"/><line x1="40.2" y1="8.7" x2="43" y2="8.7" style="fill:none;stroke:#6cc04a;stroke-linecap:round;stroke-width:2px"/></svg>',
+  glassGreenIcon: `
+    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 42.5 16" style="enable-background:new 0 0 42.5 16;" xml:space="preserve">
+      <g>
+        <path style="fill:#6CC04A;" d="M10,15.5c4.1,0,7.5-3.4,7.5-7.5S14.1,0.5,10,0.5S2.5,3.9,2.5,8S5.9,15.5,10,15.5"/>
+        <circle style="fill:none;stroke:#6CC04A;" cx="10" cy="8" r="7.5"/>
+        <path style="fill:#6CC04A;" d="M32,15.5c4.1,0,7.5-3.4,7.5-7.5S36.1,0.5,32,0.5S24.5,3.9,24.5,8S27.9,15.5,32,15.5"/>
+        <circle style="fill:none;stroke:#6CC04A;" cx="32" cy="8" r="7.5"/>
+        <path style="fill:none;stroke:#6CC04A;" d="M24.5,8c0-1.9-1.6-3.5-3.5-3.5S17.5,6.1,17.5,8"/>
+        <line style="fill:none;stroke:#6CC04A;stroke-linecap:round;" x1="0.5" y1="8" x2="2.5" y2="8"/>
+        <line style="fill:none;stroke:#6CC04A;stroke-linecap:round;" x1="40" y1="8" x2="42" y2="8"/>
+        <path style="fill:#6CC04A;" d="M10,14.5c3.6,0,6.5-2.9,6.5-6.5S13.6,1.5,10,1.5S3.5,4.4,3.5,8S6.4,14.5,10,14.5"/>
+        <circle style="fill:none;stroke:#FFFFFF;" cx="10" cy="8" r="6.5"/>
+        <path style="fill:#6CC04A;" d="M32,14.5c3.6,0,6.5-2.9,6.5-6.5S35.6,1.5,32,1.5c-3.6,0-6.5,2.9-6.5,6.5S28.4,14.5,32,14.5"/>
+        <circle style="fill:none;stroke:#FFFFFF;" cx="32" cy="8" r="6.5"/>
+      </g>
+    </svg>
+  `,
   lineRaterBlackIcon:
     '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27.6 19"><path d="M11.45,28.72" transform="translate(-11.16 -15.25)" style="fill:none;stroke:#373535;stroke-linecap:round"/><line x1="24.5" y1="13.48" x2="27.1" y2="13.48" style="fill:none;stroke:#373535;stroke-linecap:round"/><line x1="0.5" y1="13.48" x2="3.1" y2="13.48" style="fill:none;stroke:#373535;stroke-linecap:round"/><line x1="16.87" y1="13.48" x2="27.1" y2="13.48" style="fill:none;stroke:#373535;stroke-linecap:round"/><line x1="0.5" y1="13.48" x2="10.73" y2="13.48" style="fill:none;stroke:#373535;stroke-linecap:round"/><line x1="7.26" y1="1.98" x2="8.35" y2="4.18" style="fill:none;stroke:#373535;stroke-linecap:round"/><line x1="2.31" y1="6.93" x2="4.51" y2="8.02" style="fill:none;stroke:#373535;stroke-linecap:round"/><line x1="19.26" y1="4.18" x2="20.35" y2="1.98" style="fill:none;stroke:#373535;stroke-linecap:round"/><line x1="23.1" y1="8.02" x2="25.29" y2="6.93" style="fill:none;stroke:#373535;stroke-linecap:round"/><path d="M25,33.75a3,3,0,0,0,3-3c0-1.66-3-15-3-15s-3,13.34-3,15A3,3,0,0,0,25,33.75Z" transform="translate(-11.16 -15.25)" style="fill:none;stroke:#373535;stroke-linejoin:round"/></svg>',
   lineRaterGreenIcon:
@@ -316,6 +409,43 @@ export default {
       <g>
       <path style="fill:#FFFFFF;" d="M108,44.3c8.8,0,16-7.2,16-16c0-8.8-7.2-16-16-16s-16,7.2-16,16C92,37.1,99.2,44.3,108,44.3"/>
       </g>
+    </svg>
+  `,
+  sidebarAccountIcon: `
+    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+    viewBox="0 0 21 21" style="enable-background:new 0 0 21 21;" xml:space="preserve">
+      <g>
+      <path style="fill:none;stroke:#FFFFFF;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" d="M20.5,20.5v-2.4c0-2.6-2.2-4.6-5-4.6h-10c-2.8,0-5,2.1-5,4.6v2.4"/>
+      <circle style="fill:none;stroke:#FFFFFF;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" cx="10.5" cy="5.4" r="4.9"/>
+      </g>
+    </svg>
+  `,
+  sidebarCancelIcon: `
+    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+    viewBox="0 0 21 21" style="enable-background:new 0 0 21 21;" xml:space="preserve">
+      <g>
+      <circle style="fill:none;stroke:#FFFFFF;" cx="10.5" cy="10.5" r="10"/>
+      </g>
+      <line style="fill:none;stroke:#FFFFFF;stroke-linecap:round;" x1="17.2" y1="3.8" x2="3.8" y2="17.2"/>
+    </svg>
+  `,
+  sidebarLogoutIcon: `
+    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+    viewBox="0 0 21 21" style="enable-background:new 0 0 21 21;" xml:space="preserve">
+      <g>
+        <path style="fill:none;stroke:#FFFFFF;" d="M3.5,0.5c-1.7,0-3,1.3-3,3v14c0,1.7,1.3,3,3,3h4.8c1.7,0,3-1.3,3-3v-14c0-1.7-1.3-3-3-3H3.5z"/>
+        <polyline style="fill:none;stroke:#FFFFFF;stroke-linecap:round;stroke-linejoin:round;" points="15.2,4.9 20.5,10.5 15.2,16.1 "/>
+        <line style="fill:none;stroke:#FFFFFF;stroke-linecap:round;" x1="6" y1="10.5" x2="20.1" y2="10.5"/>
+      </g>
+    </svg>
+  `,
+  sidebarHowIcon: `
+    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+    viewBox="0 0 21 21" style="enable-background:new 0 0 21 21;" xml:space="preserve">
+      <g>
+      <circle style="fill:none;stroke:#FFFFFF;" class="st0" cx="10.5" cy="10.5" r="10"/>
+      </g>
+      <polygon style="fill:none;stroke:#FFFFFF;stroke-linecap:round;stroke-linejoin:round;" points="8.1,5.5 8.1,15.5 15.9,10.5 "/>
     </svg>
   `
 };

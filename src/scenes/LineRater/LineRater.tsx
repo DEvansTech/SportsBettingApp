@@ -161,7 +161,7 @@ const LineRater: React.FC<Props> = props => {
                   Spread
                 </Text>
               </TouchableOpacity>
-              <TouchableOpacity
+              {/* <TouchableOpacity
                 style={[
                   styles.segementBtn,
                   segementBtn === 'win' ? styles.activeBtn : styles.disactiveBtn
@@ -176,7 +176,7 @@ const LineRater: React.FC<Props> = props => {
                   ]}>
                   Win
                 </Text>
-              </TouchableOpacity>
+              </TouchableOpacity> */}
               <TouchableOpacity
                 style={[
                   styles.segementBtn,
@@ -212,13 +212,13 @@ const LineRater: React.FC<Props> = props => {
                 )}
               </>
             )}
-            {segementBtn === 'win' && (
+            {/* {segementBtn === 'win' && (
               <Win
                 gameData={gameData}
                 selectedAwayTeam={selectedAwayTeam}
                 selectedHomeTeam={selectedHomeTeam}
               />
-            )}
+            )} */}
             {segementBtn === 'ou' && <OverUnder gameData={gameData} />}
           </>
         )}

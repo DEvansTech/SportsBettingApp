@@ -7,4 +7,10 @@ export type UserType = {
   password?: string;
   repassword?: string;
   introPage?: boolean;
+  registerDate?: number;
+  subscription?: {
+    expiresDate: number;
+    productItem: string;
+    purchaseDate: string;
+  };
 };

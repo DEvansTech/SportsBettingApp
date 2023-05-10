@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import {
   DrawerContentScrollView,
   DrawerItem,
@@ -7,12 +7,15 @@ import {
 import { TouchableOpacity } from 'react-native';
 import { Icon, View } from 'native-base';
 import { DrawerActions } from '@react-navigation/native';
+import { SvgXml } from 'react-native-svg';
 
 import { AuthContext, AuthContextType } from '@Context/AuthContext';
 import { MainContext, MainContextType } from '@Context/MainContext';
 import LogoSidebar from './LogoSidebar';
+import { ModalCancelAccount } from '@Components';
+import { Svgs } from '@Theme';
 import { Routes } from '@Navigators/routes';
-import styles from './styles';
+import styles, { scale } from './styles';
 
 const getActiveRouteState = (
   routes: any,
@@ -32,6 +35,7 @@ export const CustomDrawerContent: React.FC<DrawerContentComponentProps> = ({
     labelStyle: styles.label,
     style: styles.itemContainer
   };
+  const [isCancelAccountModal, setIsCancelAccountModal] = useState(false);
 
   const logOut = () => {
     if (user) {
@@ -42,6 +46,10 @@ export const CustomDrawerContent: React.FC<DrawerContentComponentProps> = ({
     setTimeout(() => {
       navigation.navigate(Routes.Splash);
     }, 1000);
+  };
+
+  const cancelAccount = () => {
+    setIsCancelAccountModal(!isCancelAccountModal);
   };
 
   return (
@@ -96,10 +104,10 @@ export const CustomDrawerContent: React.FC<DrawerContentComponentProps> = ({
           {...rest}
           label="My Account"
           icon={() => (
-            <Icon
-              type="MaterialCommunityIcons"
-              name="account-cog-outline"
-              style={styles.icon}
+            <SvgXml
+              xml={Svgs.sidebarAccountIcon}
+              width={25 * scale}
+              height={25 * scale}
             />
           )}
           focused={getActiveRouteState(
@@ -114,10 +122,10 @@ export const CustomDrawerContent: React.FC<DrawerContentComponentProps> = ({
           {...rest}
           label="How to Use"
           icon={() => (
-            <Icon
-              type="MaterialIcons"
-              name="info-outline"
-              style={styles.icon}
+            <SvgXml
+              xml={Svgs.sidebarHowIcon}
+              width={25 * scale}
+              height={25 * scale}
             />
           )}
           focused={getActiveRouteState(
@@ -162,10 +170,10 @@ export const CustomDrawerContent: React.FC<DrawerContentComponentProps> = ({
           {...rest}
           label="Logout"
           icon={() => (
-            <Icon
-              type="MaterialCommunityIcons"
-              name="logout"
-              style={styles.icon}
+            <SvgXml
+              xml={Svgs.sidebarLogoutIcon}
+              width={25 * scale}
+              height={25 * scale}
             />
           )}
           focused={getActiveRouteState(
@@ -175,7 +183,24 @@ export const CustomDrawerContent: React.FC<DrawerContentComponentProps> = ({
           )}
           onPress={logOut}
         />
+        <DrawerItem
+          {...itemBaseStyle}
+          {...rest}
+          label="Cancel Account"
+          icon={() => (
+            <SvgXml
+              xml={Svgs.sidebarCancelIcon}
+              width={25 * scale}
+              height={25 * scale}
+            />
+          )}
+          onPress={cancelAccount}
+        />
       </View>
+      <ModalCancelAccount
+        isModalVisible={isCancelAccountModal}
+        toggleModal={cancelAccount}
+      />
     </DrawerContentScrollView>
   );
 };

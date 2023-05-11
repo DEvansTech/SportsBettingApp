@@ -335,7 +335,7 @@ const NCAABWatch: React.FC<Props> = ({
                       styles.betMatchBtnText,
                       pressGlass && styles.betMatchBtnGreenText
                     ]}>
-                    WATCHING
+                    WATCH
                   </Text>
                 </View>
               </TouchableHighlight>

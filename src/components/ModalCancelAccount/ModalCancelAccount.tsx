@@ -3,26 +3,28 @@ import { Icon, View, Text } from 'native-base';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 import Modal from 'react-native-modal';
+import { useNavigation } from '@react-navigation/core';
+import { StackNavigationProp } from '@react-navigation/stack';
 import { TouchableOpacity, Linking, Platform } from 'react-native';
 import { SvgXml } from 'react-native-svg';
 
 import { AuthContext, AuthContextType } from '@Context/AuthContext';
 import { Props } from './types';
 import styles, { scale } from './styles';
+import { Routes } from '@Navigators/routes';
 import { Svgs } from '@Theme';
 
 const ModalCancelAccount: React.FC<Props> = ({
   isModalVisible,
   toggleModal
 }) => {
-  const { logout } = useContext(AuthContext) as AuthContextType;
+  const navigation = useNavigation<StackNavigationProp<any, any>>();
+  const { user, setUser } = useContext(AuthContext) as AuthContextType;
 
   const cancelAccount = async () => {
-    let user = auth().currentUser;
     if (user) {
       const docRef = await firestore().collection('users').doc(user.uid);
-      const personalData = (await docRef.get()).data();
-
+      // const personalData = (await docRef.get()).data();
       const userData = {
         cancellationDate: Date.now()
       };
@@ -32,19 +34,26 @@ const ModalCancelAccount: React.FC<Props> = ({
         }
       });
       await user.delete();
-      if (personalData?.subscription) {
-        const { subscription } = personalData;
-        if (Platform.OS === 'android') {
-          Linking.openURL(
-            `https://play.google.com/store/account/subscriptions?package=com.pss.oddsr&sku=${subscription.productItem}`
-          );
-        } else {
-          Linking.openURL('https://apps.apple.com/account/subscriptions');
-        }
-      }
-
-      await logout();
+      // if (personalData?.subscription) {
+      //   const { subscription } = personalData;
+      //   if (Platform.OS === 'android') {
+      //     Linking.openURL(
+      //       `https://play.google.com/store/account/subscriptions?package=com.pss.oddsr&sku=${subscription.productItem}`
+      //     );
+      //   } else {
+      //     Linking.openURL('https://apps.apple.com/account/subscriptions');
+      //   }
+      // }
+      await logOut();
     }
+  };
+
+  const logOut = () => {
+    if (user) {
+      setUser(null);
+    }
+    toggleModal();
+    navigation.navigate(Routes.Splash);
   };
 
   return (

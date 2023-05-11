@@ -9,7 +9,7 @@ import { AuthContext, AuthContextType } from '@Context/AuthContext';
 import { Routes } from '@Navigators/routes';
 
 const Loading: React.FC = () => {
-  const { validate } = useInAppPurchase();
+  // const { validate } = useInAppPurchase();
   const navigation = useNavigation<StackNavigationProp<any, any>>();
   const { user } = useContext(AuthContext) as AuthContextType;
 
@@ -27,8 +27,9 @@ const Loading: React.FC = () => {
 
   useEffect(() => {
     (async function () {
-      const valid = await validate(true);
-      if (valid) {
+      navigation.navigate(Routes.Splash);
+      // const valid = await validate(true);
+      if (true) {
         const showIntroPage = await getIntroPageState();
         if (!showIntroPage || showIntroPage === undefined) {
           navigation.navigate(Routes.Introduction);

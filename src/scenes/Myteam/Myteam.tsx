@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { useNavigation } from '@react-navigation/core';
-
+import { useIsFocused } from '@react-navigation/native';
 import { TouchableOpacity } from 'react-native';
 import {
   Container,
@@ -28,6 +28,7 @@ import styles from './styles';
 
 const Myteam: React.FC = () => {
   const dispatch = useDispatch();
+  const isFocused = useIsFocused();
   const navigation = useNavigation<StackNavigationProp<any, any>>();
   const { user } = useContext(AuthContext) as AuthContextType;
   const { sportName } = useContext(MainContext) as MainContextType;
@@ -132,10 +133,9 @@ const Myteam: React.FC = () => {
   };
 
   useEffect(() => {
-    const unsubscribe = navigation.addListener('focus', () => {
+    if (isFocused) {
       getFavoriteTeams();
-    });
-    return unsubscribe;
+    }
   }, [navigation]);
 
   useEffect(() => {

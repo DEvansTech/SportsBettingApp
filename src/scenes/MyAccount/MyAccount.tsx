@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
+import { useIsFocused } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import {
   Container,
@@ -27,7 +28,7 @@ import { Routes } from '@Navigators/routes';
 
 const MyAccount: React.FC = () => {
   const navigation = useNavigation<StackNavigationProp<any, any>>();
-
+  const isFocused = useIsFocused();
   const { user } = useContext(AuthContext) as AuthContextType;
   const { currentProductId, expiresDate, purchaseDate, validate } =
     useInAppPurchase();
@@ -138,10 +139,9 @@ const MyAccount: React.FC = () => {
   }, [userInfo]);
 
   useEffect(() => {
-    const unsubscribe = navigation.addListener('focus', () => {
+    if (isFocused) {
       getUserData();
-    });
-    return unsubscribe;
+    }
   }, [navigation]);
 
   useEffect(() => {

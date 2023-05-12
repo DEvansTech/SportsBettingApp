@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { Image, Keyboard, KeyboardAvoidingView, Platform } from 'react-native';
+import { useIsFocused } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
 import { useKeyboard } from '@react-native-community/hooks';
 import {
@@ -28,7 +29,7 @@ import { Routes } from '@Navigators/routes';
 
 const Feedback: React.FC = () => {
   const keyBoard = useKeyboard();
-
+  const isFocused = useIsFocused();
   const navigation = useNavigation<StackNavigationProp<any, any>>();
   const dispatch = useDispatch();
 
@@ -79,18 +80,12 @@ const Feedback: React.FC = () => {
   }, [states]);
 
   useEffect(() => {
-    getUserData();
-    setIsSendFeedback(false);
-    dispatch(handleLoading(false));
-    setFeedbackText('');
-
-    const unsubscribe = navigation.addListener('focus', () => {
+    if (isFocused) {
       getUserData();
       setIsSendFeedback(false);
       dispatch(handleLoading(false));
       setFeedbackText('');
-    });
-    return unsubscribe;
+    }
   }, [navigation]);
 
   return (

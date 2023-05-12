@@ -20,7 +20,7 @@ const Loading: React.FC = () => {
         .doc(user.uid)
         .get()
         .then((doc: any) => {
-          return doc.data().introPage;
+          return doc.data()?.introPage;
         });
     }
   };

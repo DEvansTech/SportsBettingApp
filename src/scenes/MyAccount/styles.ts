@@ -111,9 +111,6 @@ export default StyleSheet.create({
   buttonText: {
     fontFamily: Fonts.regular
   },
-  disabledView: {
-    opacity: 0.5
-  },
   subscriptionView: {
     flexDirection: 'row',
     justifyContent: 'space-between',

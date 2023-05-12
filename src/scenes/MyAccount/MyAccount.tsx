@@ -16,7 +16,7 @@ import {
 import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
 
-import useInAppPurchase from '@Lib/useInAppPurchase';
+// import useInAppPurchase from '@Lib/useInAppPurchase';
 import { AuthContext, AuthContextType } from '@Context/AuthContext';
 import { UserHeader, LogoSpinner } from '@Components';
 import { ToastMessage } from '@Lib/function';
@@ -24,14 +24,14 @@ import { timeStamptoDate, timeStamptoDateTime } from '@Lib/utilities';
 
 import { UserType } from './types';
 import styles from './styles';
-import { Routes } from '@Navigators/routes';
+// import { Routes } from '@Navigators/routes';
 
 const MyAccount: React.FC = () => {
   const navigation = useNavigation<StackNavigationProp<any, any>>();
   const isFocused = useIsFocused();
   const { user } = useContext(AuthContext) as AuthContextType;
-  const { currentProductId, expiresDate, purchaseDate, validate } =
-    useInAppPurchase();
+  // const { currentProductId, expiresDate, purchaseDate, validate } =
+  //   useInAppPurchase();
 
   const [userInfo, setUserInfo] = useState<UserType>();
   const [initUserInfo, setInitUserInfo] = useState<UserType>();
@@ -52,7 +52,7 @@ const MyAccount: React.FC = () => {
     }
     let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
     if (userInfo?.email && reg.test(userInfo?.email) === false) {
-      ToastMessage('Email is Not Correct', 'danger', 'bottom');
+      ToastMessage('Email is not correct', 'danger', 'bottom');
       return;
     } else {
       userData.email = userInfo?.email;
@@ -78,7 +78,7 @@ const MyAccount: React.FC = () => {
       auth()
         .currentUser?.updateEmail(userInfo.email)
         .then(() => {
-          ToastMessage('Email was changed', 'success', 'bottom');
+          ToastMessage('Your email address was changed.', 'success', 'bottom');
           setTimeout(() => {
             getUserData();
           }, 1000);
@@ -144,31 +144,31 @@ const MyAccount: React.FC = () => {
     }
   }, [navigation]);
 
-  useEffect(() => {
-    (async function () {
-      await validate();
-    })();
-  }, []);
+  // useEffect(() => {
+  //   (async function () {
+  //     await validate();
+  //   })();
+  // }, []);
 
-  useEffect(() => {
-    if (purchaseDate && expiresDate) {
-      const userData = {
-        subscription: {
-          purchaseDate,
-          expiresDate,
-          productItem: currentProductId
-        }
-      };
-      const docRef = firestore().collection('users').doc(user.uid);
-      docRef.get().then(thisDoc => {
-        if (thisDoc.exists) {
-          docRef.update(userData).then(() => {
-            getUserData();
-          });
-        }
-      });
-    }
-  }, [purchaseDate, expiresDate]);
+  // useEffect(() => {
+  //   if (purchaseDate && expiresDate) {
+  //     const userData = {
+  //       subscription: {
+  //         purchaseDate,
+  //         expiresDate,
+  //         productItem: currentProductId
+  //       }
+  //     };
+  //     const docRef = firestore().collection('users').doc(user.uid);
+  //     docRef.get().then(thisDoc => {
+  //       if (thisDoc.exists) {
+  //         docRef.update(userData).then(() => {
+  //           getUserData();
+  //         });
+  //       }
+  //     });
+  //   }
+  // }, [purchaseDate, expiresDate]);
 
   return (
     <Container style={styles.background}>
@@ -235,58 +235,52 @@ const MyAccount: React.FC = () => {
                 />
               </Item>
             </View>
-            <View
-              style={[
-                styles.basicView,
-                passChangeDisabled && styles.disabledView
-              ]}>
-              <Text style={styles.basicTitle}>Change Password</Text>
-              <Item style={styles.itemView}>
-                <Icon type="Feather" name="unlock" style={styles.itemIcon} />
-                <Input
-                  value={userInfo?.password}
-                  placeholder="Enter New Password"
-                  style={styles.inputView}
-                  secureTextEntry={newPassView}
-                  onChangeText={text =>
-                    setUserInfo({ ...userInfo, password: text })
-                  }
-                  disabled={passChangeDisabled}
-                />
-                <TouchableOpacity
-                  onPress={() => setNewPassView(!newPassView)}
-                  disabled={passChangeDisabled}>
-                  <Icon
-                    type="FontAwesome5"
-                    name={newPassView ? 'eye' : 'eye-slash'}
-                    style={styles.eyeIcon}
+            {!passChangeDisabled && (
+              <View style={styles.basicView}>
+                <Text style={styles.basicTitle}>Change Password</Text>
+                <Item style={styles.itemView}>
+                  <Icon type="Feather" name="unlock" style={styles.itemIcon} />
+                  <Input
+                    value={userInfo?.password}
+                    placeholder="Enter New Password"
+                    style={styles.inputView}
+                    secureTextEntry={newPassView}
+                    onChangeText={text =>
+                      setUserInfo({ ...userInfo, password: text })
+                    }
                   />
-                </TouchableOpacity>
-              </Item>
-              <Item style={styles.itemView}>
-                <Icon type="Feather" name="unlock" style={styles.itemIcon} />
-                <Input
-                  value={userInfo?.repassword}
-                  placeholder="Retype New Password"
-                  style={styles.inputView}
-                  secureTextEntry={newRePassView}
-                  onChangeText={text =>
-                    setUserInfo({ ...userInfo, repassword: text })
-                  }
-                  disabled={passChangeDisabled}
-                />
-                <TouchableOpacity
-                  onPress={() => setNewRePassView(!newRePassView)}
-                  disabled={passChangeDisabled}>
-                  <Icon
-                    type="FontAwesome5"
-                    name={newRePassView ? 'eye' : 'eye-slash'}
-                    style={styles.eyeIcon}
+                  <TouchableOpacity
+                    onPress={() => setNewPassView(!newPassView)}>
+                    <Icon
+                      type="FontAwesome5"
+                      name={newPassView ? 'eye' : 'eye-slash'}
+                      style={styles.eyeIcon}
+                    />
+                  </TouchableOpacity>
+                </Item>
+                <Item style={styles.itemView}>
+                  <Icon type="Feather" name="unlock" style={styles.itemIcon} />
+                  <Input
+                    value={userInfo?.repassword}
+                    placeholder="Retype New Password"
+                    style={styles.inputView}
+                    secureTextEntry={newRePassView}
+                    onChangeText={text =>
+                      setUserInfo({ ...userInfo, repassword: text })
+                    }
                   />
-                </TouchableOpacity>
-              </Item>
-            </View>
-            <View style={styles.basicView}>
+                  <TouchableOpacity
+                    onPress={() => setNewRePassView(!newRePassView)}>
+                    <Icon
+                      type="FontAwesome5"
+                      name={newRePassView ? 'eye' : 'eye-slash'}
+                      style={styles.eyeIcon}
+                    />
+                  </TouchableOpacity>
+                </Item>
+              </View>
+            )}
+            {/* <View style={styles.basicView}>
               <Text style={styles.basicTitle}>Subscription</Text>
               <View style={styles.subscriptionView}>
                 <Text style={styles.subscriptionText}>
@@ -319,7 +313,7 @@ const MyAccount: React.FC = () => {
                   </Text>
                 )}
               </View>
-            </View>
+            </View> */}
             {JSON.stringify(initUserInfo) !== JSON.stringify(userInfo) && (
               <Button success onPress={saveUserData} style={styles.saveButton}>
                 <Text style={styles.buttonText}>Save</Text>

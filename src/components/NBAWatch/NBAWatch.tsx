@@ -332,7 +332,7 @@ const NBAWatch: React.FC<Props> = ({
                       styles.betMatchBtnText,
                       pressGlass && styles.betMatchBtnGreenText
                     ]}>
-                    WATCH
+                    {pressGlass ? 'WATCHING' : 'WATCH'}
                   </Text>
                 </View>
               </TouchableHighlight>

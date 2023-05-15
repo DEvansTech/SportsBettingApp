@@ -41,5 +41,8 @@ export default StyleSheet.create({
     fontFamily: Fonts.regular,
     fontSize: 15 * scale,
     fontStyle: 'italic'
+  },
+  spinnerTextStyle: {
+    color: 'white'
   }
 });

@@ -299,7 +299,8 @@ export default {
   glassBlackIcon:
     '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 43 16.4"><circle cx="11" cy="8.2" r="7.7" style="fill:none;stroke:#000"/><circle cx="32" cy="8.2" r="7.7" style="fill:none;stroke:#000"/><path d="M25.83,9.81a2.8,2.8,0,1,0-5.6,0" transform="translate(-1.53 -1.61)" style="fill:none;stroke:#000"/><line x1="0.5" y1="8.2" x2="3.3" y2="8.2" style="fill:none;stroke:#000;stroke-linecap:round"/><line x1="39.7" y1="8.2" x2="42.5" y2="8.2" style="fill:none;stroke:#000;stroke-linecap:round"/></svg>',
   glassGreenIcon: `
-    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 42.5 16" style="enable-background:new 0 0 42.5 16;" xml:space="preserve">
+    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+    viewBox="0 0 42.5 16" style="enable-background:new 0 0 42.5 16;" xml:space="preserve">
       <g>
         <path style="fill:#6CC04A;" d="M10,15.5c4.1,0,7.5-3.4,7.5-7.5S14.1,0.5,10,0.5S2.5,3.9,2.5,8S5.9,15.5,10,15.5"/>
         <circle style="fill:none;stroke:#6CC04A;" cx="10" cy="8" r="7.5"/>
@@ -321,8 +322,18 @@ export default {
     '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27.6 19"><path d="M11.45,28.72" transform="translate(-11.16 -15.25)" style="fill:none;stroke:#6cc04a;stroke-linecap:round"/><line x1="24.5" y1="13.48" x2="27.1" y2="13.48" style="fill:none;stroke:#6cc04a;stroke-linecap:round"/><line x1="0.5" y1="13.48" x2="3.1" y2="13.48" style="fill:none;stroke:#6cc04a;stroke-linecap:round"/><line x1="16.87" y1="13.48" x2="27.1" y2="13.48" style="fill:none;stroke:#6cc04a;stroke-linecap:round"/><line x1="0.5" y1="13.48" x2="10.73" y2="13.48" style="fill:none;stroke:#6cc04a;stroke-linecap:round"/><line x1="7.26" y1="1.98" x2="8.35" y2="4.18" style="fill:none;stroke:#6cc04a;stroke-linecap:round"/><line x1="2.31" y1="6.93" x2="4.51" y2="8.02" style="fill:none;stroke:#6cc04a;stroke-linecap:round"/><line x1="19.26" y1="4.18" x2="20.35" y2="1.98" style="fill:none;stroke:#6cc04a;stroke-linecap:round"/><line x1="23.1" y1="8.02" x2="25.29" y2="6.93" style="fill:none;stroke:#6cc04a;stroke-linecap:round"/><path d="M25,33.75a3,3,0,0,0,3-3c0-1.66-3-15-3-15s-3,13.34-3,15A3,3,0,0,0,25,33.75Z" transform="translate(-11.16 -15.25)" style="fill:none;stroke:#6cc04a;stroke-linejoin:round"/></svg>',
   lineRaterWhiteIcon:
     '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49 33.6"><path d="M.78,31.86" transform="translate(-0.46 -7.95)" style="fill:none;stroke:#fff;stroke-linecap:round"/><line x1="43.45" y1="23.92" x2="48.5" y2="23.92" style="fill:none;stroke:#fff;stroke-linecap:round"/><line x1="0.5" y1="23.92" x2="5.55" y2="23.92" style="fill:none;stroke:#fff;stroke-linecap:round"/><line x1="29.8" y1="23.92" x2="48.5" y2="23.92" style="fill:none;stroke:#fff;stroke-linecap:round"/><line x1="0.5" y1="23.92" x2="19.2" y2="23.92" style="fill:none;stroke:#fff;stroke-linecap:round"/><line x1="12.59" y1="3.16" x2="14.93" y2="7.48" style="fill:none;stroke:#fff;stroke-linecap:round"/><line x1="3.74" y1="12.01" x2="8.06" y2="14.35" style="fill:none;stroke:#fff;stroke-linecap:round"/><line x1="34.07" y1="7.48" x2="36.41" y2="3.16" style="fill:none;stroke:#fff;stroke-linecap:round"/><line x1="40.94" y1="14.35" x2="45.26" y2="12.01" style="fill:none;stroke:#fff;stroke-linecap:round"/><path d="M25,41.05a5.47,5.47,0,0,0,5.51-5.44c0-3-5.51-27.16-5.51-27.16s-5.51,24.16-5.51,27.16A5.48,5.48,0,0,0,25,41.05Z" transform="translate(-0.46 -7.95)" style="fill:none;stroke:#fff;stroke-linejoin:round"/></svg>',
-  watchIcon:
-    '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 62 24"><defs><clipPath id="a" transform="translate(-6.5 -0.5)"><rect x="6.5" y="0.5" width="62" height="24" style="fill:none"/></clipPath></defs><g style="clip-path:url(#a)"><circle cx="16" cy="12" r="11" style="fill:none;stroke:#231f20;stroke-width:2px"/><circle cx="46" cy="12" r="11" style="fill:none;stroke:#231f20;stroke-width:2px"/><path d="M41.5,12.5a4,4,0,0,0-8,0" transform="translate(-6.5 -0.5)" style="fill:none;stroke:#231f20;stroke-width:2px"/><line x1="1" y1="12" x2="5" y2="12" style="fill:none;stroke:#231f20;stroke-linecap:round;stroke-width:2px"/><line x1="57" y1="12" x2="61" y2="12" style="fill:none;stroke:#231f20;stroke-linecap:round;stroke-width:2px"/></g></svg>',
+  watchIcon: `
+    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+    viewBox="0 0 42.5 16" style="enable-background:new 0 0 42.5 16;" xml:space="preserve">
+      <g>
+        <circle style="fill:none;stroke:#231F20;" cx="10" cy="8" r="7.5"/>
+        <circle style="fill:none;stroke:#231F20;" cx="32" cy="8" r="7.5"/>
+        <path style="fill:none;stroke:#231F20;" d="M24.5,8c0-1.9-1.6-3.5-3.5-3.5S17.5,6.1,17.5,8"/>
+        <line style="fill:none;stroke:#231F20;stroke-linecap:round;" x1="0.5" y1="8" x2="2.5" y2="8"/>
+        <line style="fill:none;stroke:#231F20;stroke-linecap:round;" x1="40" y1="8" x2="42" y2="8"/>
+      </g>
+    </svg>
+  `,
   watchGreenIcon:
     '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 62 24"><defs><clipPath id="a" transform="translate(-6.5 -0.5)"><rect x="6.5" y="0.5" width="62" height="24" style="fill:none"/></clipPath></defs><g style="clip-path:url(#a)"><circle cx="16" cy="12" r="11" style="fill:none;stroke:#6CC04A;stroke-width:2px"/><circle cx="46" cy="12" r="11" style="fill:none;stroke:#6CC04A;stroke-width:2px"/><path d="M41.5,12.5a4,4,0,0,0-8,0" transform="translate(-6.5 -0.5)" style="fill:none;stroke:#6CC04A;stroke-width:2px"/><line x1="1" y1="12" x2="5" y2="12" style="fill:none;stroke:#6CC04A;stroke-linecap:round;stroke-width:2px"/><line x1="57" y1="12" x2="61" y2="12" style="fill:none;stroke:#6CC04A;stroke-linecap:round;stroke-width:2px"/></g></svg>',
 
@@ -443,7 +454,7 @@ export default {
     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
     viewBox="0 0 21 21" style="enable-background:new 0 0 21 21;" xml:space="preserve">
       <g>
-      <circle style="fill:none;stroke:#FFFFFF;" class="st0" cx="10.5" cy="10.5" r="10"/>
+      <circle style="fill:none;stroke:#FFFFFF;" cx="10.5" cy="10.5" r="10"/>
       </g>
       <polygon style="fill:none;stroke:#FFFFFF;stroke-linecap:round;stroke-linejoin:round;" points="8.1,5.5 8.1,15.5 15.9,10.5 "/>
     </svg>

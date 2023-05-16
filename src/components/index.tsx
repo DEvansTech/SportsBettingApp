@@ -21,6 +21,7 @@ import LoadingImage from './LoadingImage';
 import BasketBallUpdate from './BasketBallUpdate';
 import SegmentSort from './SegmentSort';
 import GrayScaleImage from './GrayScaleImage';
+import ModalCancelAccount from './ModalCancelAccount';
 
 export {
   BetStatus,
@@ -45,5 +46,6 @@ export {
   LoadingImage,
   BasketBallUpdate,
   SegmentSort,
-  GrayScaleImage
+  GrayScaleImage,
+  ModalCancelAccount
 };

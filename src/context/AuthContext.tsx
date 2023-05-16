@@ -33,16 +33,24 @@ const emailLogin = async (email: string, password: string) => {
     switch (e.code) {
       case 'auth/wrong-password':
         Toast.show({
-          text: 'The password is invalid or the user does not have a password.',
-          buttonText: 'Okay',
+          text: 'The email or password entered is incorrect. Please try again',
+          buttonText: 'Close',
           type: 'danger',
           duration: 3000
         });
         break;
       case 'auth/invalid-email':
         Toast.show({
-          text: 'The email address is badly formatted.',
-          buttonText: 'Okay',
+          text: 'The email address entered is not valid.  Please try again.',
+          buttonText: 'Close',
+          type: 'danger',
+          duration: 3000
+        });
+        break;
+      case 'auth/user-not-found':
+        Toast.show({
+          text: 'The email address entered does not match an account in the system.  Please try again.',
+          buttonText: 'Close',
           type: 'danger',
           duration: 3000
         });
@@ -67,7 +75,9 @@ const emailRegister = async (
         email: email,
         firstName: firstName,
         lastName: lastName,
-        registerType: 'email'
+        registerType: 'email',
+        introPage: true,
+        registerDate: Date.now()
       };
       firestore().collection('users').doc(response.user.uid).set(user);
     }

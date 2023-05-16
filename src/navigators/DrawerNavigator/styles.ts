@@ -2,7 +2,7 @@ import { StyleSheet, Platform, Dimensions } from 'react-native';
 import { Colors, Fonts } from '../../theme';
 
 const deviceWidth = Dimensions.get('window').width;
-const scale = deviceWidth / 390;
+export const scale = deviceWidth / 390;
 
 export default StyleSheet.create({
   scroll: {

@@ -347,7 +347,13 @@ const NFLWatch: React.FC<Props> = ({
                     width={40 * scale}
                     height={35 * scale}
                   />
-                  <Text style={styles.betMatchBtnText}>WATCHING</Text>
+                  <Text
+                    style={[
+                      styles.betMatchBtnText,
+                      pressGlass && styles.betMatchBtnGreenText
+                    ]}>
+                    {pressGlass ? 'WATCHING' : 'WATCH'}
+                  </Text>
                 </View>
               </TouchableHighlight>
             )}
@@ -367,7 +373,13 @@ const NFLWatch: React.FC<Props> = ({
                     width={35 * scale}
                     height={35 * scale}
                   />
-                  <Text style={styles.betMatchBtnText}>LINEMASTER</Text>
+                  <Text
+                    style={[
+                      styles.betMatchBtnText,
+                      pressRater && styles.betMatchBtnGreenText
+                    ]}>
+                    LINEMASTER
+                  </Text>
                 </View>
               </TouchableHighlight>
             )}

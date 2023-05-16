@@ -51,7 +51,8 @@ const Register: React.FC = () => {
           email: result?.additionalUserInfo?.profile?.email,
           firstName: result?.additionalUserInfo?.profile?.given_name || '',
           lastName: result?.additionalUserInfo?.profile?.family_name || '',
-          registerType: 'google'
+          registerType: 'google',
+          registerDate: Date.now()
         };
         const docRef = await firestore()
           .collection('users')
@@ -107,7 +108,8 @@ const Register: React.FC = () => {
             email: result?.additionalUserInfo?.profile?.email,
             firstName: fullName?.givenName || '',
             lastName: fullName?.familyName || '',
-            registerType: 'apple'
+            registerType: 'apple',
+            registerDate: Date.now()
           };
 
           const docRef = firestore().collection('users').doc(result.user.uid);

@@ -4,12 +4,12 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import firestore from '@react-native-firebase/firestore';
 
 import { LogoSpinner } from '@Components';
-import useInAppPurchase from '@Lib/useInAppPurchase';
+// import useInAppPurchase from '@Lib/useInAppPurchase';
 import { AuthContext, AuthContextType } from '@Context/AuthContext';
 import { Routes } from '@Navigators/routes';
 
 const Loading: React.FC = () => {
-  const { validate } = useInAppPurchase();
+  // const { validate } = useInAppPurchase();
   const navigation = useNavigation<StackNavigationProp<any, any>>();
   const { user } = useContext(AuthContext) as AuthContextType;
 
@@ -20,13 +20,14 @@ const Loading: React.FC = () => {
         .doc(user.uid)
         .get()
         .then((doc: any) => {
-          return doc.data().introPage;
+          return doc.data()?.introPage || false;
         });
     }
   };
 
   useEffect(() => {
     (async function () {
+      // navigation.navigate(Routes.Splash);
       // const valid = await validate(true);
       if (true) {
         const showIntroPage = await getIntroPageState();

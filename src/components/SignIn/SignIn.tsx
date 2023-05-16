@@ -48,7 +48,8 @@ const SignIn: React.FC = () => {
           email: currentUser.user.email,
           firstName: currentUser.user.givenName,
           lastName: currentUser.user.familyName,
-          registerType: 'google'
+          registerType: 'google',
+          registerDate: Date.now()
         };
         const docRef = firestore().collection('users').doc(result.user.uid);
         docRef.get().then(thisDoc => {

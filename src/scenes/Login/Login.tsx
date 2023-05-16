@@ -102,7 +102,8 @@ const Login: React.FC = () => {
           email: result?.additionalUserInfo?.profile?.email,
           firstName: fullName?.givenName,
           lastName: fullName?.familyName,
-          registerType: 'apple'
+          registerType: 'apple',
+          registerDate: Date.now()
         };
 
         const docRef = firestore().collection('users').doc(result.user.uid);

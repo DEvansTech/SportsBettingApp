@@ -102,7 +102,7 @@ export default StyleSheet.create({
     borderBottomColor: Colors.darkGrey,
     borderLeftColor: 'white',
     borderRightColor: 'white',
-    width: deviceWidth / 3,
+    width: deviceWidth / 2,
     paddingVertical: 15 * scale,
     justifyContent: 'center'
   },

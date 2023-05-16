@@ -1,6 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
 import auth from '@react-native-firebase/auth';
-
 import { useNavigation } from '@react-navigation/core';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { ImageBackground, TouchableOpacity, Image } from 'react-native';
@@ -12,8 +11,7 @@ import {
   Text,
   View,
   Item,
-  Input,
-  CheckBox
+  Input
 } from 'native-base';
 import { SvgXml } from 'react-native-svg';
 

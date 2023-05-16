@@ -7,7 +7,7 @@ import { getTeamLogo, GameDataType } from '@Store/types';
 export const ToastMessage = (msg: string, type: any, position: any) => {
   return Toast.show({
     text: msg,
-    buttonText: 'Okay',
+    buttonText: 'Close',
     type: type,
     position: position,
     duration: 3000

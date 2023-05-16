@@ -43,16 +43,20 @@ const MyAccount: React.FC = () => {
   const saveUserData = () => {
     const userData: UserType = {};
 
-    if (userInfo?.firstName === '' || userInfo?.lastName === '') {
-      ToastMessage('Please input User Name', 'danger', 'bottom');
+    if (userInfo?.firstName === '') {
+      ToastMessage('Please input your first name.', 'danger', 'bottom');
       return;
-    } else {
-      userData.firstName = userInfo?.firstName;
-      userData.lastName = userInfo?.lastName;
     }
+    if (userInfo?.lastName === '') {
+      ToastMessage('Please input your last name.', 'danger', 'bottom');
+      return;
+    }
+    userData.firstName = userInfo?.firstName;
+    userData.lastName = userInfo?.lastName;
+
     let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
     if (userInfo?.email && reg.test(userInfo?.email) === false) {
-      ToastMessage('Email is not correct', 'danger', 'bottom');
+      ToastMessage('Email is incorrect', 'danger', 'bottom');
       return;
     } else {
       userData.email = userInfo?.email;
@@ -61,7 +65,7 @@ const MyAccount: React.FC = () => {
       userInfo?.password !== '' &&
       userInfo?.password !== userInfo?.repassword
     ) {
-      ToastMessage("Password doesn't match", 'danger', 'bottom');
+      ToastMessage("Passwords don't match.", 'danger', 'bottom');
       return;
     }
 
@@ -78,7 +82,11 @@ const MyAccount: React.FC = () => {
       auth()
         .currentUser?.updateEmail(userInfo.email)
         .then(() => {
-          ToastMessage('Your email address was changed.', 'success', 'bottom');
+          ToastMessage(
+            'Your email address was successfully changed.',
+            'success',
+            'bottom'
+          );
           setTimeout(() => {
             getUserData();
           }, 1000);
@@ -100,7 +108,11 @@ const MyAccount: React.FC = () => {
       auth()
         .currentUser?.updatePassword(userInfo.password)
         .then(() => {
-          ToastMessage('Password was changed', 'success', 'bottom');
+          ToastMessage(
+            'Your password was successfully changed.',
+            'success',
+            'bottom'
+          );
           setTimeout(() => {
             getUserData();
           }, 1000);
@@ -117,7 +129,11 @@ const MyAccount: React.FC = () => {
           }
         });
     }
-    ToastMessage('Your Changed have been succssfully saved!', 'success', 'top');
+    ToastMessage(
+      'Your changes have been successfully saved.',
+      'success',
+      'bottom'
+    );
   };
 
   const getUserData = () => {

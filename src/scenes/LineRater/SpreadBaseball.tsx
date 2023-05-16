@@ -332,6 +332,7 @@ const SpreadBaseball: React.FC<SpreadProps> = ({
             <TouchableOpacity
               onPress={minusRange}
               onLongPress={minusLongValue}
+              onPressOut={handlePressOut}
               disabled={!selectedAwayTeam && !selectedHomeTeam}>
               <Icon type="Feather" name="minus" style={styles.barIcon} />
             </TouchableOpacity>

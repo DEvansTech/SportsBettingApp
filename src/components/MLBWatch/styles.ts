@@ -156,6 +156,7 @@ export default StyleSheet.create({
     fontFamily: Fonts.black
   },
   betMatchWatch: {
+    width: deviceWidth * 0.2,
     alignItems: 'center',
     justifyContent: 'space-between'
   },

@@ -21,6 +21,7 @@ import {
   Icon
 } from 'native-base';
 import { SvgXml } from 'react-native-svg';
+import jwt_decode from 'jwt-decode';
 
 import { LogoSpinner, Button as CustomButton } from '@Components';
 import { ToastMessage, existUser } from '@Lib/function';
@@ -89,33 +90,27 @@ const Login: React.FC = () => {
         requestedScopes: [appleAuth.Scope.EMAIL, appleAuth.Scope.FULL_NAME]
       });
 
-      const { identityToken, nonce, fullName } = appleAuthRequestResponse;
-
-      const appleCredential = auth.AppleAuthProvider.credential(
-        identityToken,
-        nonce
-      );
-      const result = await auth().signInWithCredential(appleCredential);
-      if (result?.additionalUserInfo?.isNewUser) {
-        const userData = {
-          uid: result.user.uid,
-          email: result?.additionalUserInfo?.profile?.email,
-          firstName: fullName?.givenName,
-          lastName: fullName?.familyName,
-          registerType: 'apple',
-          registerDate: Date.now()
-        };
-
-        const docRef = firestore().collection('users').doc(result.user.uid);
-
-        docRef.get().then(thisDoc => {
-          if (!thisDoc.exists) {
-            docRef.set(userData);
-          }
-        });
+      const { identityToken, nonce } = appleAuthRequestResponse;
+      if (identityToken) {
+        const decodeData: any = jwt_decode(identityToken);
+        const check = await existUser(decodeData?.email);
+        if (!check) {
+          setLoading(false);
+          ToastMessage(
+            "The email address doesn't exists. Please create an account",
+            'warning',
+            'bottom'
+          );
+          return;
+        }
+        const appleCredential = auth.AppleAuthProvider.credential(
+          identityToken,
+          nonce
+        );
+        await auth().signInWithCredential(appleCredential);
       }
-      setLoading(false);
     } catch {
+    } finally {
       setLoading(false);
     }
   };
@@ -152,10 +147,12 @@ const Login: React.FC = () => {
   };
 
   useEffect(() => {
-    if (user) {
-      getUserName();
-      navigation.navigate(Routes.DrawerRoute);
-    }
+    (async function () {
+      if (user) {
+        await getUserName();
+        navigation.navigate(Routes.DrawerRoute);
+      }
+    })();
   }, [user]);
 
   useEffect(() => {

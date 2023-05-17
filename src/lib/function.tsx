@@ -14,7 +14,7 @@ export const ToastMessage = (msg: string, type: any, position: any) => {
   });
 };
 
-export const existUser = async (email: string | undefined) => {
+export const existUser = async (email: string | undefined | null) => {
   try {
     return await firestore()
       .collection('users')

@@ -29,7 +29,7 @@ import styles from './styles';
 const MyAccount: React.FC = () => {
   const navigation = useNavigation<StackNavigationProp<any, any>>();
   const isFocused = useIsFocused();
-  const { user } = useContext(AuthContext) as AuthContextType;
+  const { user, setDisplayName } = useContext(AuthContext) as AuthContextType;
   // const { currentProductId, expiresDate, purchaseDate, validate } =
   //   useInAppPurchase();
 
@@ -185,6 +185,10 @@ const MyAccount: React.FC = () => {
   //     });
   //   }
   // }, [purchaseDate, expiresDate]);
+
+  useEffect(() => {
+    setDisplayName(initUserInfo?.firstName + ' ' + initUserInfo?.lastName);
+  }, [initUserInfo]);
 
   return (
     <Container style={styles.background}>

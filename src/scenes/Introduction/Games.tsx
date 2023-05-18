@@ -2,11 +2,10 @@ import React from 'react';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { useNavigation } from '@react-navigation/core';
 import { Container, Content, Text, View, Header, Icon } from 'native-base';
-import { SvgXml } from 'react-native-svg';
 
 import { LoadingImage } from '@Components';
-import { Colors, Images, Svgs } from '@Theme';
-import styles, { scale } from './styles';
+import { Colors, Images } from '@Theme';
+import styles from './styles';
 import { Routes } from '@Navigators/routes';
 import { CarosuelProps } from './types';
 
@@ -46,7 +45,11 @@ const Games: React.FC<CarosuelProps> = ({ nextPage, prevPage }) => {
       </Header>
       <Content contentContainerStyle={styles.contentView}>
         <View style={styles.gamesImageView}>
-          <LoadingImage source={Images.carousel1} style={styles.gamesImage} />
+          <LoadingImage
+            source={Images.carousel1}
+            style={styles.gamesImage}
+            type="png"
+          />
         </View>
         <View style={styles.content}>
           <View style={styles.titleView}>

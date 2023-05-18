@@ -1,10 +1,10 @@
 import React from 'react';
 import { Animated, View } from 'react-native';
 import { Props } from './types';
-
+import SvgUri from 'react-native-svg-uri';
 import styles from './styles';
 
-const LoadingImage: React.FC<Props> = ({ source, style }) => {
+const LoadingImage: React.FC<Props> = ({ source, style, type = 'png' }) => {
   const imageAnimated = new Animated.Value(0);
 
   const onImageLoad = () => {
@@ -16,12 +16,16 @@ const LoadingImage: React.FC<Props> = ({ source, style }) => {
 
   return (
     <View style={[styles.container, style]}>
-      <Animated.Image
-        source={source}
-        style={[styles.imageOverlay, { opacity: imageAnimated }]}
-        onLoad={onImageLoad}
-        resizeMode="contain"
-      />
+      {type === 'png' ? (
+        <Animated.Image
+          source={source}
+          style={[styles.imageOverlay, { opacity: imageAnimated }]}
+          onLoad={onImageLoad}
+          resizeMode="contain"
+        />
+      ) : (
+        <SvgUri width="100%" height="100%" svgXmlData={source} />
+      )}
     </View>
   );
 };

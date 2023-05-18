@@ -50,6 +50,7 @@ const Partners: React.FC<CarosuelProps> = ({ nextPage, prevPage }) => {
               <LoadingImage
                 source={Images.carousel7}
                 style={styles.imageView}
+                type="png"
               />
             </View>
             <View style={styles.secondView}>

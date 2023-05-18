@@ -50,6 +50,7 @@ const OBISays: React.FC<CarosuelProps> = ({ nextPage, prevPage }) => {
               <LoadingImage
                 source={Images.carousel5}
                 style={styles.imageView}
+                type="png"
               />
             </View>
             <View style={styles.secondView}>

@@ -1,18 +1,12 @@
 import React from 'react';
-import { StackNavigationProp } from '@react-navigation/stack';
-import { useNavigation } from '@react-navigation/core';
 import { Container, Content, Text, View, Header, Icon } from 'native-base';
-import { SvgXml } from 'react-native-svg';
 
 import { LoadingImage } from '@Components';
-import { Colors, Images, Svgs } from '@Theme';
-import styles, { scale } from './styles';
-import { Routes } from '@Navigators/routes';
+import { Colors, Images } from '@Theme';
+import styles from './styles';
 import { CarosuelProps } from './types';
 
-const Games: React.FC<CarosuelProps> = ({ nextPage, prevPage }) => {
-  const navigation = useNavigation<StackNavigationProp<any, any>>();
-
+const Games: React.FC<CarosuelProps> = ({ nextPage, prevPage, closePage }) => {
   return (
     <Container style={styles.background}>
       <Header
@@ -25,7 +19,7 @@ const Games: React.FC<CarosuelProps> = ({ nextPage, prevPage }) => {
           <Icon
             type="AntDesign"
             name="closecircleo"
-            onPress={() => navigation.navigate(Routes.TabRoute)}
+            onPress={closePage}
             style={styles.closeIcon}
           />
           <View style={styles.controlBar}>

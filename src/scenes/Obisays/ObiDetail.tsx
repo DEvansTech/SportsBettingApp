@@ -34,7 +34,7 @@ const ObiDetail: React.FC<OBIDetailProps> = props => {
       {Object.keys(obiData).length > 0 ? (
         <Content contentContainerStyle={styles.contentView}>
           <View style={styles.descView}>
-            <HTMLView value={obiData.fullText} stylesheet={HTMLStyle} />
+            <HTMLView value={obiData.fullText.trim()} stylesheet={HTMLStyle} />
           </View>
         </Content>
       ) : (

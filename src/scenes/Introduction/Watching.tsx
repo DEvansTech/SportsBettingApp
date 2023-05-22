@@ -6,11 +6,14 @@ import { SvgXml } from 'react-native-svg';
 
 import { LoadingImage } from '@Components';
 import { Colors, Images, Svgs } from '@Theme';
-import { Routes } from '@Navigators/routes';
 import { CarosuelProps } from './types';
 import styles, { scale } from './styles';
 
-const Watching: React.FC<CarosuelProps> = ({ nextPage, prevPage }) => {
+const Watching: React.FC<CarosuelProps> = ({
+  nextPage,
+  prevPage,
+  closePage
+}) => {
   const navigation = useNavigation<StackNavigationProp<any, any>>();
   return (
     <Container style={styles.background}>
@@ -24,7 +27,7 @@ const Watching: React.FC<CarosuelProps> = ({ nextPage, prevPage }) => {
           <Icon
             type="AntDesign"
             name="closecircleo"
-            onPress={() => navigation.navigate(Routes.TabRoute)}
+            onPress={closePage}
             style={styles.closeIcon}
           />
           <View style={styles.controlBar}>

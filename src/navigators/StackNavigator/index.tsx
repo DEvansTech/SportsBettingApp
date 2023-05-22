@@ -8,6 +8,7 @@ import { Routes } from '@Navigators/routes';
 import SplashScene from '@Scenes/Splash';
 import LoginScene from '@Scenes/Login';
 // import FeedbackScene from '@Scenes/Feedback';
+import IntroductionScene from '@Scenes/Introduction';
 
 import {
   Register as RegisterScene,
@@ -24,13 +25,21 @@ const options: StackNavigationOptions = {
 export const StackNavigator: React.FC = () => {
   return (
     <Stack.Navigator
-      initialRouteName={Routes.Splash}
+      initialRouteName={Routes.Introduction}
       screenOptions={({ navigation }) => {
         return {
           ...options,
           detachPreviousScreen: !navigation.isFocused()
         };
       }}>
+      <Stack.Screen
+        name={Routes.Introduction}
+        component={IntroductionScene}
+        options={{
+          gestureEnabled: false,
+          cardStyleInterpolator: CardStyleInterpolators.forFadeFromBottomAndroid
+        }}
+      />
       <Stack.Screen name={Routes.Splash} component={SplashScene} />
       <Stack.Screen
         name={Routes.Login}

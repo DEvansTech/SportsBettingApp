@@ -9,6 +9,8 @@ import React, {
 import { Container, View, Text, CheckBox } from 'native-base';
 import Carousel, { Pagination } from 'react-native-snap-carousel';
 import firestore from '@react-native-firebase/firestore';
+import { useNavigation } from '@react-navigation/core';
+import { StackNavigationProp } from '@react-navigation/stack';
 
 import { AuthContext, AuthContextType } from '@Context/AuthContext';
 import QuickStart from './QuickStart';
@@ -21,6 +23,7 @@ import Watching from './Watching';
 import Partners from './Partners';
 import Feedback from './Feedback';
 
+import { Routes } from '@Navigators/routes';
 import styles, { deviceWidth } from './styles';
 import { Colors } from '@Theme';
 
@@ -32,6 +35,7 @@ type ICarouselItem = {
 const Introduction: React.FC = () => {
   const { user } = useContext(AuthContext) as AuthContextType;
   const carouselRef = useRef<any>(null);
+  const navigation = useNavigation<StackNavigationProp<any, any>>();
 
   const [activeSlide, setActiveSlide] = useState(0);
   const [checkShow, setCheckShow] = useState(false);
@@ -46,6 +50,13 @@ const Introduction: React.FC = () => {
 
   const prevPage = () => {
     carouselRef.current?.snapToPrev();
+  };
+
+  const closePage = () => {
+    if (user) {
+      return navigation.navigate(Routes.TabRoute);
+    }
+    return navigation.navigate(Routes.Splash);
   };
 
   const handleCheckShow = async (value: boolean) => {
@@ -63,26 +74,32 @@ const Introduction: React.FC = () => {
 
   useEffect(() => {
     (async function () {
-      await firestore()
-        .collection('users')
-        .doc(user.uid)
-        .get()
-        .then((doc: any) => {
-          setCheckShow(doc.data().introPage);
-        });
+      if (user) {
+        await firestore()
+          .collection('users')
+          .doc(user.uid)
+          .get()
+          .then((doc: any) => {
+            setCheckShow(doc.data().introPage);
+          });
+      }
     })();
   }, []);
 
   const data = [
-    <QuickStart nextPage={nextPage} prevPage={prevPage} />,
-    <Games nextPage={nextPage} prevPage={prevPage} />,
-    <Spread nextPage={nextPage} prevPage={prevPage} />,
-    <Win nextPage={nextPage} prevPage={prevPage} />,
-    <OverUnder nextPage={nextPage} prevPage={prevPage} />,
-    <OBISays nextPage={nextPage} prevPage={prevPage} />,
-    <Watching nextPage={nextPage} prevPage={prevPage} />,
-    <Partners nextPage={nextPage} prevPage={prevPage} />,
-    <Feedback nextPage={nextPage} prevPage={prevPage} />
+    <QuickStart
+      nextPage={nextPage}
+      prevPage={prevPage}
+      closePage={closePage}
+    />,
+    <Games nextPage={nextPage} prevPage={prevPage} closePage={closePage} />,
+    <Spread nextPage={nextPage} prevPage={prevPage} closePage={closePage} />,
+    <Win nextPage={nextPage} prevPage={prevPage} closePage={closePage} />,
+    <OverUnder nextPage={nextPage} prevPage={prevPage} closePage={closePage} />,
+    <OBISays nextPage={nextPage} prevPage={prevPage} closePage={closePage} />,
+    <Watching nextPage={nextPage} prevPage={prevPage} closePage={closePage} />,
+    <Partners nextPage={nextPage} prevPage={prevPage} closePage={closePage} />,
+    <Feedback nextPage={nextPage} prevPage={prevPage} closePage={closePage} />
   ];
 
   return (
@@ -95,14 +112,16 @@ const Introduction: React.FC = () => {
         sliderWidth={deviceWidth}
         itemWidth={deviceWidth}
       />
-      <View style={styles.showCheck}>
-        <CheckBox
-          color={Colors.green}
-          checked={checkShow}
-          onPress={() => handleCheckShow(checkShow)}
-        />
-        <Text style={styles.messageText}>Do not show again on startup</Text>
-      </View>
+      {user && (
+        <View style={styles.showCheck}>
+          <CheckBox
+            color={Colors.green}
+            checked={checkShow}
+            onPress={() => handleCheckShow(checkShow)}
+          />
+          <Text style={styles.messageText}>Do not show again on startup</Text>
+        </View>
+      )}
       <Pagination
         dotsLength={data.length}
         activeDotIndex={activeSlide}

@@ -3,7 +3,7 @@ import MLB_ATL from '@Assets/mlb_teams/ATL.svg';
 import MLB_BAL from '@Assets/mlb_teams/BAL.svg';
 import MLB_BOS from '@Assets/mlb_teams/BOS.svg';
 import MLB_CHC from '@Assets/mlb_teams/CHC.svg';
-import MLB_CHW from '@Assets/mlb_teams/CHW.svg';
+import MLB_CWS from '@Assets/mlb_teams/CWS.svg';
 import MLB_CIN from '@Assets/mlb_teams/CIN.svg';
 import MLB_CLE from '@Assets/mlb_teams/CLE.svg';
 import MLB_COL from '@Assets/mlb_teams/COL.svg';
@@ -448,7 +448,7 @@ export default {
   MLB_BAL,
   MLB_BOS,
   MLB_CHC,
-  MLB_CHW,
+  MLB_CWS,
   MLB_CIN,
   MLB_CLE,
   MLB_COL,

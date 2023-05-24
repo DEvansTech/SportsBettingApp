@@ -8,6 +8,7 @@ import { useNavigation } from '@react-navigation/core';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { TouchableOpacity } from 'react-native';
 import { SvgXml } from 'react-native-svg';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { ToastMessage } from '@Lib/function';
 import { AuthContext, AuthContextType } from '@Context/AuthContext';
@@ -50,6 +51,7 @@ const ModalCancelAccount: React.FC<Props> = ({
         //     Linking.openURL('https://apps.apple.com/account/subscriptions');
         //   }
         // }
+        await AsyncStorage.removeItem('@loggedUser');
         await logOut();
       } catch (error: any) {
         if (error.code == 'auth/requires-recent-login') {

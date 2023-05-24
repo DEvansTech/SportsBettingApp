@@ -635,7 +635,7 @@ PODS:
     - React-perflogger (= 0.68.2)
   - RNAppleAuthentication (2.2.2):
     - React-Core
-  - RNCAsyncStorage (1.18.1):
+  - RNCAsyncStorage (1.17.11):
     - React-Core
   - RNCMaskedView (0.1.11):
     - React
@@ -954,7 +954,7 @@ SPEC CHECKSUMS:
   React-runtimeexecutor: b960b687d2dfef0d3761fbb187e01812ebab8b23
   ReactCommon: 095366164a276d91ea704ce53cb03825c487a3f2
   RNAppleAuthentication: 0571c08da8c327ae2afc0261b48b4a515b0286a6
-  RNCAsyncStorage: b90b71f45b8b97be43bc4284e71a6af48ac9f547
+  RNCAsyncStorage: 8616bd5a58af409453ea4e1b246521bb76578d60
   RNCMaskedView: 0e1bc4bfa8365eba5fbbb71e07fbdc0555249489
   RNColorMatrixImageFilters: 9b6a80ef1337e327d8b9a1c27d50e753bdcc252f
   RNCPicker: 914b557e20b3b8317b084aca9ff4b4edb95f61e4

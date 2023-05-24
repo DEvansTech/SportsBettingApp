@@ -5,6 +5,7 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 import { Container, Content, View } from 'native-base';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { AuthContext, AuthContextType } from '@Context/AuthContext';
 import { Button as CustomButton } from '@Components';
@@ -52,10 +53,17 @@ const Splash: React.FC = () => {
   };
 
   useEffect(() => {
-    if (user) {
-      getUserName();
-      navigation.navigate(Routes.DrawerRoute);
-    }
+    (async function () {
+      if (user) {
+        getUserName();
+        navigation.navigate(Routes.DrawerRoute);
+      } else {
+        const isLogged = await AsyncStorage.getItem('@loggedUser');
+        if (!isLogged) {
+          navigation.navigate(Routes.Introduction);
+        }
+      }
+    })();
   }, [user]);
 
   useEffect(() => {

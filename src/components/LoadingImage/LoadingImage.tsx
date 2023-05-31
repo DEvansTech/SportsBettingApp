@@ -24,7 +24,7 @@ const LoadingImage: React.FC<Props> = ({ source, style, type = 'png' }) => {
           resizeMode="contain"
         />
       ) : (
-        <SvgUri width="100%" height="100%" svgXmlData={source} />
+        <SvgUri width={70} height={70} svgXmlData={source} />
       )}
     </View>
   );

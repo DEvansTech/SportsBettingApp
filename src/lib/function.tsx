@@ -54,6 +54,7 @@ export const checkTeamIcon = (
     case 'mlb':
     case 'MLB':
       if (TeamLogos[`MLB_${teamName}`]) {
+        console.log('This is right: ', TeamLogos[`MLB_${teamName}`] );
         return TeamLogos[`MLB_${teamName}`];
       }
     case 'nfl':
@@ -76,6 +77,7 @@ export const checkTeamIcon = (
     case 'nba':
     case 'NBA':
       if (TeamLogos[`NBA_${teamName}`]) {
+        console.log('xxxxxxWhat?: ', TeamLogos[`MLB_${teamName}`] );
         return TeamLogos[`NBA_${teamName}`];
       }
     default:

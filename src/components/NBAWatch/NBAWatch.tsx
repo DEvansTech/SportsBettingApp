@@ -171,7 +171,7 @@ const NBAWatch: React.FC<Props> = ({
         </View>
         <View style={styles.teamStatusView}>
           <LoadingImage
-            source={checkTeamIcon('nba', data.away_team_abbr)}
+            source={checkTeamIcon('nba', data.home_team_abbr)}
             style={styles.teamLogo}
             type="svg"
           />

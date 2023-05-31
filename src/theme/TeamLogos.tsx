@@ -27,7 +27,7 @@ import MLB_STL from '@Assets/mlb_teams/STL.svg';
 import MLB_TB from '@Assets/mlb_teams/TB.svg';
 import MLB_TEX from '@Assets/mlb_teams/TEX.svg';
 import MLB_TOR from '@Assets/mlb_teams/TOR.svg';
-import MLB_WAS from '@Assets/mlb_teams/WAS.svg';
+import MLB_WSH from '@Assets/mlb_teams/WSH.svg';
 
 import NFL_ARI from '@Assets/nfl_teams/ARI.svg';
 import NFL_ATL from '@Assets/nfl_teams/ATL.svg';
@@ -58,7 +58,7 @@ import NFL_SEA from '@Assets/nfl_teams/SEA.svg';
 import NFL_SF from '@Assets/nfl_teams/SF.svg';
 import NFL_TB from '@Assets/nfl_teams/TB.svg';
 import NFL_TEN from '@Assets/nfl_teams/TEN.svg';
-import NFL_WAS from '@Assets/nfl_teams/WAS.svg';
+import NFL_WSH from '@Assets/nfl_teams/WSH.svg';
 
 // NCAAF //
 import NCAA_AAMU from '@Assets/ncaa_teams/AAMU.svg';
@@ -472,7 +472,7 @@ export default {
   MLB_TB,
   MLB_TEX,
   MLB_TOR,
-  MLB_WAS,
+  MLB_WSH,
   NFL_ARI,
   NFL_ATL,
   NFL_BAL,
@@ -502,7 +502,7 @@ export default {
   NFL_SF,
   NFL_TB,
   NFL_TEN,
-  NFL_WAS,
+  NFL_WSH,
 
   NCAA_AAMU,
   NCAA_AC,

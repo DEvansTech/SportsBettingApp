@@ -411,36 +411,36 @@ import NCAA_XAV from '@Assets/ncaa_teams/XAV.svg';
 import NCAA_YALE from '@Assets/ncaa_teams/YALE.svg';
 import NCAA_YSU from '@Assets/ncaa_teams/YSU.svg';
 
-import NBA_ATL from '@Assets/nba_teams/ATL.svg';
-import NBA_BOS from '@Assets/nba_teams/BOS.svg';
-import NBA_BRK from '@Assets/nba_teams/BRK.svg';
-import NBA_CHA from '@Assets/nba_teams/CHA.svg';
-import NBA_CHI from '@Assets/nba_teams/CHI.svg';
-import NBA_CLE from '@Assets/nba_teams/CLE.svg';
-import NBA_DAL from '@Assets/nba_teams/DAL.svg';
-import NBA_DEN from '@Assets/nba_teams/DEN.svg';
-import NBA_DET from '@Assets/nba_teams/DET.svg';
-import NBA_GSW from '@Assets/nba_teams/GSW.svg';
-import NBA_HOU from '@Assets/nba_teams/HOU.svg';
-import NBA_IND from '@Assets/nba_teams/IND.svg';
-import NBA_LAC from '@Assets/nba_teams/LAC.svg';
-import NBA_LAL from '@Assets/nba_teams/LAL.svg';
-import NBA_MEM from '@Assets/nba_teams/MEM.svg';
-import NBA_MIA from '@Assets/nba_teams/MIA.svg';
-import NBA_MIL from '@Assets/nba_teams/MIL.svg';
-import NBA_MIN from '@Assets/nba_teams/MIN.svg';
-import NBA_NOP from '@Assets/nba_teams/NOP.svg';
-import NBA_NYK from '@Assets/nba_teams/NYK.svg';
-import NBA_OKC from '@Assets/nba_teams/OKC.svg';
-import NBA_ORL from '@Assets/nba_teams/ORL.svg';
-import NBA_PHI from '@Assets/nba_teams/PHI.svg';
-import NBA_PHO from '@Assets/nba_teams/PHO.svg';
-import NBA_POR from '@Assets/nba_teams/POR.svg';
-import NBA_SAC from '@Assets/nba_teams/SAC.svg';
-import NBA_SAS from '@Assets/nba_teams/SAS.svg';
-import NBA_TOR from '@Assets/nba_teams/TOR.svg';
-import NBA_UTAH from '@Assets/nba_teams/UTAH.svg';
-import NBA_WAS from '@Assets/nba_teams/WAS.svg';
+import NBA_ATL from '@Assets/nba_teams/ATL.png';
+import NBA_BOS from '@Assets/nba_teams/BOS.png';
+import NBA_BKN from '@Assets/nba_teams/BKN.png';
+import NBA_CHA from '@Assets/nba_teams/CHA.png';
+import NBA_CHI from '@Assets/nba_teams/CHI.png';
+import NBA_CLE from '@Assets/nba_teams/CLE.png';
+import NBA_DAL from '@Assets/nba_teams/DAL.png';
+import NBA_DEN from '@Assets/nba_teams/DEN.png';
+import NBA_DET from '@Assets/nba_teams/DET.png';
+import NBA_GSW from '@Assets/nba_teams/GSW.png';
+import NBA_HOU from '@Assets/nba_teams/HOU.png';
+import NBA_IND from '@Assets/nba_teams/IND.png';
+import NBA_LAC from '@Assets/nba_teams/LAC.png';
+import NBA_LAL from '@Assets/nba_teams/LAL.png';
+import NBA_MEM from '@Assets/nba_teams/MEM.png';
+import NBA_MIA from '@Assets/nba_teams/MIA.png';
+import NBA_MIL from '@Assets/nba_teams/MIL.png';
+import NBA_MIN from '@Assets/nba_teams/MIN.png';
+import NBA_NOP from '@Assets/nba_teams/NOP.png';
+import NBA_NYK from '@Assets/nba_teams/NYK.png';
+import NBA_OKC from '@Assets/nba_teams/OKC.png';
+import NBA_ORL from '@Assets/nba_teams/ORL.png';
+import NBA_PHI from '@Assets/nba_teams/PHI.png';
+import NBA_PHX from '@Assets/nba_teams/PHX.png';
+import NBA_POR from '@Assets/nba_teams/POR.png';
+import NBA_SAC from '@Assets/nba_teams/SAC.png';
+import NBA_SAS from '@Assets/nba_teams/SAS.png';
+import NBA_TOR from '@Assets/nba_teams/TOR.png';
+import NBA_UTA from '@Assets/nba_teams/UTA.png';
+import NBA_WAS from '@Assets/nba_teams/WAS.png';
 
 export default {
   MLB_ARZ,
@@ -855,7 +855,7 @@ export default {
   NCAA_YSU,
   NBA_ATL,
   NBA_BOS,
-  NBA_BRK,
+  NBA_BKN,
   NBA_CHA,
   NBA_CHI,
   NBA_CLE,
@@ -876,11 +876,11 @@ export default {
   NBA_OKC,
   NBA_ORL,
   NBA_PHI,
-  NBA_PHO,
+  NBA_PHX,
   NBA_POR,
   NBA_SAC,
   NBA_SAS,
   NBA_TOR,
-  NBA_UTAH,
+  NBA_UTA,
   NBA_WAS
 };

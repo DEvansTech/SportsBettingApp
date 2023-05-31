@@ -1,17 +1,13 @@
 import React from 'react';
-import { useNavigation } from '@react-navigation/core';
-import { StackNavigationProp } from '@react-navigation/stack';
 import { Container, Content, Text, View, Icon, Header } from 'native-base';
 import { SvgXml } from 'react-native-svg';
 
 import { LoadingImage } from '@Components';
 import { Colors, Images, Svgs } from '@Theme';
-import { Routes } from '@Navigators/routes';
 import { CarosuelProps } from './types';
 import styles, { scale } from './styles';
 
-const Win: React.FC<CarosuelProps> = ({ nextPage, prevPage }) => {
-  const navigation = useNavigation<StackNavigationProp<any, any>>();
+const Win: React.FC<CarosuelProps> = ({ nextPage, prevPage, closePage }) => {
   return (
     <Container style={styles.background}>
       <Header
@@ -24,7 +20,7 @@ const Win: React.FC<CarosuelProps> = ({ nextPage, prevPage }) => {
           <Icon
             type="AntDesign"
             name="closecircleo"
-            onPress={() => navigation.navigate(Routes.TabRoute)}
+            onPress={closePage}
             style={styles.closeIcon}
           />
           <View style={styles.controlBar}>

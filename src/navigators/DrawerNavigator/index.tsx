@@ -9,6 +9,7 @@ import SubscriptionScene from '@Scenes/Subscription';
 import LoadingScene from '@Scenes/Loading';
 import MyAccountScene from '@Scenes/MyAccount';
 import IntroductionScene from '@Scenes/Introduction';
+import FeedbackScene from '@Scenes/Feedback';
 import { Routes } from '@Navigators/routes';
 import { Colors } from '@Theme';
 
@@ -45,6 +46,7 @@ export const DrawerNavigator: React.FC = () => {
       <Drawer.Screen name={Routes.Notification} component={NotificationScene} />
       <Drawer.Screen name={Routes.MyAccount} component={MyAccountScene} />
       <Drawer.Screen name={Routes.Introduction} component={IntroductionScene} />
+      <Drawer.Screen name={Routes.Feedback} component={FeedbackScene} />
     </Drawer.Navigator>
   );
 };

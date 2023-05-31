@@ -17,4 +17,6 @@ declare module '*.svg' {
   export default content;
 }
 
+declare module '*.png';
+
 declare module 'react-native-remote-svg';

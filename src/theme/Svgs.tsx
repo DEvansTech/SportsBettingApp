@@ -284,7 +284,20 @@ export default {
       </g>
     </svg>
   `,
-
+  accountIcon: `
+    <svg version="1.1" id="Layer_1" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 45 45" style="enable-background:new 0 0 45 45;" xml:space="preserve">
+      <g>
+        <path style="fill:none;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" d="M44.5,44.5v-5.4c0-5.8-5-10.6-11-10.6h-22c-6,0-11,4.8-11,10.6v5.4"/>
+        <circle style="fill:none;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" cx="22.5" cy="11.4" r="10.9"/>
+      </g>
+    </svg>`,
+  accountGreenIcon: `
+    <svg version="1.1" id="Layer_1" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 45 45" style="enable-background:new 0 0 45 45;" xml:space="preserve">
+      <g>
+        <path style="fill:none;stroke:#6CC04A;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" d="M44.5,44.5v-5.4c0-5.8-5-10.6-11-10.6h-22c-6,0-11,4.8-11,10.6v5.4"/>
+        <circle style="fill:none;stroke:#6CC04A;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" cx="22.5" cy="11.4" r="10.9"/>
+      </g>
+    </svg>`,
   // --- header Icons ---//
   userIcon:
     '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="M47.54,47.69V42A11.39,11.39,0,0,0,36,30.79H13A11.38,11.38,0,0,0,1.54,42v5.7" transform="translate(-0.54 -0.69)" style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px"/><circle cx="24" cy="12.48" r="11.48" style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px"/></svg>',
@@ -457,6 +470,41 @@ export default {
       <circle style="fill:none;stroke:#FFFFFF;" cx="10.5" cy="10.5" r="10"/>
       </g>
       <polygon style="fill:none;stroke:#FFFFFF;stroke-linecap:round;stroke-linejoin:round;" points="8.1,5.5 8.1,15.5 15.9,10.5 "/>
+    </svg>
+  `,
+  // my account page
+  maccountIcon: `
+    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+    viewBox="0 0 21 21" style="enable-background:new 0 0 21 21;" xml:space="preserve">
+      <g>
+      <path style="fill:none;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" d="M20.5,20.5v-2.4c0-2.6-2.2-4.6-5-4.6h-10c-2.8,0-5,2.1-5,4.6v2.4"/>
+      <circle style="fill:none;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" cx="10.5" cy="5.4" r="4.9"/>
+      </g>
+    </svg>
+  `,
+  memailIcon: `
+    <svg version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 21 15" style="enable-background:new 0 0 21 15;" xml:space="preserve">
+      <g>
+      <path style="fill:none;stroke:#000000;" d="M2.8,0.5c-1.2,0-2.2,0.9-2.2,2.1v9.8c0,1.2,1,2.1,2.2,2.1h15.5c1.2,0,2.2-0.9,2.2-2.1V2.6c0-1.2-1-2.1-2.2-2.1
+        H2.8z"/>
+      <polyline style="fill:none;stroke:#000000;stroke-linejoin:round;" points="0.8,1.5 10.5,11 20.2,1.5 	"/>
+      </g>
+    </svg>
+  `,
+  mpasswordIcon: `
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 37.15">
+      <path d="M14,22.12a3.09,3.09,0,0,0-3.15,3V39.25a3.09,3.09,0,0,0,3.15,3h21.7a3.09,3.09,0,0,0,3.15-3V25.14a3.09,3.09,0,0,0-3.15-3Z" transform="translate(-9.81 -6.12)" style="fill:none;stroke:#000;stroke-width:2px"/>
+      <path d="M33.81,22.12V17.06c0-5.49-4-9.94-9-9.94s-9,4.45-9,9.94v5.06" transform="translate(-9.81 -6.12)" style="fill:none;stroke:#000;stroke-width:2px"/>
+      <line x1="15" y1="24.58" x2="15" y2="29.24" style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:1px"/>
+      <path d="M24.81,32.19a2.08,2.08,0,1,0-2.09-2.08,2.08,2.08,0,0,0,2.09,2.08" transform="translate(-9.81 -6.12)" style="fill:#000"/>
+    </svg>
+  `,
+  mcancelIcon: `
+    <svg version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 21 21" style="enable-background:new 0 0 21 21;" xml:space="preserve">
+      <g>
+      <circle style="fill:none;stroke:#000;" cx="10.5" cy="10.5" r="10"/>
+      </g>
+      <line style="fill:none;stroke:#000;stroke-linecap:round;" x1="17.2" y1="3.8" x2="3.8" y2="17.2"/>
     </svg>
   `
 };

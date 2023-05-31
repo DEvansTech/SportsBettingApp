@@ -1,7 +1,7 @@
 import { Dimensions, PixelRatio } from 'react-native';
 import firestore from '@react-native-firebase/firestore';
 import { Toast } from 'native-base';
-import { Images } from '@Theme';
+import { Images, TeamLogos } from '@Theme';
 import { getTeamLogo, GameDataType } from '@Store/types';
 
 export const ToastMessage = (msg: string, type: any, position: any) => {
@@ -49,41 +49,36 @@ export const checkTeamIcon = (
   sportName: string | undefined,
   teamName: string | undefined
 ) => {
+  console.log('sportName----->', sportName, teamName);
   switch (sportName?.trim()) {
     case 'mlb':
     case 'MLB':
-      if (`MLB_${teamName}` in Images) {
-        return getTeamLogo(Images)(`MLB_${teamName}` as any);
-      } else {
-        return getTeamLogo(Images)(`MLB_Empty` as any);
+      if (TeamLogos[`MLB_${teamName}`]) {
+        console.log('This is right: ', TeamLogos[`MLB_${teamName}`] );
+        return TeamLogos[`MLB_${teamName}`];
       }
     case 'nfl':
     case 'NFL':
-      if (`NFL_${teamName}` in Images) {
-        return getTeamLogo(Images)(`NFL_${teamName}` as any);
-      } else {
-        return getTeamLogo(Images)(`NFL_Empty` as any);
+      if (TeamLogos[`NFL_${teamName}`]) {
+        return TeamLogos[`NFL_${teamName}`];
       }
     case 'ncaafb':
     case 'NCAAFB':
-      if (`NCAA_${teamName}` in Images) {
-        return getTeamLogo(Images)(`NCAA_${teamName}` as any);
-      } else {
-        return getTeamLogo(Images)(`NCAA_helmet.svg` as any);
+      if (TeamLogos[`NCAA_${teamName}`]) {
+        return TeamLogos[`NCAA_${teamName}`];
       }
     case 'ncaab':
     case 'NCAAM':
-      if (`NCAA_${teamName}` in Images) {
-        return getTeamLogo(Images)(`NCAA_${teamName}` as any);
+      if (TeamLogos[`NCAA_${teamName}`]) {
+        return TeamLogos[`NCAA_${teamName}`];
       } else {
         return getTeamLogo(Images)(`NCAA_Generic.png` as any);
       }
     case 'nba':
     case 'NBA':
-      if (`NBA_${teamName}` in Images) {
-        return getTeamLogo(Images)(`NBA_${teamName}` as any);
-      } else {
-        return getTeamLogo(Images)(`NBA_Empty_Logo` as any);
+      if (TeamLogos[`NBA_${teamName}`]) {
+        console.log('xxxxxxWhat?: ', TeamLogos[`MLB_${teamName}`] );
+        return TeamLogos[`NBA_${teamName}`];
       }
     default:
       return;

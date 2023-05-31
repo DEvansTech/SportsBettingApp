@@ -200,6 +200,7 @@ const MLBWatch: React.FC<Props> = ({
           <LoadingImage
             source={checkTeamIcon('mlb', data.away_team_abbr)}
             style={styles.teamLogo}
+            type="svg"
           />
           <Text style={styles.teamNameText}>{data.away_team_abbr}</Text>
           <Text style={styles.teamRecordText}>{data.awayRecord}</Text>
@@ -275,6 +276,7 @@ const MLBWatch: React.FC<Props> = ({
           <LoadingImage
             source={checkTeamIcon('mlb', data.home_team_abbr)}
             style={styles.teamLogo}
+            type="svg"
           />
           <Text style={styles.teamNameText}>{data.home_team_abbr}</Text>
           <Text style={styles.teamRecordText}>{data.homeRecord}</Text>

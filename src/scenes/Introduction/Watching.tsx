@@ -53,6 +53,7 @@ const Watching: React.FC<CarosuelProps> = ({
               <LoadingImage
                 source={Images.carousel6}
                 style={styles.imageView}
+                type="png"
               />
             </View>
             <View style={styles.secondView}>

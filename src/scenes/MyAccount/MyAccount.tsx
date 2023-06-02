@@ -6,6 +6,7 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import {
   Container,
   Content,
+  Header,
   Text,
   View,
   Icon,
@@ -15,21 +16,30 @@ import {
 } from 'native-base';
 import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
+import { SvgXml } from 'react-native-svg';
 
 // import useInAppPurchase from '@Lib/useInAppPurchase';
 import { AuthContext, AuthContextType } from '@Context/AuthContext';
-import { UserHeader, LogoSpinner } from '@Components';
+import {
+  MainHeader,
+  LogoSpinner,
+  ModalCancelAccount,
+  UserHeader
+} from '@Components';
 import { ToastMessage } from '@Lib/function';
 import { timeStamptoDate, timeStamptoDateTime } from '@Lib/utilities';
 
+import { Svgs, Colors } from '@Theme';
 import { UserType } from './types';
-import styles from './styles';
+import styles, { scale } from './styles';
+import { Routes } from '@Navigators/routes';
 // import { Routes } from '@Navigators/routes';
 
 const MyAccount: React.FC = () => {
   const navigation = useNavigation<StackNavigationProp<any, any>>();
   const isFocused = useIsFocused();
   const { user, setDisplayName } = useContext(AuthContext) as AuthContextType;
+
   // const { currentProductId, expiresDate, purchaseDate, validate } =
   //   useInAppPurchase();
 
@@ -39,6 +49,11 @@ const MyAccount: React.FC = () => {
   const [newRePassView, setNewRePassView] = useState(true);
   const [loading, setLoading] = useState(true);
   const [passChangeDisabled, setPassChangeDisabled] = useState(false);
+  const [isCancelAccountModal, setIsCancelAccountModal] = useState(false);
+
+  const cancelAccount = () => {
+    setIsCancelAccountModal(!isCancelAccountModal);
+  };
 
   const saveUserData = () => {
     const userData: UserType = {};
@@ -192,12 +207,23 @@ const MyAccount: React.FC = () => {
 
   return (
     <Container style={styles.background}>
-      <UserHeader
-        type="icon"
-        iconType="MaterialCommunityIcons"
-        iconName="account-cog-outline"
-        name="My Account"
-      />
+      <Header
+        style={styles.header}
+        iosBarStyle={'light-content'}
+        androidStatusBarColor={Colors.black}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate(Routes.Schedule)}
+          style={styles.headerLeft}>
+          <Icon
+            type="SimpleLineIcons"
+            name="arrow-left"
+            style={styles.backIcon}
+          />
+          <Text style={styles.headerText}>My Info</Text>
+        </TouchableOpacity>
+        <SvgXml xml={Svgs.userIcon} width={38 * scale} height={38 * scale} />
+      </Header>
+
       <Content contentContainerStyle={styles.contentView}>
         {loading ? (
           <LogoSpinner />
@@ -214,11 +240,11 @@ const MyAccount: React.FC = () => {
             </View>
             <View style={styles.basicView}>
               <Text style={styles.basicTitle}>Basic Profile</Text>
-              <View style={styles.nameView}>
-                <Icon
-                  type="FontAwesome"
-                  name="user-o"
-                  style={styles.itemIcon}
+              <Item style={styles.itemView}>
+                <SvgXml
+                  xml={Svgs.maccountIcon}
+                  width={25 * scale}
+                  height={25 * scale}
                 />
                 <Input
                   value={userInfo?.firstName}
@@ -228,6 +254,13 @@ const MyAccount: React.FC = () => {
                     setUserInfo({ ...userInfo, firstName: text })
                   }
                 />
+              </Item>
+              <Item style={styles.itemView}>
+                <SvgXml
+                  xml={Svgs.maccountIcon}
+                  width={25 * scale}
+                  height={25 * scale}
+                />
                 <Input
                   value={userInfo?.lastName}
                   placeholder="Last Name"
@@ -236,30 +269,30 @@ const MyAccount: React.FC = () => {
                     setUserInfo({ ...userInfo, lastName: text })
                   }
                 />
-              </View>
-            </View>
-            <View style={styles.basicView}>
-              <Item style={styles.itemView}>
-                <Icon
-                  type="FontAwesome"
-                  name="envelope-o"
-                  style={styles.itemIcon}
-                />
-                <Input
-                  value={userInfo?.email}
-                  placeholder="Email Address"
-                  style={styles.inputView}
-                  onChangeText={text =>
-                    setUserInfo({ ...userInfo, email: text })
-                  }
-                />
               </Item>
             </View>
+            <Item style={styles.itemView}>
+              <SvgXml
+                xml={Svgs.memailIcon}
+                width={25 * scale}
+                height={25 * scale}
+              />
+              <Input
+                value={userInfo?.email}
+                placeholder="Email Address"
+                style={styles.inputView}
+                onChangeText={text => setUserInfo({ ...userInfo, email: text })}
+              />
+            </Item>
             {!passChangeDisabled && (
               <View style={styles.basicView}>
                 <Text style={styles.basicTitle}>Change Password</Text>
                 <Item style={styles.itemView}>
-                  <Icon type="Feather" name="unlock" style={styles.itemIcon} />
+                  <SvgXml
+                    xml={Svgs.mpasswordIcon}
+                    width={25 * scale}
+                    height={25 * scale}
+                  />
                   <Input
                     value={userInfo?.password}
                     placeholder="Enter New Password"
@@ -279,7 +312,11 @@ const MyAccount: React.FC = () => {
                   </TouchableOpacity>
                 </Item>
                 <Item style={styles.itemView}>
-                  <Icon type="Feather" name="unlock" style={styles.itemIcon} />
+                  <SvgXml
+                    xml={Svgs.mpasswordIcon}
+                    width={25 * scale}
+                    height={25 * scale}
+                  />
                   <Input
                     value={userInfo?.repassword}
                     placeholder="Retype New Password"
@@ -300,6 +337,16 @@ const MyAccount: React.FC = () => {
                 </Item>
               </View>
             )}
+            <View style={styles.cancelAccountItem}>
+              <Button transparent iconLeft icon onPress={cancelAccount}>
+                <SvgXml
+                  xml={Svgs.mcancelIcon}
+                  width={23 * scale}
+                  height={23 * scale}
+                />
+                <Text style={styles.cancelAccountText}>Cancel Account</Text>
+              </Button>
+            </View>
             {/* <View style={styles.basicView}>
               <Text style={styles.basicTitle}>Subscription</Text>
               <View style={styles.subscriptionView}>
@@ -342,6 +389,10 @@ const MyAccount: React.FC = () => {
           </View>
         )}
       </Content>
+      <ModalCancelAccount
+        isModalVisible={isCancelAccountModal}
+        toggleModal={cancelAccount}
+      />
     </Container>
   );
 };

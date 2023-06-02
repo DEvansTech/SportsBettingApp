@@ -19,6 +19,7 @@ import WatchsScene from '@Scenes/Watch';
 import MyteamScene from '@Scenes/Myteam';
 import PartnerScene from '@Scenes/Partner';
 import FeedbackScene from '@Scenes/Feedback';
+import MyAccountScene from '@Scenes/MyAccount';
 
 import { calendarDate } from '@Lib/utilities';
 
@@ -199,6 +200,32 @@ export const TabNavigator: React.FC = props => {
         })}
       />
       <Tab.Screen
+        name={Routes.MyAccount}
+        component={MyAccountScene}
+        options={() => ({
+          tabBarButton: CustomTabButton,
+          tabBarLabel: ({ color, focused }) => (
+            <Text
+              style={[
+                styles.labelStyle,
+                { color: focused ? Colors.green : color }
+              ]}>
+              Account
+            </Text>
+          ),
+          tabBarIcon: ({ focused }) => (
+            <View style={styles.tabBarView}>
+              <SvgXml
+                xml={focused ? Svgs.accountGreenIcon : Svgs.accountIcon}
+                width={35 * scale}
+                height={35 * scale}
+              />
+            </View>
+          ),
+          unmountOnBlur: true
+        })}
+      />
+      {/* <Tab.Screen
         name={Routes.Partner}
         component={PartnerScene}
         options={() => ({
@@ -223,7 +250,7 @@ export const TabNavigator: React.FC = props => {
           ),
           unmountOnBlur: true
         })}
-      />
+      /> */}
     </Tab.Navigator>
   );
 };

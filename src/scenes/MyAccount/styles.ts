@@ -2,11 +2,49 @@ import { StyleSheet, Dimensions } from 'react-native';
 import { Colors, Fonts } from '@Theme';
 
 const deviceWidth = Dimensions.get('window').width;
-const scale = deviceWidth / 390;
+export const scale = deviceWidth / 390;
 
 export default StyleSheet.create({
   background: {
     backgroundColor: 'white'
+  },
+  // header: {
+  //   flexDirection: 'row',
+  //   alignItems: 'center',
+  //   justifyContent: 'flex-start',
+  //   backgroundColor: Colors.green,
+  //   height: 65 * scale,
+  //   borderColor: 'transparent',
+  //   paddingHorizontal: 10 * scale
+  // },
+  // headerLeft: {
+  //   flexDirection: 'row',
+  //   alignItems: 'center',
+  //   justifyContent: 'flex-start'
+  // },
+  backIcon: {
+    fontSize: 28 * scale,
+    color: 'white'
+  },
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    backgroundColor: Colors.green,
+    height: 65 * scale,
+    borderColor: 'transparent',
+    marginHorizontal: 10 * scale
+  },
+  headerLeft: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start'
+  },
+  headerText: {
+    fontSize: 20 * scale,
+    fontFamily: Fonts.regular,
+    color: 'white',
+    marginLeft: 10 * scale
   },
   contentView: {
     position: 'relative',
@@ -22,10 +60,10 @@ export default StyleSheet.create({
     alignItems: 'center'
   },
   userName: {
-    fontSize: 25 * scale,
+    fontSize: 32 * scale,
     color: Colors.black,
     marginTop: 20 * scale,
-    fontFamily: Fonts.bold
+    fontFamily: Fonts.regular
   },
   inputView: {
     marginHorizontal: 5 * scale,
@@ -36,9 +74,9 @@ export default StyleSheet.create({
     fontSize: 16 * scale
   },
   signInDate: {
-    fontSize: 15 * scale,
+    fontSize: 13 * scale,
     color: Colors.black,
-    marginTop: 5 * scale,
+    marginTop: 10 * scale,
     fontFamily: Fonts.regular
   },
   basicView: {
@@ -50,12 +88,7 @@ export default StyleSheet.create({
     color: Colors.black,
     textTransform: 'uppercase',
     marginBottom: 10 * scale,
-    fontFamily: Fonts.semiBold
-  },
-  nameView: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center'
+    fontFamily: Fonts.black
   },
   itemView: {
     paddingVertical: 5 * scale,
@@ -64,15 +97,15 @@ export default StyleSheet.create({
     borderWidth: 0,
     borderColor: 'transparent'
   },
-  itemView1: {
-    paddingVertical: 5 * scale,
-    marginHorizontal: 10 * scale,
-    marginVertical: 5 * scale
-  },
-  itemIcon: {
-    fontSize: 22 * scale,
-    color: Colors.black
-  },
+  // itemView1: {
+  //   paddingVertical: 5 * scale,
+  //   marginHorizontal: 10 * scale,
+  //   marginVertical: 5 * scale
+  // },
+  // itemIcon: {
+  //   fontSize: 22 * scale,
+  //   color: Colors.black
+  // },
   itemText: {
     fontSize: 18 * scale,
     color: Colors.black
@@ -82,28 +115,28 @@ export default StyleSheet.create({
     right: 0,
     top: -5 * scale,
     fontSize: 20 * scale,
-    color: Colors.black
+    color: Colors.grey
   },
   selectIcon: {
     fontSize: 20 * scale,
     color: Colors.black
   },
-  phoneInputView: {
-    alignItems: 'center',
-    flexDirection: 'row',
-    borderBottomWidth: 1,
-    marginHorizontal: 5 * scale,
-    height: 40 * scale,
-    flex: 1,
-    borderBottomColor: Colors.grey,
-    fontFamily: Fonts.regular,
-    fontSize: 16 * scale
-  },
-  phontTextInputStyle: {
-    padding: 0 * scale,
-    backgroundColor: 'white',
-    fontFamily: Fonts.regular
-  },
+  // phoneInputView: {
+  //   alignItems: 'center',
+  //   flexDirection: 'row',
+  //   borderBottomWidth: 1,
+  //   marginHorizontal: 5 * scale,
+  //   height: 40 * scale,
+  //   flex: 1,
+  //   borderBottomColor: Colors.grey,
+  //   fontFamily: Fonts.regular,
+  //   fontSize: 16 * scale
+  // },
+  // phontTextInputStyle: {
+  //   padding: 0 * scale,
+  //   backgroundColor: 'white',
+  //   fontFamily: Fonts.regular
+  // },
   saveButton: {
     marginVertical: 20 * scale,
     alignSelf: 'center'
@@ -136,6 +169,20 @@ export default StyleSheet.create({
   },
   switch: {
     transform: [{ scaleX: 0.8 }, { scaleY: 0.8 }]
+  },
+  cancelAccountItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginVertical: 30 * scale,
+    paddingTop: 20 * scale,
+    paddingLeft: 5 * scale,
+    borderTopColor: Colors.grey,
+    borderTopWidth: 1
+  },
+  cancelAccountText: {
+    fontFamily: Fonts.regular,
+    fontSize: 16 * scale,
+    color: Colors.black
   }
 });
 

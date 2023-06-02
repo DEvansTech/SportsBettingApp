@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import {
   DrawerContentScrollView,
   DrawerItem,
@@ -12,7 +12,7 @@ import { SvgXml } from 'react-native-svg';
 import { AuthContext, AuthContextType } from '@Context/AuthContext';
 import { MainContext, MainContextType } from '@Context/MainContext';
 import LogoSidebar from './LogoSidebar';
-import { ModalCancelAccount } from '@Components';
+import FeedbackSidebar from './FeedbackSidebar';
 import { Svgs } from '@Theme';
 import { Routes } from '@Navigators/routes';
 import styles, { scale } from './styles';
@@ -35,7 +35,7 @@ export const CustomDrawerContent: React.FC<DrawerContentComponentProps> = ({
     labelStyle: styles.label,
     style: styles.itemContainer
   };
-  const [isCancelAccountModal, setIsCancelAccountModal] = useState(false);
+  // const [isCancelAccountModal, setIsCancelAccountModal] = useState(false);
 
   const logOut = () => {
     if (user) {
@@ -48,9 +48,9 @@ export const CustomDrawerContent: React.FC<DrawerContentComponentProps> = ({
     }, 1000);
   };
 
-  const cancelAccount = () => {
-    setIsCancelAccountModal(!isCancelAccountModal);
-  };
+  // const cancelAccount = () => {
+  //   setIsCancelAccountModal(!isCancelAccountModal);
+  // };
 
   return (
     <DrawerContentScrollView contentContainerStyle={styles.scroll}>
@@ -102,7 +102,7 @@ export const CustomDrawerContent: React.FC<DrawerContentComponentProps> = ({
         <DrawerItem
           {...itemBaseStyle}
           {...rest}
-          label="My Account"
+          label="My Info"
           icon={() => (
             <SvgXml
               xml={Svgs.sidebarAccountIcon}
@@ -183,7 +183,7 @@ export const CustomDrawerContent: React.FC<DrawerContentComponentProps> = ({
           )}
           onPress={logOut}
         />
-        <DrawerItem
+        {/*   <DrawerItem
           {...itemBaseStyle}
           {...rest}
           label="Cancel Account"
@@ -195,12 +195,13 @@ export const CustomDrawerContent: React.FC<DrawerContentComponentProps> = ({
             />
           )}
           onPress={cancelAccount}
-        />
+        /> */}
+        <FeedbackSidebar />
       </View>
-      <ModalCancelAccount
+      {/* <ModalCancelAccount
         isModalVisible={isCancelAccountModal}
         toggleModal={cancelAccount}
-      />
+      /> */}
     </DrawerContentScrollView>
   );
 };

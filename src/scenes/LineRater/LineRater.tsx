@@ -80,15 +80,9 @@ const LineRater: React.FC<Props> = props => {
                 <GrayScaleImage
                   isFocus={segementBtn !== 'ou' && selectedAwayTeam}>
                   <LoadingImage
-                    source={checkTeamIcon(
-                      sportName,
-                      gameData.sport_name === 'NCAAFB' ||
-                        gameData.sport_name === 'NCAAM' ||
-                        gameData.sport_name === 'NBA'
-                        ? gameData.awayTeamIcon
-                        : gameData.away_team_abbr
-                    )}
+                    source={checkTeamIcon(sportName, gameData.away_team_abbr)}
                     style={styles.teamLogo}
+                    type="svg"
                   />
                 </GrayScaleImage>
                 <View
@@ -117,13 +111,10 @@ const LineRater: React.FC<Props> = props => {
                   <LoadingImage
                     source={checkTeamIcon(
                       gameData.sport_name,
-                      gameData.sport_name === 'NCAAFB' ||
-                        gameData.sport_name === 'NCAAM' ||
-                        gameData.sport_name === 'NBA'
-                        ? gameData.homeTeamIcon
-                        : gameData.home_team_abbr
+                      gameData.home_team_abbr
                     )}
                     style={styles.teamLogo}
+                    type="svg"
                   />
                 </GrayScaleImage>
                 <View

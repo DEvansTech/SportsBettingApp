@@ -51,6 +51,7 @@ const Win: React.FC<CarosuelProps> = ({ nextPage, prevPage, closePage }) => {
               <LoadingImage
                 source={Images.carousel3}
                 style={styles.imageView}
+                type="png"
               />
             </View>
             <View style={styles.secondView}>

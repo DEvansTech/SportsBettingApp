@@ -268,15 +268,9 @@ const Myteam: React.FC = () => {
                           />
                         </TouchableOpacity>
                         <LoadingImage
-                          source={checkTeamIcon(
-                            team.team_sort,
-                            team.team_sort === 'ncaafb' ||
-                              team.team_sort === 'ncaab' ||
-                              team.team_sort === 'nba'
-                              ? team.teamIcon
-                              : team.team_abbr
-                          )}
+                          source={checkTeamIcon(team.team_sort, team.team_abbr)}
                           style={styles.teamImg}
+                          type="svg"
                         />
                         <Text style={styles.teamName}>
                           {team.team_market} {team.team_name}
@@ -313,15 +307,9 @@ const Myteam: React.FC = () => {
                       />
                     </TouchableOpacity>
                     <LoadingImage
-                      source={checkTeamIcon(
-                        sportName,
-                        sportName === 'ncaafb' ||
-                          sportName.trim() === 'ncaab' ||
-                          sportName === 'nba'
-                          ? team.teamIcon
-                          : team.team_abbr
-                      )}
+                      source={checkTeamIcon(sportName, team.team_abbr)}
                       style={styles.teamImg}
+                      type="svg"
                     />
                     <Text style={styles.teamName}>
                       {team.team_market} {team.team_name}

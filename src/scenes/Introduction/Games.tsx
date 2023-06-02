@@ -4,6 +4,8 @@ import { Container, Content, Text, View, Header, Icon } from 'native-base';
 import { LoadingImage } from '@Components';
 import { Colors, Images } from '@Theme';
 import styles from './styles';
+import { Routes } from '@Navigators/routes';
+
 import { CarosuelProps } from './types';
 
 const Games: React.FC<CarosuelProps> = ({ nextPage, prevPage, closePage }) => {
@@ -40,7 +42,11 @@ const Games: React.FC<CarosuelProps> = ({ nextPage, prevPage, closePage }) => {
       </Header>
       <Content contentContainerStyle={styles.contentView}>
         <View style={styles.gamesImageView}>
-          <LoadingImage source={Images.carousel1} style={styles.gamesImage} />
+          <LoadingImage
+            source={Images.carousel1}
+            style={styles.gamesImage}
+            type="png"
+          />
         </View>
         <View style={styles.content}>
           <View style={styles.titleView}>

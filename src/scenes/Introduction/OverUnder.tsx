@@ -55,6 +55,7 @@ const OverUnder: React.FC<CarosuelProps> = ({
               <LoadingImage
                 source={Images.carousel4}
                 style={styles.imageView}
+                type="png"
               />
             </View>
             <View style={styles.secondView}>

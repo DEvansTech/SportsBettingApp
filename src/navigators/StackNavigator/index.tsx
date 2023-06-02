@@ -25,7 +25,7 @@ const options: StackNavigationOptions = {
 export const StackNavigator: React.FC = () => {
   return (
     <Stack.Navigator
-      initialRouteName={Routes.Introduction}
+      initialRouteName={Routes.Splash}
       screenOptions={({ navigation }) => {
         return {
           ...options,

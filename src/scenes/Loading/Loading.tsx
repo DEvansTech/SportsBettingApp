@@ -1,7 +1,7 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { useNavigation } from '@react-navigation/core';
 import { StackNavigationProp } from '@react-navigation/stack';
-import firestore from '@react-native-firebase/firestore';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { LogoSpinner } from '@Components';
 // import useInAppPurchase from '@Lib/useInAppPurchase';
@@ -11,31 +11,13 @@ import { Routes } from '@Navigators/routes';
 const Loading: React.FC = () => {
   // const { validate } = useInAppPurchase();
   const navigation = useNavigation<StackNavigationProp<any, any>>();
-  const { user } = useContext(AuthContext) as AuthContextType;
-
-  const getIntroPageState = async () => {
-    if (user) {
-      return await firestore()
-        .collection('users')
-        .doc(user.uid)
-        .get()
-        .then((doc: any) => {
-          return doc.data()?.introPage || false;
-        });
-    }
-  };
 
   useEffect(() => {
     (async function () {
-      // navigation.navigate(Routes.Splash);
+      await AsyncStorage.setItem('@loggedUser', 'true');
       // const valid = await validate(true);
       if (true) {
-        const showIntroPage = await getIntroPageState();
-        if (!showIntroPage || showIntroPage === undefined) {
-          navigation.navigate(Routes.Introduction);
-        } else {
-          navigation.navigate(Routes.TabRoute);
-        }
+        navigation.navigate(Routes.TabRoute);
       } else {
         navigation.navigate(Routes.Subscription, { state: false });
       }

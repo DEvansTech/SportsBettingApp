@@ -3,12 +3,10 @@ import React, {
   useContext,
   useRef,
   useCallback,
-  ReactElement,
-  useEffect
+  ReactElement
 } from 'react';
-import { Container, View, Text, CheckBox } from 'native-base';
+import { Container } from 'native-base';
 import Carousel, { Pagination } from 'react-native-snap-carousel';
-import firestore from '@react-native-firebase/firestore';
 import { useNavigation } from '@react-navigation/core';
 import { StackNavigationProp } from '@react-navigation/stack';
 
@@ -38,7 +36,6 @@ const Introduction: React.FC = () => {
   const navigation = useNavigation<StackNavigationProp<any, any>>();
 
   const [activeSlide, setActiveSlide] = useState(0);
-  const [checkShow, setCheckShow] = useState(false);
 
   const _renderItem = useCallback(({ item }: ICarouselItem) => {
     return item;
@@ -59,32 +56,32 @@ const Introduction: React.FC = () => {
     return navigation.navigate(Routes.Splash);
   };
 
-  const handleCheckShow = async (value: boolean) => {
-    setCheckShow(!value);
-    const docRef = await firestore().collection('users').doc(user.uid);
-    const userData = {
-      introPage: !value
-    };
-    docRef.get().then(thisDoc => {
-      if (thisDoc.exists) {
-        docRef.update(userData);
-      }
-    });
-  };
+  // const handleCheckShow = async (value: boolean) => {
+  //   setCheckShow(!value);
+  //   const docRef = await firestore().collection('users').doc(user.uid);
+  //   const userData = {
+  //     introPage: !value
+  //   };
+  //   docRef.get().then(thisDoc => {
+  //     if (thisDoc.exists) {
+  //       docRef.update(userData);
+  //     }
+  //   });
+  // };
 
-  useEffect(() => {
-    (async function () {
-      if (user) {
-        await firestore()
-          .collection('users')
-          .doc(user.uid)
-          .get()
-          .then((doc: any) => {
-            setCheckShow(doc.data().introPage);
-          });
-      }
-    })();
-  }, []);
+  // useEffect(() => {
+  //   (async function () {
+  //     if (user) {
+  //       await firestore()
+  //         .collection('users')
+  //         .doc(user.uid)
+  //         .get()
+  //         .then((doc: any) => {
+  //           setCheckShow(doc.data().introPage);
+  //         });
+  //     }
+  //   })();
+  // }, []);
 
   const data = [
     <QuickStart
@@ -112,7 +109,7 @@ const Introduction: React.FC = () => {
         sliderWidth={deviceWidth}
         itemWidth={deviceWidth}
       />
-      {user && (
+      {/* {user && (
         <View style={styles.showCheck}>
           <CheckBox
             color={Colors.green}
@@ -121,7 +118,7 @@ const Introduction: React.FC = () => {
           />
           <Text style={styles.messageText}>Do not show again on startup</Text>
         </View>
-      )}
+      )} */}
       <Pagination
         dotsLength={data.length}
         activeDotIndex={activeSlide}

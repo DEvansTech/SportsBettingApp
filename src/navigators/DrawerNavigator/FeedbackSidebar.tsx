@@ -1,11 +1,10 @@
-import React, { useContext } from 'react';
-import { View, Image, Text, TouchableOpacity } from 'react-native';
+import React from 'react';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { SvgXml } from 'react-native-svg';
 import { useNavigation } from '@react-navigation/core';
 import { StackNavigationProp } from '@react-navigation/stack';
 
-import { AuthContext, AuthContextType } from '@Context/AuthContext';
-import { Images, Svgs } from '@Theme';
+import { Svgs } from '@Theme';
 import styles, { scale } from './styles';
 import { Routes } from '@Navigators/routes';
 

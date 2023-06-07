@@ -49,7 +49,7 @@ export const checkTeamIcon = (
   sportName: string | undefined,
   teamName: string | undefined
 ) => {
-  console.log('sportName----->', sportName, teamName);
+  console.log('sportName----->', sportName, teamName?.replace('-', '_'));
   switch (sportName?.trim()) {
     case 'mlb':
     case 'MLB':
@@ -63,13 +63,14 @@ export const checkTeamIcon = (
       }
     case 'ncaafb':
     case 'NCAAFB':
-      if (TeamLogos[`NCAA_${teamName}`]) {
-        return TeamLogos[`NCAA_${teamName}`];
+      if (TeamLogos[`NCAA_${teamName?.replace('-','_')}`]) {
+        console.log('This is right: ', TeamLogos[`NCAA_${teamName}`] );
+        return TeamLogos[`NCAA_${teamName?.replace('-','_')}`];
       }
     case 'ncaab':
     case 'NCAAM':
-      if (TeamLogos[`NCAA_${teamName}`]) {
-        return TeamLogos[`NCAA_${teamName}`];
+      if (TeamLogos[`NCAA_${teamName?.replace('-','_')}`]) {
+        return TeamLogos[`NCAA_${teamName?.replace('-','_')}`];
       } else {
         return getTeamLogo(Images)(`NCAA_Generic.png` as any);
       }

@@ -113,7 +113,7 @@ const NCAABWatch: React.FC<Props> = ({
           <LoadingImage
             source={checkTeamIcon('ncaab', data.away_team_abbr)}
             style={styles.teamLogo}
-            type="svg"
+            type="png"
           />
           <Text style={styles.teamNameText}>{data.away_team_abbr}</Text>
           <Text style={styles.teamRecordText}>{data.awayRecord}</Text>
@@ -176,7 +176,7 @@ const NCAABWatch: React.FC<Props> = ({
           <LoadingImage
             source={checkTeamIcon('ncaab', data.away_team_abbr)}
             style={styles.teamLogo}
-            type="svg"
+            type="png"
           />
           <Text style={styles.teamNameText}>{data.home_team_abbr}</Text>
           <Text style={styles.teamRecordText}>{data.homeRecord}</Text>

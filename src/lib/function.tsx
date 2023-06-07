@@ -65,6 +65,7 @@ export const checkTeamIcon = (
     case 'ncaafb':
     case 'NCAAFB':
       if (TeamLogos[`NCAA_${teamName}`]) {
+        console.log('This is right: ', TeamLogos[`NCAA_${teamName}`] );
         return TeamLogos[`NCAA_${teamName}`];
       }
     case 'ncaab':
@@ -77,7 +78,6 @@ export const checkTeamIcon = (
     case 'nba':
     case 'NBA':
       if (TeamLogos[`NBA_${teamName}`]) {
-        console.log('xxxxxxWhat?: ', TeamLogos[`MLB_${teamName}`] );
         return TeamLogos[`NBA_${teamName}`];
       }
     default:

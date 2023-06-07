@@ -114,7 +114,7 @@ const NFLWatch: React.FC<Props> = ({
           <LoadingImage
             source={checkTeamIcon('ncaafb', data.away_team_abbr)}
             style={styles.teamLogo}
-            type="svg"
+            type="png"
           />
           <Text style={styles.teamNameText}>{data.away_team_abbr}</Text>
           <Text style={styles.teamRecordText}>{data.awayRecord}</Text>
@@ -190,9 +190,9 @@ const NFLWatch: React.FC<Props> = ({
         </View>
         <View style={styles.teamStatusView}>
           <LoadingImage
-            source={checkTeamIcon('ncaafb', data.away_team_abbr)}
+            source={checkTeamIcon('ncaafb', data.home_team_abbr)}
             style={styles.teamLogo}
-            type="svg"
+            type="png"
           />
           <Text style={styles.teamNameText}>{data.home_team_abbr}</Text>
           <Text style={styles.teamRecordText}>{data.homeRecord}</Text>

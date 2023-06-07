@@ -32,6 +32,7 @@
 		C304B67A2A1E6DE300025770 /* Montserrat-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 129C92EBF80440B18C895FCD /* Montserrat-SemiBoldItalic.ttf */; };
 		C304B67B2A1E6DE300025770 /* Montserrat-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7FCF55280BCE4CFDBDC66FEE /* Montserrat-Thin.ttf */; };
 		C304B67C2A1E6DE300025770 /* Montserrat-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9CEE47F25A01438090B90934 /* Montserrat-ThinItalic.ttf */; };
+		C388CEF62A30CB07005D1A67 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		EF10129EFBBFA8A6396AA9BA /* libPods-PSS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A728789C5DB349F427BE7427 /* libPods-PSS.a */; };
 /* End PBXBuildFile section */
 
@@ -368,6 +369,7 @@
 				C304B6782A1E6DE300025770 /* Montserrat-MediumItalic.ttf in Resources */,
 				C304B6792A1E6DE300025770 /* Montserrat-SemiBold.ttf in Resources */,
 				C304B67A2A1E6DE300025770 /* Montserrat-SemiBoldItalic.ttf in Resources */,
+				C388CEF62A30CB07005D1A67 /* Images.xcassets in Resources */,
 				C304B67B2A1E6DE300025770 /* Montserrat-Thin.ttf in Resources */,
 				C304B67C2A1E6DE300025770 /* Montserrat-ThinItalic.ttf in Resources */,
 				C304B6542A1E6D5C00025770 /* Montserrat-Regular.ttf in Resources */,
@@ -623,11 +625,12 @@
 			baseConfigurationReference = 81E70CDE353A3C47E84D6A6D /* Pods-PSS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = PSS/PSS.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 228;
+				CURRENT_PROJECT_VERSION = 231;
 				DEVELOPMENT_TEAM = RWCUPUT5JH;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = PSS/Info.plist;
@@ -659,11 +662,12 @@
 			baseConfigurationReference = 2D1271E9BF6058CA35B1ED1C /* Pods-PSS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = PSS/PSS.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 228;
+				CURRENT_PROJECT_VERSION = 231;
 				DEVELOPMENT_TEAM = RWCUPUT5JH;
 				INFOPLIST_FILE = PSS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

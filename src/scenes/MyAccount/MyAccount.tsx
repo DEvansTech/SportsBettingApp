@@ -3,6 +3,7 @@ import { TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
 import { useIsFocused } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
+import { DrawerActions } from '@react-navigation/native';
 import {
   Container,
   Content,
@@ -200,6 +201,11 @@ const MyAccount: React.FC = () => {
   //     });
   //   }
   // }, [purchaseDate, expiresDate]);
+
+  const gotoBack = () => {
+    navigation.navigate(Routes.TabRoute);
+    navigation.dispatch(DrawerActions.openDrawer());
+  };
 
   useEffect(() => {
     setDisplayName(initUserInfo?.firstName + ' ' + initUserInfo?.lastName);

@@ -174,7 +174,7 @@ const NCAABWatch: React.FC<Props> = ({
         </View>
         <View style={styles.teamStatusView}>
           <LoadingImage
-            source={checkTeamIcon('ncaab', data.away_team_abbr)}
+            source={checkTeamIcon('ncaab', data.home_team_abbr)}
             style={styles.teamLogo}
             type="png"
           />

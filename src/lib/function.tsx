@@ -54,7 +54,6 @@ export const checkTeamIcon = (
     case 'mlb':
     case 'MLB':
       if (TeamLogos[`MLB_${teamName}`]) {
-        console.log('This is right: ', TeamLogos[`MLB_${teamName}`] );
         return TeamLogos[`MLB_${teamName}`];
       }
     case 'nfl':

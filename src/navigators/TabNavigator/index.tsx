@@ -1,13 +1,13 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
+import { TouchableOpacity } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {
   createStackNavigator,
   StackNavigationOptions
 } from '@react-navigation/stack';
+import { DrawerActions } from '@react-navigation/native';
 import { Text, View } from 'native-base';
-import { TouchableOpacity } from 'react-native';
 import { SvgXml } from 'react-native-svg';
-import { Colors, Svgs } from '@Theme';
 
 import { MainContext, MainContextType } from '@Context/MainContext';
 import { Routes } from '@Navigators/routes';
@@ -17,12 +17,11 @@ import ScheduleScene from '@Scenes/Schedule';
 import LineRaterScene from '@Scenes/LineRater';
 import WatchsScene from '@Scenes/Watch';
 import MyteamScene from '@Scenes/Myteam';
-import PartnerScene from '@Scenes/Partner';
 import FeedbackScene from '@Scenes/Feedback';
 import MyAccountScene from '@Scenes/MyAccount';
 
 import { calendarDate } from '@Lib/utilities';
-
+import { Colors, Svgs } from '@Theme';
 import styles, { scale } from './styles';
 
 const options: StackNavigationOptions = {
@@ -102,7 +101,7 @@ const CustomTabButton = (props: any) => (
   />
 );
 
-export const TabNavigator: React.FC = props => {
+export const TabNavigator: React.FC = (props: any) => {
   const { scheduleDate } = useContext(MainContext) as MainContextType;
   const todayDate = calendarDate(scheduleDate);
 
@@ -202,6 +201,12 @@ export const TabNavigator: React.FC = props => {
       <Tab.Screen
         name={Routes.MyAccount}
         component={MyAccountScene}
+        listeners={({ navigation }) => ({
+          tabPress: e => {
+            e.preventDefault();
+            navigation.dispatch(DrawerActions.openDrawer());
+          }
+        })}
         options={() => ({
           tabBarButton: CustomTabButton,
           tabBarLabel: ({ color, focused }) => (

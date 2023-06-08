@@ -7,7 +7,7 @@ import firestore from '@react-native-firebase/firestore';
 import { AuthContext, AuthContextType } from '@Context/AuthContext';
 import { MainContext, MainContextType } from '@Context/MainContext';
 
-import { MLBWatch, LogoSpinner, SegmentSort } from '@Components';
+import { MLBWatch, LogoSpinner } from '@Components';
 import { dateCompare } from '@Lib/utilities';
 import { RootState } from '@Store/store';
 import { getGamedata } from '@Store/schedule/actions';
@@ -144,7 +144,6 @@ const MLB: React.FC<Props> = ({ selectedDate, sportName }) => {
         <LogoSpinner />
       ) : (
         <View style={styles.container}>
-          <SegmentSort />
           {gameData.length > 0 ? (
             gameData.map((match: GameDataType, index: number) => (
               <MLBWatch

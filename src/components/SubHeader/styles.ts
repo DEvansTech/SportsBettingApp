@@ -9,11 +9,9 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'white',
+    backgroundColor: Colors.green,
     height: 60 * scale,
-    borderColor: 'transparent',
-    borderBottomColor: Colors.black,
-    borderWidth: 0.5 * scale
+    borderColor: 'transparent'
   },
   headerLeft: {
     marginLeft: 15 * scale,
@@ -23,8 +21,8 @@ export default StyleSheet.create({
   },
   headerDateText: {
     fontSize: 18 * scale,
-    color: Colors.black,
-    fontFamily: Fonts.light
+    color: Colors.white,
+    fontFamily: Fonts.semiBold
   },
   headerRight: {
     marginRight: 11 * scale,
@@ -41,11 +39,11 @@ export default StyleSheet.create({
   },
   chevronIcon: {
     fontSize: 35 * scale,
-    color: Colors.black
+    color: Colors.white
   },
   selectIcon: {
     fontSize: 20 * scale,
-    color: Colors.black
+    color: Colors.white
   }
 });
 
@@ -58,7 +56,7 @@ export const pickerSelectStyles = (fontSize: number) =>
       height: 50 * scale,
       borderColor: Colors.transparent,
       backgroundColor: Colors.transparent,
-      color: Colors.black,
+      color: Colors.white,
       paddingRight: 10 * scale
     },
     inputAndroid: {
@@ -68,7 +66,7 @@ export const pickerSelectStyles = (fontSize: number) =>
       height: 50 * scale,
       borderColor: Colors.transparent,
       backgroundColor: Colors.transparent,
-      color: Colors.black,
+      color: Colors.white,
       paddingRight: 25 * scale,
       width: '100%'
     },

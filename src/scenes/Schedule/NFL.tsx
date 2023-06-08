@@ -4,7 +4,7 @@ import { useIsFocused } from '@react-navigation/native';
 import { View, Button, Text } from 'native-base';
 import firestore from '@react-native-firebase/firestore';
 
-import { NFLWatch, LogoSpinner, SegmentSort } from '@Components';
+import { NFLWatch, LogoSpinner } from '@Components';
 import { AuthContext, AuthContextType } from '@Context/AuthContext';
 import { MainContext, MainContextType } from '@Context/MainContext';
 
@@ -143,7 +143,6 @@ const NFL: React.FC<Props> = ({ selectedDate, sportName }) => {
         <LogoSpinner />
       ) : (
         <View style={styles.container}>
-          <SegmentSort />
           {gameData.length > 0 ? (
             gameData.map((match: GameDataType, index: number) => (
               <NFLWatch

@@ -24,7 +24,6 @@ const Obisays: React.FC = () => {
 
   return (
     <Container style={styles.background}>
-      <MainHeader />
       <View style={styles.header}>
         <Text style={styles.headerText}>OBI Says</Text>
       </View>

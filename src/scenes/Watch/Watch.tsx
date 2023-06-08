@@ -21,7 +21,6 @@ const Watch: React.FC = () => {
 
   return (
     <Container style={styles.background}>
-      <MainHeader />
       <SubHeader />
       {user ? (
         <Content contentContainerStyle={styles.contentView}>

@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { TouchableOpacity } from 'react-native';
-import { Icon, Text, View } from 'native-base';
+import { Icon, Text, View, Header } from 'native-base';
 import RNPickerSelect from 'react-native-picker-select';
 import moment from 'moment';
 import { SvgXml } from 'react-native-svg';
@@ -37,7 +37,10 @@ const SubHeader: React.FC = () => {
   };
 
   return (
-    <View style={styles.header}>
+    <Header
+      style={styles.header}
+      iosBarStyle={'light-content'}
+      androidStatusBarColor={Colors.black}>
       <View style={styles.headerLeft}>
         <RNPickerSelect
           items={sportSorts}
@@ -49,7 +52,7 @@ const SubHeader: React.FC = () => {
             <Icon
               name="chevron-down"
               style={styles.selectIcon}
-              color={Colors.black}
+              color={Colors.white}
             />
           )}
           style={pickerSelectStyles(responseFontSize(sportName, 0.3, 21))}
@@ -84,7 +87,7 @@ const SubHeader: React.FC = () => {
         selectedDate={scheduleDate}
         toggleModal={toggleModal}
       />
-    </View>
+    </Header>
   );
 };
 

@@ -240,21 +240,31 @@ const Login: React.FC = () => {
                 Or sign in using your Google or Apple account
               </Text>
               <View style={styles.socialBtns}>
-                <TouchableOpacity onPress={onGoogleLogin}>
+                <Button
+                  full
+                  rounded
+                  light
+                  style={styles.loginFormNeedBtn}
+                  onPress={onGoogleLogin}>
                   <SvgXml
                     xml={Svgs.googleIcon}
-                    width={38 * scale}
-                    height={38 * scale}
+                    width={35 * scale}
+                    height={35 * scale}
                   />
-                </TouchableOpacity>
+                </Button>
                 {Platform.OS === 'ios' && (
-                  <TouchableOpacity onPress={onAppleLogin}>
+                  <Button
+                    full
+                    rounded
+                    light
+                    style={styles.loginFormNeedBtn}
+                    onPress={onAppleLogin}>
                     <SvgXml
                       xml={Svgs.appleIcon}
-                      width={38 * scale}
-                      height={38 * scale}
+                      width={35 * scale}
+                      height={35 * scale}
                     />
-                  </TouchableOpacity>
+                  </Button>
                 )}
               </View>
             </View>

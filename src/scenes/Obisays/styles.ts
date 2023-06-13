@@ -6,7 +6,7 @@ export const scale = deviceWidth / 390;
 
 export default StyleSheet.create({
   background: {
-    backgroundColor: Colors.whiteGreen
+    backgroundColor: Colors.green
   },
   header: {
     flexDirection: 'row',

@@ -1,15 +1,16 @@
 import React, { useEffect } from 'react';
-import { TouchableOpacity, Image } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import { Container, Content, Text, View, Icon } from 'native-base';
+import { Container, Header, Content, Text, View, Icon } from 'native-base';
 import { useNavigation } from '@react-navigation/core';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { MainHeader, LogoSpinner } from '@Components';
-// import { Images } from '@Theme';
+import { LogoSpinner } from '@Components';
+
 import { Routes } from '@Navigators/routes';
 import { getObiDta } from '@Store/obi/actions';
 import { RootState } from '@Store/store';
 
+import { Colors } from '@Theme';
 import styles from './styles';
 
 const Obisays: React.FC = () => {
@@ -24,9 +25,13 @@ const Obisays: React.FC = () => {
 
   return (
     <Container style={styles.background}>
-      <View style={styles.header}>
+      <Header
+        style={styles.header}
+        iosBarStyle={'light-content'}
+        androidStatusBarColor={Colors.black}>
         <Text style={styles.headerText}>OBI Says</Text>
-      </View>
+      </Header>
+
       {loading ? (
         <LogoSpinner />
       ) : (

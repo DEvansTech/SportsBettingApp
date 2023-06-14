@@ -25,7 +25,7 @@ export default StyleSheet.create({
   },
   segmentBtnText: {
     color: 'white',
-    fontFamily: Fonts.extraBold,
+    fontFamily: Fonts.black,
     fontSize: 22 * scale,
     textTransform: 'uppercase'
   },

@@ -63,14 +63,14 @@ export const checkTeamIcon = (
       }
     case 'ncaafb':
     case 'NCAAFB':
-      if (TeamLogos[`NCAA_${teamName?.replace('-','_')}`]) {
-        console.log('This is right: ', TeamLogos[`NCAA_${teamName}`] );
-        return TeamLogos[`NCAA_${teamName?.replace('-','_')}`];
+      if (TeamLogos[`NCAA_${teamName?.replace('-', '_')}`]) {
+        console.log('This is right: ', TeamLogos[`NCAA_${teamName}`]);
+        return TeamLogos[`NCAA_${teamName?.replace('-', '_')}`];
       }
     case 'ncaab':
     case 'NCAAM':
-      if (TeamLogos[`NCAA_${teamName?.replace('-','_')}`]) {
-        return TeamLogos[`NCAA_${teamName?.replace('-','_')}`];
+      if (TeamLogos[`NCAA_${teamName?.replace('-', '_')}`]) {
+        return TeamLogos[`NCAA_${teamName?.replace('-', '_')}`];
       } else {
         return getTeamLogo(Images)(`NCAA_Generic.png` as any);
       }

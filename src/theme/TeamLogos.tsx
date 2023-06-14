@@ -512,6 +512,7 @@ import NCAA_WMC from '@Assets/ncaa_teams/WMC.png';
 import NCAA_WST from '@Assets/ncaa_teams/WST.png';
 import NCAA_WVU from '@Assets/ncaa_teams/WVU.png';
 import NCAA_WYO from '@Assets/ncaa_teams/WYO.png';
+
 export default {
   MLB_ARI,
   MLB_ATL,

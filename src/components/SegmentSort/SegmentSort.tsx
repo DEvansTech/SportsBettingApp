@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
-import { View, Button, Text } from 'native-base';
+import { TouchableOpacity } from 'react-native';
+import { View, Text } from 'native-base';
 
 import { MainContext, MainContextType } from '@Context/MainContext';
 import styles from './styles';
@@ -11,26 +12,34 @@ const SegmentSort: React.FC = () => {
 
   return (
     <View style={styles.segmentView}>
-      <Button
-        first
-        success
-        small
-        style={styles.segmentBtn1}
-        active={matchSort === 'best'}
-        bordered={matchSort !== 'best'}
+      <TouchableOpacity
+        style={[
+          styles.segmentBtn,
+          matchSort === 'best' && styles.activeSegmentBtn
+        ]}
         onPress={() => setMatchSort('best')}>
-        <Text>Top Ranked</Text>
-      </Button>
-      <Button
-        last
-        success
-        small
-        style={styles.segmentBtn2}
-        active={matchSort === 'all'}
-        bordered={matchSort !== 'all'}
+        <Text
+          style={[
+            styles.segmentBtnText,
+            matchSort === 'best' && styles.activeSegmentBtnText
+          ]}>
+          Top Ranked
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={[
+          styles.segmentBtn,
+          matchSort === 'all' && styles.activeSegmentBtn
+        ]}
         onPress={() => setMatchSort('all')}>
-        <Text>All</Text>
-      </Button>
+        <Text
+          style={[
+            styles.segmentBtnText,
+            matchSort === 'all' && styles.activeSegmentBtnText
+          ]}>
+          All
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 };

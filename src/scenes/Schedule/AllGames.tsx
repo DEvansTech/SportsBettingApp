@@ -10,8 +10,7 @@ import {
   NCAAFWatch,
   NBAWatch,
   LogoSpinner,
-  NCAABWatch,
-  SegmentSort
+  NCAABWatch
 } from '@Components';
 import { AuthContext, AuthContextType } from '@Context/AuthContext';
 import { MainContext, MainContextType } from '@Context/MainContext';
@@ -200,7 +199,6 @@ const AllGames: React.FC<Props> = ({ selectedDate, sportName }) => {
         <LogoSpinner />
       ) : (
         <View style={styles.container}>
-          <SegmentSort />
           {gameData.length > 0 ? (
             gameData.map((match: any, index: number) => (
               <View key={index}>

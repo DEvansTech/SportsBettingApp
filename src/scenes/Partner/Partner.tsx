@@ -8,7 +8,6 @@ import styles from './styles';
 const Partner: React.FC = () => {
   return (
     <Container style={styles.background}>
-      <MainHeader />
       <View style={styles.header}>
         <Text style={styles.headerText}>We're working on it.</Text>
       </View>

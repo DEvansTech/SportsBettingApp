@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Container, Content } from 'native-base';
 
 import { MainContext, MainContextType } from '@Context/MainContext';
-import { MainHeader, SubHeader } from '@Components';
+import { SubHeader, SegmentSort } from '@Components';
 import AllGames from './AllGames';
 import MLB from './MLB';
 import NFL from './NFL';
@@ -19,8 +19,8 @@ const Schedule: React.FC = () => {
 
   return (
     <Container style={styles.background}>
-      <MainHeader />
       <SubHeader />
+      <SegmentSort />
       <Content contentContainerStyle={styles.contentView}>
         {sportName === 'all' && (
           <AllGames selectedDate={scheduleDate} sportName={sportName} />

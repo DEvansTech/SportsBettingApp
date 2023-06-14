@@ -21,12 +21,7 @@ import { SvgXml } from 'react-native-svg';
 
 // import useInAppPurchase from '@Lib/useInAppPurchase';
 import { AuthContext, AuthContextType } from '@Context/AuthContext';
-import {
-  MainHeader,
-  LogoSpinner,
-  ModalCancelAccount,
-  UserHeader
-} from '@Components';
+import { LogoSpinner, ModalCancelAccount } from '@Components';
 import { ToastMessage } from '@Lib/function';
 import { timeStamptoDate, timeStamptoDateTime } from '@Lib/utilities';
 

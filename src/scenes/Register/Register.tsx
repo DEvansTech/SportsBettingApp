@@ -1,5 +1,10 @@
 import React, { useEffect, useContext, useState } from 'react';
-import { TouchableOpacity, Image, Platform } from 'react-native';
+import {
+  TouchableOpacity,
+  Image,
+  Platform,
+  ImageBackground
+} from 'react-native';
 import { useNavigation } from '@react-navigation/core';
 import { StackNavigationProp } from '@react-navigation/stack';
 import auth from '@react-native-firebase/auth';
@@ -9,18 +14,17 @@ import {
   statusCodes
 } from '@react-native-google-signin/google-signin';
 import { appleAuth } from '@invertase/react-native-apple-authentication';
-
-import { Container, Content, Icon, Text, View } from 'native-base';
-import { ImageBackground } from 'react-native';
+import { Container, Content, Icon, Text, View, Button } from 'native-base';
+import { SvgXml } from 'react-native-svg';
 
 import { LogoSpinner, Button as CustomButton } from '@Components';
 import { ToastMessage } from '@Lib/function';
 import { WEB_CLIENT_ID } from '@env';
 import { AuthContext, AuthContextType } from '@Context/AuthContext';
 import { Routes } from '@Navigators/routes';
-import { Images } from '@Theme';
+import { Images, Svgs } from '@Theme';
 
-import styles from './styles';
+import styles, { scale } from './styles';
 
 GoogleSignin.configure({
   webClientId: WEB_CLIENT_ID,
@@ -183,29 +187,32 @@ const Register: React.FC = () => {
                     Or sign up using your Google or Apple account
                   </Text>
                   <View style={styles.socialBtns}>
-                    <TouchableOpacity onPress={onGoogleResiger}>
-                      <Icon
-                        type="FontAwesome"
-                        name="google"
-                        style={styles.socialIcon}
+                    <Button
+                      full
+                      rounded
+                      light
+                      style={styles.loginFormNeedBtn}
+                      onPress={onGoogleResiger}>
+                      <SvgXml
+                        xml={Svgs.googleIcon}
+                        width={35 * scale}
+                        height={35 * scale}
                       />
-                    </TouchableOpacity>
+                    </Button>
                     {Platform.OS === 'ios' && (
-                      <TouchableOpacity onPress={onAppleRegister}>
-                        <Icon
-                          type="FontAwesome"
-                          name="apple"
-                          style={styles.socialIcon}
+                      <Button
+                        full
+                        rounded
+                        light
+                        style={styles.loginFormNeedBtn}
+                        onPress={onAppleRegister}>
+                        <SvgXml
+                          xml={Svgs.appleIcon}
+                          width={35 * scale}
+                          height={35 * scale}
                         />
-                      </TouchableOpacity>
+                      </Button>
                     )}
-                    {/* <TouchableOpacity>
-                      <Icon
-                        type="MaterialIcons"
-                        name="facebook"
-                        style={styles.socialIcon}
-                      />
-                    </TouchableOpacity> */}
                   </View>
                 </View>
                 <View style={styles.footerText}>

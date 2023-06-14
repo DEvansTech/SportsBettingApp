@@ -40,10 +40,7 @@ export default StyleSheet.create({
     color: 'white'
   },
   socialBtns: {
-    marginTop: 25 * scale,
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    paddingHorizontal: 60 * scale
+    marginTop: 20 * scale
   },
   socialIcon: {
     fontSize: 40 * scale,
@@ -144,5 +141,10 @@ export default StyleSheet.create({
   chevronIcon: {
     fontSize: 35 * scale,
     color: Colors.black
+  },
+  loginFormNeedBtn: {
+    marginTop: 20 * scale,
+    backgroundColor: Colors.white,
+    height: 45 * scale
   }
 });

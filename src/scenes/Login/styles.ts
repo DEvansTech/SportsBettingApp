@@ -40,7 +40,7 @@ export default StyleSheet.create({
     color: 'white'
   },
   loginForm: {
-    marginTop: deviceHeight * 0.1
+    marginTop: 40 * scale
   },
   loginFormTitle: {
     fontSize: 30 * scale,
@@ -84,10 +84,7 @@ export default StyleSheet.create({
     height: 45 * scale
   },
   socialBtns: {
-    marginTop: 25 * scale,
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    paddingHorizontal: 60 * scale
+    marginTop: 10 * scale
   },
   buttonWhiteText: {
     color: 'white',

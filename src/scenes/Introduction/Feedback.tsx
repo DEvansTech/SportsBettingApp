@@ -50,7 +50,6 @@ const Feedback: React.FC<CarosuelProps> = ({
               <LoadingImage
                 source={Images.carousel8}
                 style={styles.imageView}
-                type="png"
               />
             </View>
             <View style={styles.secondView}>

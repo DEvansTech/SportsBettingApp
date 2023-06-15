@@ -82,7 +82,6 @@ const LineRater: React.FC<Props> = props => {
                   <LoadingImage
                     source={checkTeamIcon(sportName, gameData.away_team_abbr)}
                     style={styles.teamLogo}
-                    type="svg"
                   />
                 </GrayScaleImage>
                 <View
@@ -114,7 +113,6 @@ const LineRater: React.FC<Props> = props => {
                       gameData.home_team_abbr
                     )}
                     style={styles.teamLogo}
-                    type="svg"
                   />
                 </GrayScaleImage>
                 <View

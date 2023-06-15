@@ -42,11 +42,7 @@ const Games: React.FC<CarosuelProps> = ({ nextPage, prevPage, closePage }) => {
       </Header>
       <Content contentContainerStyle={styles.contentView}>
         <View style={styles.gamesImageView}>
-          <LoadingImage
-            source={Images.carousel1}
-            style={styles.gamesImage}
-            type="png"
-          />
+          <LoadingImage source={Images.carousel1} style={styles.gamesImage} />
         </View>
         <View style={styles.content}>
           <View style={styles.titleView}>

@@ -1,66 +1,66 @@
-import MLB_ARI from '@Assets/mlb_teams/ARI.svg';
-import MLB_ATL from '@Assets/mlb_teams/ATL.svg';
-import MLB_BAL from '@Assets/mlb_teams/BAL.svg';
-import MLB_BOS from '@Assets/mlb_teams/BOS.svg';
-import MLB_CHC from '@Assets/mlb_teams/CHC.svg';
-import MLB_CIN from '@Assets/mlb_teams/CIN.svg';
-import MLB_CLE from '@Assets/mlb_teams/CLE.svg';
-import MLB_COL from '@Assets/mlb_teams/COL.svg';
-import MLB_CWS from '@Assets/mlb_teams/CWS.svg';
-import MLB_DET from '@Assets/mlb_teams/DET.svg';
-import MLB_HOU from '@Assets/mlb_teams/HOU.svg';
-import MLB_KC from '@Assets/mlb_teams/KC.svg';
-import MLB_LAA from '@Assets/mlb_teams/LAA.svg';
-import MLB_LAD from '@Assets/mlb_teams/LAD.svg';
-import MLB_MIA from '@Assets/mlb_teams/MIA.svg';
-import MLB_MIL from '@Assets/mlb_teams/MIL.svg';
-import MLB_MIN from '@Assets/mlb_teams/MIN.svg';
-import MLB_NYM from '@Assets/mlb_teams/NYM.svg';
-import MLB_NYY from '@Assets/mlb_teams/NYY.svg';
-import MLB_OAK from '@Assets/mlb_teams/OAK.svg';
-import MLB_PHI from '@Assets/mlb_teams/PHI.svg';
-import MLB_PIT from '@Assets/mlb_teams/PIT.svg';
-import MLB_SD from '@Assets/mlb_teams/SD.svg';
-import MLB_SEA from '@Assets/mlb_teams/SEA.svg';
-import MLB_SF from '@Assets/mlb_teams/SF.svg';
-import MLB_STL from '@Assets/mlb_teams/STL.svg';
-import MLB_TB from '@Assets/mlb_teams/TB.svg';
-import MLB_TEX from '@Assets/mlb_teams/TEX.svg';
-import MLB_TOR from '@Assets/mlb_teams/TOR.svg';
-import MLB_WSH from '@Assets/mlb_teams/WSH.svg';
+import MLB_ARI from '@Assets/mlb_teams/ARI.png';
+import MLB_ATL from '@Assets/mlb_teams/ATL.png';
+import MLB_BAL from '@Assets/mlb_teams/BAL.png';
+import MLB_BOS from '@Assets/mlb_teams/BOS.png';
+import MLB_CHC from '@Assets/mlb_teams/CHC.png';
+import MLB_CIN from '@Assets/mlb_teams/CIN.png';
+import MLB_CLE from '@Assets/mlb_teams/CLE.png';
+import MLB_COL from '@Assets/mlb_teams/COL.png';
+import MLB_CWS from '@Assets/mlb_teams/CWS.png';
+import MLB_DET from '@Assets/mlb_teams/DET.png';
+import MLB_HOU from '@Assets/mlb_teams/HOU.png';
+import MLB_KC from '@Assets/mlb_teams/KC.png';
+import MLB_LAA from '@Assets/mlb_teams/LAA.png';
+import MLB_LAD from '@Assets/mlb_teams/LAD.png';
+import MLB_MIA from '@Assets/mlb_teams/MIA.png';
+import MLB_MIL from '@Assets/mlb_teams/MIL.png';
+import MLB_MIN from '@Assets/mlb_teams/MIN.png';
+import MLB_NYM from '@Assets/mlb_teams/NYM.png';
+import MLB_NYY from '@Assets/mlb_teams/NYY.png';
+import MLB_OAK from '@Assets/mlb_teams/OAK.png';
+import MLB_PHI from '@Assets/mlb_teams/PHI.png';
+import MLB_PIT from '@Assets/mlb_teams/PIT.png';
+import MLB_SD from '@Assets/mlb_teams/SD.png';
+import MLB_SEA from '@Assets/mlb_teams/SEA.png';
+import MLB_SF from '@Assets/mlb_teams/SF.png';
+import MLB_STL from '@Assets/mlb_teams/STL.png';
+import MLB_TB from '@Assets/mlb_teams/TB.png';
+import MLB_TEX from '@Assets/mlb_teams/TEX.png';
+import MLB_TOR from '@Assets/mlb_teams/TOR.png';
+import MLB_WSH from '@Assets/mlb_teams/WSH.png';
 
-import NFL_ARI from '@Assets/nfl_teams/ARI.svg';
-import NFL_ATL from '@Assets/nfl_teams/ATL.svg';
-import NFL_BAL from '@Assets/nfl_teams/BAL.svg';
-import NFL_BUF from '@Assets/nfl_teams/BUF.svg';
-import NFL_CAR from '@Assets/nfl_teams/CAR.svg';
-import NFL_CHI from '@Assets/nfl_teams/CHI.svg';
-import NFL_CIN from '@Assets/nfl_teams/CIN.svg';
-import NFL_CLE from '@Assets/nfl_teams/CLE.svg';
-import NFL_DAL from '@Assets/nfl_teams/DAL.svg';
-import NFL_DEN from '@Assets/nfl_teams/DEN.svg';
-import NFL_DET from '@Assets/nfl_teams/DET.svg';
-import NFL_GB from '@Assets/nfl_teams/GB.svg';
-import NFL_HOU from '@Assets/nfl_teams/HOU.svg';
-import NFL_IND from '@Assets/nfl_teams/IND.svg';
-import NFL_JAC from '@Assets/nfl_teams/JAC.svg';
-import NFL_KC from '@Assets/nfl_teams/KC.svg';
-import NFL_LA from '@Assets/nfl_teams/LA.svg';
-import NFL_LAC from '@Assets/nfl_teams/LAC.svg';
-import NFL_LV from '@Assets/nfl_teams/LV.svg';
-import NFL_MIA from '@Assets/nfl_teams/MIA.svg';
-import NFL_MIN from '@Assets/nfl_teams/MIN.svg';
-import NFL_NE from '@Assets/nfl_teams/NE.svg';
-import NFL_NO from '@Assets/nfl_teams/NO.svg';
-import NFL_NYG from '@Assets/nfl_teams/NYG.svg';
-import NFL_NYJ from '@Assets/nfl_teams/NYJ.svg';
-import NFL_PHI from '@Assets/nfl_teams/PHI.svg';
-import NFL_PIT from '@Assets/nfl_teams/PIT.svg';
-import NFL_SEA from '@Assets/nfl_teams/SEA.svg';
-import NFL_SF from '@Assets/nfl_teams/SF.svg';
-import NFL_TB from '@Assets/nfl_teams/TB.svg';
-import NFL_TEN from '@Assets/nfl_teams/TEN.svg';
-import NFL_WAS from '@Assets/nfl_teams/WAS2.svg';
+import NFL_ARI from '@Assets/nfl_teams/ARI.png';
+import NFL_ATL from '@Assets/nfl_teams/ATL.png';
+import NFL_BAL from '@Assets/nfl_teams/BAL.png';
+import NFL_BUF from '@Assets/nfl_teams/BUF.png';
+import NFL_CAR from '@Assets/nfl_teams/CAR.png';
+import NFL_CHI from '@Assets/nfl_teams/CHI.png';
+import NFL_CIN from '@Assets/nfl_teams/CIN.png';
+import NFL_CLE from '@Assets/nfl_teams/CLE.png';
+import NFL_DAL from '@Assets/nfl_teams/DAL.png';
+import NFL_DEN from '@Assets/nfl_teams/DEN.png';
+import NFL_DET from '@Assets/nfl_teams/DET.png';
+import NFL_GB from '@Assets/nfl_teams/GB.png';
+import NFL_HOU from '@Assets/nfl_teams/HOU.png';
+import NFL_IND from '@Assets/nfl_teams/IND.png';
+import NFL_JAC from '@Assets/nfl_teams/JAC.png';
+import NFL_KC from '@Assets/nfl_teams/KC.png';
+import NFL_LA from '@Assets/nfl_teams/LA.png';
+import NFL_LAC from '@Assets/nfl_teams/LAC.png';
+import NFL_LV from '@Assets/nfl_teams/LV.png';
+import NFL_MIA from '@Assets/nfl_teams/MIA.png';
+import NFL_MIN from '@Assets/nfl_teams/MIN.png';
+import NFL_NE from '@Assets/nfl_teams/NE.png';
+import NFL_NO from '@Assets/nfl_teams/NO.png';
+import NFL_NYG from '@Assets/nfl_teams/NYG.png';
+import NFL_NYJ from '@Assets/nfl_teams/NYJ.png';
+import NFL_PHI from '@Assets/nfl_teams/PHI.png';
+import NFL_PIT from '@Assets/nfl_teams/PIT.png';
+import NFL_SEA from '@Assets/nfl_teams/SEA.png';
+import NFL_SF from '@Assets/nfl_teams/SF.png';
+import NFL_TB from '@Assets/nfl_teams/TB.png';
+import NFL_TEN from '@Assets/nfl_teams/TEN.png';
+import NFL_WSH from '@Assets/nfl_teams/WSH.png';
 
 // NCAAF //
 import NCAA_AAMU from '@Assets/ncaa_teams/AAMU.png';
@@ -177,7 +177,7 @@ import NCAA_HOF from '@Assets/ncaa_teams/HOF.png';
 import NCAA_HOW from '@Assets/ncaa_teams/HOW.png';
 import NCAA_HP from '@Assets/ncaa_teams/HP.png';
 import NCAA_IDHO from '@Assets/ncaa_teams/IDHO.png';
-//import NCAA_IDST from '@Assets/ncaa_teams/IDST.png';
+import NCAA_IDSU from '@Assets/ncaa_teams/IDSU.png';
 import NCAA_ILST from '@Assets/ncaa_teams/ILST.png';
 import NCAA_IND from '@Assets/ncaa_teams/IND.png';
 import NCAA_INST from '@Assets/ncaa_teams/INST.png';
@@ -370,7 +370,7 @@ import NCAA_YALE from '@Assets/ncaa_teams/YALE.png';
 import NCAA_YSU from '@Assets/ncaa_teams/YSU.png';
 
 import NBA_ATL from '@Assets/nba_teams/ATL.png';
-import NBA_BKN from '@Assets/nba_teams/BKN.png';
+import NBA_BRK from '@Assets/nba_teams/BRK.png';
 import NBA_BOS from '@Assets/nba_teams/BOS.png';
 import NBA_CHA from '@Assets/nba_teams/CHA.png';
 import NBA_CHI from '@Assets/nba_teams/CHI.png';
@@ -575,7 +575,7 @@ export default {
   NFL_SF,
   NFL_TB,
   NFL_TEN,
-  NFL_WAS,
+  NFL_WSH,
 
   NCAA_AAMU,
   NCAA_AC,
@@ -694,7 +694,7 @@ export default {
   NCAA_HOW,
   NCAA_HP,
   NCAA_IDHO,
-  //NCAA_IDST,
+  NCAA_IDSU,
   NCAA_ILL,
   NCAA_ILST,
   NCAA_IND,
@@ -997,7 +997,7 @@ export default {
   NCAA_WST,
   NBA_ATL,
   NBA_BOS,
-  NBA_BKN,
+  NBA_BRK,
   NBA_CHA,
   NBA_CHI,
   NBA_CLE,

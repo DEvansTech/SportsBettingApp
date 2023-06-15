@@ -49,7 +49,6 @@ const Spread: React.FC<CarosuelProps> = ({ nextPage, prevPage, closePage }) => {
               <LoadingImage
                 source={Images.carousel2}
                 style={styles.imageView}
-                type="png"
               />
             </View>
             <View style={styles.secondView}>

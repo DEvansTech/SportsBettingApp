@@ -11,6 +11,7 @@ export type TeamType = {
   team_abbr: string;
   teamIcon: string;
   team_sort: string;
+  type: string;
 };
 
 export type FavortriteType = {

@@ -41,7 +41,7 @@ const Myteam: React.FC = () => {
   const [allTeamList, setAllTeamList] = useState<TeamType[]>([]);
   const [favoriteTeams, setFavoriteTeams] = useState<FavortriteType[]>([]);
 
-  const [loadingBar, setLoadingBar] = useState(true);
+  const [loadingBar, setLoadingBar] = useState(teamsLoading);
   const [searchKey, setSearchKey] = useState('');
 
   const saveUserTeam = async (
@@ -270,7 +270,6 @@ const Myteam: React.FC = () => {
                         <LoadingImage
                           source={checkTeamIcon(team.team_sort, team.team_abbr)}
                           style={styles.teamImg}
-                          type="svg"
                         />
                         <Text style={styles.teamName}>
                           {team.team_market} {team.team_name}
@@ -309,7 +308,6 @@ const Myteam: React.FC = () => {
                     <LoadingImage
                       source={checkTeamIcon(sportName, team.team_abbr)}
                       style={styles.teamImg}
-                      type="svg"
                     />
                     <Text style={styles.teamName}>
                       {team.team_market} {team.team_name}

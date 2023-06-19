@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Odds-R_O_Icon_1024x1024.png",
+      "filename" : "splash.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Odds-R_O_Icon_1024x1024@2x.png",
+      "filename" : "splash@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Odds-R_O_Icon_1024x1024@3x.png",
+      "filename" : "splash@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

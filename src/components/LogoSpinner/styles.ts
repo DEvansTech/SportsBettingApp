@@ -20,7 +20,7 @@ export default StyleSheet.create({
   },
   Rletter: {
     position: 'absolute',
-    height: 70 * scale,
-    width: 76 * scale
+    height: 74 * scale,
+    width: 70 * scale
   }
 });

@@ -4,7 +4,7 @@ import {
   DrawerItem,
   DrawerContentComponentProps
 } from '@react-navigation/drawer';
-import { TouchableOpacity } from 'react-native';
+import { Text, TouchableOpacity } from 'react-native';
 import { Icon, View } from 'native-base';
 import { DrawerActions } from '@react-navigation/native';
 import { SvgXml } from 'react-native-svg';
@@ -12,10 +12,10 @@ import { SvgXml } from 'react-native-svg';
 import { AuthContext, AuthContextType } from '@Context/AuthContext';
 import { MainContext, MainContextType } from '@Context/MainContext';
 import LogoSidebar from './LogoSidebar';
-import FeedbackSidebar from './FeedbackSidebar';
 import { Svgs } from '@Theme';
 import { Routes } from '@Navigators/routes';
 import styles, { scale } from './styles';
+import { Linking } from 'react-native';
 
 const getActiveRouteState = (
   routes: any,
@@ -51,7 +51,6 @@ export const CustomDrawerContent: React.FC<DrawerContentComponentProps> = ({
   // const cancelAccount = () => {
   //   setIsCancelAccountModal(!isCancelAccountModal);
   // };
-
   return (
     <DrawerContentScrollView contentContainerStyle={styles.scroll}>
       <View style={styles.sidebarContent}>
@@ -120,7 +119,7 @@ export const CustomDrawerContent: React.FC<DrawerContentComponentProps> = ({
         <DrawerItem
           {...itemBaseStyle}
           {...rest}
-          label="How to Use"
+          label="How to use"
           icon={() => (
             <SvgXml
               xml={Svgs.sidebarHowIcon}
@@ -196,7 +195,24 @@ export const CustomDrawerContent: React.FC<DrawerContentComponentProps> = ({
           )}
           onPress={cancelAccount}
         /> */}
-        <FeedbackSidebar />
+        <DrawerItem
+          {...itemBaseStyle}
+          {...rest}
+          label="Feedback"
+          icon={() => (
+            <SvgXml
+              xml={Svgs.commentIcon}
+              width={25 * scale}
+              height={25 * scale}
+            />
+          )}
+          focused={getActiveRouteState(
+            state.routes,
+            state.index,
+            Routes.Logout
+          )}
+          onPress={() => Linking.openURL('https://odds-r.pro/contacts.html')}
+        />
       </View>
       {/* <ModalCancelAccount
         isModalVisible={isCancelAccountModal}

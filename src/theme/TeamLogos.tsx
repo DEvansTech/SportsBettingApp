@@ -60,7 +60,7 @@ import NFL_SEA from '@Assets/nfl_teams/SEA.png';
 import NFL_SF from '@Assets/nfl_teams/SF.png';
 import NFL_TB from '@Assets/nfl_teams/TB.png';
 import NFL_TEN from '@Assets/nfl_teams/TEN.png';
-import NFL_WSH from '@Assets/nfl_teams/WSH.png';
+import NFL_WAS from '@Assets/nfl_teams/WAS.png';
 
 // NCAAF //
 import NCAA_AAMU from '@Assets/ncaa_teams/AAMU.png';
@@ -575,7 +575,7 @@ export default {
   NFL_SF,
   NFL_TB,
   NFL_TEN,
-  NFL_WSH,
+  NFL_WAS,
 
   NCAA_AAMU,
   NCAA_AC,

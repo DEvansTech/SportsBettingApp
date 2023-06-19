@@ -198,7 +198,7 @@ export const CustomDrawerContent: React.FC<DrawerContentComponentProps> = ({
         <DrawerItem
           {...itemBaseStyle}
           {...rest}
-          label="Feedback"
+          label="Support"
           icon={() => (
             <SvgXml
               xml={Svgs.commentIcon}

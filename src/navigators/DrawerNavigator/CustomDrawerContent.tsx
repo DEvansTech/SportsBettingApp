@@ -4,7 +4,7 @@ import {
   DrawerItem,
   DrawerContentComponentProps
 } from '@react-navigation/drawer';
-import { Text, TouchableOpacity } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import { Icon, View } from 'native-base';
 import { DrawerActions } from '@react-navigation/native';
 import { SvgXml } from 'react-native-svg';
@@ -15,7 +15,7 @@ import LogoSidebar from './LogoSidebar';
 import { Svgs } from '@Theme';
 import { Routes } from '@Navigators/routes';
 import styles, { scale } from './styles';
-import { Linking } from 'react-native';
+import FeedbackSidebar from './FeedbackSidebar';
 
 const getActiveRouteState = (
   routes: any,
@@ -195,24 +195,7 @@ export const CustomDrawerContent: React.FC<DrawerContentComponentProps> = ({
           )}
           onPress={cancelAccount}
         /> */}
-        <DrawerItem
-          {...itemBaseStyle}
-          {...rest}
-          label="Support"
-          icon={() => (
-            <SvgXml
-              xml={Svgs.commentIcon}
-              width={25 * scale}
-              height={25 * scale}
-            />
-          )}
-          focused={getActiveRouteState(
-            state.routes,
-            state.index,
-            Routes.Logout
-          )}
-          onPress={() => Linking.openURL('https://odds-r.pro/contacts.html')}
-        />
+        <FeedbackSidebar />
       </View>
       {/* <ModalCancelAccount
         isModalVisible={isCancelAccountModal}

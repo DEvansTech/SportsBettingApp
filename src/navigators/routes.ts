@@ -17,7 +17,7 @@ export const Routes = {
   UserMenu: 'UserMenu',
   Notification: 'Notification',
   Subscription: 'Subscription',
-  SubscriptionLoading: 'SubscriptionLoading',
+  AppChecking: 'AppChecking',
   Introduction: 'Introduction',
   MyAccount: 'MyAccount',
   FAQs: 'FAQs',

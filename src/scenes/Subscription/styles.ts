@@ -32,8 +32,9 @@ export default StyleSheet.create({
     padding: 16 * scale,
     borderColor: Colors.whiteGreen,
     borderWidth: 1,
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     alignItems: 'center',
+    flexDirection: 'row',
     marginTop: 10 * scale,
     borderRadius: 10 * scale,
     backgroundColor: 'white',
@@ -46,36 +47,16 @@ export default StyleSheet.create({
     shadowRadius: 4.65,
     elevation: 10
   },
-  selectedItem: {
-    opacity: 0.5
-  },
-  itemLogo: {
-    height: 100 * scale,
-    width: 100 * scale,
-    borderRadius: 50 * scale
-  },
+
   itemTitle: {
-    marginBottom: 4 * scale,
     color: Colors.black,
     fontSize: 18 * scale,
-    fontFamily: Fonts.semiBold,
-    marginVertical: 10 * scale
-  },
-  itemPeriod: {
-    marginBottom: 4 * scale,
-    color: Colors.black,
-    fontSize: 15 * scale,
-    fontFamily: Fonts.regular,
-    marginVertical: 10 * scale
-  },
-  subscriptionBtn: {
-    backgroundColor: Colors.green,
-    marginHorizontal: 20 * scale,
-    marginTop: 10 * scale
-  },
-  subscriptionBtnText: {
-    color: Colors.white,
-    fontSize: 20 * scale,
     fontFamily: Fonts.semiBold
+  },
+  itemDescription: {
+    color: Colors.black,
+    fontSize: 12 * scale,
+    fontFamily: Fonts.regular,
+    marginTop: 10 * scale
   }
 });

@@ -24,3 +24,7 @@ export const sportSorts = [
     value: 'nfl'
   }
 ];
+
+export const API_APPLE_KEY = 'appl_JdMePEpWltJSYIWBrTAUTKVWUdg';
+export const API_GOOGLE_KEY = 'goog_HfPTuVxfioKdoHSFzjGNVtJAwFu';
+export const ENTITLEMENT_ID = 'standard';

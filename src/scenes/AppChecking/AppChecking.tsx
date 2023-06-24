@@ -37,9 +37,18 @@ const AppChecking: React.FC = () => {
             typeof customerInfo.entitlements.active[ENTITLEMENT_ID] !==
             'undefined'
           ) {
-            navigation.navigate(Routes.TabRoute);
+            const activeData: any =
+              customerInfo.entitlements.active[ENTITLEMENT_ID];
+            let expired =
+              new Date().getTime() > activeData?.expirationDateMillis;
+
+            if (!expired) {
+              navigation.navigate(Routes.TabRoute);
+            } else {
+              navigation.navigate(Routes.Subscription, { selectItem: '' });
+            }
           } else {
-            navigation.navigate(Routes.Subscription);
+            navigation.navigate(Routes.Subscription, { selectItem: '' });
           }
         } catch (e) {}
       })();

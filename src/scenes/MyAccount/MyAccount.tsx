@@ -18,12 +18,14 @@ import {
 import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
 import { SvgXml } from 'react-native-svg';
+import Purchases from 'react-native-purchases';
 
 // import useInAppPurchase from '@Lib/useInAppPurchase';
 import { AuthContext, AuthContextType } from '@Context/AuthContext';
 import { LogoSpinner, ModalCancelAccount } from '@Components';
 import { ToastMessage } from '@Lib/function';
 import { timeStamptoDate, timeStamptoDateTime } from '@Lib/utilities';
+import { ENTITLEMENT_ID, API_APPLE_KEY, API_GOOGLE_KEY } from '@Lib/constants';
 
 import { Svgs, Colors } from '@Theme';
 import { UserType } from './types';
@@ -46,6 +48,7 @@ const MyAccount: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [passChangeDisabled, setPassChangeDisabled] = useState(false);
   const [isCancelAccountModal, setIsCancelAccountModal] = useState(false);
+  const [subscriptionData, setSubscriptionData] = useState<any>(undefined);
 
   const cancelAccount = () => {
     setIsCancelAccountModal(!isCancelAccountModal);
@@ -171,31 +174,25 @@ const MyAccount: React.FC = () => {
     }
   }, [navigation]);
 
-  // useEffect(() => {
-  //   (async function () {
-  //     await validate();
-  //   })();
-  // }, []);
+  useEffect(() => {
+    if (isFocused) {
+      (async function () {
+        const customerInfo = await Purchases.getCustomerInfo();
+        setSubscriptionData(customerInfo.entitlements.active[ENTITLEMENT_ID]);
+      })();
+    }
+  }, [isFocused]);
 
   // useEffect(() => {
-  //   if (purchaseDate && expiresDate) {
-  //     const userData = {
-  //       subscription: {
-  //         purchaseDate,
-  //         expiresDate,
-  //         productItem: currentProductId
-  //       }
-  //     };
-  //     const docRef = firestore().collection('users').doc(user.uid);
-  //     docRef.get().then(thisDoc => {
-  //       if (thisDoc.exists) {
-  //         docRef.update(userData).then(() => {
-  //           getUserData();
-  //         });
-  //       }
-  //     });
+  //   if (isFocused) {
+  //     (async function () {
+  //       const { purchaserInfo }: any = await Purchases.purchasePackage(
+  //         subscriptionData
+  //       );
+  //       console.log('purchaserInfo=====>', purchaserInfo);
+  //     })();
   //   }
-  // }, [purchaseDate, expiresDate]);
+  // }, [isFocused]);
 
   const gotoBack = () => {
     navigation.navigate(Routes.TabRoute);
@@ -336,6 +333,44 @@ const MyAccount: React.FC = () => {
                 </Item>
               </View>
             )}
+            {subscriptionData && (
+              <View style={styles.basicView}>
+                <Text style={styles.basicTitle}>Subscription</Text>
+                <View style={styles.subscriptionView}>
+                  <Text style={styles.subscriptionText}>
+                    {subscriptionData.productIdentifier === 'oddsr_999_1m_14d0'
+                      ? 'Monthly'
+                      : 'Annual'}
+                  </Text>
+                  <Button
+                    bordered
+                    success
+                    small
+                    rounded
+                    onPress={() =>
+                      navigation.navigate(Routes.Subscription, {
+                        selectedItem: subscriptionData.productIdentifier
+                      })
+                    }>
+                    <Text>Change</Text>
+                  </Button>
+                </View>
+                <View style={styles.subscriptionView}>
+                  <Text style={styles.subscriptionText}>Purchased Date</Text>
+                  <Text style={styles.subscriptionText}>
+                    {timeStamptoDateTime(
+                      subscriptionData.latestPurchaseDateMillis
+                    )}
+                  </Text>
+                </View>
+                <View style={styles.subscriptionView}>
+                  <Text style={styles.subscriptionText}>Renewal Date</Text>
+                  <Text style={styles.subscriptionText}>
+                    {timeStamptoDateTime(subscriptionData.expirationDateMillis)}
+                  </Text>
+                </View>
+              </View>
+            )}
             <View style={styles.cancelAccountItem}>
               <Button transparent iconLeft icon onPress={cancelAccount}>
                 <SvgXml
@@ -343,45 +378,19 @@ const MyAccount: React.FC = () => {
                   width={23 * scale}
                   height={23 * scale}
                 />
-                <Text style={styles.cancelAccountText}>Cancel Account</Text>
+                <Text style={styles.cancelAccountText}>
+                  Cancel Subscription
+                </Text>
               </Button>
             </View>
-            {/* <View style={styles.basicView}>
-              <Text style={styles.basicTitle}>Subscription</Text>
-              <View style={styles.subscriptionView}>
-                <Text style={styles.subscriptionText}>
-                  {currentProductId === 'oddsr_5999_1y' ? 'Annual' : 'Monthly'}
-                </Text>
-                <Button
-                  bordered
-                  success
-                  small
-                  rounded
-                  onPress={() =>
-                    navigation.navigate(Routes.Subscription, { state: true })
-                  }>
-                  <Text>Change</Text>
-                </Button>
-              </View>
-              <View style={styles.subscriptionView}>
-                <Text style={styles.subscriptionText}>Purchased Date</Text>
-                {purchaseDate && (
-                  <Text style={styles.subscriptionText}>
-                    {timeStamptoDateTime(purchaseDate)}
-                  </Text>
-                )}
-              </View>
-              <View style={styles.subscriptionView}>
-                <Text style={styles.subscriptionText}>Renewal Date</Text>
-                {expiresDate && (
-                  <Text style={styles.subscriptionText}>
-                    {timeStamptoDateTime(expiresDate)}
-                  </Text>
-                )}
-              </View>
-            </View> */}
+
             {JSON.stringify(initUserInfo) !== JSON.stringify(userInfo) && (
-              <Button success onPress={saveUserData} style={styles.saveButton}>
+              <Button
+                success
+                full
+                rounded
+                onPress={saveUserData}
+                style={styles.saveButton}>
                 <Text style={styles.buttonText}>Save</Text>
               </Button>
             )}

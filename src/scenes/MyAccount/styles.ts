@@ -8,20 +8,6 @@ export default StyleSheet.create({
   background: {
     backgroundColor: 'white'
   },
-  // header: {
-  //   flexDirection: 'row',
-  //   alignItems: 'center',
-  //   justifyContent: 'flex-start',
-  //   backgroundColor: Colors.green,
-  //   height: 65 * scale,
-  //   borderColor: 'transparent',
-  //   paddingHorizontal: 10 * scale
-  // },
-  // headerLeft: {
-  //   flexDirection: 'row',
-  //   alignItems: 'center',
-  //   justifyContent: 'flex-start'
-  // },
   backIcon: {
     fontSize: 28 * scale,
     color: 'white'
@@ -97,15 +83,6 @@ export default StyleSheet.create({
     borderWidth: 0,
     borderColor: 'transparent'
   },
-  // itemView1: {
-  //   paddingVertical: 5 * scale,
-  //   marginHorizontal: 10 * scale,
-  //   marginVertical: 5 * scale
-  // },
-  // itemIcon: {
-  //   fontSize: 22 * scale,
-  //   color: Colors.black
-  // },
   itemText: {
     fontSize: 18 * scale,
     color: Colors.black
@@ -121,25 +98,9 @@ export default StyleSheet.create({
     fontSize: 20 * scale,
     color: Colors.black
   },
-  // phoneInputView: {
-  //   alignItems: 'center',
-  //   flexDirection: 'row',
-  //   borderBottomWidth: 1,
-  //   marginHorizontal: 5 * scale,
-  //   height: 40 * scale,
-  //   flex: 1,
-  //   borderBottomColor: Colors.grey,
-  //   fontFamily: Fonts.regular,
-  //   fontSize: 16 * scale
-  // },
-  // phontTextInputStyle: {
-  //   padding: 0 * scale,
-  //   backgroundColor: 'white',
-  //   fontFamily: Fonts.regular
-  // },
   saveButton: {
     marginVertical: 20 * scale,
-    alignSelf: 'center'
+    marginHorizontal: 20 * scale
   },
   buttonText: {
     fontFamily: Fonts.regular
@@ -173,11 +134,9 @@ export default StyleSheet.create({
   cancelAccountItem: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginVertical: 30 * scale,
-    paddingTop: 20 * scale,
+    paddingTop: 10 * scale,
     paddingLeft: 5 * scale,
-    borderTopColor: Colors.grey,
-    borderTopWidth: 1
+    borderTopColor: Colors.grey
   },
   cancelAccountText: {
     fontFamily: Fonts.regular,

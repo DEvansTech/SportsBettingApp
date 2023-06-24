@@ -542,5 +542,23 @@ export default {
       </g>
       <line style="fill:none;stroke:#000;stroke-linecap:round;" x1="17.2" y1="3.8" x2="3.8" y2="17.2"/>
     </svg>
+  `,
+  subWhiteCheckIcon: `
+    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+    viewBox="0 0 45 45" style="enable-background:new 0 0 45 45;" xml:space="preserve">
+      <g>
+      <circle style="fill:none;stroke:#ffffff;" cx="22.5" cy="22.5" r="22"/>
+      </g>
+      <polyline style="fill:none;stroke:#ffffff;" points="10.9,21.7 19.7,30.4 37.2,12.9 "/>
+    </svg>
+  `,
+  subGreenCheckIcon: `
+    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+    viewBox="0 0 45 45" style="enable-background:new 0 0 45 45;" xml:space="preserve">
+      <g>
+      <circle style="fill:none;stroke:#6CC04A;" cx="22.5" cy="22.5" r="22"/>
+      </g>
+      <polyline style="fill:none;stroke:#6CC04A;" points="10.9,21.7 19.7,30.4 37.2,12.9 "/>
+    </svg>
   `
 };

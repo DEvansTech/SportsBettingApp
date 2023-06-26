@@ -1,10 +1,14 @@
-import React, { useEffect } from 'react';
-import { View, Animated, Image, Easing } from 'react-native';
+import React, { useEffect, useCallback } from 'react';
+import { View, Animated, Image, Easing, BackHandler } from 'react-native';
+import { useNavigation } from '@react-navigation/core';
+import { StackNavigationProp } from '@react-navigation/stack';
 
 import { Images } from '@Theme';
 import styles from './styles';
 
 const LogoSpinner: React.FC = () => {
+  const navigation = useNavigation<StackNavigationProp<any, any>>();
+
   const animateValue = new Animated.Value(0);
   const animatedStyle = {
     transform: [
@@ -39,6 +43,20 @@ const LogoSpinner: React.FC = () => {
   useEffect(() => {
     doAnimation();
   });
+
+  const hardwareBackPressCustom = useCallback(() => {
+    return true;
+  }, []);
+
+  useEffect(() => {
+    BackHandler.addEventListener('hardwareBackPress', hardwareBackPressCustom);
+    return () => {
+      BackHandler.removeEventListener(
+        'hardwareBackPress',
+        hardwareBackPressCustom
+      );
+    };
+  }, [navigation]);
 
   return (
     <View style={styles.container}>

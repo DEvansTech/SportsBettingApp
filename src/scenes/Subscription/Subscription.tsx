@@ -114,7 +114,7 @@ const Subscription: React.FC<Props> = props => {
                   selectPackage?.product.identifier === identifier &&
                     styles.selectedItemText
                 ]}>
-                OUR BEST DEAL: {'\n'} get{' '}
+                OUR BEST DEAL:{'\n'}get{' '}
                 <Text
                   style={[
                     [

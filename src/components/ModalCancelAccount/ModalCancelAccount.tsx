@@ -36,11 +36,10 @@ const ModalCancelAccount: React.FC<Props> = ({
         />
         <SvgXml xml={Svgs.obiIcon} width={90 * scale} height={90 * scale} />
         <Text style={styles.bodyText}>
-          We are sorry to see you go. It was a pleasure How to Use meeting you
-          and wish you well. OBI is always improving his algorithm, so please
-          check account open until your term ends, just in Logout back when the
-          time is right. We’ll keep your case you change your mind. After that,
-          Cancel Account your OddsRTM access will end.
+          We are sorry to see you go. It was a pleasure meeting you and wish you
+          well. We're always improving our algorithms, so please check back when
+          the time is right. If you do decide to cancel, your OddsR™ access will
+          continue until your term ends.
         </Text>
         <TouchableOpacity style={styles.modalBtn} onPress={cancelAccount}>
           <Text style={styles.cancelText}>Cancel Subscription</Text>

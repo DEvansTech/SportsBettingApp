@@ -342,7 +342,7 @@ const MyAccount: React.FC = () => {
                       ? 'Monthly'
                       : 'Annual'}
                   </Text>
-                  <Button
+                  {/* <Button
                     bordered
                     success
                     small
@@ -353,7 +353,7 @@ const MyAccount: React.FC = () => {
                       })
                     }>
                     <Text>Change</Text>
-                  </Button>
+                  </Button> */}
                 </View>
                 <View style={styles.subscriptionView}>
                   <Text style={styles.subscriptionText}>Purchased Date</Text>

@@ -8,14 +8,15 @@ export default StyleSheet.create({
   modalContainer: {
     position: 'relative',
     backgroundColor: 'white',
-    padding: 30 * scale,
+    paddingHorizontal: 20 * scale,
+    paddingVertical: 40 * scale,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 10 * scale,
     borderColor: 'rgba(0, 0, 0, 0.1)'
   },
   modalCloseIcon: {
-    fontSize: 25 * scale,
+    fontSize: 35 * scale,
     position: 'absolute',
     top: 15 * scale,
     right: 15 * scale,
@@ -31,7 +32,7 @@ export default StyleSheet.create({
     borderRadius: 20 * scale
   },
   cancelText: {
-    fontFamily: Fonts.semiBold,
+    fontFamily: Fonts.regular,
     color: 'white',
     fontSize: 19 * scale
   },
@@ -40,6 +41,7 @@ export default StyleSheet.create({
     marginVertical: 15 * scale,
     fontFamily: Fonts.regular,
     fontSize: 15 * scale,
+    lineHeight: 22 * scale,
     fontStyle: 'italic'
   },
   spinnerTextStyle: {

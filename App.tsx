@@ -2,7 +2,6 @@ import React, { Fragment, useEffect } from 'react';
 import { Provider } from 'react-redux';
 import SplashScreen from 'react-native-splash-screen';
 import { Root } from 'native-base';
-import { withIAPContext } from 'react-native-iap';
 
 import configureStore from '@Store/store';
 import { AuthProvider } from '@Context/AuthContext';
@@ -30,4 +29,4 @@ const App = () => {
   );
 };
 
-export default withIAPContext(App);
+export default App;

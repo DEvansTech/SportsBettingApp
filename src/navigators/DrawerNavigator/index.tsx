@@ -6,7 +6,7 @@ import { CustomDrawerContent } from './CustomDrawerContent';
 import { AuthContext, AuthContextType } from '@Context/AuthContext';
 import NotificationScene from '@Scenes/Notification';
 import SubscriptionScene from '@Scenes/Subscription';
-import LoadingScene from '@Scenes/Loading';
+import AppCheckingScene from '@Scenes/AppChecking';
 import MyAccountScene from '@Scenes/MyAccount';
 import IntroductionScene from '@Scenes/Introduction';
 import FeedbackScene from '@Scenes/Feedback';
@@ -20,7 +20,7 @@ export const DrawerNavigator: React.FC = () => {
 
   return (
     <Drawer.Navigator
-      initialRouteName={Routes.SubscriptionLoading}
+      initialRouteName={Routes.AppChecking}
       drawerContent={(props: any) => <CustomDrawerContent {...props} />}
       drawerStyle={{
         backgroundColor: Colors.green
@@ -33,10 +33,7 @@ export const DrawerNavigator: React.FC = () => {
         inactiveTintColor: Colors.grey
       }}
       edgeWidth={0}>
-      <Drawer.Screen
-        name={Routes.SubscriptionLoading}
-        component={LoadingScene}
-      />
+      <Drawer.Screen name={Routes.AppChecking} component={AppCheckingScene} />
       <Drawer.Screen name={Routes.Subscription} component={SubscriptionScene} />
       <Drawer.Screen
         name={Routes.TabRoute}

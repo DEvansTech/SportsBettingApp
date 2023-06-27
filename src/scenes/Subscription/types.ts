@@ -4,7 +4,8 @@ export type Props = {
     key: string;
     name: string;
     params: {
-      state: boolean;
+      isUpdate: boolean;
+      selectedItem?: string;
     };
   };
 };

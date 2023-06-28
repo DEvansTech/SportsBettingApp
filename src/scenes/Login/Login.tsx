@@ -43,8 +43,8 @@ const Login: React.FC = () => {
     AuthContext
   ) as AuthContextType;
 
-  const [email, setEmail] = useState('test@gmail.com');
-  const [password, setPassword] = useState('test123');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(true);
 
@@ -240,18 +240,6 @@ const Login: React.FC = () => {
                 Or sign in using your Google or Apple account
               </Text>
               <View style={styles.socialBtns}>
-                <Button
-                  full
-                  rounded
-                  light
-                  style={styles.loginFormNeedBtn}
-                  onPress={onGoogleLogin}>
-                  <SvgXml
-                    xml={Svgs.googleIcon}
-                    width={35 * scale}
-                    height={35 * scale}
-                  />
-                </Button>
                 {Platform.OS === 'ios' && (
                   <Button
                     full
@@ -266,6 +254,18 @@ const Login: React.FC = () => {
                     />
                   </Button>
                 )}
+                <Button
+                  full
+                  rounded
+                  light
+                  style={styles.loginFormNeedBtn}
+                  onPress={onGoogleLogin}>
+                  <SvgXml
+                    xml={Svgs.googleIcon}
+                    width={35 * scale}
+                    height={35 * scale}
+                  />
+                </Button>
               </View>
             </View>
           )}

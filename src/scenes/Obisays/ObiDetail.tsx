@@ -4,11 +4,12 @@ import { useNavigation } from '@react-navigation/core';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { Container, Content, Text, View, Icon, Header } from 'native-base';
 import HTMLView from 'react-native-htmlview';
+import { SvgXml } from 'react-native-svg';
 
 import { LogoSpinner } from '@Components';
-import { Colors } from '@Theme';
+import { Colors, Svgs } from '@Theme';
 import { OBIDetailProps } from './types';
-import styles, { HTMLStyle } from './styles';
+import styles, { HTMLStyle, scale } from './styles';
 
 const ObiDetail: React.FC<OBIDetailProps> = props => {
   const { obiData } = props?.route?.params;
@@ -28,9 +29,35 @@ const ObiDetail: React.FC<OBIDetailProps> = props => {
             name="arrow-left"
             style={styles.backIcon}
           />
+          <Text style={styles.headerText}>ROI Says</Text>
+        </TouchableOpacity>
+        <SvgXml
+          xml={Svgs.obiWhiteIcon}
+          width={38 * scale}
+          height={38 * scale}
+        />
+      </Header>
+      {/* <Header
+        style={styles.header}
+        iosBarStyle={'light-content'}
+        androidStatusBarColor={Colors.black}>
+        <TouchableOpacity
+          onPress={() => navigation.goBack()}
+          style={styles.headerLeft}>
+          <Icon
+            type="SimpleLineIcons"
+            name="arrow-left"
+            style={styles.backIcon}
+          />
           <Text style={styles.headerText}>{obiData.title}</Text>
         </TouchableOpacity>
-      </Header>
+      </Header> */}
+      <View style={styles.detailHeader}>
+        <View style={styles.detailListNumber}>
+          <Text style={styles.detailListNumberText}>{obiData.order}</Text>
+        </View>
+        <Text style={styles.detailTitle}>{obiData?.title}</Text>
+      </View>
       {Object.keys(obiData).length > 0 ? (
         <Content contentContainerStyle={styles.contentView}>
           <View style={styles.descView}>

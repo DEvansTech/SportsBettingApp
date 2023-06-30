@@ -6,13 +6,11 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import Purchases from 'react-native-purchases';
 
 import { LogoSpinner } from '@Components';
-// import useInAppPurchase from '@Lib/useInAppPurchase';
 import { ENTITLEMENT_ID, API_APPLE_KEY, API_GOOGLE_KEY } from '@Lib/constants';
 import { AuthContext, AuthContextType } from '@Context/AuthContext';
 import { Routes } from '@Navigators/routes';
 
 const AppChecking: React.FC = () => {
-  // const { validate } = useInAppPurchase();
   const { user } = useContext(AuthContext) as AuthContextType;
   const navigation = useNavigation<StackNavigationProp<any, any>>();
   const isFocused = useIsFocused();

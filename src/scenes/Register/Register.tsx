@@ -187,18 +187,6 @@ const Register: React.FC = () => {
                     Or sign up using your Google or Apple account
                   </Text>
                   <View style={styles.socialBtns}>
-                    <Button
-                      full
-                      rounded
-                      light
-                      style={styles.loginFormNeedBtn}
-                      onPress={onGoogleResiger}>
-                      <SvgXml
-                        xml={Svgs.googleIcon}
-                        width={35 * scale}
-                        height={35 * scale}
-                      />
-                    </Button>
                     {Platform.OS === 'ios' && (
                       <Button
                         full
@@ -213,6 +201,18 @@ const Register: React.FC = () => {
                         />
                       </Button>
                     )}
+                    <Button
+                      full
+                      rounded
+                      light
+                      style={styles.loginFormNeedBtn}
+                      onPress={onGoogleResiger}>
+                      <SvgXml
+                        xml={Svgs.googleIcon}
+                        width={35 * scale}
+                        height={35 * scale}
+                      />
+                    </Button>
                   </View>
                 </View>
                 <View style={styles.footerText}>

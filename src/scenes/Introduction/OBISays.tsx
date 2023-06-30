@@ -21,7 +21,7 @@ const OBISays: React.FC<CarosuelProps> = ({
         androidStatusBarColor={Colors.green}>
         <View style={styles.headerView}>
           <Text style={styles.headerSubTitle}>Instructions:</Text>
-          <Text style={styles.headerTitle}>ROI Says</Text>
+          <Text style={styles.headerTitle}>Roi Says</Text>
           <Icon
             type="AntDesign"
             name="closecircleo"

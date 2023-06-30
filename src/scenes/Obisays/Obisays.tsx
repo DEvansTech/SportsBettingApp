@@ -61,14 +61,13 @@ const Obisays: React.FC = () => {
         style={styles.header}
         iosBarStyle={'light-content'}
         androidStatusBarColor={Colors.black}>
-        <Text style={styles.headerText}>ROI Says</Text>
+        <Text style={styles.headerText}>Roi Says</Text>
         <SvgXml
           xml={Svgs.obiWhiteIcon}
           width={38 * scale}
           height={38 * scale}
         />
       </Header>
-
       {loading ? (
         <LogoSpinner />
       ) : (

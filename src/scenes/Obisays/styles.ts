@@ -6,32 +6,31 @@ export const scale = deviceWidth / 390;
 
 export default StyleSheet.create({
   background: {
-    backgroundColor: Colors.green
+    backgroundColor: Colors.white
   },
   header: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'flex-start',
+    justifyContent: 'space-between',
     backgroundColor: Colors.green,
     height: 65 * scale,
     borderColor: 'transparent',
-    paddingHorizontal: 10 * scale
+    marginHorizontal: 10 * scale
   },
   headerLeft: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-start'
   },
-  backIcon: {
-    fontSize: 28 * scale,
-    color: 'white'
-  },
   headerText: {
     fontSize: 20 * scale,
     fontFamily: Fonts.regular,
     color: 'white',
-    paddingLeft: 10 * scale,
-    paddingRight: 20 * scale
+    marginLeft: 10 * scale
+  },
+  backIcon: {
+    fontSize: 28 * scale,
+    color: 'white'
   },
   headerSmallText: {
     fontSize: 15 * scale,
@@ -44,21 +43,41 @@ export default StyleSheet.create({
   },
   obisayList: {
     flexDirection: 'row',
-    alignItems: 'center',
     backgroundColor: 'white',
-    justifyContent: 'space-between',
     borderTopWidth: 1,
     borderBottomWidth: 1,
     borderColor: Colors.lightGrey,
-    paddingLeft: 20 * scale,
-    paddingRight: 15 * scale,
+    marginTop: -1,
+    paddingRight: 10 * scale
+  },
+  listNumber: {
+    width: 70 * scale,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  listNumberBg1: {
+    backgroundColor: Colors.grey
+  },
+  listNumberBg2: {
+    backgroundColor: Colors.lightGrey
+  },
+  listNumberText: {
+    fontSize: 38 * scale,
+    fontFamily: Fonts.black,
+    color: 'white'
+  },
+  listDescription: {
+    flexDirection: 'row',
+    flex: 1,
+    justifyContent: 'space-between',
+    alignItems: 'center',
     paddingVertical: 20 * scale,
-    marginTop: -1
+    paddingLeft: 15 * scale
   },
   listTitleText: {
     fontSize: 20 * scale,
     fontFamily: Fonts.regular,
-    width: '90%'
+    flex: 0.9
   },
   rightArrowIcon: {
     fontSize: 25 * scale,
@@ -79,6 +98,29 @@ export default StyleSheet.create({
   descView: {
     paddingHorizontal: 20 * scale,
     paddingVertical: 15 * scale
+  },
+  detailHeader: {
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  detailListNumber: {
+    backgroundColor: 'black',
+    width: 80 * scale,
+    height: 70 * scale,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  detailTitle: {
+    fontSize: 20 * scale,
+    fontFamily: Fonts.black,
+    color: 'black',
+    marginLeft: 20 * scale,
+    width: '70%'
+  },
+  detailListNumberText: {
+    fontSize: 38 * scale,
+    fontFamily: Fonts.black,
+    color: Colors.green
   },
   descDefaultText: {
     fontSize: 15 * scale,

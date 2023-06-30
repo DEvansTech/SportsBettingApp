@@ -125,7 +125,7 @@ export const TabNavigator: React.FC = (props: any) => {
                 styles.labelStyle,
                 { color: focused ? Colors.green : color }
               ]}>
-              OBI SAYS
+              ROI SAYS
             </Text>
           ),
           tabBarButton: CustomTabButton,

@@ -219,6 +219,71 @@ export default {
       </g>
     </svg>
   `,
+  obiWhiteIcon: `
+    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+    viewBox="0 0 38 41" style="enable-background:new 0 0 38 41;" xml:space="preserve">
+      <line style="fill:none;stroke:#ffffff;" x1="6.3" y1="6.4" x2="6.3" y2="17.1"/>
+      <g>
+        <g>
+          <path style="fill:none;stroke:#ffffff;" d="M6.3,22.5v3c0,3.5,2.8,6.3,6.3,6.3h12.7c3.5,0,6.3-2.8,6.3-6.3v-3"/>
+        </g>
+        <g>
+          <path style="fill:none;stroke:#ffffff;" d="M0.5,17.2c0,0,0,5.2,5.8,5.2h11.1v-5.2H0.5z"/>
+        </g>
+        <g>
+          <path style="fill:none;stroke:#ffffff;" d="M20.6,17.2v5.2h11l0,0c5.8,0,5.8-5.2,5.8-5.2H20.6z"/>
+        </g>
+        <g>
+          <path style="fill:none;stroke:#ffffff;" d="M24.8,31.4L24.8,31.4v-4.8H13.2v4.8c0,4,2.4,7.5,5.8,9C22.4,38.9,24.8,35.5,24.8,31.4z"/>
+        </g>
+        <g>
+          <path style="fill:none;stroke:#ffffff;" d="M20.6,20c-0.5-0.2-1-0.3-1.6-0.3s-1.1,0.1-1.6,0.3"/>
+        </g>
+        <g>
+          <path style="fill:none;stroke:#ffffff;stroke-linecap:round;" d="M20.5,29c-0.5,0.2-1,0.3-1.5,0.3c-0.6,0-1.1-0.1-1.5-0.3"/>
+        </g>
+        <g>
+          <path style="fill:none;stroke:#ffffff;stroke-linecap:round;" d="M29,14c-0.8-0.8-1.7-1.2-2.6-1.2s-1.8,0.5-2.6,1.2"/>
+        </g>
+        <g>
+          <path style="fill:none;stroke:#ffffff;" d="M10.3,4.1C10,4.1,9.8,4,9.6,3.9C9.4,3.7,9.2,3.5,9.1,3.3C9,3,8.9,2.7,8.9,2.3s0.1-0.7,0.2-1
+            C9.2,1,9.4,0.8,9.6,0.7s0.5-0.2,0.7-0.2c0.3,0,0.5,0.1,0.7,0.2s0.4,0.4,0.5,0.6c0.1,0.3,0.2,0.6,0.2,1s-0.1,0.7-0.2,1
+            c-0.1,0.3-0.3,0.5-0.5,0.6C10.8,4,10.6,4.1,10.3,4.1z"/>
+        </g>
+        <g>
+          <path style="fill:none;stroke:#ffffff;" d="M18.8,4.1c-0.3,0-0.5-0.1-0.7-0.2c-0.2-0.1-0.4-0.4-0.5-0.6c-0.1-0.3-0.2-0.6-0.2-1s0.1-0.7,0.2-1
+            s0.3-0.5,0.5-0.6s0.5-0.2,0.7-0.2c0.3,0,0.5,0.1,0.7,0.2s0.4,0.4,0.5,0.6c0.1,0.3,0.2,0.6,0.2,1S20.1,3,20,3.3s-0.3,0.5-0.5,0.6
+            C19.3,4,19,4.1,18.8,4.1z"/>
+        </g>
+        <g>
+          <polyline style="fill:none;stroke:#ffffff;" points="4.8,0.6 6.2,0.6 6.2,4.6"/>
+        </g>
+        <g>
+          <polyline style="fill:none;stroke:#ffffff;" points="13.3,0.6 14.7,0.6 14.7,4.6"/>
+        </g>
+        <g>
+          <path style="fill:none;stroke:#ffffff;" d="M27.2,4.1c-0.3,0-0.5-0.1-0.7-0.2c-0.2-0.1-0.4-0.4-0.5-0.6c-0.1-0.3-0.2-0.6-0.2-1s0.1-0.7,0.2-1
+            s0.3-0.5,0.5-0.6s0.5-0.2,0.7-0.2c0.3,0,0.5,0.1,0.7,0.2s0.4,0.4,0.5,0.6c0.1,0.3,0.2,0.6,0.2,1s-0.1,0.7-0.2,1s-0.3,0.5-0.5,0.6
+            C27.8,4,27.5,4.1,27.2,4.1z"/>
+        </g>
+        <g>
+          <polyline style="fill:none;stroke:#ffffff;" points="21.8,0.6 23.2,0.6 23.2,4.6"/>
+        </g>
+        <g>
+          <polyline style="fill:none;stroke:#ffffff;" points="30.3,0.6 31.7,0.6 31.7,4.6"/>
+        </g>
+        </g>
+        <line style="fill:none;stroke:#ffffff;" x1="31.7" y1="6.4" x2="31.7" y2="17.1"/>
+        <g>
+        <g>
+          <circle style="fill:none;stroke:#ffffff;stroke-width:0.7;" cx="26.4" cy="19.6" r="0.3"/>
+        </g>
+        <g>
+          <circle style="fill:none;stroke:#ffffff;stroke-width:0.7;" cx="11.6" cy="19.6" r="0.3"/>
+        </g>
+      </g>
+    </svg>
+  `,
   obiGreenIcon: `
     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
     viewBox="0 0 38 41" style="enable-background:new 0 0 38 41;" xml:space="preserve">

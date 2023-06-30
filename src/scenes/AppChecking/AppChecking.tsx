@@ -16,6 +16,7 @@ const AppChecking: React.FC = () => {
   const isFocused = useIsFocused();
 
   useEffect(() => {
+    // navigation.navigate(Routes.TabRoute);
     if (isFocused) {
       (async function () {
         await AsyncStorage.setItem('@loggedUser', 'true');

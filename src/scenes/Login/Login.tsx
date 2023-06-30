@@ -43,8 +43,8 @@ const Login: React.FC = () => {
     AuthContext
   ) as AuthContextType;
 
-  const [email, setEmail] = useState('test@gmail.com');
-  const [password, setPassword] = useState('test123');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(true);
 

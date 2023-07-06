@@ -219,7 +219,7 @@ const MyAccount: React.FC = () => {
                 {initUserInfo?.firstName + ' ' + initUserInfo?.lastName}
               </Text>
               <Text style={styles.signInDate}>
-                ODDS-R user since{' '}
+                OddsR™ user since{' '}
                 {timeStamptoDate(user?.metadata?.creationTime)}
               </Text>
             </View>

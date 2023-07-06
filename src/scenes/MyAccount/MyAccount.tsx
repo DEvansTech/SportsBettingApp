@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { TouchableOpacity } from 'react-native';
+import { TouchableOpacity, Linking } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
 import { useIsFocused } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
@@ -20,12 +20,11 @@ import auth from '@react-native-firebase/auth';
 import { SvgXml } from 'react-native-svg';
 import Purchases from 'react-native-purchases';
 
-// import useInAppPurchase from '@Lib/useInAppPurchase';
 import { AuthContext, AuthContextType } from '@Context/AuthContext';
 import { LogoSpinner, ModalCancelAccount } from '@Components';
 import { ToastMessage } from '@Lib/function';
 import { timeStamptoDate, timeStamptoDateTime } from '@Lib/utilities';
-import { ENTITLEMENT_ID, API_APPLE_KEY, API_GOOGLE_KEY } from '@Lib/constants';
+import { ENTITLEMENT_ID } from '@Lib/constants';
 
 import { Svgs, Colors } from '@Theme';
 import { UserType } from './types';
@@ -38,9 +37,6 @@ const MyAccount: React.FC = () => {
   const isFocused = useIsFocused();
   const { user, setDisplayName } = useContext(AuthContext) as AuthContextType;
 
-  // const { currentProductId, expiresDate, purchaseDate, validate } =
-  //   useInAppPurchase();
-
   const [userInfo, setUserInfo] = useState<UserType>();
   const [initUserInfo, setInitUserInfo] = useState<UserType>();
   const [newPassView, setNewPassView] = useState(true);
@@ -52,6 +48,10 @@ const MyAccount: React.FC = () => {
 
   const cancelAccount = () => {
     setIsCancelAccountModal(!isCancelAccountModal);
+  };
+
+  const deleteAccount = () => {
+    Linking.openURL('https://odds-r.pro/contacts.html');
   };
 
   const saveUserData = () => {
@@ -182,17 +182,6 @@ const MyAccount: React.FC = () => {
       })();
     }
   }, [isFocused]);
-
-  // useEffect(() => {
-  //   if (isFocused) {
-  //     (async function () {
-  //       const { purchaserInfo }: any = await Purchases.purchasePackage(
-  //         subscriptionData
-  //       );
-  //       console.log('purchaserInfo=====>', purchaserInfo);
-  //     })();
-  //   }
-  // }, [isFocused]);
 
   const gotoBack = () => {
     navigation.navigate(Routes.TabRoute);
@@ -379,8 +368,18 @@ const MyAccount: React.FC = () => {
                   height={23 * scale}
                 />
                 <Text style={styles.cancelAccountText}>
-                  Cancel Subscription
+                  Cancel subscription
                 </Text>
+              </Button>
+            </View>
+            <View style={styles.cancelAccountItem}>
+              <Button transparent iconLeft icon onPress={deleteAccount}>
+                <SvgXml
+                  xml={Svgs.mcancelIcon}
+                  width={23 * scale}
+                  height={23 * scale}
+                />
+                <Text style={styles.cancelAccountText}>Delete account</Text>
               </Button>
             </View>
 

@@ -6,7 +6,7 @@ export const scale = deviceWidth / 390;
 
 export default StyleSheet.create({
   background: {
-    backgroundColor: Colors.white
+    backgroundColor: Colors.whiteGrey
   },
   header: {
     flexDirection: 'row',
@@ -101,7 +101,10 @@ export default StyleSheet.create({
   },
   detailHeader: {
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
+    borderBottomWidth: 1,
+    borderColor: Colors.lightGrey,
+    backgroundColor: 'white'
   },
   detailListNumber: {
     backgroundColor: 'black',

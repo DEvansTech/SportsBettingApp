@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { View, Icon } from 'native-base';
 
 import { Props } from './types';
@@ -27,4 +27,4 @@ const BetStatus: React.FC<Props> = ({ base1, base2, base3 }) => {
   );
 };
 
-export default BetStatus;
+export default memo(BetStatus);

@@ -21,7 +21,11 @@ import { SvgXml } from 'react-native-svg';
 import Purchases from 'react-native-purchases';
 
 import { AuthContext, AuthContextType } from '@Context/AuthContext';
-import { LogoSpinner, ModalCancelAccount } from '@Components';
+import {
+  LogoSpinner,
+  ModalCancelAccount,
+  ModalDeleteAccount
+} from '@Components';
 import { ToastMessage } from '@Lib/function';
 import { timeStamptoDate, timeStamptoDateTime } from '@Lib/utilities';
 import { ENTITLEMENT_ID } from '@Lib/constants';
@@ -44,6 +48,7 @@ const MyAccount: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [passChangeDisabled, setPassChangeDisabled] = useState(false);
   const [isCancelAccountModal, setIsCancelAccountModal] = useState(false);
+  const [isDeleteAccountModal, setIsDeleteAccountModal] = useState(false);
   const [subscriptionData, setSubscriptionData] = useState<any>(undefined);
 
   const cancelAccount = () => {
@@ -51,7 +56,7 @@ const MyAccount: React.FC = () => {
   };
 
   const deleteAccount = () => {
-    Linking.openURL('https://odds-r.pro/contacts.html');
+    setIsDeleteAccountModal(!isDeleteAccountModal);
   };
 
   const saveUserData = () => {
@@ -399,6 +404,10 @@ const MyAccount: React.FC = () => {
       <ModalCancelAccount
         isModalVisible={isCancelAccountModal}
         toggleModal={cancelAccount}
+      />
+      <ModalDeleteAccount
+        isModalVisible={isDeleteAccountModal}
+        toggleModal={deleteAccount}
       />
     </Container>
   );

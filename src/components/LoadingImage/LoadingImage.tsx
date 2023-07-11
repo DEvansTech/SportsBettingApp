@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Animated, View } from 'react-native';
 import { Props } from './types';
 import styles from './styles';
@@ -25,4 +25,4 @@ const LoadingImage: React.FC<Props> = ({ source, style }) => {
   );
 };
 
-export default LoadingImage;
+export default memo(LoadingImage);

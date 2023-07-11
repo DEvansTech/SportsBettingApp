@@ -12,6 +12,7 @@ import Spinner from 'react-native-loading-spinner-overlay';
 import Purchases from 'react-native-purchases';
 import { SvgXml } from 'react-native-svg';
 
+import { LogoSpinner } from '@Components';
 import { ENTITLEMENT_ID } from '@Lib/constants';
 import { Routes } from '@Navigators/routes';
 import { Images, Svgs } from '@Theme';
@@ -172,37 +173,45 @@ const Subscription: React.FC<Props> = props => {
         source={Images.background1}
         resizeMode="stretch"
         style={styles.backgroundImage}>
-        <Content contentContainerStyle={styles.contentView}>
-          {selectedItem && (
-            <TouchableOpacity
-              style={styles.closeBtn}
-              onPress={() => navigation.goBack()}>
-              <Image source={Images.closeIcon} style={styles.closeIcon} />
-            </TouchableOpacity>
-          )}
-          <Image source={Images.logo} style={styles.logo} />
-          <Text style={styles.title}>Choose a plan</Text>
-          <FlatList
-            data={packages}
-            renderItem={({ item }) => renderItem(item)}
-            keyExtractor={(item: any) => item.identifier}
-          />
-          <Button
-            full
-            rounded
-            style={
-              selectPackage ? styles.subscribeSelectedBtn : styles.subscribeBtn
-            }
-            onPress={subscribeItem}
-            disabled={!selectPackage}>
-            <Text
+        {packages.length > 0 ? (
+          <Content contentContainerStyle={styles.contentView}>
+            {selectedItem && (
+              <TouchableOpacity
+                style={styles.closeBtn}
+                onPress={() => navigation.goBack()}>
+                <Image source={Images.closeIcon} style={styles.closeIcon} />
+              </TouchableOpacity>
+            )}
+            <Image source={Images.logo} style={styles.logo} />
+            <Text style={styles.title}>Choose a plan</Text>
+            <FlatList
+              data={packages}
+              renderItem={({ item }) => renderItem(item)}
+              keyExtractor={(item: any) => item.identifier}
+            />
+            <Button
+              full
+              rounded
               style={
-                selectPackage ? styles.buttonWhiteText : styles.buttonBlackText
-              }>
-              Subscribe
-            </Text>
-          </Button>
-        </Content>
+                selectPackage
+                  ? styles.subscribeSelectedBtn
+                  : styles.subscribeBtn
+              }
+              onPress={subscribeItem}
+              disabled={!selectPackage}>
+              <Text
+                style={
+                  selectPackage
+                    ? styles.buttonWhiteText
+                    : styles.buttonBlackText
+                }>
+                Subscribe
+              </Text>
+            </Button>
+          </Content>
+        ) : (
+          <LogoSpinner />
+        )}
       </ImageBackground>
     </Container>
   );

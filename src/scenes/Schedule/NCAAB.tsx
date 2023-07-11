@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useIsFocused } from '@react-navigation/native';
 import { View, Text } from 'native-base';
@@ -26,7 +26,7 @@ const NCAAB: React.FC<Props> = ({ selectedDate, sportName }) => {
   const { gameData, loading, exitGame } = useSelector(
     (state: RootState) => state.schedule
   );
-  const [mySelections, setMyselections] = useState<number[]>([]);
+  const [mySelections, setMyselections] = useState<number[]>();
   const [loadingBar, setLoadingBar] = useState(true);
 
   const saveSelection = async (gameID: number) => {
@@ -82,9 +82,12 @@ const NCAAB: React.FC<Props> = ({ selectedDate, sportName }) => {
     }
   };
 
-  const checkSelectionState = (gameID: number) => {
-    return mySelections.includes(gameID);
-  };
+  const checkSelectionState = useCallback(
+    (gameID: number) => {
+      return mySelections?.includes(gameID);
+    },
+    [mySelections, gameData]
+  );
 
   useEffect(() => {
     (async function () {

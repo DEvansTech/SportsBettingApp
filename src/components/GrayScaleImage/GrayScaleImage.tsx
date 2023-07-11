@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { View } from 'react-native';
 import { Grayscale } from 'react-native-color-matrix-image-filters';
 
@@ -12,4 +12,4 @@ const GrayScaleImage: React.FC<Props> = ({ isFocus, children }) => {
   );
 };
 
-export default GrayScaleImage;
+export default memo(GrayScaleImage);

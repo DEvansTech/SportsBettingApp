@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { TouchableHighlight, Text } from 'react-native';
 
 import { Colors } from '@Theme';
@@ -21,4 +21,4 @@ const Button: React.FC<Props> = ({
   );
 };
 
-export default Button;
+export default memo(Button);

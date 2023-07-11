@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect, useCallback } from 'react';
 import { TouchableHighlight, Vibration } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { useNavigation } from '@react-navigation/core';
@@ -49,14 +49,14 @@ const NCAABWatch: React.FC<Props> = ({
   const [pressGlass, setPressGlass] = useState(false);
   const [pressRater, setPressRater] = useState(false);
 
-  const checkPeriod = () => {
+  const checkPeriod = useCallback(() => {
     if (!checkStatus() && data.period) {
       if (Number(data.period) > 2) return 'Overtime';
       return `${ordinalSuffixOf(data.period)} Half`;
     }
-  };
+  }, [data]);
 
-  const checkStatus = () => {
+  const checkStatus = useCallback(() => {
     if (
       (data.status === 'closed' || data.status === 'complete') &&
       data.away_points &&
@@ -73,9 +73,9 @@ const NCAABWatch: React.FC<Props> = ({
     } else if (data.status === 'postponed') {
       return 'Postponed';
     }
-  };
+  }, [data]);
 
-  const checkClock = () => {
+  const checkClock = useCallback(() => {
     if (!checkStatus()) {
       if (Number(data.period) === 1 && data.clock === '00:00') return;
       if (
@@ -87,16 +87,16 @@ const NCAABWatch: React.FC<Props> = ({
         return `${convertEST(data.gameUTCDateTime)}`;
       }
     }
-  };
+  }, [data]);
 
-  const saveToSelection = () => {
+  const saveToSelection = useCallback(() => {
     if (user && saveSelection) {
       saveSelection(data.gameID, 'ncaab');
       Vibration.vibrate();
     } else {
       navigation.navigate(Routes.Watch);
     }
-  };
+  }, [data]);
 
   const openLineRater = () => {
     navigation.navigate(Routes.LineRater, { gameData: data });

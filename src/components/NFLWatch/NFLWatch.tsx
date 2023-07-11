@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect, useCallback } from 'react';
 import { TouchableHighlight, Vibration } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { useNavigation } from '@react-navigation/core';
@@ -70,7 +70,7 @@ const NFLWatch: React.FC<Props> = ({
     }
   };
 
-  const checkClock = () => {
+  const checkClock = useCallback(() => {
     if (!checkStatus()) {
       if (
         data.status === 'inprogress' ||
@@ -81,7 +81,7 @@ const NFLWatch: React.FC<Props> = ({
         return `${convertEST(data.gameUTCDateTime)}`;
       }
     }
-  };
+  }, [data]);
 
   const checkPeriod = () => {
     if (!checkStatus() && data.quarter) {
@@ -90,14 +90,14 @@ const NFLWatch: React.FC<Props> = ({
     }
   };
 
-  const saveToSelection = () => {
+  const saveToSelection = useCallback(() => {
     if (user && saveSelection) {
       saveSelection(data.gameID, 'nfl');
       Vibration.vibrate();
     } else {
       navigation.navigate(Routes.Watch);
     }
-  };
+  }, [data]);
 
   const openLineRater = () => {
     navigation.navigate(Routes.LineRater, { gameData: data });

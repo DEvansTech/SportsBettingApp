@@ -37,21 +37,6 @@ const ObiDetail: React.FC<OBIDetailProps> = props => {
           height={38 * scale}
         />
       </Header>
-      {/* <Header
-        style={styles.header}
-        iosBarStyle={'light-content'}
-        androidStatusBarColor={Colors.black}>
-        <TouchableOpacity
-          onPress={() => navigation.goBack()}
-          style={styles.headerLeft}>
-          <Icon
-            type="SimpleLineIcons"
-            name="arrow-left"
-            style={styles.backIcon}
-          />
-          <Text style={styles.headerText}>{obiData.title}</Text>
-        </TouchableOpacity>
-      </Header> */}
       <View style={styles.detailHeader}>
         <View style={styles.detailListNumber}>
           <Text style={styles.detailListNumberText}>{obiData.order}</Text>

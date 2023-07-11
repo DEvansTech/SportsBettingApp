@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, memo } from 'react';
 import { View, Text } from 'native-base';
 
 import styles from './styles';
@@ -15,22 +15,28 @@ const BetCalculator: React.FC<Props> = ({
   valueType,
   pushScore
 }) => {
-  const checkIntValue = (value: string | undefined) => {
-    if (value) {
-      if (Number(value) > 0) {
-        return `+${Number(value)}`;
+  const checkIntValue = useCallback(
+    (value: string | undefined) => {
+      if (value) {
+        if (Number(value) > 0) {
+          return `+${Number(value)}`;
+        }
+        return Number(value);
       }
-      return Number(value);
-    }
-  };
-  const checkFloatValue = (value: string | undefined) => {
-    if (value) {
-      if (valueType !== 'OU' && Number(value) > 0) {
-        return `+${parseFloat(value).toFixed(1)}`;
+    },
+    [value2]
+  );
+  const checkFloatValue = useCallback(
+    (value: string | undefined) => {
+      if (value) {
+        if (valueType !== 'OU' && Number(value) > 0) {
+          return `+${parseFloat(value).toFixed(1)}`;
+        }
+        return parseFloat(value).toFixed(1);
       }
-      return parseFloat(value).toFixed(1);
-    }
-  };
+    },
+    [value1]
+  );
 
   return (
     <View style={styles.container}>
@@ -62,4 +68,4 @@ const BetCalculator: React.FC<Props> = ({
   );
 };
 
-export default BetCalculator;
+export default memo(BetCalculator);

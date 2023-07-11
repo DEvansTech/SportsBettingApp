@@ -14,6 +14,7 @@ import { Routes } from '@Navigators/routes';
 const MainHeader: React.FC = () => {
   const navigation = useNavigation<StackNavigationProp<any, any>>();
   const { user } = useContext(AuthContext) as AuthContextType;
+
   return (
     <Header
       style={styles.header}

@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect, useCallback } from 'react';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { useNavigation } from '@react-navigation/core';
 import { View } from 'native-base';
@@ -51,7 +51,7 @@ const MLBWatch: React.FC<Props> = ({
   let base3 = data.runnerBase3;
   let totalScore = Number(data.away_runs) + Number(data.home_runs);
 
-  const checkInning = () => {
+  const checkInning = useCallback(() => {
     if (data.status === 'inprogress') {
       if (data.inning_half === 'T') {
         if (Number(data.outs) === 3) {
@@ -82,9 +82,9 @@ const MLBWatch: React.FC<Props> = ({
     } else {
       return 'Delayed';
     }
-  };
+  }, [data]);
 
-  const checkSpread = () => {
+  const checkSpread = useCallback(() => {
     if (data.status === 'closed' || data.status === 'complete') {
       const homeSpread = Number(data.run_line_last_spread_home);
       const awaySpread = Number(data.run_line_last_spread_away);
@@ -112,15 +112,15 @@ const MLBWatch: React.FC<Props> = ({
         }
       }
     }
-  };
+  }, [data]);
 
-  const checkWin = () => {
+  const checkWin = useCallback(() => {
     if (data.status === 'closed' || data.status === 'complete') {
       return Number(data.home_runs) > Number(data.away_runs) ? 'home' : 'away';
     }
-  };
+  }, [data]);
 
-  const checkOU = () => {
+  const checkOU = useCallback(() => {
     if (data.status === 'closed' || data.status === 'complete') {
       if (totalScore > Number(data.total_last_outcome_over_total)) {
         return 'away';
@@ -130,7 +130,7 @@ const MLBWatch: React.FC<Props> = ({
       }
       return 'same';
     }
-  };
+  }, [data]);
 
   const checkOuts = (out: string | undefined) => {
     if (out) {
@@ -157,7 +157,7 @@ const MLBWatch: React.FC<Props> = ({
     navigation.navigate(Routes.LineRater, { gameData: data });
   };
 
-  const getAwaySpreadValue = () => {
+  const getAwaySpreadValue = useCallback(() => {
     if (
       !(data?.run_line_last_outcome_away && data?.run_line_last_spread_away)
     ) {
@@ -171,9 +171,9 @@ const MLBWatch: React.FC<Props> = ({
       Number(data?.run_line_last_spread_away) > 0 ? 'plus' : 'minus';
 
     return getMLBSpreadAwayRatingValue(data, rangeValue, oddType);
-  };
+  }, [data]);
 
-  const getHomeSpreadValue = () => {
+  const getHomeSpreadValue = useCallback(() => {
     if (
       !(data?.run_line_last_outcome_home && data?.run_line_last_spread_home)
     ) {
@@ -187,7 +187,7 @@ const MLBWatch: React.FC<Props> = ({
       Number(data?.run_line_last_spread_home) > 0 ? 'plus' : 'minus';
 
     return getMLBSpreadHomeRatingValue(data, rangeValue, oddType);
-  };
+  }, [data]);
 
   useEffect(() => {
     setPressGlass(selectionState);

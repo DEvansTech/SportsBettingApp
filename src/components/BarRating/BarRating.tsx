@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, memo } from 'react';
 import { View, Text } from 'native-base';
 import { Props } from './types';
 import styles from './styles';
@@ -65,4 +65,4 @@ const BarRating: React.FC<Props> = ({
   );
 };
 
-export default BarRating;
+export default memo(BarRating);

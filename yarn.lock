@@ -7275,11 +7275,6 @@ react-native-htmlview@^0.16.0:
     entities "^1.1.1"
     htmlparser2-without-node-native "^3.9.2"
 
-react-native-iap@9.0.4:
-  version "9.0.4"
-  resolved "https://registry.yarnpkg.com/react-native-iap/-/react-native-iap-9.0.4.tgz#8d2dca3f169194859056427e5d422a2a3bee1ffa"
-  integrity sha512-3ohw1uNpckD6XCsfumtKgewlQoz2p/Be+xbPvvyKN9Gb9Z8TF8V4o1SDzVkfziIBfdrblBiD5TMQ5dIGfZkcTg==
-
 react-native-image-colors@^1.5.1:
   version "1.5.2"
   resolved "https://registry.yarnpkg.com/react-native-image-colors/-/react-native-image-colors-1.5.2.tgz#b3aaa42fb5c57c0accaa6922b8412f1a68b315f9"

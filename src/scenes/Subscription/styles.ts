@@ -12,8 +12,8 @@ export default StyleSheet.create({
     color: 'white'
   },
   logo: {
-    width: 150 * scale,
-    height: 150 * scale,
+    width: 240 * scale,
+    height: 120 * scale,
     alignSelf: 'center'
   },
   title: {

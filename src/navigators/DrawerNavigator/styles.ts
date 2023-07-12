@@ -42,8 +42,8 @@ export default StyleSheet.create({
     marginVertical: 15 * scale
   },
   logo: {
-    width: 117 * scale,
-    height: 117 * scale,
+    width: 180 * scale,
+    height: 90 * scale,
     alignSelf: 'center'
   },
   closeBtn: {

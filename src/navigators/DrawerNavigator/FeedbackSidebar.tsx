@@ -19,9 +19,12 @@ const FeedbackSidebar: React.FC = () => {
         <SvgXml xml={Svgs.commentIcon} width={50 * scale} height={50 * scale} />
         <Text style={styles.feedbackTitleText}>Support</Text>
       </TouchableOpacity>
-      <Text style={styles.feedbackGreenText}>We want to hear from you!</Text>
+      <Text style={styles.feedbackGreenText}>
+        We’re here for you if you have any questions or feedback.
+      </Text>
       <Text style={styles.feedbackText}>
-        Tap the talk bubble above to send a message, comment or ask a question.
+        Tap the word balloon above to send a message, comment, or request for
+        help.
       </Text>
     </View>
   );

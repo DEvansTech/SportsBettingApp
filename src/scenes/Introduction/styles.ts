@@ -123,29 +123,9 @@ export default StyleSheet.create({
     color: Colors.white,
     fontFamily: Fonts.black
   },
-
-  gamesImageView: {
-    borderColor: Colors.grey,
-    borderWidth: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 30 * scale,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 10
-    },
-    shadowOpacity: 0.51,
-    shadowRadius: 13.16,
-
-    elevation: 20,
-    overflow: 'hidden',
-    marginHorizontal: 40 * scale,
-    marginTop: 20 * scale
-  },
   gamesImage: {
     width: '100%',
-    height: 260 * scale
+    height: 290 * scale
   },
   gamesContent: {
     marginTop: 30 * scale
@@ -174,7 +154,7 @@ export default StyleSheet.create({
     marginTop: 10 * scale
   },
   firstView: {
-    width: deviceWidth * 0.5
+    width: deviceWidth * 0.55
   },
   imageView: {
     width: '100%',
@@ -185,28 +165,6 @@ export default StyleSheet.create({
     alignItems: 'center',
     flex: 1
   },
-  topRankedText: {
-    fontSize: 16 * scale,
-    color: Colors.white,
-    fontFamily: Fonts.bold,
-    paddingHorizontal: 10 * scale,
-    paddingVertical: 3 * scale,
-    backgroundColor: Colors.green,
-    borderRadius: 5 * scale,
-    lineHeight: 20 * scale,
-    overflow: 'hidden'
-  },
-  allText: {
-    fontSize: 16 * scale,
-    color: Colors.green,
-    fontFamily: Fonts.bold,
-    paddingHorizontal: 4 * scale,
-    paddingVertical: 2 * scale,
-    borderWidth: 2 * scale,
-    borderColor: Colors.green,
-    borderRadius: 5 * scale,
-    overflow: 'hidden'
-  },
   normalText: {
     fontSize: 14 * scale,
     color: Colors.black,
@@ -214,7 +172,7 @@ export default StyleSheet.create({
     lineHeight: 23 * scale
   },
   blackBolderText: {
-    fontSize: 16 * scale,
+    fontSize: 14 * scale,
     color: Colors.black,
     fontFamily: Fonts.black
   },
@@ -229,8 +187,8 @@ export default StyleSheet.create({
     fontFamily: Fonts.black
   },
   secondView: {
-    width: deviceWidth * 0.43,
-    paddingHorizontal: 10 * scale
+    width: deviceWidth * 0.45,
+    paddingRight: 20 * scale
   },
   mainIcon: {
     marginVertical: 20 * scale

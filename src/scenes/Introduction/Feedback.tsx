@@ -20,7 +20,7 @@ const Feedback: React.FC<CarosuelProps> = ({
         androidStatusBarColor={Colors.green}>
         <View style={styles.headerView}>
           <Text style={styles.headerSubTitle}>Instructions:</Text>
-          <Text style={styles.headerTitle}>Feedback</Text>
+          <Text style={styles.headerTitle}>Support</Text>
           <Icon
             type="AntDesign"
             name="closecircleo"
@@ -44,26 +44,23 @@ const Feedback: React.FC<CarosuelProps> = ({
         </View>
       </Header>
       <Content contentContainerStyle={styles.contentView}>
-        <View style={styles.content}>
-          <View style={styles.body}>
-            <View style={styles.firstView}>
-              <LoadingImage
-                source={Images.carousel8}
-                style={styles.imageView}
-              />
-            </View>
-            <View style={styles.secondView}>
-              <SvgXml
-                xml={Svgs.commentBlackIcon}
-                width={50 * scale}
-                height={50 * scale}
-                style={styles.mainIcon}
-              />
-              <Text style={styles.normalText}>
-                Feedback is good! OBI want to hear from you! Tap the upper right
-                hand talk bubble to send a message, comment or request for help.
-              </Text>
-            </View>
+        <View style={styles.body}>
+          <View style={styles.firstView}>
+            <LoadingImage source={Images.carousel8} style={styles.imageView} />
+          </View>
+          <View style={styles.secondView}>
+            <SvgXml
+              xml={Svgs.commentBlackIcon}
+              width={50 * scale}
+              height={50 * scale}
+              style={styles.mainIcon}
+            />
+            <Text style={styles.normalText}>
+              We’re here for you if you have any questions or feedback. First,
+              tap the <Text style={styles.blackBoldText}>ACCOUNT</Text> button
+              in the bottom navigation, then tap the Feedback word balloon to
+              send a message, comment, or request for help.
+            </Text>
           </View>
         </View>
       </Content>

@@ -4,7 +4,6 @@ import { SvgXml } from 'react-native-svg';
 
 import { LoadingImage } from '@Components';
 import { Colors, Images, Svgs } from '@Theme';
-import { Routes } from '@Navigators/routes';
 import { CarosuelProps } from './types';
 import styles, { scale } from './styles';
 
@@ -45,27 +44,23 @@ const OBISays: React.FC<CarosuelProps> = ({
         </View>
       </Header>
       <Content contentContainerStyle={styles.contentView}>
-        <View style={styles.content}>
-          <View style={styles.body}>
-            <View style={styles.firstView}>
-              <LoadingImage
-                source={Images.carousel5}
-                style={styles.imageView}
-              />
-            </View>
-            <View style={styles.secondView}>
-              <SvgXml
-                xml={Svgs.obiIcon}
-                width={60 * scale}
-                height={60 * scale}
-                style={styles.mainIcon}
-              />
-              <Text style={styles.normalText}>
-                OBI explains all things betting in a series of commentaries,
-                newest on top. If you’ve just joined, scroll down to OBI #1 to
-                start at the beginning.
-              </Text>
-            </View>
+        <View style={styles.body}>
+          <View style={styles.firstView}>
+            <LoadingImage source={Images.carousel5} style={styles.imageView} />
+          </View>
+          <View style={styles.secondView}>
+            <SvgXml
+              xml={Svgs.obiIcon}
+              width={60 * scale}
+              height={60 * scale}
+              style={styles.mainIcon}
+            />
+            <Text style={styles.normalText}>
+              Meet Roi (pronounced "roy"), job title Figurehead, who explains
+              all things betting in a series of commentaries with the newest on
+              top. If you’ve just joined, scroll down to Roi #1 to start at the
+              beginning.
+            </Text>
           </View>
         </View>
       </Content>

@@ -40,32 +40,51 @@ const Spread: React.FC<CarosuelProps> = ({ nextPage, prevPage, closePage }) => {
         </View>
       </Header>
       <Content contentContainerStyle={styles.contentView}>
-        <View style={styles.subHeader}>
+        {/* <View style={styles.subHeader}>
           <Text style={styles.subHeaderText}>SPREAD</Text>
+        </View> */}
+        <View style={styles.body}>
+          <View style={styles.firstView}>
+            <LoadingImage source={Images.carousel2} style={styles.imageView} />
+          </View>
+          <View style={styles.secondView}>
+            <SvgXml
+              xml={Svgs.lineRaterBlackIcon}
+              width={60 * scale}
+              height={60 * scale}
+              style={styles.mainIcon}
+            />
+            <Text style={styles.normalText}>
+              LineMaster™ allows you to input odds you are seeing and determine
+              whether you are getting closer to (or moving away from) a green
+              value play.
+            </Text>
+          </View>
         </View>
         <View style={styles.content}>
-          <View style={styles.body}>
-            <View style={styles.firstView}>
-              <LoadingImage
-                source={Images.carousel2}
-                style={styles.imageView}
-              />
-            </View>
-            <View style={styles.secondView}>
-              <SvgXml
-                xml={Svgs.lineRaterBlackIcon}
-                width={60 * scale}
-                height={60 * scale}
-                style={styles.mainIcon}
-              />
-              <Text style={styles.normalText}>
-                LineMaster™ allows you to check whether a line you are seeing is
-                a Value Play. Tap the team logo, then{' '}
-                <Text style={styles.blackBoldText}>SPREAD</Text> (default), then
-                +/- on Points or Money Line to get an instant OBI evaluation
-                (green- yellow-red-deep red).
-              </Text>
-            </View>
+          <View style={styles.gameDescription}>
+            <Icon type="FontAwesome" name="circle" style={styles.greenCircle} />
+            <Text style={styles.gameText}>Tap a team</Text>
+          </View>
+          <View style={styles.gameDescription}>
+            <Icon type="FontAwesome" name="circle" style={styles.greenCircle} />
+            <Text style={styles.gameText}>
+              Select
+              <Text style={styles.blackBoldText}> SPREAD</Text> or{' '}
+              <Text style={styles.blackBoldText}>OVER / UNDER </Text>
+            </Text>
+          </View>
+          <View style={styles.gameDescription}>
+            <Icon type="FontAwesome" name="circle" style={styles.greenCircle} />
+            <Text style={styles.gameText}>
+              Toggle +/- to change the spread or odds.
+            </Text>
+          </View>
+          <View style={styles.gameDescription}>
+            <Icon type="FontAwesome" name="circle" style={styles.greenCircle} />
+            <Text style={styles.gameText}>
+              See whether the input moves you into (or closer to) the green.
+            </Text>
           </View>
         </View>
       </Content>

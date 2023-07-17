@@ -47,26 +47,21 @@ const Watching: React.FC<CarosuelProps> = ({
         </View>
       </Header>
       <Content contentContainerStyle={styles.contentView}>
-        <View style={styles.content}>
-          <View style={styles.body}>
-            <View style={styles.firstView}>
-              <LoadingImage
-                source={Images.carousel6}
-                style={styles.imageView}
-              />
-            </View>
-            <View style={styles.secondView}>
-              <SvgXml
-                xml={Svgs.watchIcon}
-                width={60 * scale}
-                height={60 * scale}
-                style={styles.mainIcon}
-              />
-              <Text style={styles.normalText}>
-                Watching shows in one convenient place all games involving your
-                favorite teams and other games you’ve marked to keep an eye on.
-              </Text>
-            </View>
+        <View style={styles.body}>
+          <View style={styles.firstView}>
+            <LoadingImage source={Images.carousel6} style={styles.imageView} />
+          </View>
+          <View style={styles.secondView}>
+            <SvgXml
+              xml={Svgs.watchIcon}
+              width={60 * scale}
+              height={60 * scale}
+              style={styles.mainIcon}
+            />
+            <Text style={styles.normalText}>
+              Watching shows in one convenient place all games involving your
+              favorite teams and other games you’ve marked to keep an eye on.
+            </Text>
           </View>
         </View>
       </Content>

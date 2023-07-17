@@ -8,7 +8,6 @@ import { SvgXml } from 'react-native-svg';
 import { LoadingImage, GrayScaleImage } from '@Components';
 import SpreadBaseball from './SpreadBaseball';
 import Spread from './Spread';
-import Win from './Win';
 import OverUnder from './OverUnder';
 import { Svgs, Colors } from '@Theme';
 import { checkTeamIcon } from '@Lib/function';

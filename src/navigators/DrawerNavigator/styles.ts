@@ -1,5 +1,5 @@
 import { StyleSheet, Platform, Dimensions } from 'react-native';
-import { Colors, Fonts } from '../../theme';
+import { Colors, Fonts } from '@Theme';
 
 const deviceWidth = Dimensions.get('window').width;
 export const scale = deviceWidth / 390;
@@ -42,12 +42,9 @@ export default StyleSheet.create({
     marginVertical: 15 * scale
   },
   logo: {
-<<<<<<< Updated upstream
-    width: 180 * scale,
-=======
     width: 240 * scale,
->>>>>>> Stashed changes
     height: 90 * scale,
+
     alignSelf: 'center'
   },
   closeBtn: {
@@ -60,13 +57,8 @@ export default StyleSheet.create({
     color: 'white',
     fontSize: 21 * scale,
     alignSelf: 'center',
-<<<<<<< Updated upstream
-    marginTop: 20 * scale,
-    fontFamily: Fonts.semiBold
-=======
     marginTop: 10 * scale,
     fontFamily: Fonts.regular
->>>>>>> Stashed changes
   },
   feedbackContent: {
     position: 'absolute',
@@ -75,35 +67,32 @@ export default StyleSheet.create({
     right: 0,
     backgroundColor: Colors.black,
     paddingVertical: 30 * scale,
-<<<<<<< Updated upstream
     paddingHorizontal: 20 * scale,
-    paddingBottom: 100 * scale
-=======
-    paddingHorizontal: 20 * scale
->>>>>>> Stashed changes
+    paddingBottom: 50 * scale
   },
   feedbackTitleContent: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     marginBottom: 20 * scale
   },
   feedbackTitleText: {
     fontSize: 18 * scale,
-    fontFamily: Fonts.extraBold,
+    fontFamily: Fonts.black,
     color: 'white',
     textTransform: 'uppercase',
-    marginLeft: 10 * scale
+    marginLeft: 10 * scale,
+    marginTop: -7 * scale
   },
   feedbackGreenText: {
     fontSize: 15 * scale,
-    fontFamily: Fonts.extraBold,
+    fontFamily: Fonts.black,
     lineHeight: 23 * scale,
     color: Colors.green
   },
   feedbackText: {
     fontSize: 15 * scale,
-    fontFamily: Fonts.semiBold,
+    fontFamily: Fonts.regular,
     color: Colors.white,
     lineHeight: 23 * scale
   }

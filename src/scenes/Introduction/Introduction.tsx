@@ -14,11 +14,8 @@ import { AuthContext, AuthContextType } from '@Context/AuthContext';
 import QuickStart from './QuickStart';
 import Games from './Games';
 import Spread from './Spread';
-import Win from './Win';
-import OverUnder from './OverUnder';
 import OBISays from './OBISays';
 import Watching from './Watching';
-import Partners from './Partners';
 import Feedback from './Feedback';
 
 import { Routes } from '@Navigators/routes';
@@ -91,11 +88,11 @@ const Introduction: React.FC = () => {
     />,
     <Games nextPage={nextPage} prevPage={prevPage} closePage={closePage} />,
     <Spread nextPage={nextPage} prevPage={prevPage} closePage={closePage} />,
-    <Win nextPage={nextPage} prevPage={prevPage} closePage={closePage} />,
-    <OverUnder nextPage={nextPage} prevPage={prevPage} closePage={closePage} />,
+    // <Win nextPage={nextPage} prevPage={prevPage} closePage={closePage} />,
+    // <OverUnder nextPage={nextPage} prevPage={prevPage} closePage={closePage} />,
     <OBISays nextPage={nextPage} prevPage={prevPage} closePage={closePage} />,
     <Watching nextPage={nextPage} prevPage={prevPage} closePage={closePage} />,
-    <Partners nextPage={nextPage} prevPage={prevPage} closePage={closePage} />,
+    // <Partners nextPage={nextPage} prevPage={prevPage} closePage={closePage} />,
     <Feedback nextPage={nextPage} prevPage={prevPage} closePage={closePage} />
   ];
 

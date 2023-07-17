@@ -4,7 +4,6 @@ import { Container, Content, Text, View, Header, Icon } from 'native-base';
 import { LoadingImage } from '@Components';
 import { Colors, Images } from '@Theme';
 import styles from './styles';
-import { Routes } from '@Navigators/routes';
 
 import { CarosuelProps } from './types';
 
@@ -41,22 +40,19 @@ const Games: React.FC<CarosuelProps> = ({ nextPage, prevPage, closePage }) => {
         </View>
       </Header>
       <Content contentContainerStyle={styles.contentView}>
-        <View style={styles.gamesImageView}>
-          <LoadingImage source={Images.carousel1} style={styles.gamesImage} />
-        </View>
+        <LoadingImage source={Images.carousel1} style={styles.gamesImage} />
         <View style={styles.content}>
           <View style={styles.titleView}>
-            <Text style={styles.topRankedText}>TOP RANKED</Text>
+            <Text style={styles.blackBolderText}>"TOP RANKED"</Text>
             <Text style={styles.normalText}> shows games/events where</Text>
           </View>
           <Text style={styles.normalText}>
-            the
-            <Text style={styles.blackBoldText}> ODDS-R Bet Index®</Text>(OBI)
-            sees a <Text style={styles.greenBoldText}>VALUE</Text> (GREEN) Play.
+            the OddsR™ sees a <Text style={styles.greenBoldText}>VALUE</Text>{' '}
+            (GREEN) Play.
           </Text>
           <View style={styles.titleView}>
             <Text style={styles.normalText}>Tap </Text>
-            <Text style={styles.allText}> ALL </Text>
+            <Text style={styles.blackBolderText}>"ALL"</Text>
             <Text style={styles.normalText}> to see </Text>
             <Text style={styles.normalText}>the games today.</Text>
           </View>

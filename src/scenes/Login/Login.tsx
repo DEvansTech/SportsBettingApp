@@ -23,7 +23,7 @@ import {
 import { SvgXml } from 'react-native-svg';
 import jwt_decode from 'jwt-decode';
 
-import { LogoSpinner, Button as CustomButton } from '@Components';
+import { LogoSpinner, Button as CustomButton, TermsPrivacy } from '@Components';
 import { ToastMessage, existUser } from '@Lib/function';
 import { Routes } from '@Navigators/routes';
 import { WEB_CLIENT_ID } from '@env';
@@ -267,6 +267,7 @@ const Login: React.FC = () => {
                   />
                 </Button>
               </View>
+              <TermsPrivacy />
             </View>
           )}
         </Content>

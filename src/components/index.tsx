@@ -23,6 +23,7 @@ import SegmentSort from './SegmentSort';
 import GrayScaleImage from './GrayScaleImage';
 import ModalCancelAccount from './ModalCancelAccount';
 import ModalDeleteAccount from './ModalDeleteAccount';
+import TermsPrivacy from './TermsPrivacy';
 
 export {
   BetStatus,
@@ -49,5 +50,6 @@ export {
   SegmentSort,
   GrayScaleImage,
   ModalCancelAccount,
-  ModalDeleteAccount
+  ModalDeleteAccount,
+  TermsPrivacy
 };

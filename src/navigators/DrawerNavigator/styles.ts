@@ -42,7 +42,11 @@ export default StyleSheet.create({
     marginVertical: 15 * scale
   },
   logo: {
+<<<<<<< Updated upstream
     width: 180 * scale,
+=======
+    width: 240 * scale,
+>>>>>>> Stashed changes
     height: 90 * scale,
     alignSelf: 'center'
   },
@@ -56,8 +60,13 @@ export default StyleSheet.create({
     color: 'white',
     fontSize: 21 * scale,
     alignSelf: 'center',
+<<<<<<< Updated upstream
     marginTop: 20 * scale,
     fontFamily: Fonts.semiBold
+=======
+    marginTop: 10 * scale,
+    fontFamily: Fonts.regular
+>>>>>>> Stashed changes
   },
   feedbackContent: {
     position: 'absolute',
@@ -66,8 +75,12 @@ export default StyleSheet.create({
     right: 0,
     backgroundColor: Colors.black,
     paddingVertical: 30 * scale,
+<<<<<<< Updated upstream
     paddingHorizontal: 20 * scale,
     paddingBottom: 100 * scale
+=======
+    paddingHorizontal: 20 * scale
+>>>>>>> Stashed changes
   },
   feedbackTitleContent: {
     flexDirection: 'row',

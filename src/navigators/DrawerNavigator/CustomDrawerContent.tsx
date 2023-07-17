@@ -4,7 +4,7 @@ import {
   DrawerItem,
   DrawerContentComponentProps
 } from '@react-navigation/drawer';
-import { TouchableOpacity } from 'react-native';
+import { TouchableOpacity, Linking } from 'react-native';
 import { Icon, View } from 'native-base';
 import { DrawerActions } from '@react-navigation/native';
 import { SvgXml } from 'react-native-svg';
@@ -46,6 +46,16 @@ export const CustomDrawerContent: React.FC<DrawerContentComponentProps> = ({
     setTimeout(() => {
       navigation.navigate(Routes.Splash);
     }, 1000);
+  };
+
+  const handlePrivacy = () => {
+    Linking.openURL('https://odds-r.pro/terms.html');
+  };
+
+  const handleTerms = () => {
+    Linking.openURL(
+      'https://www.apple.com/legal/internet-services/itunes/dev/stdeula/'
+    );
   };
 
   // const cancelAccount = () => {
@@ -182,6 +192,42 @@ export const CustomDrawerContent: React.FC<DrawerContentComponentProps> = ({
           )}
           onPress={logOut}
         />
+        <DrawerItem
+          {...itemBaseStyle}
+          {...rest}
+          label="Terms of use"
+          icon={() => (
+            <SvgXml
+              xml={Svgs.sidebarTermsIcon}
+              width={25 * scale}
+              height={25 * scale}
+            />
+          )}
+          focused={getActiveRouteState(
+            state.routes,
+            state.index,
+            Routes.Logout
+          )}
+          onPress={handleTerms}
+        />
+        <DrawerItem
+          {...itemBaseStyle}
+          {...rest}
+          label="Privacy policy"
+          icon={() => (
+            <SvgXml
+              xml={Svgs.sidebarPrivacyIcon}
+              width={25 * scale}
+              height={25 * scale}
+            />
+          )}
+          focused={getActiveRouteState(
+            state.routes,
+            state.index,
+            Routes.Logout
+          )}
+          onPress={handlePrivacy}
+        />
         {/*   <DrawerItem
           {...itemBaseStyle}
           {...rest}
@@ -195,8 +241,8 @@ export const CustomDrawerContent: React.FC<DrawerContentComponentProps> = ({
           )}
           onPress={cancelAccount}
         /> */}
-        <FeedbackSidebar />
       </View>
+      <FeedbackSidebar />
       {/* <ModalCancelAccount
         isModalVisible={isCancelAccountModal}
         toggleModal={cancelAccount}

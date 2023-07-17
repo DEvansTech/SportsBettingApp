@@ -349,71 +349,6 @@ export default {
       </g>
     </svg>
   `,
-  obiWhiteIcon: `
-    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-    viewBox="0 0 38 41" style="enable-background:new 0 0 38 41;" xml:space="preserve">
-      <line style="fill:none;stroke:#ffffff;" x1="6.3" y1="6.4" x2="6.3" y2="17.1"/>
-      <g>
-        <g>
-          <path style="fill:none;stroke:#ffffff;" d="M6.3,22.5v3c0,3.5,2.8,6.3,6.3,6.3h12.7c3.5,0,6.3-2.8,6.3-6.3v-3"/>
-        </g>
-        <g>
-          <path style="fill:none;stroke:#ffffff;" d="M0.5,17.2c0,0,0,5.2,5.8,5.2h11.1v-5.2H0.5z"/>
-        </g>
-        <g>
-          <path style="fill:none;stroke:#ffffff;" d="M20.6,17.2v5.2h11l0,0c5.8,0,5.8-5.2,5.8-5.2H20.6z"/>
-        </g>
-        <g>
-          <path style="fill:none;stroke:#ffffff;" d="M24.8,31.4L24.8,31.4v-4.8H13.2v4.8c0,4,2.4,7.5,5.8,9C22.4,38.9,24.8,35.5,24.8,31.4z"/>
-        </g>
-        <g>
-          <path style="fill:none;stroke:#ffffff;" d="M20.6,20c-0.5-0.2-1-0.3-1.6-0.3s-1.1,0.1-1.6,0.3"/>
-        </g>
-        <g>
-          <path style="fill:none;stroke:#ffffff;stroke-linecap:round;" d="M20.5,29c-0.5,0.2-1,0.3-1.5,0.3c-0.6,0-1.1-0.1-1.5-0.3"/>
-        </g>
-        <g>
-          <path style="fill:none;stroke:#ffffff;stroke-linecap:round;" d="M29,14c-0.8-0.8-1.7-1.2-2.6-1.2s-1.8,0.5-2.6,1.2"/>
-        </g>
-        <g>
-          <path style="fill:none;stroke:#ffffff;" d="M10.3,4.1C10,4.1,9.8,4,9.6,3.9C9.4,3.7,9.2,3.5,9.1,3.3C9,3,8.9,2.7,8.9,2.3s0.1-0.7,0.2-1
-            C9.2,1,9.4,0.8,9.6,0.7s0.5-0.2,0.7-0.2c0.3,0,0.5,0.1,0.7,0.2s0.4,0.4,0.5,0.6c0.1,0.3,0.2,0.6,0.2,1s-0.1,0.7-0.2,1
-            c-0.1,0.3-0.3,0.5-0.5,0.6C10.8,4,10.6,4.1,10.3,4.1z"/>
-        </g>
-        <g>
-          <path style="fill:none;stroke:#ffffff;" d="M18.8,4.1c-0.3,0-0.5-0.1-0.7-0.2c-0.2-0.1-0.4-0.4-0.5-0.6c-0.1-0.3-0.2-0.6-0.2-1s0.1-0.7,0.2-1
-            s0.3-0.5,0.5-0.6s0.5-0.2,0.7-0.2c0.3,0,0.5,0.1,0.7,0.2s0.4,0.4,0.5,0.6c0.1,0.3,0.2,0.6,0.2,1S20.1,3,20,3.3s-0.3,0.5-0.5,0.6
-            C19.3,4,19,4.1,18.8,4.1z"/>
-        </g>
-        <g>
-          <polyline style="fill:none;stroke:#ffffff;" points="4.8,0.6 6.2,0.6 6.2,4.6 		"/>
-        </g>
-        <g>
-          <polyline style="fill:none;stroke:#ffffff;" points="13.3,0.6 14.7,0.6 14.7,4.6 		"/>
-        </g>
-        <g>
-          <path style="fill:none;stroke:#ffffff;" d="M27.2,4.1c-0.3,0-0.5-0.1-0.7-0.2c-0.2-0.1-0.4-0.4-0.5-0.6c-0.1-0.3-0.2-0.6-0.2-1s0.1-0.7,0.2-1
-            s0.3-0.5,0.5-0.6s0.5-0.2,0.7-0.2c0.3,0,0.5,0.1,0.7,0.2s0.4,0.4,0.5,0.6c0.1,0.3,0.2,0.6,0.2,1s-0.1,0.7-0.2,1s-0.3,0.5-0.5,0.6
-            C27.8,4,27.5,4.1,27.2,4.1z"/>
-        </g>
-        <g>
-          <polyline style="fill:none;stroke:#ffffff;" points="21.8,0.6 23.2,0.6 23.2,4.6 		"/>
-        </g>
-        <g>
-          <polyline style="fill:none;stroke:#ffffff;" points="30.3,0.6 31.7,0.6 31.7,4.6 		"/>
-        </g>
-        </g>
-        <line style="fill:none;stroke:#ffffff;" x1="31.7" y1="6.4" x2="31.7" y2="17.1"/>
-        <g>
-        <g>
-          <circle style="fill:none;stroke:#ffffff;stroke-width:0.7;" cx="26.4" cy="19.6" r="0.3"/>
-        </g>
-        <g>
-          <circle style="fill:none;stroke:#ffffff;stroke-width:0.7;" cx="11.6" cy="19.6" r="0.3"/>
-        </g>
-      </g>
-    </svg>
-  `,
   accountIcon: `
     <svg version="1.1" id="Layer_1" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 45 45" style="enable-background:new 0 0 45 45;" xml:space="preserve">
       <g>
@@ -527,8 +462,14 @@ export default {
   //---login icons---//
   emailIcon:
     '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 21.67"><path d="M14,14.86a3.05,3.05,0,0,0-3.15,2.95V31.58a3.05,3.05,0,0,0,3.15,3h21.7a3.05,3.05,0,0,0,3.15-3V17.81a3.05,3.05,0,0,0-3.15-2.95Z" transform="translate(-9.81 -13.86)" style="fill:none;stroke:#fff;stroke-width:1px"/><polyline points="1.42 2.41 15 15.82 28.58 2.41" style="fill:none;stroke:#fff;stroke-linejoin:round;stroke-width:1px"/></svg>',
-  passwordIcon:
-    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 37.15"><path d="M14,22.12a3.09,3.09,0,0,0-3.15,3V39.25a3.09,3.09,0,0,0,3.15,3h21.7a3.09,3.09,0,0,0,3.15-3V25.14a3.09,3.09,0,0,0-3.15-3Z" transform="translate(-9.81 -6.12)" style="fill:none;stroke:#fff;stroke-width:1px"/><path d="M33.81,22.12V17.06c0-5.49-4-9.94-9-9.94s-9,4.45-9,9.94v5.06" transform="translate(-9.81 -6.12)" style="fill:none;stroke:#fff;stroke-width:1px"/><line x1="15" y1="24.58" x2="15" y2="29.24" style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px"/><path d="M24.81,32.19a2.08,2.08,0,1,0-2.09-2.08,2.08,2.08,0,0,0,2.09,2.08" transform="translate(-9.81 -6.12)" style="fill:#fff"/></svg>',
+  passwordIcon: `
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 37.15">
+      <path d="M14,22.12a3.09,3.09,0,0,0-3.15,3V39.25a3.09,3.09,0,0,0,3.15,3h21.7a3.09,3.09,0,0,0,3.15-3V25.14a3.09,3.09,0,0,0-3.15-3Z" transform="translate(-9.81 -6.12)" style="fill:none;stroke:#fff;stroke-width:1px"/>
+      <path d="M33.81,22.12V17.06c0-5.49-4-9.94-9-9.94s-9,4.45-9,9.94v5.06" transform="translate(-9.81 -6.12)" style="fill:none;stroke:#fff;stroke-width:1px"/>
+      <line x1="15" y1="24.58" x2="15" y2="29.24" style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px"/>
+      <path d="M24.81,32.19a2.08,2.08,0,1,0-2.09-2.08,2.08,2.08,0,0,0,2.09,2.08" transform="translate(-9.81 -6.12)" style="fill:#fff"/>
+    </svg>
+  `,
   //---obi says---//
   messageBox:
     '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 286.83 111"><path d="M285.83,92V19a18,18,0,0,0-18-18h-233a18,18,0,0,0-18,18V50.44L2.56,56.51l14.27,6.07V92a18,18,0,0,0,18,18h233a18,18,0,0,0,18-18" style="fill:#6cc04a"/><path d="M285.83,92V19a18,18,0,0,0-18-18h-233a18,18,0,0,0-18,18V50.44L2.56,56.51l14.27,6.07V92a18,18,0,0,0,18,18h233A18,18,0,0,0,285.83,92Z" style="fill:none;stroke:#fff;stroke-width:2px"/></svg>',
@@ -636,6 +577,23 @@ export default {
       <circle style="fill:none;stroke:#FFFFFF;" cx="10.5" cy="10.5" r="10"/>
       </g>
       <polygon style="fill:none;stroke:#FFFFFF;stroke-linecap:round;stroke-linejoin:round;" points="8.1,5.5 8.1,15.5 15.9,10.5 "/>
+    </svg>
+  `,
+  sidebarPrivacyIcon: `
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 37.15">
+      <path d="M14,22.12a3.09,3.09,0,0,0-3.15,3V39.25a3.09,3.09,0,0,0,3.15,3h21.7a3.09,3.09,0,0,0,3.15-3V25.14a3.09,3.09,0,0,0-3.15-3Z" transform="translate(-9.81 -6.12)" style="fill:none;stroke:#fff;stroke-width:2px"/>
+      <path d="M33.81,22.12V17.06c0-5.49-4-9.94-9-9.94s-9,4.45-9,9.94v5.06" transform="translate(-9.81 -6.12)" style="fill:none;stroke:#fff;stroke-width:2px"/>
+      <line x1="15" y1="24.58" x2="15" y2="29.24" style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px"/>
+      <path d="M24.81,32.19a2.08,2.08,0,1,0-2.09-2.08,2.08,2.08,0,0,0,2.09,2.08" transform="translate(-9.81 -6.12)" style="fill:#fff"/>
+    </svg>
+  `,
+  sidebarTermsIcon: `
+    <svg version="1.0" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+    viewBox="0 0 17 22" style="enable-background:new 0 0 17 22;" xml:space="preserve">
+      <g>
+      <path style="fill:none;stroke:#FFFFFF;stroke-linecap:round;stroke-linejoin:round;" d="M0.5,0.5v21h16V7.7c-2.4-2.4-4.8-4.8-7.2-7.2H0.5z"/>
+      <path style="fill:none;stroke:#FFFFFF;stroke-linecap:round;stroke-linejoin:round;" d="M9,1v6.5C9,7.8,9.2,8,9.5,8H16"/>
+      </g>
     </svg>
   `,
   // my account page

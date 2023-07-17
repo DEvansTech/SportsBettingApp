@@ -21,11 +21,7 @@ import { SvgXml } from 'react-native-svg';
 import Purchases from 'react-native-purchases';
 
 import { AuthContext, AuthContextType } from '@Context/AuthContext';
-import {
-  LogoSpinner,
-  ModalCancelAccount,
-  ModalDeleteAccount
-} from '@Components';
+import { Loading, ModalCancelAccount, ModalDeleteAccount } from '@Components';
 import { ToastMessage } from '@Lib/function';
 import { timeStamptoDate, timeStamptoDateTime } from '@Lib/utilities';
 import { ENTITLEMENT_ID } from '@Lib/constants';
@@ -216,7 +212,7 @@ const MyAccount: React.FC = () => {
 
       <Content contentContainerStyle={styles.contentView}>
         {loading ? (
-          <LogoSpinner />
+          <Loading />
         ) : (
           <View style={styles.container}>
             <View style={styles.mainView}>

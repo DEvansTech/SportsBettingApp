@@ -12,7 +12,7 @@ import Spinner from 'react-native-loading-spinner-overlay';
 import Purchases from 'react-native-purchases';
 import { SvgXml } from 'react-native-svg';
 
-import { LogoSpinner } from '@Components';
+import { Loading } from '@Components';
 import { ENTITLEMENT_ID } from '@Lib/constants';
 import { Routes } from '@Navigators/routes';
 import { Images, Svgs } from '@Theme';
@@ -210,7 +210,7 @@ const Subscription: React.FC<Props> = props => {
             </Button>
           </Content>
         ) : (
-          <LogoSpinner />
+          <Loading />
         )}
       </ImageBackground>
     </Container>

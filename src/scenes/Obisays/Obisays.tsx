@@ -5,7 +5,7 @@ import { Container, Header, Content, Text, View, Icon } from 'native-base';
 import { useNavigation } from '@react-navigation/core';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { SvgXml } from 'react-native-svg';
-import { LogoSpinner } from '@Components';
+import { Loading } from '@Components';
 
 import { Routes } from '@Navigators/routes';
 import { getObiDta } from '@Store/obi/actions';
@@ -69,7 +69,7 @@ const Obisays: React.FC = () => {
         />
       </Header>
       {loading ? (
-        <LogoSpinner />
+        <Loading />
       ) : (
         <Content contentContainerStyle={styles.contentView}>
           <FlatList

@@ -11,7 +11,7 @@ import firestore from '@react-native-firebase/firestore';
 import { ImageBackground, TouchableOpacity } from 'react-native';
 import { Content, Button, Icon, Text, View } from 'native-base';
 
-import { LogoSpinner } from '@Components';
+import { Loading } from '@Components';
 import { Routes } from '@Navigators/routes';
 import { WEB_CLIENT_ID } from '@env';
 import { AuthContext, AuthContextType } from '@Context/AuthContext';
@@ -106,7 +106,7 @@ const SignIn: React.FC = () => {
   return (
     <Content contentContainerStyle={styles.contentView} scrollEnabled={false}>
       {loading ? (
-        <LogoSpinner />
+        <Loading />
       ) : (
         <ImageBackground
           source={Images.background}

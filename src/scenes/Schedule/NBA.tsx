@@ -4,7 +4,7 @@ import { useIsFocused } from '@react-navigation/native';
 import { View, Text } from 'native-base';
 import firestore from '@react-native-firebase/firestore';
 
-import { NBAWatch, LogoSpinner } from '@Components';
+import { NBAWatch, Loading } from '@Components';
 import { AuthContext, AuthContextType } from '@Context/AuthContext';
 import { MainContext, MainContextType } from '@Context/MainContext';
 
@@ -149,7 +149,7 @@ const NFL: React.FC<Props> = ({ selectedDate, sportName }) => {
   return (
     <>
       {loadingBar ? (
-        <LogoSpinner />
+        <Loading />
       ) : (
         <View style={styles.container}>
           {gameData.length > 0 ? (

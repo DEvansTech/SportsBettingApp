@@ -6,7 +6,7 @@ import { Container, Content, Text, View, Icon, Header } from 'native-base';
 import HTMLView from 'react-native-htmlview';
 import { SvgXml } from 'react-native-svg';
 
-import { LogoSpinner } from '@Components';
+import { Loading } from '@Components';
 import { Colors, Svgs } from '@Theme';
 import { OBIDetailProps } from './types';
 import styles, { HTMLStyle, scale } from './styles';
@@ -50,7 +50,7 @@ const ObiDetail: React.FC<OBIDetailProps> = props => {
           </View>
         </Content>
       ) : (
-        <LogoSpinner />
+        <Loading />
       )}
     </Container>
   );

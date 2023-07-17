@@ -5,7 +5,7 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Purchases from 'react-native-purchases';
 
-import { LogoSpinner } from '@Components';
+import { Loading } from '@Components';
 import { ENTITLEMENT_ID, API_APPLE_KEY, API_GOOGLE_KEY } from '@Lib/constants';
 import { AuthContext, AuthContextType } from '@Context/AuthContext';
 import { Routes } from '@Navigators/routes';
@@ -16,45 +16,45 @@ const AppChecking: React.FC = () => {
   const isFocused = useIsFocused();
 
   useEffect(() => {
-    // navigation.navigate(Routes.TabRoute);
-    if (isFocused) {
-      (async function () {
-        await AsyncStorage.setItem('@loggedUser', 'true');
-        let API_KEY = API_APPLE_KEY;
-        if (Platform.OS === 'android') {
-          API_KEY = API_GOOGLE_KEY;
-        }
-        await Purchases.configure({
-          apiKey: API_KEY,
-          appUserID: user.uid,
-          useAmazon: false
-        });
+    navigation.navigate(Routes.TabRoute);
+    // if (isFocused) {
+    //   (async function () {
+    //     await AsyncStorage.setItem('@loggedUser', 'true');
+    //     let API_KEY = API_APPLE_KEY;
+    //     if (Platform.OS === 'android') {
+    //       API_KEY = API_GOOGLE_KEY;
+    //     }
+    //     await Purchases.configure({
+    //       apiKey: API_KEY,
+    //       appUserID: user.uid,
+    //       useAmazon: false
+    //     });
 
-        try {
-          const customerInfo = await Purchases.getCustomerInfo();
-          if (
-            typeof customerInfo.entitlements.active[ENTITLEMENT_ID] !==
-            'undefined'
-          ) {
-            const activeData: any =
-              customerInfo.entitlements.active[ENTITLEMENT_ID];
-            let expired =
-              new Date().getTime() > activeData?.expirationDateMillis;
+    //     try {
+    //       const customerInfo = await Purchases.getCustomerInfo();
+    //       if (
+    //         typeof customerInfo.entitlements.active[ENTITLEMENT_ID] !==
+    //         'undefined'
+    //       ) {
+    //         const activeData: any =
+    //           customerInfo.entitlements.active[ENTITLEMENT_ID];
+    //         let expired =
+    //           new Date().getTime() > activeData?.expirationDateMillis;
 
-            if (!expired) {
-              navigation.navigate(Routes.TabRoute);
-            } else {
-              navigation.navigate(Routes.Subscription, { selectItem: '' });
-            }
-          } else {
-            navigation.navigate(Routes.Subscription, { selectItem: '' });
-          }
-        } catch (e) {}
-      })();
-    }
+    //         if (!expired) {
+    //           navigation.navigate(Routes.TabRoute);
+    //         } else {
+    //           navigation.navigate(Routes.Subscription, { selectItem: '' });
+    //         }
+    //       } else {
+    //         navigation.navigate(Routes.Subscription, { selectItem: '' });
+    //       }
+    //     } catch (e) {}
+    //   })();
+    // }
   }, [isFocused]);
 
-  return <LogoSpinner />;
+  return <Loading />;
 };
 
 export default AppChecking;

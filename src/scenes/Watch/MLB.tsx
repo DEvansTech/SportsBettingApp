@@ -7,7 +7,7 @@ import { useNavigation } from '@react-navigation/core';
 import { TouchableOpacity } from 'react-native';
 import firestore from '@react-native-firebase/firestore';
 
-import { MLBWatch, LogoSpinner } from '@Components';
+import { MLBWatch, Loading } from '@Components';
 import { getTeamsGamedata, getSelectionGameData } from '@Store/watch/actions';
 import { AuthContext, AuthContextType } from '@Context/AuthContext';
 import { Routes } from '@Navigators/routes';
@@ -190,7 +190,7 @@ const MLB: React.FC<Props> = ({ selectedDate, sportName }) => {
   return (
     <>
       {loadingBar ? (
-        <LogoSpinner />
+        <Loading />
       ) : (
         <View style={styles.container}>
           <View style={styles.myTeamsView}>

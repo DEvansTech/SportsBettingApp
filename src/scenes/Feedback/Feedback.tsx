@@ -17,7 +17,7 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import firestore from '@react-native-firebase/firestore';
 
 import { AuthContext, AuthContextType } from '@Context/AuthContext';
-import { UserHeader, LogoSpinner } from '@Components';
+import { UserHeader, Loading } from '@Components';
 
 import { ToastMessage } from '@Lib/function';
 import { submitFeedback, handleLoading } from '@Store/feedback/actions';
@@ -93,7 +93,7 @@ const Feedback: React.FC = () => {
       <UserHeader name="Feedback" to={Routes.Schedule} />
       {loading ? (
         <View style={styles.loadingView}>
-          <LogoSpinner />
+          <Loading />
         </View>
       ) : isSendFeedback ? (
         <View style={styles.thanksView}>

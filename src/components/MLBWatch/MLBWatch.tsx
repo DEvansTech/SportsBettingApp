@@ -54,23 +54,41 @@ const MLBWatch: React.FC<Props> = ({
   const checkInning = useCallback(() => {
     if (data.status === 'inprogress') {
       if (data.inning_half === 'T') {
-        if (Number(data.outs) === 3) {
+        /* if (Number(data.outs) === 3) {
           outs = undefined;
           base1 = false;
           base2 = false;
           base3 = false;
           return 'Middle ' + ordinalSuffixOf(data.inning);
-        }
+        } */
         return 'Top ' + ordinalSuffixOf(data.inning);
       } else if (data.inning_half === 'B') {
-        if (Number(data.outs) === 3) {
+        /* if (Number(data.outs) === 3) {
           outs = undefined;
           base1 = false;
           base2 = false;
           base3 = false;
           return 'End ' + ordinalSuffixOf(data.inning);
-        }
+        } */
         return 'Bottom ' + ordinalSuffixOf(data.inning);
+      } else if (data.inning_half === 'M') {
+        outs = undefined;
+        base1 = false;
+        base2 = false;
+        base3 = false;
+        return 'Middle' + ordinalSuffixOf(data.inning);
+      } else if (data.inning_half === 'E') {
+        outs = undefined;
+        base1 = false;
+        base2 = false;
+        base3 = false;
+        return 'End' + ordinalSuffixOf(data.inning);
+      } else if (data.inning_half === 'S') {
+        outs = undefined;
+        base1 = false;
+        base2 = false;
+        base3 = false;
+        return 'Beginning' + ordinalSuffixOf(data.inning);
       }
     } else if (data.status === 'closed' || data.status === 'complete') {
       base1 = false;

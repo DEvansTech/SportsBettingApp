@@ -17,7 +17,7 @@ import { appleAuth } from '@invertase/react-native-apple-authentication';
 import { Container, Content, Icon, Text, View, Button } from 'native-base';
 import { SvgXml } from 'react-native-svg';
 
-import { LogoSpinner, Button as CustomButton } from '@Components';
+import { LogoSpinner, Button as CustomButton, TermsPrivacy } from '@Components';
 import { ToastMessage } from '@Lib/function';
 import { WEB_CLIENT_ID } from '@env';
 import { AuthContext, AuthContextType } from '@Context/AuthContext';
@@ -214,13 +214,14 @@ const Register: React.FC = () => {
                       />
                     </Button>
                   </View>
+                  <TermsPrivacy />
                 </View>
-                <View style={styles.footerText}>
+                {/* <View style={styles.footerText}>
                   <Text style={[styles.blackLabel, styles.italicLabel]}>
                     This product is for information and entertainment purposes
                     only.
                   </Text>
-                </View>
+                </View> */}
               </View>
             </View>
           )}

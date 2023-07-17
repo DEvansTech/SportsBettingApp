@@ -29,7 +29,7 @@ export default StyleSheet.create({
     marginTop: 3 * scale
   },
   mainView: {
-    marginTop: deviceHeight * 0.35,
+    marginTop: deviceHeight * 0.2,
     flex: 1
   },
   signTitle: {

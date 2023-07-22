@@ -15,7 +15,7 @@ import {
 } from 'native-base';
 import firestore from '@react-native-firebase/firestore';
 
-import { LogoSpinner, LoadingImage } from '@Components';
+import { Loading, LoadingImage } from '@Components';
 import { Routes } from '@Navigators/routes';
 import { RootState } from '@Store/store';
 import { getTeamsList } from '@Store/watch/actions';
@@ -228,7 +228,7 @@ const Myteam: React.FC = () => {
       </Header>
       <View style={styles.contentView}>
         {loadingBar ? (
-          <LogoSpinner />
+          <Loading />
         ) : (
           <>
             <View style={styles.searchItem}>

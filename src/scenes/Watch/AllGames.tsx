@@ -12,7 +12,7 @@ import {
   NFLWatch,
   NCAAFWatch,
   NCAABWatch,
-  LogoSpinner,
+  Loading,
   NBAWatch
 } from '@Components';
 import {
@@ -294,7 +294,7 @@ const AllGames: React.FC<Props> = ({ selectedDate }) => {
   return (
     <>
       {loadingBar ? (
-        <LogoSpinner />
+        <Loading />
       ) : (
         <View style={styles.container}>
           <View style={styles.myTeamsView}>

@@ -17,7 +17,7 @@ import { appleAuth } from '@invertase/react-native-apple-authentication';
 import { Container, Content, Icon, Text, View, Button } from 'native-base';
 import { SvgXml } from 'react-native-svg';
 
-import { LogoSpinner, Button as CustomButton, TermsPrivacy } from '@Components';
+import { Loading, Button as CustomButton, TermsPrivacy } from '@Components';
 import { ToastMessage } from '@Lib/function';
 import { WEB_CLIENT_ID } from '@env';
 import { AuthContext, AuthContextType } from '@Context/AuthContext';
@@ -169,7 +169,7 @@ const Register: React.FC = () => {
           contentContainerStyle={styles.contentView}
           scrollEnabled={false}>
           {loading ? (
-            <LogoSpinner />
+            <Loading />
           ) : (
             <View style={styles.container}>
               <TouchableOpacity

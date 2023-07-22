@@ -7,7 +7,7 @@ import { Text, Icon, View } from 'native-base';
 import { TouchableOpacity } from 'react-native';
 import firestore from '@react-native-firebase/firestore';
 
-import { NCAAFWatch, LogoSpinner } from '@Components';
+import { NCAAFWatch, Loading } from '@Components';
 import { getTeamsGamedata, getSelectionGameData } from '@Store/watch/actions';
 import { AuthContext, AuthContextType } from '@Context/AuthContext';
 import { Routes } from '@Navigators/routes';
@@ -191,7 +191,7 @@ const NCAAF: React.FC<Props> = ({ selectedDate, sportName }) => {
   return (
     <>
       {loadingBar ? (
-        <LogoSpinner />
+        <Loading />
       ) : (
         <View style={styles.container}>
           <View style={styles.myTeamsView}>

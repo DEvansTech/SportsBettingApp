@@ -9,7 +9,7 @@ import {
   MLBWatch,
   NCAAFWatch,
   NBAWatch,
-  LogoSpinner,
+  Loading,
   NCAABWatch
 } from '@Components';
 import { AuthContext, AuthContextType } from '@Context/AuthContext';
@@ -206,7 +206,7 @@ const AllGames: React.FC<Props> = ({ selectedDate, sportName }) => {
   return (
     <>
       {loadingBar ? (
-        <LogoSpinner />
+        <Loading />
       ) : (
         <View style={styles.container}>
           {gameData.length > 0 ? (

@@ -5,7 +5,7 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Purchases from 'react-native-purchases';
 
-import { LogoSpinner } from '@Components';
+import { Loading } from '@Components';
 import { ENTITLEMENT_ID, API_APPLE_KEY, API_GOOGLE_KEY } from '@Lib/constants';
 import { AuthContext, AuthContextType } from '@Context/AuthContext';
 import { Routes } from '@Navigators/routes';
@@ -54,7 +54,7 @@ const AppChecking: React.FC = () => {
     }
   }, [isFocused]);
 
-  return <LogoSpinner />;
+  return <Loading />;
 };
 
 export default AppChecking;

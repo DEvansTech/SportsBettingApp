@@ -7,7 +7,7 @@ import firestore from '@react-native-firebase/firestore';
 import { AuthContext, AuthContextType } from '@Context/AuthContext';
 import { MainContext, MainContextType } from '@Context/MainContext';
 
-import { MLBWatch, LogoSpinner } from '@Components';
+import { MLBWatch, Loading } from '@Components';
 import { dateCompare } from '@Lib/utilities';
 import { RootState } from '@Store/store';
 import { getGamedata } from '@Store/schedule/actions';
@@ -144,7 +144,7 @@ const MLB: React.FC<Props> = ({ selectedDate, sportName }) => {
   return (
     <>
       {loadingBar ? (
-        <LogoSpinner />
+        <Loading />
       ) : (
         <View style={styles.container}>
           {gameData.length > 0 ? (

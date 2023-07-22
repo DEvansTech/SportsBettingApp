@@ -24,6 +24,7 @@ import GrayScaleImage from './GrayScaleImage';
 import ModalCancelAccount from './ModalCancelAccount';
 import ModalDeleteAccount from './ModalDeleteAccount';
 import TermsPrivacy from './TermsPrivacy';
+import Loading from './Loading';
 
 export {
   BetStatus,
@@ -51,5 +52,6 @@ export {
   GrayScaleImage,
   ModalCancelAccount,
   ModalDeleteAccount,
-  TermsPrivacy
+  TermsPrivacy,
+  Loading
 };

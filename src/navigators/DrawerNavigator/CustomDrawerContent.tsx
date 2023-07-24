@@ -49,7 +49,7 @@ export const CustomDrawerContent: React.FC<DrawerContentComponentProps> = ({
   };
 
   const handlePrivacy = () => {
-    Linking.openURL('https://odds-r.pro/terms.html');
+    Linking.openURL('https://oddsr.com/terms.html');
   };
 
   const handleTerms = () => {

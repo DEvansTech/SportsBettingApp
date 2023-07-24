@@ -73,11 +73,12 @@ const LineRater: React.FC<Props> = props => {
               <TouchableOpacity
                 style={[
                   styles.teamStatusView,
-                  segementBtn !== 'ou' && selectedAwayTeam && styles.activeTeam
+                  segementBtn !== 'ou' && selectedAwayTeam && styles.activeTeam,
+                  segementBtn === 'ou' && styles.activeTeam
                 ]}
                 onPress={handleSelectAway}>
                 <GrayScaleImage
-                  isFocus={segementBtn !== 'ou' && selectedAwayTeam}>
+                  isFocus={segementBtn === 'ou' || selectedAwayTeam}>
                   <LoadingImage
                     source={checkTeamIcon(sportName, gameData.away_team_abbr)}
                     style={styles.teamLogo}
@@ -86,7 +87,7 @@ const LineRater: React.FC<Props> = props => {
                 <View
                   style={[
                     styles.teamInfoView,
-                    !(segementBtn !== 'ou' && selectedAwayTeam) && {
+                    !(segementBtn === 'ou' || selectedAwayTeam) && {
                       opacity: 0.6
                     }
                   ]}>
@@ -101,11 +102,12 @@ const LineRater: React.FC<Props> = props => {
               <TouchableOpacity
                 style={[
                   styles.teamStatusView,
-                  segementBtn !== 'ou' && selectedHomeTeam && styles.activeTeam
+                  segementBtn !== 'ou' && selectedHomeTeam && styles.activeTeam,
+                  segementBtn === 'ou' && styles.activeTeam
                 ]}
                 onPress={handleSelectHome}>
                 <GrayScaleImage
-                  isFocus={segementBtn !== 'ou' && selectedHomeTeam}>
+                  isFocus={segementBtn === 'ou' || selectedHomeTeam}>
                   <LoadingImage
                     source={checkTeamIcon(
                       gameData.sport_name,
@@ -117,7 +119,7 @@ const LineRater: React.FC<Props> = props => {
                 <View
                   style={[
                     styles.teamInfoView,
-                    !(segementBtn !== 'ou' && selectedHomeTeam) && {
+                    !(segementBtn === 'ou' || selectedHomeTeam) && {
                       opacity: 0.6
                     }
                   ]}>

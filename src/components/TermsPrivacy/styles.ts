@@ -12,12 +12,12 @@ export default StyleSheet.create({
     marginTop: 20 * scale
   },
   verticalText: {
-    fontSize: 30 * scale,
+    fontSize: 25 * scale,
     color: 'white'
   },
   title: {
-    fontFamily: Fonts.semiBold,
-    fontSize: 18 * scale,
+    fontFamily: Fonts.regular,
+    fontSize: 16 * scale,
     color: 'white',
     textDecorationLine: 'underline',
     fontStyle: 'italic'

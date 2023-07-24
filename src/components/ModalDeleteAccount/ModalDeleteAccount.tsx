@@ -14,7 +14,7 @@ const ModalDeleteAccount: React.FC<Props> = ({
   toggleModal
 }) => {
   const deleteAccount = async () => {
-    Linking.openURL('https://odds-r.pro/contacts.html');
+    Linking.openURL('https://oddsr.com/contacts.html');
   };
 
   return (

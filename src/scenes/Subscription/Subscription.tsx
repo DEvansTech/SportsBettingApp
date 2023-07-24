@@ -7,12 +7,12 @@ import {
 } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { Container, Content, Text, View, Button, Icon } from 'native-base';
+import { Container, Content, Text, View, Button } from 'native-base';
 import Spinner from 'react-native-loading-spinner-overlay';
 import Purchases from 'react-native-purchases';
 import { SvgXml } from 'react-native-svg';
 
-import { Loading } from '@Components';
+import { Loading, TermsPrivacy } from '@Components';
 import { ENTITLEMENT_ID } from '@Lib/constants';
 import { Routes } from '@Navigators/routes';
 import { Images, Svgs } from '@Theme';
@@ -87,7 +87,7 @@ const Subscription: React.FC<Props> = props => {
         ]}
         disabled={identifier === selectedItem}>
         <View style={styles.renderItemHeader}>
-          <View>
+          <View style={styles.itemHeader}>
             <Text style={styles.itemTitle}>{title}</Text>
             <Text style={styles.itemDescription}>{description}</Text>
           </View>
@@ -208,6 +208,7 @@ const Subscription: React.FC<Props> = props => {
                 Subscribe
               </Text>
             </Button>
+            <TermsPrivacy />
           </Content>
         ) : (
           <Loading />

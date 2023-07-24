@@ -15,7 +15,7 @@ const FeedbackSidebar: React.FC = () => {
     <View style={styles.feedbackContent}>
       <TouchableOpacity
         style={styles.feedbackTitleContent}
-        onPress={() => Linking.openURL('https://odds-r.pro/contacts.html')}>
+        onPress={() => Linking.openURL('https://oddsr.com/contacts.html')}>
         <SvgXml xml={Svgs.commentIcon} width={50 * scale} height={50 * scale} />
         <Text style={styles.feedbackTitleText}>Support</Text>
       </TouchableOpacity>

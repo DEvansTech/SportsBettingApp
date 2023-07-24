@@ -6,7 +6,7 @@ import styles from './styles';
 
 const TermsPrivacy: React.FC = () => {
   const handlePrivacy = () => {
-    Linking.openURL('https://odds-r.pro/terms.html');
+    Linking.openURL('https://oddsr.com/terms.html');
   };
 
   const handleTerms = () => {
@@ -18,11 +18,11 @@ const TermsPrivacy: React.FC = () => {
   return (
     <View style={styles.terms}>
       <TouchableOpacity onPress={handleTerms}>
-        <Text style={styles.title}>Terms of use</Text>
+        <Text style={styles.title}>Terms of use </Text>
       </TouchableOpacity>
       <Text style={styles.verticalText}> | </Text>
       <TouchableOpacity onPress={handlePrivacy}>
-        <Text style={styles.title}>Privacy policy</Text>
+        <Text style={styles.title}> Privacy policy</Text>
       </TouchableOpacity>
     </View>
   );

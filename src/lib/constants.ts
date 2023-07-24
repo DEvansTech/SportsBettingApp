@@ -13,7 +13,7 @@ export const sportSorts = [
   },
   {
     label: 'NCAAB',
-    value: 'ncaab '
+    value: 'ncaab'
   },
   {
     label: 'NCAAF',

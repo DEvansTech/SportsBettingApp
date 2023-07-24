@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useContext, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useIsFocused } from '@react-navigation/native';
-import { Text, View } from 'native-base';
+import { Container, Content, View, Text } from 'native-base';
 import firestore from '@react-native-firebase/firestore';
 
 import { AuthContext, AuthContextType } from '@Context/AuthContext';
 import { MainContext, MainContextType } from '@Context/MainContext';
 
-import { MLBWatch, Loading } from '@Components';
+import { SubHeader, SegmentSort, MLBWatch, Loading } from '@Components';
 import { dateCompare } from '@Lib/utilities';
 import { RootState } from '@Store/store';
 import { getGamedata } from '@Store/schedule/actions';
@@ -141,11 +141,15 @@ const MLB: React.FC<Props> = ({ selectedDate, sportName }) => {
     }
   }, [loading]);
 
+  if (loadingBar) {
+    return <Loading />;
+  }
+
   return (
-    <>
-      {loadingBar ? (
-        <Loading />
-      ) : (
+    <Container style={styles.background}>
+      <SubHeader />
+      <SegmentSort />
+      <Content contentContainerStyle={styles.contentView}>
         <View style={styles.container}>
           {gameData.length > 0 ? (
             gameData.map((match: GameDataType, index: number) => (
@@ -169,8 +173,8 @@ const MLB: React.FC<Props> = ({ selectedDate, sportName }) => {
             </View>
           )}
         </View>
-      )}
-    </>
+      </Content>
+    </Container>
   );
 };
 

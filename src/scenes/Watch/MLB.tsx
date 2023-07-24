@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Text, Icon, View } from 'native-base';
+import { Container, Content, Text, Icon, View } from 'native-base';
 import { useIsFocused } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { useNavigation } from '@react-navigation/core';
 import { TouchableOpacity } from 'react-native';
 import firestore from '@react-native-firebase/firestore';
 
-import { MLBWatch, Loading } from '@Components';
+import { SubHeader, MLBWatch, Loading } from '@Components';
 import { getTeamsGamedata, getSelectionGameData } from '@Store/watch/actions';
 import { AuthContext, AuthContextType } from '@Context/AuthContext';
 import { Routes } from '@Navigators/routes';
@@ -187,11 +187,13 @@ const MLB: React.FC<Props> = ({ selectedDate, sportName }) => {
     }
   }, [teamsLoading, selectionsLoading]);
 
+  if (loadingBar) {
+    return <Loading />;
+  }
   return (
-    <>
-      {loadingBar ? (
-        <Loading />
-      ) : (
+    <Container style={styles.background}>
+      <SubHeader />
+      <Content contentContainerStyle={styles.contentView}>
         <View style={styles.container}>
           <View style={styles.myTeamsView}>
             <Text style={styles.teamPlusText}>My Teams</Text>
@@ -236,8 +238,8 @@ const MLB: React.FC<Props> = ({ selectedDate, sportName }) => {
               </View>
             ))}
         </View>
-      )}
-    </>
+      </Content>
+    </Container>
   );
 };
 

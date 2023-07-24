@@ -1,8 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Container, Content } from 'native-base';
+import { useSelector } from 'react-redux';
 
 import { MainContext, MainContextType } from '@Context/MainContext';
-import { SubHeader, SegmentSort } from '@Components';
+import { SubHeader, SegmentSort, Loading } from '@Components';
+import { RootState } from '@Store/store';
 import AllGames from './AllGames';
 import MLB from './MLB';
 import NFL from './NFL';
@@ -17,32 +19,25 @@ const Schedule: React.FC = () => {
     MainContext
   ) as MainContextType;
 
-  return (
-    <Container style={styles.background}>
-      <SubHeader />
-      <SegmentSort />
-      <Content contentContainerStyle={styles.contentView}>
-        {sportName === 'all' && (
-          <AllGames selectedDate={scheduleDate} sportName={sportName} />
-        )}
-        {sportName === 'mlb' && (
-          <MLB selectedDate={scheduleDate} sportName={sportName} />
-        )}
-        {sportName === 'nfl' && (
-          <NFL selectedDate={scheduleDate} sportName={sportName} />
-        )}
-        {sportName === 'ncaafb' && (
-          <NCAAF selectedDate={scheduleDate} sportName={sportName} />
-        )}
-        {sportName === 'nba' && (
-          <NBA selectedDate={scheduleDate} sportName={sportName} />
-        )}
-        {sportName.trim() === 'ncaab' && (
-          <NCAAB selectedDate={scheduleDate} sportName={sportName} />
-        )}
-      </Content>
-    </Container>
-  );
+  if (sportName === 'all') {
+    return <AllGames selectedDate={scheduleDate} sportName={sportName} />;
+  }
+  if (sportName === 'mlb') {
+    return <MLB selectedDate={scheduleDate} sportName={sportName} />;
+  }
+  if (sportName === 'nfl') {
+    return <NFL selectedDate={scheduleDate} sportName={sportName} />;
+  }
+  if (sportName === 'ncaafb') {
+    return <NCAAF selectedDate={scheduleDate} sportName={sportName} />;
+  }
+  if (sportName === 'nba') {
+    return <NBA selectedDate={scheduleDate} sportName={sportName} />;
+  }
+  if (sportName === 'ncaab') {
+    return <NCAAB selectedDate={scheduleDate} sportName={sportName} />;
+  }
+  return <></>;
 };
 
 export default Schedule;

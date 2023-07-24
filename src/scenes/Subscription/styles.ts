@@ -45,6 +45,9 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between'
   },
+  itemHeader: {
+    flex: 1
+  },
   itemTitle: {
     color: Colors.white,
     fontSize: 19 * scale,

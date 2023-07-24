@@ -39,7 +39,7 @@ export const responseFontSize = (
 ) => {
   const deviceWidth = Dimensions.get('window').width;
   const screenWidth = deviceWidth * width;
-  const elemWidth = value.length;
+  const elemWidth = value.length + 1;
   const expectValue = PixelRatio.roundToNearestPixel(screenWidth / elemWidth);
   const resultValue = expectValue > defaultValue ? defaultValue : expectValue;
   return resultValue;

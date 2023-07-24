@@ -52,7 +52,7 @@ const BarRating: React.FC<Props> = ({
     } else if (whiteCircle) {
       return <View style={styles.whiteCircle} />;
     }
-  }, [status, points, pushScore, outCome, whiteCircle]);
+  }, [value, status, points, pushScore, outCome, whiteCircle]);
 
   return (
     <View style={styles.scoreView}>

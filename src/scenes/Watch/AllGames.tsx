@@ -3,11 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/core';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { useIsFocused } from '@react-navigation/native';
-import { Text, Icon, View } from 'native-base';
+import { Container, Content, Text, Icon, View } from 'native-base';
 import { TouchableOpacity } from 'react-native';
 import firestore from '@react-native-firebase/firestore';
 
 import {
+  SubHeader,
   MLBWatch,
   NFLWatch,
   NCAAFWatch,
@@ -291,11 +292,13 @@ const AllGames: React.FC<Props> = ({ selectedDate }) => {
     }
   }, [teamsLoading, selectionsLoading]);
 
+  if (loadingBar) {
+    return <Loading />;
+  }
   return (
-    <>
-      {loadingBar ? (
-        <Loading />
-      ) : (
+    <Container style={styles.background}>
+      <SubHeader />
+      <Content contentContainerStyle={styles.contentView}>
         <View style={styles.container}>
           <View style={styles.myTeamsView}>
             <Text style={styles.teamPlusText}>My Teams</Text>
@@ -396,8 +399,8 @@ const AllGames: React.FC<Props> = ({ selectedDate }) => {
               </View>
             ))}
         </View>
-      )}
-    </>
+      </Content>
+    </Container>
   );
 };
 

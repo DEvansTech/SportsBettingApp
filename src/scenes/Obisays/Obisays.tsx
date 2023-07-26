@@ -55,6 +55,10 @@ const Obisays: React.FC = () => {
     [obiData]
   );
 
+  if (loading) {
+    return <Loading />;
+  }
+
   return (
     <Container style={styles.background}>
       <Header
@@ -68,18 +72,15 @@ const Obisays: React.FC = () => {
           height={38 * scale}
         />
       </Header>
-      {loading ? (
-        <Loading />
-      ) : (
-        <Content contentContainerStyle={styles.contentView}>
-          <FlatList
-            data={obiData}
-            renderItem={renderItem}
-            keyExtractor={item => item.order}
-            ListEmptyComponent={<Text>There is no Data</Text>}
-          />
-        </Content>
-      )}
+
+      <Content contentContainerStyle={styles.contentView}>
+        <FlatList
+          data={obiData}
+          renderItem={renderItem}
+          keyExtractor={item => item.order}
+          ListEmptyComponent={<Text>There is no Data</Text>}
+        />
+      </Content>
     </Container>
   );
 };

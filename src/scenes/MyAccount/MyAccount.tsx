@@ -193,6 +193,10 @@ const MyAccount: React.FC = () => {
     setDisplayName(initUserInfo?.firstName + ' ' + initUserInfo?.lastName);
   }, [initUserInfo]);
 
+  if (loading) {
+    return <Loading />;
+  }
+
   return (
     <Container style={styles.background}>
       <Header
@@ -211,128 +215,123 @@ const MyAccount: React.FC = () => {
       </Header>
 
       <Content contentContainerStyle={styles.contentView}>
-        {loading ? (
-          <Loading />
-        ) : (
-          <View style={styles.container}>
-            <View style={styles.mainView}>
-              <Text style={styles.userName}>
-                {initUserInfo?.firstName + ' ' + initUserInfo?.lastName}
-              </Text>
-              <Text style={styles.signInDate}>
-                OddsR™ user since{' '}
-                {timeStamptoDate(user?.metadata?.creationTime)}
-              </Text>
-            </View>
-            <View style={styles.basicView}>
-              <Text style={styles.basicTitle}>Basic Profile</Text>
-              <Item style={styles.itemView}>
-                <SvgXml
-                  xml={Svgs.maccountIcon}
-                  width={25 * scale}
-                  height={25 * scale}
-                />
-                <Input
-                  value={userInfo?.firstName}
-                  placeholder="First Name"
-                  style={styles.inputView}
-                  onChangeText={text =>
-                    setUserInfo({ ...userInfo, firstName: text })
-                  }
-                />
-              </Item>
-              <Item style={styles.itemView}>
-                <SvgXml
-                  xml={Svgs.maccountIcon}
-                  width={25 * scale}
-                  height={25 * scale}
-                />
-                <Input
-                  value={userInfo?.lastName}
-                  placeholder="Last Name"
-                  style={styles.inputView}
-                  onChangeText={text =>
-                    setUserInfo({ ...userInfo, lastName: text })
-                  }
-                />
-              </Item>
-            </View>
+        <View style={styles.container}>
+          <View style={styles.mainView}>
+            <Text style={styles.userName}>
+              {initUserInfo?.firstName + ' ' + initUserInfo?.lastName}
+            </Text>
+            <Text style={styles.signInDate}>
+              OddsR™ user since {timeStamptoDate(user?.metadata?.creationTime)}
+            </Text>
+          </View>
+          <View style={styles.basicView}>
+            <Text style={styles.basicTitle}>Basic Profile</Text>
             <Item style={styles.itemView}>
               <SvgXml
-                xml={Svgs.memailIcon}
+                xml={Svgs.maccountIcon}
                 width={25 * scale}
                 height={25 * scale}
               />
               <Input
-                value={userInfo?.email}
-                placeholder="Email Address"
+                value={userInfo?.firstName}
+                placeholder="First Name"
                 style={styles.inputView}
-                onChangeText={text => setUserInfo({ ...userInfo, email: text })}
+                onChangeText={text =>
+                  setUserInfo({ ...userInfo, firstName: text })
+                }
               />
             </Item>
-            {!passChangeDisabled && (
-              <View style={styles.basicView}>
-                <Text style={styles.basicTitle}>Change Password</Text>
-                <Item style={styles.itemView}>
-                  <SvgXml
-                    xml={Svgs.mpasswordIcon}
-                    width={25 * scale}
-                    height={25 * scale}
+            <Item style={styles.itemView}>
+              <SvgXml
+                xml={Svgs.maccountIcon}
+                width={25 * scale}
+                height={25 * scale}
+              />
+              <Input
+                value={userInfo?.lastName}
+                placeholder="Last Name"
+                style={styles.inputView}
+                onChangeText={text =>
+                  setUserInfo({ ...userInfo, lastName: text })
+                }
+              />
+            </Item>
+          </View>
+          <Item style={styles.itemView}>
+            <SvgXml
+              xml={Svgs.memailIcon}
+              width={25 * scale}
+              height={25 * scale}
+            />
+            <Input
+              value={userInfo?.email}
+              placeholder="Email Address"
+              style={styles.inputView}
+              onChangeText={text => setUserInfo({ ...userInfo, email: text })}
+            />
+          </Item>
+          {!passChangeDisabled && (
+            <View style={styles.basicView}>
+              <Text style={styles.basicTitle}>Change Password</Text>
+              <Item style={styles.itemView}>
+                <SvgXml
+                  xml={Svgs.mpasswordIcon}
+                  width={25 * scale}
+                  height={25 * scale}
+                />
+                <Input
+                  value={userInfo?.password}
+                  placeholder="Enter New Password"
+                  style={styles.inputView}
+                  secureTextEntry={newPassView}
+                  onChangeText={text =>
+                    setUserInfo({ ...userInfo, password: text })
+                  }
+                />
+                <TouchableOpacity onPress={() => setNewPassView(!newPassView)}>
+                  <Icon
+                    type="FontAwesome5"
+                    name={newPassView ? 'eye' : 'eye-slash'}
+                    style={styles.eyeIcon}
                   />
-                  <Input
-                    value={userInfo?.password}
-                    placeholder="Enter New Password"
-                    style={styles.inputView}
-                    secureTextEntry={newPassView}
-                    onChangeText={text =>
-                      setUserInfo({ ...userInfo, password: text })
-                    }
+                </TouchableOpacity>
+              </Item>
+              <Item style={styles.itemView}>
+                <SvgXml
+                  xml={Svgs.mpasswordIcon}
+                  width={25 * scale}
+                  height={25 * scale}
+                />
+                <Input
+                  value={userInfo?.repassword}
+                  placeholder="Retype New Password"
+                  style={styles.inputView}
+                  secureTextEntry={newRePassView}
+                  onChangeText={text =>
+                    setUserInfo({ ...userInfo, repassword: text })
+                  }
+                />
+                <TouchableOpacity
+                  onPress={() => setNewRePassView(!newRePassView)}>
+                  <Icon
+                    type="FontAwesome5"
+                    name={newRePassView ? 'eye' : 'eye-slash'}
+                    style={styles.eyeIcon}
                   />
-                  <TouchableOpacity
-                    onPress={() => setNewPassView(!newPassView)}>
-                    <Icon
-                      type="FontAwesome5"
-                      name={newPassView ? 'eye' : 'eye-slash'}
-                      style={styles.eyeIcon}
-                    />
-                  </TouchableOpacity>
-                </Item>
-                <Item style={styles.itemView}>
-                  <SvgXml
-                    xml={Svgs.mpasswordIcon}
-                    width={25 * scale}
-                    height={25 * scale}
-                  />
-                  <Input
-                    value={userInfo?.repassword}
-                    placeholder="Retype New Password"
-                    style={styles.inputView}
-                    secureTextEntry={newRePassView}
-                    onChangeText={text =>
-                      setUserInfo({ ...userInfo, repassword: text })
-                    }
-                  />
-                  <TouchableOpacity
-                    onPress={() => setNewRePassView(!newRePassView)}>
-                    <Icon
-                      type="FontAwesome5"
-                      name={newRePassView ? 'eye' : 'eye-slash'}
-                      style={styles.eyeIcon}
-                    />
-                  </TouchableOpacity>
-                </Item>
-              </View>
-            )}
-            {subscriptionData && (
-              <View style={styles.basicView}>
-                <Text style={styles.basicTitle}>Subscription</Text>
-                <View style={styles.subscriptionView}>
-                  <Text style={styles.subscriptionText}>
-                    {subscriptionData.productIdentifier === 'oddsr_999_1m_14d0'
-                      ? 'Monthly'
-                      : 'Annual'}
-                  </Text>
-                  {/* <Button
+                </TouchableOpacity>
+              </Item>
+            </View>
+          )}
+          {subscriptionData && (
+            <View style={styles.basicView}>
+              <Text style={styles.basicTitle}>Subscription</Text>
+              <View style={styles.subscriptionView}>
+                <Text style={styles.subscriptionText}>
+                  {subscriptionData.productIdentifier === 'oddsr_999_1m_14d0'
+                    ? 'Monthly'
+                    : 'Annual'}
+                </Text>
+                {/* <Button
                     bordered
                     success
                     small
@@ -344,58 +343,55 @@ const MyAccount: React.FC = () => {
                     }>
                     <Text>Change</Text>
                   </Button> */}
-                </View>
-                <View style={styles.subscriptionView}>
-                  <Text style={styles.subscriptionText}>Purchased Date</Text>
-                  <Text style={styles.subscriptionText}>
-                    {timeStamptoDateTime(
-                      subscriptionData.latestPurchaseDateMillis
-                    )}
-                  </Text>
-                </View>
-                <View style={styles.subscriptionView}>
-                  <Text style={styles.subscriptionText}>Renewal Date</Text>
-                  <Text style={styles.subscriptionText}>
-                    {timeStamptoDateTime(subscriptionData.expirationDateMillis)}
-                  </Text>
-                </View>
               </View>
-            )}
-            <View style={styles.cancelAccountItem}>
-              <Button transparent iconLeft icon onPress={cancelAccount}>
-                <SvgXml
-                  xml={Svgs.mcancelIcon}
-                  width={23 * scale}
-                  height={23 * scale}
-                />
-                <Text style={styles.cancelAccountText}>
-                  Cancel subscription
+              <View style={styles.subscriptionView}>
+                <Text style={styles.subscriptionText}>Purchased Date</Text>
+                <Text style={styles.subscriptionText}>
+                  {timeStamptoDateTime(
+                    subscriptionData.latestPurchaseDateMillis
+                  )}
                 </Text>
-              </Button>
+              </View>
+              <View style={styles.subscriptionView}>
+                <Text style={styles.subscriptionText}>Renewal Date</Text>
+                <Text style={styles.subscriptionText}>
+                  {timeStamptoDateTime(subscriptionData.expirationDateMillis)}
+                </Text>
+              </View>
             </View>
-            <View style={styles.cancelAccountItem}>
-              <Button transparent iconLeft icon onPress={deleteAccount}>
-                <SvgXml
-                  xml={Svgs.mcancelIcon}
-                  width={23 * scale}
-                  height={23 * scale}
-                />
-                <Text style={styles.cancelAccountText}>Delete account</Text>
-              </Button>
-            </View>
-
-            {JSON.stringify(initUserInfo) !== JSON.stringify(userInfo) && (
-              <Button
-                success
-                full
-                rounded
-                onPress={saveUserData}
-                style={styles.saveButton}>
-                <Text style={styles.buttonText}>Save</Text>
-              </Button>
-            )}
+          )}
+          <View style={styles.cancelAccountItem}>
+            <Button transparent iconLeft icon onPress={cancelAccount}>
+              <SvgXml
+                xml={Svgs.mcancelIcon}
+                width={23 * scale}
+                height={23 * scale}
+              />
+              <Text style={styles.cancelAccountText}>Cancel subscription</Text>
+            </Button>
           </View>
-        )}
+          <View style={styles.cancelAccountItem}>
+            <Button transparent iconLeft icon onPress={deleteAccount}>
+              <SvgXml
+                xml={Svgs.mcancelIcon}
+                width={23 * scale}
+                height={23 * scale}
+              />
+              <Text style={styles.cancelAccountText}>Delete account</Text>
+            </Button>
+          </View>
+
+          {JSON.stringify(initUserInfo) !== JSON.stringify(userInfo) && (
+            <Button
+              success
+              full
+              rounded
+              onPress={saveUserData}
+              style={styles.saveButton}>
+              <Text style={styles.buttonText}>Save</Text>
+            </Button>
+          )}
+        </View>
       </Content>
       <ModalCancelAccount
         isModalVisible={isCancelAccountModal}

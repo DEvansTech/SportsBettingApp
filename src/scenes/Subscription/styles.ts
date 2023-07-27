@@ -25,8 +25,7 @@ export default StyleSheet.create({
   },
   contentView: {
     position: 'relative',
-    paddingHorizontal: 20 * scale,
-    paddingTop: 20 * scale
+    paddingHorizontal: 20 * scale
   },
   backgroundImage: {
     flex: 1,
@@ -86,8 +85,8 @@ export default StyleSheet.create({
     borderWidth: 1 * scale,
     borderBottomRightRadius: 20 * scale,
     borderBottomLeftRadius: 20 * scale,
-    position: 'relative',
-    height: 120 * scale
+    position: 'relative'
+    // height: 120 * scale
   },
   bestDealText: {
     lineHeight: 26 * scale,
@@ -100,12 +99,22 @@ export default StyleSheet.create({
     fontSize: 19 * scale,
     color: Colors.white
   },
+  italicText: {
+    fontStyle: 'italic',
+    fontFamily: Fonts.regular,
+    fontSize: 16 * scale,
+    color: Colors.white
+  },
+  newTextBox: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 10 * scale
+  },
   checkIcon: {
-    position: 'absolute',
-    right: 20 * scale,
-    bottom: 20 * scale,
     width: 40 * scale,
-    height: 40 * scale
+    height: 40 * scale,
+    marginLeft: 10 * scale
   },
   selectedItem: {
     backgroundColor: 'white'
@@ -114,11 +123,11 @@ export default StyleSheet.create({
     color: 'black'
   },
   subscribeBtn: {
-    marginTop: 40 * scale,
+    marginTop: 25 * scale,
     backgroundColor: Colors.white
   },
   subscribeSelectedBtn: {
-    marginTop: 40 * scale,
+    marginTop: 25 * scale,
     backgroundColor: Colors.black
   },
   buttonBlackText: {

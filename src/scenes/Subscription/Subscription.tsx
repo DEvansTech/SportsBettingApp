@@ -149,14 +149,26 @@ const Subscription: React.FC<Props> = props => {
               Cancel anytime.
             </Text>
           )}
-          <SvgXml
-            xml={
-              selectPackage?.product?.identifier === identifier
-                ? Svgs.subGreenCheckIcon
-                : Svgs.subWhiteCheckIcon
-            }
-            style={styles.checkIcon}
-          />
+          <View style={styles.newTextBox}>
+            <Text
+              style={[
+                styles.italicText,
+                selectPackage?.product?.identifier === identifier &&
+                  styles.selectedItemText
+              ]}>
+              Your subscription grants{' '}
+              {identifier === 'oddsr_5999_1y_14d0' ? 'annual' : 'monthly'}{' '}
+              access to all OddsR™ bet ratings.
+            </Text>
+            <SvgXml
+              xml={
+                selectPackage?.product?.identifier === identifier
+                  ? Svgs.subGreenCheckIcon
+                  : Svgs.subWhiteCheckIcon
+              }
+              style={styles.checkIcon}
+            />
+          </View>
         </View>
       </TouchableOpacity>
     );

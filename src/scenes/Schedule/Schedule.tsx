@@ -1,18 +1,12 @@
-import React, { useContext, useState, useEffect } from 'react';
-import { Container, Content } from 'native-base';
-import { useSelector } from 'react-redux';
+import React, { useContext } from 'react';
 
 import { MainContext, MainContextType } from '@Context/MainContext';
-import { SubHeader, SegmentSort, Loading } from '@Components';
-import { RootState } from '@Store/store';
 import AllGames from './AllGames';
 import MLB from './MLB';
 import NFL from './NFL';
 import NCAAF from './NCAAF';
 import NBA from './NBA';
 import NCAAB from './NCAAB';
-
-import styles from './styles';
 
 const Schedule: React.FC = () => {
   const { scheduleDate, sportName } = useContext(

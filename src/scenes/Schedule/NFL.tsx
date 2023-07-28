@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { FlatList } from 'react-native';
 import { useIsFocused } from '@react-navigation/native';
 import { Container, Content, View, Text } from 'native-base';
 import firestore from '@react-native-firebase/firestore';
@@ -141,6 +142,32 @@ const NFL: React.FC<Props> = ({ selectedDate, sportName }) => {
     }
   }, [loading]);
 
+  const renderItem = (match: GameDataType, index: number) => {
+    return (
+      <NFLWatch
+        key={index}
+        data={match}
+        saveSelection={saveSelection}
+        selectionState={checkSelectionState(match.gameID)}
+        lastGame={gameData.length === index + 1}
+      />
+    );
+  };
+
+  const renderEmpty = () => {
+    return (
+      <View style={styles.noDataView}>
+        <Text style={styles.headerDateText}>
+          {exitGame
+            ? 'No games.'
+            : dateCompare(selectedDate)
+            ? 'Not yet rated.'
+            : 'No recommendation.'}
+        </Text>
+      </View>
+    );
+  };
+
   if (loadingBar) {
     return <Loading />;
   }
@@ -150,29 +177,12 @@ const NFL: React.FC<Props> = ({ selectedDate, sportName }) => {
       <SubHeader />
       <SegmentSort />
       <Content contentContainerStyle={styles.contentView}>
-        <View style={styles.container}>
-          {gameData.length > 0 ? (
-            gameData.map((match: GameDataType, index: number) => (
-              <NFLWatch
-                data={match}
-                key={index}
-                saveSelection={saveSelection}
-                selectionState={checkSelectionState(match.gameID)}
-                lastGame={gameData.length === index + 1}
-              />
-            ))
-          ) : (
-            <View style={styles.noDataView}>
-              <Text style={styles.headerDateText}>
-                {exitGame
-                  ? 'No games.'
-                  : dateCompare(selectedDate)
-                  ? 'Not yet rated.'
-                  : 'No recommendation.'}
-              </Text>
-            </View>
-          )}
-        </View>
+        <FlatList
+          data={gameData}
+          renderItem={({ item, index }) => renderItem(item, index)}
+          keyExtractor={(item: any) => item.game_uuid}
+          ListEmptyComponent={renderEmpty}
+        />
       </Content>
     </Container>
   );

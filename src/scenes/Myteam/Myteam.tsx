@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { useNavigation } from '@react-navigation/core';
 import { useIsFocused } from '@react-navigation/native';
-import { TouchableOpacity } from 'react-native';
+import { TouchableOpacity, FlatList } from 'react-native';
 import {
   Container,
   Content,
@@ -14,6 +14,8 @@ import {
   Header
 } from 'native-base';
 import firestore from '@react-native-firebase/firestore';
+import { SvgXml } from 'react-native-svg';
+import RNPickerSelect from 'react-native-picker-select';
 
 import { Loading, LoadingImage } from '@Components';
 import { Routes } from '@Navigators/routes';
@@ -22,16 +24,20 @@ import { getTeamsList } from '@Store/watch/actions';
 import { AuthContext, AuthContextType } from '@Context/AuthContext';
 import { MainContext, MainContextType } from '@Context/MainContext';
 import { checkTeamIcon } from '@Lib/function';
-import { Colors } from '@Theme';
+import { Colors, Svgs } from '@Theme';
 import { TeamType, FavortriteType } from './types';
-import styles from './styles';
+import { sportSorts } from '@Lib/constants';
+import styles, { scale, pickerSelectStyles } from './styles';
 
 const Myteam: React.FC = () => {
   const dispatch = useDispatch();
   const isFocused = useIsFocused();
   const navigation = useNavigation<StackNavigationProp<any, any>>();
   const { user } = useContext(AuthContext) as AuthContextType;
-  const { sportName } = useContext(MainContext) as MainContextType;
+  const { sportName, setSportName } = useContext(
+    MainContext
+  ) as MainContextType;
+
   const { myTeams, allTeams, teamsLoading } = useSelector(
     (state: RootState) => state.watch
   );
@@ -201,7 +207,7 @@ const Myteam: React.FC = () => {
   useEffect(() => {
     setLoadingBar(true);
     dispatch(getTeamsList(sportName));
-  }, []);
+  }, [sportName]);
 
   useEffect(() => {
     if (!teamsLoading) {
@@ -210,6 +216,56 @@ const Myteam: React.FC = () => {
       setLoadingBar(teamsLoading);
     }
   }, [teamsLoading]);
+
+  if (loadingBar) {
+    return <Loading />;
+  }
+
+  const renderItem = (team: any) => {
+    return (
+      <View style={styles.teamView}>
+        <TouchableOpacity
+          onPress={() =>
+            saveUserTeam(
+              team.teamID,
+              team.team_market,
+              team.team_name,
+              team.team_sort,
+              team
+            )
+          }>
+          <Icon
+            type="Ionicons"
+            name={
+              checkFavoriteTeam(team.teamID, team.team_sort)
+                ? 'heart-sharp'
+                : 'heart-outline'
+            }
+            style={
+              checkFavoriteTeam(team.teamID, team.team_sort)
+                ? styles.favoriteRedIcon
+                : styles.favoriteBlackIcon
+            }
+          />
+        </TouchableOpacity>
+        <LoadingImage
+          source={checkTeamIcon(team.team_sort, team.team_abbr)}
+          style={styles.teamImg}
+        />
+        <Text style={styles.teamName}>
+          {team.team_market} {team.team_name}
+        </Text>
+      </View>
+    );
+  };
+
+  const renderEmpty = () => {
+    return (
+      <View style={styles.noDataView}>
+        <Text style={styles.headerDateText}>There is no team.</Text>
+      </View>
+    );
+  };
 
   return (
     <Container style={styles.background}>
@@ -221,108 +277,58 @@ const Myteam: React.FC = () => {
           style={styles.headerLeft}
           onPress={() => navigation.navigate(Routes.Watch)}>
           <Icon type="Feather" name="chevron-left" style={styles.chevronIcon} />
-          <Text style={styles.headerText}>
-            My Teams ({sportName.toUpperCase()})
-          </Text>
+          <Text style={styles.headerText}>My Teams</Text>
         </TouchableOpacity>
+        <SvgXml xml={Svgs.userIcon} width={38 * scale} height={38 * scale} />
       </Header>
-      <View style={styles.contentView}>
-        {loadingBar ? (
-          <Loading />
-        ) : (
-          <>
-            <View style={styles.searchItem}>
-              <Icon type="Feather" name="search" style={styles.searchIcon} />
-              <Input
-                placeholder="Search Team"
-                autoCapitalize="words"
-                value={searchKey}
-                style={styles.input}
-                onChangeText={text => setSearchKey(text)}
+      <View style={styles.searchView}>
+        <View style={styles.searchItem}>
+          <Icon type="Feather" name="search" style={styles.searchIcon} />
+          <Input
+            placeholder="Search Team"
+            autoCapitalize="words"
+            value={searchKey}
+            style={styles.input}
+            onChangeText={text => setSearchKey(text)}
+          />
+        </View>
+        <View style={styles.selectItem}>
+          <RNPickerSelect
+            items={sportSorts}
+            onValueChange={value => setSportName(value)}
+            value={sportName}
+            useNativeAndroidPickerStyle={false}
+            fixAndroidTouchableBug={true}
+            Icon={() => (
+              <Icon
+                type="Entypo"
+                name="chevron-thin-right"
+                style={styles.selectIcon}
               />
-            </View>
-            <Content contentContainerStyle={styles.contentView}>
-              {sportName === 'all' ? (
-                allTeamList.length > 0 ? (
-                  <>
-                    {allTeamList.map((team: TeamType, index: number) => (
-                      <View style={styles.teamView} key={index}>
-                        <TouchableOpacity
-                          onPress={() =>
-                            saveUserTeam(
-                              team.teamID,
-                              team.team_market,
-                              team.team_name,
-                              team.team_sort,
-                              team
-                            )
-                          }>
-                          <Icon
-                            type="AntDesign"
-                            name={
-                              checkFavoriteTeam(team.teamID, team.team_sort)
-                                ? 'heart'
-                                : 'hearto'
-                            }
-                            style={styles.favoriteIcon}
-                          />
-                        </TouchableOpacity>
-                        <LoadingImage
-                          source={checkTeamIcon(team.team_sort, team.team_abbr)}
-                          style={styles.teamImg}
-                        />
-                        <Text style={styles.teamName}>
-                          {team.team_market} {team.team_name}
-                        </Text>
-                      </View>
-                    ))}
-                  </>
-                ) : (
-                  <View style={styles.noDataView}>
-                    <Text style={styles.headerDateText}>There is no team.</Text>
-                  </View>
-                )
-              ) : teamList?.length > 0 ? (
-                teamList.map((team: TeamType, index: number) => (
-                  <View style={styles.teamView} key={index}>
-                    <TouchableOpacity
-                      onPress={() =>
-                        saveUserTeam(
-                          team.teamID,
-                          team.team_market,
-                          team.team_name,
-                          team.team_sort,
-                          team
-                        )
-                      }>
-                      <Icon
-                        type="AntDesign"
-                        name={
-                          checkFavoriteTeam(team.teamID, team.team_sort)
-                            ? 'heart'
-                            : 'hearto'
-                        }
-                        style={styles.favoriteIcon}
-                      />
-                    </TouchableOpacity>
-                    <LoadingImage
-                      source={checkTeamIcon(sportName, team.team_abbr)}
-                      style={styles.teamImg}
-                    />
-                    <Text style={styles.teamName}>
-                      {team.team_market} {team.team_name}
-                    </Text>
-                  </View>
-                ))
-              ) : (
-                <View style={styles.noDataView}>
-                  <Text style={styles.headerDateText}>There is no team.</Text>
-                </View>
-              )}
-            </Content>
-          </>
-        )}
+            )}
+            style={pickerSelectStyles}
+            placeholder={{}}
+          />
+        </View>
       </View>
+
+      <Content contentContainerStyle={styles.contentView}>
+        {sportName === 'all' ? (
+          <FlatList
+            data={allTeamList}
+            renderItem={({ item }) => renderItem(item)}
+            keyExtractor={(item: any) => item.team_uuid}
+            ListEmptyComponent={renderEmpty}
+          />
+        ) : (
+          <FlatList
+            data={teamList}
+            renderItem={({ item }) => renderItem(item)}
+            keyExtractor={(item: any) => item.team_uuid}
+            ListEmptyComponent={renderEmpty}
+          />
+        )}
+      </Content>
     </Container>
   );
 };

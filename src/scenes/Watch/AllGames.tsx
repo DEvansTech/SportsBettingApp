@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/core';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { useIsFocused } from '@react-navigation/native';
 import { Container, Content, Text, Icon, View } from 'native-base';
-import { TouchableOpacity } from 'react-native';
+import { TouchableOpacity, FlatList } from 'react-native';
 import firestore from '@react-native-firebase/firestore';
 
 import {
@@ -292,6 +292,90 @@ const AllGames: React.FC<Props> = ({ selectedDate }) => {
     }
   }, [teamsLoading, selectionsLoading]);
 
+  const renderMyTeam = (match: GameDataType, index: number) => {
+    return (
+      <>
+        {match.sport_name === 'MLB' && (
+          <MLBWatch
+            data={match}
+            lastGame={teamsGamedata.length === index + 1}
+          />
+        )}
+        {match.sport_name === 'NFL' && (
+          <NFLWatch
+            data={match}
+            lastGame={teamsGamedata.length === index + 1}
+          />
+        )}
+        {match.sport_name === 'NCAAFB' && (
+          <NCAAFWatch
+            data={match}
+            lastGame={teamsGamedata.length === index + 1}
+          />
+        )}
+        {match.sport_name === 'NCAAM' && (
+          <NCAABWatch
+            data={match}
+            lastGame={teamsGamedata.length === index + 1}
+          />
+        )}
+        {match.sport_name === 'NBA' && (
+          <NBAWatch
+            data={match}
+            lastGame={teamsGamedata.length === index + 1}
+          />
+        )}
+      </>
+    );
+  };
+
+  const renderMySelection = (match: GameDataType, index: number) => {
+    return (
+      <View style={styles.selectionIconView}>
+        <TouchableOpacity
+          onPress={() => closeSelection(match.gameID, match.sport_name)}>
+          <Icon
+            type="AntDesign"
+            name="minuscircleo"
+            color={Colors.black}
+            style={styles.teamCloseIcon}
+          />
+        </TouchableOpacity>
+        <View style={styles.selectionView}>
+          {match.sport_name === 'MLB' && (
+            <MLBWatch
+              data={match}
+              lastGame={teamsGamedata.length === index + 1}
+            />
+          )}
+          {match.sport_name === 'NFL' && (
+            <NFLWatch
+              data={match}
+              lastGame={teamsGamedata.length === index + 1}
+            />
+          )}
+          {match.sport_name === 'NCAAFB' && (
+            <NCAAFWatch
+              data={match}
+              lastGame={teamsGamedata.length === index + 1}
+            />
+          )}
+          {match.sport_name === 'NCAAM' && (
+            <NCAABWatch
+              data={match}
+              lastGame={teamsGamedata.length === index + 1}
+            />
+          )}
+          {match.sport_name === 'NBA' && (
+            <NBAWatch
+              data={match}
+              lastGame={teamsGamedata.length === index + 1}
+            />
+          )}
+        </View>
+      </View>
+    );
+  };
   if (loadingBar) {
     return <Loading />;
   }
@@ -312,92 +396,19 @@ const AllGames: React.FC<Props> = ({ selectedDate }) => {
               />
             </TouchableOpacity>
           </View>
-          {teamsGamedata.length > 0 &&
-            teamsGamedata.map((match: GameDataType, index: number) => (
-              <View key={index}>
-                {match.sport_name === 'MLB' && (
-                  <MLBWatch
-                    data={match}
-                    lastGame={teamsGamedata.length === index + 1}
-                  />
-                )}
-                {match.sport_name === 'NFL' && (
-                  <NFLWatch
-                    data={match}
-                    lastGame={teamsGamedata.length === index + 1}
-                  />
-                )}
-                {match.sport_name === 'NCAAFB' && (
-                  <NCAAFWatch
-                    data={match}
-                    lastGame={teamsGamedata.length === index + 1}
-                  />
-                )}
-                {match.sport_name === 'NCAAM' && (
-                  <NCAABWatch
-                    data={match}
-                    lastGame={teamsGamedata.length === index + 1}
-                  />
-                )}
-                {match.sport_name === 'NBA' && (
-                  <NBAWatch
-                    data={match}
-                    lastGame={teamsGamedata.length === index + 1}
-                  />
-                )}
-              </View>
-            ))}
+          <FlatList
+            data={teamsGamedata}
+            renderItem={({ item, index }) => renderMyTeam(item, index)}
+            keyExtractor={(item: any) => item.game_uuid}
+          />
           <View style={styles.myTeamsView}>
             <Text style={styles.teamPlusText}>My Selections</Text>
           </View>
-          {selectionsGamedata.length > 0 &&
-            selectionsGamedata.map((match: GameDataType, index: number) => (
-              <View style={styles.selectionIconView} key={index}>
-                <TouchableOpacity
-                  onPress={() =>
-                    closeSelection(match.gameID, match.sport_name)
-                  }>
-                  <Icon
-                    type="AntDesign"
-                    name="minuscircleo"
-                    color={Colors.black}
-                    style={styles.teamCloseIcon}
-                  />
-                </TouchableOpacity>
-                <View style={styles.selectionView}>
-                  {match.sport_name === 'MLB' && (
-                    <MLBWatch
-                      data={match}
-                      lastGame={teamsGamedata.length === index + 1}
-                    />
-                  )}
-                  {match.sport_name === 'NFL' && (
-                    <NFLWatch
-                      data={match}
-                      lastGame={teamsGamedata.length === index + 1}
-                    />
-                  )}
-                  {match.sport_name === 'NCAAFB' && (
-                    <NCAAFWatch
-                      data={match}
-                      lastGame={teamsGamedata.length === index + 1}
-                    />
-                  )}
-                  {match.sport_name === 'NCAAM' && (
-                    <NCAABWatch
-                      data={match}
-                      lastGame={teamsGamedata.length === index + 1}
-                    />
-                  )}
-                  {match.sport_name === 'NBA' && (
-                    <NBAWatch
-                      data={match}
-                      lastGame={teamsGamedata.length === index + 1}
-                    />
-                  )}
-                </View>
-              </View>
-            ))}
+          <FlatList
+            data={selectionsGamedata}
+            renderItem={({ item, index }) => renderMySelection(item, index)}
+            keyExtractor={(item: any) => item.game_uuid}
+          />
         </View>
       </Content>
     </Container>

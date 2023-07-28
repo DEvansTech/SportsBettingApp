@@ -4,7 +4,7 @@ import { Container, Content, Text, Icon, View } from 'native-base';
 import { useIsFocused } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { useNavigation } from '@react-navigation/core';
-import { TouchableOpacity } from 'react-native';
+import { TouchableOpacity, FlatList } from 'react-native';
 import firestore from '@react-native-firebase/firestore';
 
 import { SubHeader, MLBWatch, Loading } from '@Components';
@@ -187,6 +187,33 @@ const MLB: React.FC<Props> = ({ selectedDate, sportName }) => {
     }
   }, [teamsLoading, selectionsLoading]);
 
+  const renderMyTeam = (match: GameDataType, index: number) => {
+    return (
+      <MLBWatch data={match} lastGame={teamsGamedata.length === index + 1} />
+    );
+  };
+
+  const renderMySelection = (match: GameDataType, index: number) => {
+    return (
+      <View style={styles.selectionIconView}>
+        <TouchableOpacity onPress={() => closeSelection(match.gameID)}>
+          <Icon
+            type="AntDesign"
+            name="minuscircleo"
+            color={Colors.black}
+            style={styles.teamCloseIcon}
+          />
+        </TouchableOpacity>
+        <View style={styles.selectionView}>
+          <MLBWatch
+            data={match}
+            lastGame={selectionsGamedata.length === index + 1}
+          />
+        </View>
+      </View>
+    );
+  };
+
   if (loadingBar) {
     return <Loading />;
   }
@@ -207,36 +234,19 @@ const MLB: React.FC<Props> = ({ selectedDate, sportName }) => {
               />
             </TouchableOpacity>
           </View>
-          {teamsGamedata.length > 0 &&
-            teamsGamedata.map((match: GameDataType, index: number) => (
-              <MLBWatch
-                data={match}
-                key={index}
-                lastGame={teamsGamedata.length === index + 1}
-              />
-            ))}
+          <FlatList
+            data={teamsGamedata}
+            renderItem={({ item, index }) => renderMyTeam(item, index)}
+            keyExtractor={(item: any) => item.game_uuid}
+          />
           <View style={styles.myTeamsView}>
             <Text style={styles.teamPlusText}>My Selections</Text>
           </View>
-          {selectionsGamedata.length > 0 &&
-            selectionsGamedata.map((match: GameDataType, index: number) => (
-              <View style={styles.selectionIconView} key={index}>
-                <TouchableOpacity onPress={() => closeSelection(match.gameID)}>
-                  <Icon
-                    type="AntDesign"
-                    name="minuscircleo"
-                    color={Colors.black}
-                    style={styles.teamCloseIcon}
-                  />
-                </TouchableOpacity>
-                <View style={styles.selectionView}>
-                  <MLBWatch
-                    data={match}
-                    lastGame={selectionsGamedata.length === index + 1}
-                  />
-                </View>
-              </View>
-            ))}
+          <FlatList
+            data={selectionsGamedata}
+            renderItem={({ item, index }) => renderMySelection(item, index)}
+            keyExtractor={(item: any) => item.game_uuid}
+          />
         </View>
       </Content>
     </Container>

@@ -370,7 +370,7 @@ import NCAA_YALE from '@Assets/ncaa_teams/YALE.png';
 import NCAA_YSU from '@Assets/ncaa_teams/YSU.png';
 
 import NBA_ATL from '@Assets/nba_teams/ATL.png';
-import NBA_BRK from '@Assets/nba_teams/BRK.png';
+import NBA_BKN from '@Assets/nba_teams/BKN.png';
 import NBA_BOS from '@Assets/nba_teams/BOS.png';
 import NBA_CHA from '@Assets/nba_teams/CHA.png';
 import NBA_CHI from '@Assets/nba_teams/CHI.png';
@@ -997,7 +997,7 @@ export default {
   NCAA_WST,
   NBA_ATL,
   NBA_BOS,
-  NBA_BRK,
+  NBA_BKN,
   NBA_CHA,
   NBA_CHI,
   NBA_CLE,

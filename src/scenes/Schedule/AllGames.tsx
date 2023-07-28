@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect, useCallback } from 'react';
+import { FlatList } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { useIsFocused } from '@react-navigation/native';
 import { Container, Content, View, Text } from 'native-base';
@@ -205,6 +206,68 @@ const AllGames: React.FC<Props> = ({ selectedDate, sportName }) => {
     })();
   }, [isFocused]);
 
+  const renderItem = (match: any, index: number) => {
+    return (
+      <>
+        {match.sport_name === 'MLB' && (
+          <MLBWatch
+            data={match}
+            key={index}
+            saveSelection={saveSelection}
+            selectionState={checkSelectionState(match.gameID, 'mlb')}
+            lastGame={gameData.length === index + 1}
+          />
+        )}
+        {match.sport_name === 'NFL' && (
+          <NFLWatch
+            data={match}
+            key={index}
+            saveSelection={saveSelection}
+            selectionState={checkSelectionState(match.gameID, 'nfl')}
+            lastGame={gameData.length === index + 1}
+          />
+        )}
+        {match.sport_name === 'NCAAFB' && (
+          <NCAAFWatch
+            data={match}
+            key={index}
+            saveSelection={saveSelection}
+            selectionState={checkSelectionState(match.gameID, 'ncaaf')}
+            lastGame={gameData.length === index + 1}
+          />
+        )}
+        {match.sport_name === 'NBA' && (
+          <NBAWatch
+            data={match}
+            key={index}
+            saveSelection={saveSelection}
+            selectionState={checkSelectionState(match.gameID, 'nba')}
+            lastGame={gameData.length === index + 1}
+          />
+        )}
+        {match.sport_name === 'NCAAM' && (
+          <NCAABWatch
+            data={match}
+            key={index}
+            saveSelection={saveSelection}
+            selectionState={checkSelectionState(match.gameID, 'ncaab')}
+            lastGame={gameData.length === index + 1}
+          />
+        )}
+      </>
+    );
+  };
+
+  const renderEmpty = () => {
+    return (
+      <View style={styles.noDataView}>
+        <Text style={styles.headerDateText}>
+          {exitGame ? 'No games.' : 'No recommendation.'}
+        </Text>
+      </View>
+    );
+  };
+
   if (loadingBar) {
     return <Loading />;
   }
@@ -214,65 +277,12 @@ const AllGames: React.FC<Props> = ({ selectedDate, sportName }) => {
       <SubHeader />
       <SegmentSort />
       <Content contentContainerStyle={styles.contentView}>
-        <View style={styles.container}>
-          {gameData.length > 0 ? (
-            gameData.map((match: any, index: number) => (
-              <View key={index}>
-                {match.sport_name === 'MLB' && (
-                  <MLBWatch
-                    data={match}
-                    key={index}
-                    saveSelection={saveSelection}
-                    selectionState={checkSelectionState(match.gameID, 'mlb')}
-                    lastGame={gameData.length === index + 1}
-                  />
-                )}
-                {match.sport_name === 'NFL' && (
-                  <NFLWatch
-                    data={match}
-                    key={index}
-                    saveSelection={saveSelection}
-                    selectionState={checkSelectionState(match.gameID, 'nfl')}
-                    lastGame={gameData.length === index + 1}
-                  />
-                )}
-                {match.sport_name === 'NCAAFB' && (
-                  <NCAAFWatch
-                    data={match}
-                    key={index}
-                    saveSelection={saveSelection}
-                    selectionState={checkSelectionState(match.gameID, 'ncaaf')}
-                    lastGame={gameData.length === index + 1}
-                  />
-                )}
-                {match.sport_name === 'NBA' && (
-                  <NBAWatch
-                    data={match}
-                    key={index}
-                    saveSelection={saveSelection}
-                    selectionState={checkSelectionState(match.gameID, 'nba')}
-                    lastGame={gameData.length === index + 1}
-                  />
-                )}
-                {match.sport_name === 'NCAAM' && (
-                  <NCAABWatch
-                    data={match}
-                    key={index}
-                    saveSelection={saveSelection}
-                    selectionState={checkSelectionState(match.gameID, 'ncaab')}
-                    lastGame={gameData.length === index + 1}
-                  />
-                )}
-              </View>
-            ))
-          ) : (
-            <View style={styles.noDataView}>
-              <Text style={styles.headerDateText}>
-                {exitGame ? 'No games.' : 'No recommendation.'}
-              </Text>
-            </View>
-          )}
-        </View>
+        <FlatList
+          data={gameData}
+          renderItem={({ item, index }) => renderItem(item, index)}
+          keyExtractor={(item: any) => item.game_uuid}
+          ListEmptyComponent={renderEmpty}
+        />
       </Content>
     </Container>
   );

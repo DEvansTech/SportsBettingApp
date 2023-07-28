@@ -1,7 +1,5 @@
 import React, { useContext } from 'react';
-import { Container, Content } from 'native-base';
 
-import { SubHeader } from '@Components';
 import { MainContext, MainContextType } from '@Context/MainContext';
 import MLB from './MLB';
 import NFL from './NFL';
@@ -9,8 +7,6 @@ import NCAAF from './NCAAF';
 import NCAAB from './NCAAB';
 import NBA from './NBA';
 import AllGames from './AllGames';
-
-import styles from './styles';
 
 const Watch: React.FC = () => {
   const { scheduleDate, sportName } = useContext(

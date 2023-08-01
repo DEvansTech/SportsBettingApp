@@ -52,7 +52,7 @@ const LineRater: React.FC<Props> = props => {
             name="arrow-left"
             style={styles.backIcon}
           />
-          <Text style={styles.headerText}>OddsR™ LineMaster</Text>
+          <Text style={styles.headerText}>OddsR™ LineMaster™</Text>
         </TouchableOpacity>
         <View style={styles.headerRight}>
           <SvgXml

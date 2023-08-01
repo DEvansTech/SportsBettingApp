@@ -45,7 +45,7 @@ const QuickStart: React.FC<CarosuelProps> = ({
       <Content contentContainerStyle={styles.contentView}>
         <View style={styles.quickStartContent}>
           <Text style={styles.quickStartText}>
-            With ODDS-R® BetIndexTM (OBI), it’s easy to make an informed bet!
+            With OddsR™, it’s easy to make an informed bet!
           </Text>
         </View>
         <View style={styles.content}>
@@ -108,7 +108,7 @@ const QuickStart: React.FC<CarosuelProps> = ({
           <Text>.....</Text>
           <View style={styles.obisaysContent}>
             <Text style={styles.whiteBoldText}>
-              OBI says don’t overthink it! Go with GREEN and you’ll always be
+              Roi says don’t overthink it! Go with GREEN and you’ll always be
               making a smart play, win or lose.
             </Text>
           </View>

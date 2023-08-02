@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { TouchableOpacity, Linking } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
 import { useIsFocused } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
@@ -327,22 +327,12 @@ const MyAccount: React.FC = () => {
               <Text style={styles.basicTitle}>Subscription</Text>
               <View style={styles.subscriptionView}>
                 <Text style={styles.subscriptionText}>
-                  {subscriptionData.productIdentifier === 'oddsr_999_1m_14d0'
+                  {subscriptionData.productIdentifier === 'oddsr_999_1m_14d0' ||
+                  subscriptionData.productIdentifier ===
+                    'oddsr_subscription_v1:oddsr-999-1m-14d0'
                     ? 'Monthly'
                     : 'Annual'}
                 </Text>
-                {/* <Button
-                    bordered
-                    success
-                    small
-                    rounded
-                    onPress={() =>
-                      navigation.navigate(Routes.Subscription, {
-                        selectedItem: subscriptionData.productIdentifier
-                      })
-                    }>
-                    <Text>Change</Text>
-                  </Button> */}
               </View>
               <View style={styles.subscriptionView}>
                 <Text style={styles.subscriptionText}>Purchased Date</Text>

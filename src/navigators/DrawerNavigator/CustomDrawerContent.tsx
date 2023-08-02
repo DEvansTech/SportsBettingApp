@@ -4,7 +4,7 @@ import {
   DrawerItem,
   DrawerContentComponentProps
 } from '@react-navigation/drawer';
-import { TouchableOpacity, Linking } from 'react-native';
+import { TouchableOpacity, Linking, Platform } from 'react-native';
 import { Icon, View } from 'native-base';
 import { DrawerActions } from '@react-navigation/native';
 import { SvgXml } from 'react-native-svg';
@@ -53,9 +53,13 @@ export const CustomDrawerContent: React.FC<DrawerContentComponentProps> = ({
   };
 
   const handleTerms = () => {
-    Linking.openURL(
-      'https://www.apple.com/legal/internet-services/itunes/dev/stdeula/'
-    );
+    if (Platform.OS === 'ios') {
+      Linking.openURL(
+        'https://www.apple.com/legal/internet-services/itunes/dev/stdeula/'
+      );
+    } else {
+      Linking.openURL('https://play.google.com/about/play-terms/');
+    }
   };
 
   // const cancelAccount = () => {

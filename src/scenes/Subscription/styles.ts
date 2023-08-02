@@ -103,7 +103,8 @@ export default StyleSheet.create({
     fontStyle: 'italic',
     fontFamily: Fonts.regular,
     fontSize: 16 * scale,
-    color: Colors.white
+    color: Colors.white,
+    flex: 1
   },
   newTextBox: {
     flexDirection: 'row',

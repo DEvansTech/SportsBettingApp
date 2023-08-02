@@ -18,10 +18,7 @@ import { Routes } from '@Navigators/routes';
 import { Images, Svgs } from '@Theme';
 import styles from './styles';
 
-import { Props } from './types';
-
-const Subscription: React.FC<Props> = props => {
-  const { selectedItem } = props?.route?.params;
+const Subscription: React.FC = () => {
   const navigation = useNavigation<StackNavigationProp<any, any>>();
 
   const [packages, setPackages] = useState<any[]>([]);
@@ -42,15 +39,6 @@ const Subscription: React.FC<Props> = props => {
     })();
   }, []);
 
-  useEffect(() => {
-    if (selectedItem && packages.length > 0) {
-      const item = packages.filter(
-        (pkg: any) => pkg?.product?.identifier === selectedItem
-      )[0];
-      setSelectPackage(item);
-    }
-  }, [selectedItem, packages]);
-
   const subscribeItem = async () => {
     setIsPurchasing(true);
 
@@ -67,15 +55,13 @@ const Subscription: React.FC<Props> = props => {
     } catch (e) {
     } finally {
       setIsPurchasing(false);
-      if (!selectedItem) {
-        navigation.navigate(Routes.AppChecking);
-      }
     }
   };
 
   const renderItem = (item: any) => {
     const {
-      product: { title, description, price, identifier }
+      product: { price, identifier },
+      packageType
     } = item;
 
     return (
@@ -83,13 +69,13 @@ const Subscription: React.FC<Props> = props => {
         onPress={() => setSelectPackage(item)}
         style={[
           styles.renderItem,
-          identifier === selectedItem && styles.selectedItem
-        ]}
-        disabled={identifier === selectedItem}>
+          identifier === selectPackage?.product?.identifier &&
+            styles.selectedItem
+        ]}>
         <View style={styles.renderItemHeader}>
           <View style={styles.itemHeader}>
-            <Text style={styles.itemTitle}>{title}</Text>
-            <Text style={styles.itemDescription}>{description}</Text>
+            <Text style={styles.itemTitle}>{packageType} Plan</Text>
+            <Text style={styles.itemDescription}>All Bet Ratings</Text>
           </View>
           <View style={styles.itemPriceContent}>
             <Text style={styles.itemCurrency}>$</Text>
@@ -107,7 +93,7 @@ const Subscription: React.FC<Props> = props => {
             selectPackage?.product.identifier === identifier &&
               styles.selectedItem
           ]}>
-          {identifier === 'oddsr_5999_1y_14d0' && (
+          {packageType === 'ANNUAL' && (
             <>
               <Text
                 style={[
@@ -139,7 +125,7 @@ const Subscription: React.FC<Props> = props => {
             ]}>
             14-day free trial.
           </Text>
-          {identifier !== 'oddsr_5999_1y_14d0' && (
+          {packageType !== 'ANNUAL' && (
             <Text
               style={[
                 styles.dealText,
@@ -157,8 +143,8 @@ const Subscription: React.FC<Props> = props => {
                   styles.selectedItemText
               ]}>
               Your subscription grants{' '}
-              {identifier === 'oddsr_5999_1y_14d0' ? 'annual' : 'monthly'}{' '}
-              access to all OddsR™ bet ratings.
+              {packageType === 'ANNUAL' ? 'annual' : 'monthly'} access to all
+              OddsR™ bet ratings.
             </Text>
             <SvgXml
               xml={
@@ -187,13 +173,6 @@ const Subscription: React.FC<Props> = props => {
         style={styles.backgroundImage}>
         {packages.length > 0 ? (
           <Content contentContainerStyle={styles.contentView}>
-            {selectedItem && (
-              <TouchableOpacity
-                style={styles.closeBtn}
-                onPress={() => navigation.goBack()}>
-                <Image source={Images.closeIcon} style={styles.closeIcon} />
-              </TouchableOpacity>
-            )}
             <Image source={Images.logo} style={styles.logo} />
             <Text style={styles.title}>Choose a plan</Text>
             <FlatList

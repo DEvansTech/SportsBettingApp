@@ -66,10 +66,8 @@ const Subscription: React.FC<Props> = props => {
       }
     } catch (e) {
     } finally {
+      navigation.navigate(Routes.AppChecking);
       setIsPurchasing(false);
-      if (!selectedItem) {
-        navigation.navigate(Routes.AppChecking);
-      }
     }
   };
 

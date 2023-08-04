@@ -40,7 +40,7 @@ const SubHeader: React.FC = () => {
     <Header
       style={styles.header}
       iosBarStyle={'light-content'}
-      androidStatusBarColor={Colors.black}>
+      androidStatusBarColor={Colors.green}>
       <View style={styles.headerLeft}>
         <RNPickerSelect
           items={sportSorts}

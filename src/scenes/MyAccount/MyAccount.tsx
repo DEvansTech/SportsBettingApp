@@ -202,7 +202,7 @@ const MyAccount: React.FC = () => {
       <Header
         style={styles.header}
         iosBarStyle={'light-content'}
-        androidStatusBarColor={Colors.black}>
+        androidStatusBarColor={Colors.green}>
         <TouchableOpacity onPress={gotoBack} style={styles.headerLeft}>
           <Icon
             type="SimpleLineIcons"

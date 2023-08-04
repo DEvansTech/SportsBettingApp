@@ -20,7 +20,7 @@ const ObiDetail: React.FC<OBIDetailProps> = props => {
       <Header
         style={styles.header}
         iosBarStyle={'light-content'}
-        androidStatusBarColor={Colors.black}>
+        androidStatusBarColor={Colors.green}>
         <TouchableOpacity
           onPress={() => navigation.goBack()}
           style={styles.headerLeft}>

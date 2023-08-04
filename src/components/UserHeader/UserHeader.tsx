@@ -30,7 +30,7 @@ const UserHeader: React.FC<Props> = ({
     <Header
       style={styles.header}
       iosBarStyle={'light-content'}
-      androidStatusBarColor={Colors.black}>
+      androidStatusBarColor={Colors.green}>
       <View style={styles.headerLeft}>
         {type === 'icon' ? (
           <Icon type={iconType} name={iconName} style={styles.icon} />

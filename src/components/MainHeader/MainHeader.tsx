@@ -19,7 +19,7 @@ const MainHeader: React.FC = () => {
     <Header
       style={styles.header}
       iosBarStyle={'light-content'}
-      androidStatusBarColor={Colors.black}>
+      androidStatusBarColor={Colors.green}>
       <Left style={styles.headerLeft}>
         <TouchableOpacity
           onPress={() =>

@@ -54,6 +54,7 @@ const Subscription: React.FC = () => {
       }
     } catch (e) {
     } finally {
+      navigation.navigate(Routes.AppChecking);
       setIsPurchasing(false);
     }
   };

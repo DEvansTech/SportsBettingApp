@@ -272,7 +272,7 @@ const Myteam: React.FC = () => {
       <Header
         style={styles.header}
         iosBarStyle={'light-content'}
-        androidStatusBarColor={Colors.black}>
+        androidStatusBarColor={Colors.green}>
         <TouchableOpacity
           style={styles.headerLeft}
           onPress={() => navigation.navigate(Routes.Watch)}>

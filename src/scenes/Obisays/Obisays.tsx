@@ -64,7 +64,7 @@ const Obisays: React.FC = () => {
       <Header
         style={styles.header}
         iosBarStyle={'light-content'}
-        androidStatusBarColor={Colors.black}>
+        androidStatusBarColor={Colors.green}>
         <Text style={styles.headerText}>Roi Says</Text>
         <SvgXml
           xml={Svgs.obiWhiteIcon}

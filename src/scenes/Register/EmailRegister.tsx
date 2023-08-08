@@ -57,7 +57,7 @@ const EmailRegister: React.FC = () => {
       return;
     }
 
-    const check = await existUser(email);
+    const check = await existUser(email, 'email');
 
     if (check) {
       ToastMessage('The email address already exists.', 'warning', 'bottom');

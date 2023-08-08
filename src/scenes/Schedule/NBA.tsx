@@ -83,12 +83,9 @@ const NFL: React.FC<Props> = ({ selectedDate, sportName }) => {
     }
   };
 
-  const checkSelectionState = useCallback(
-    (gameID: number) => {
-      return mySelections?.includes(gameID);
-    },
-    [mySelections, gameData]
-  );
+  const checkSelectionState = (gameID: number) => {
+    return mySelections?.includes(gameID);
+  };
 
   useEffect(() => {
     (async function () {

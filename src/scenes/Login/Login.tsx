@@ -54,7 +54,7 @@ const Login: React.FC = () => {
       await GoogleSignin.hasPlayServices();
       const { idToken } = await GoogleSignin.signIn();
       const currentUser = await GoogleSignin.getCurrentUser();
-      const check = await existUser(currentUser?.user?.email);
+      const check = await existUser(currentUser?.user?.email, 'google');
 
       if (!check) {
         setLoading(false);
@@ -93,7 +93,7 @@ const Login: React.FC = () => {
       const { identityToken, nonce } = appleAuthRequestResponse;
       if (identityToken) {
         const decodeData: any = jwt_decode(identityToken);
-        const check = await existUser(decodeData?.email);
+        const check = await existUser(decodeData?.email, 'apple');
         if (!check) {
           setLoading(false);
           ToastMessage(
@@ -237,7 +237,8 @@ const Login: React.FC = () => {
                 </Button>
               </View>
               <Text style={styles.signTitle}>
-                Or sign in using your Google or Apple account
+                Or sign in using your Google{' '}
+                {Platform.OS === 'ios' && 'or Apple'} account
               </Text>
               <View style={styles.socialBtns}>
                 {Platform.OS === 'ios' && (

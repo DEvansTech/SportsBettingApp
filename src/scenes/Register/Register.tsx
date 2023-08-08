@@ -184,7 +184,8 @@ const Register: React.FC = () => {
                     onPress={() => navigation.navigate(Routes.EmailRegister)}
                   />
                   <Text style={styles.signTitle}>
-                    Or sign up using your Google or Apple account
+                    Or sign in using your Google{' '}
+                    {Platform.OS === 'ios' && 'or Apple'} account
                   </Text>
                   <View style={styles.socialBtns}>
                     {Platform.OS === 'ios' && (

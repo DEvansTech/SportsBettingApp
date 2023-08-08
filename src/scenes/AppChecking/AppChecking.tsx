@@ -32,7 +32,6 @@ const AppChecking: React.FC = () => {
 
         try {
           const customerInfo = await Purchases.getCustomerInfo();
-
           if (
             typeof customerInfo.entitlements.active[ENTITLEMENT_ID] !==
             'undefined'
@@ -45,10 +44,10 @@ const AppChecking: React.FC = () => {
             if (!expired) {
               navigation.navigate(Routes.TabRoute);
             } else {
-              navigation.navigate(Routes.Subscription);
+              navigation.navigate(Routes.Subscription, { selectItem: '' });
             }
           } else {
-            navigation.navigate(Routes.Subscription);
+            navigation.navigate(Routes.Subscription, { selectItem: '' });
           }
         } catch (e) {}
       })();

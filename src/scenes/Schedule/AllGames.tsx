@@ -141,32 +141,22 @@ const AllGames: React.FC<Props> = ({ selectedDate, sportName }) => {
     }
   };
 
-  const checkSelectionState = useCallback(
-    (gameID: number, gameSort: string) => {
-      switch (gameSort) {
-        case 'mlb':
-          return mlbSelections?.includes(gameID);
-        case 'nfl':
-          return nflSelections?.includes(gameID);
-        case 'ncaaf':
-          return ncaafSelections?.includes(gameID);
-        case 'nba':
-          return nbaSelections?.includes(gameID);
-        case 'ncaab':
-          return ncaabSelections?.includes(gameID);
-        default:
-          return false;
-      }
-    },
-    [
-      mlbSelections,
-      nflSelections,
-      ncaafSelections,
-      nbaSelections,
-      ncaabSelections,
-      gameData
-    ]
-  );
+  const checkSelectionState = (gameID: number, gameSort: string) => {
+    switch (gameSort) {
+      case 'mlb':
+        return mlbSelections?.includes(gameID);
+      case 'nfl':
+        return nflSelections?.includes(gameID);
+      case 'ncaaf':
+        return ncaafSelections?.includes(gameID);
+      case 'nba':
+        return nbaSelections?.includes(gameID);
+      case 'ncaab':
+        return ncaabSelections?.includes(gameID);
+      default:
+        return false;
+    }
+  };
 
   useEffect(() => {
     (async function () {

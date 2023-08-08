@@ -14,11 +14,15 @@ export const ToastMessage = (msg: string, type: any, position: any) => {
   });
 };
 
-export const existUser = async (email: string | undefined | null) => {
+export const existUser = async (
+  email: string | undefined | null,
+  type: string
+) => {
   try {
     return await firestore()
       .collection('users')
       .where('email', '==', email)
+      .where('registerType', '==', type)
       .get()
       .then(querySnapshot => {
         if (querySnapshot.size > 0) {

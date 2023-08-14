@@ -307,10 +307,10 @@ export const getMLBSpreadAwayRatingValue = (
   if (
     !(
       gameData?.algRatingPredAwaySpread ||
-      gameData?.algRatingCalcYellowSpread ||
+      gameData?.algRatingCalcYellowSpreadAway ||
       gameData?.algRatingMoneySpread ||
-      gameData?.algRatingCalcGreenSpread ||
-      gameData?.algRatingCalcSuperSpread
+      gameData?.algRatingCalcGreenSpreadAway ||
+      gameData?.algRatingCalcSuperSpreadAway
     )
   ) {
     return undefined;
@@ -318,23 +318,23 @@ export const getMLBSpreadAwayRatingValue = (
 
   if (
     (gameData?.algRatingPredAwaySpread || 0) - LINE <=
-      (gameData?.algRatingCalcYellowSpread || 0) * -1 &&
+      (gameData?.algRatingCalcYellowSpreadAway || 0) * -1 &&
     (gameData?.algRatingPredAwaySpread || 0) - LINE >
-      (gameData?.algRatingCalcGreenSpread || 0) * -1 &&
+      (gameData?.algRatingCalcGreenSpreadAway || 0) * -1 &&
     rangeValue >= (gameData?.algRatingMoneySpread || 0)
   )
     return 2;
   if (
     (gameData?.algRatingPredAwaySpread || 0) - LINE <=
-      (gameData?.algRatingCalcGreenSpread || 0) * -1 &&
+      (gameData?.algRatingCalcGreenSpreadAway || 0) * -1 &&
     (gameData?.algRatingPredAwaySpread || 0) - LINE >
-      (gameData?.algRatingCalcSuperSpread || 0) * -1 &&
+      (gameData?.algRatingCalcSuperSpreadAway || 0) * -1 &&
     rangeValue >= (gameData?.algRatingMoneySpread || 0)
   )
     return 3;
   if (
     (gameData?.algRatingPredAwaySpread || 0) - LINE <=
-      (gameData?.algRatingCalcSuperSpread || 0) * -1 &&
+      (gameData?.algRatingCalcSuperSpreadAway || 0) * -1 &&
     rangeValue >= (gameData?.algRatingMoneySpread || 0)
   )
     return 4;

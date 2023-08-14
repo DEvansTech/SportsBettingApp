@@ -14,11 +14,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "29630197922-spm7u6h31go3n9utovmndd3mr5rvp4hk.apps.googleusercontent.com",
+          "client_id": "29630197922-0kgi0rikr29dik7obsc9gtioib9son3q.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.pss.oddsr",
-            "certificate_hash": "09543cdc60b579e514646ea6d895e8a3e3a8fc54"
+            "certificate_hash": "185e9616175b84ddccc25621af009890f530763f"
           }
         },
         {

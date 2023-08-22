@@ -96,9 +96,8 @@ export const compareScore = (
   }
   if (Number(awayPoints) > Number(homePoints)) {
     return 'away';
-  } else {
-    return 'home';
   }
+  return 'home';
 };
 
 export const checkSpread = (data: GameDataType) => {

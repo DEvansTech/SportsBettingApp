@@ -7,6 +7,10 @@ declare module '@env' {
   export const SUPPORT_API_KEY: string;
   export const TEAM_LOGO_URI: string;
   export const OBI_API_URI: string;
+  export const API_APPLE_KEY: string;
+  export const API_GOOGLE_KEY: string;
+  export const APPSFLYER_DEV_KEY: string;
+  export const APPSFLYER_APP_ID: string;
 
   export const ENV: 'dev' | 'prod';
 }

@@ -11,6 +11,7 @@ import { Container, Content, Text, View, Button } from 'native-base';
 import Spinner from 'react-native-loading-spinner-overlay';
 import Purchases from 'react-native-purchases';
 import { SvgXml } from 'react-native-svg';
+import appsFlyer from 'react-native-appsflyer';
 
 import { Loading, TermsPrivacy } from '@Components';
 import { ENTITLEMENT_ID } from '@Lib/constants';
@@ -54,8 +55,30 @@ const Subscription: React.FC = () => {
       }
     } catch (e) {
     } finally {
-      navigation.navigate(Routes.AppChecking);
+      // const {
+      //   product: { price, identifier }
+      // } = selectPackage;
+
+      // const eventName = 'af_purchase';
+      // const eventValues = {
+      //   af_content_id: identifier,
+      //   af_currency: 'USD',
+      //   af_revenue: price,
+      //   af_quantity: 1
+      // };
+
+      // appsFlyer.logEvent(
+      //   eventName,
+      //   eventValues,
+      //   res => {
+      //     console.log(res);
+      //   },
+      //   err => {
+      //     console.error(err);
+      //   }
+      // );
       setIsPurchasing(false);
+      navigation.navigate(Routes.AppChecking);
     }
   };
 

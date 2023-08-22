@@ -15,7 +15,7 @@ import { Images, Colors } from '@Theme';
 import styles from './styles';
 
 const Splash: React.FC = () => {
-  const { setUser, user, setDisplayName } = useContext(
+  const { setUser, user, setDisplayName, logout } = useContext(
     AuthContext
   ) as AuthContextType;
   const navigation = useNavigation<StackNavigationProp<any, any>>();
@@ -54,9 +54,18 @@ const Splash: React.FC = () => {
 
   useEffect(() => {
     (async function () {
+      console.log('========splash=========');
       if (user) {
-        getUserName();
-        navigation.navigate(Routes.DrawerRoute);
+        console.log('========splash==user=======');
+        const docRef = await firestore().collection('users').doc(user.uid);
+        await docRef.get().then(thisDoc => {
+          if (!thisDoc.exists) {
+            logout();
+          } else {
+            getUserName();
+            navigation.navigate(Routes.DrawerRoute);
+          }
+        });
       } else {
         const isLogged = await AsyncStorage.getItem('@loggedUser');
         if (!isLogged) {

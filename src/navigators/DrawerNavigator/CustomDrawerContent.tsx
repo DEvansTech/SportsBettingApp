@@ -35,7 +35,6 @@ export const CustomDrawerContent: React.FC<DrawerContentComponentProps> = ({
     labelStyle: styles.label,
     style: styles.itemContainer
   };
-  // const [isCancelAccountModal, setIsCancelAccountModal] = useState(false);
 
   const logOut = () => {
     if (user) {
@@ -62,9 +61,6 @@ export const CustomDrawerContent: React.FC<DrawerContentComponentProps> = ({
     }
   };
 
-  // const cancelAccount = () => {
-  //   setIsCancelAccountModal(!isCancelAccountModal);
-  // };
   return (
     <DrawerContentScrollView contentContainerStyle={styles.scroll}>
       <View style={styles.sidebarContent}>
@@ -74,44 +70,6 @@ export const CustomDrawerContent: React.FC<DrawerContentComponentProps> = ({
           <Icon type="AntDesign" name="close" style={styles.closeIcon} />
         </TouchableOpacity>
         <LogoSidebar />
-        {/* <DrawerItem
-          {...itemBaseStyle}
-          {...rest}
-          label="Notification Preferences"
-          icon={() => (
-            <Icon
-              type="Ionicons"
-              name="notifications-outline"
-              style={styles.icon}
-            />
-          )}
-          focused={getActiveRouteState(
-            state.routes,
-            state.index,
-            Routes.Notification
-          )}
-          onPress={() => navigation.navigate(Routes.Notification)}
-        /> */}
-        {/* <DrawerItem
-          {...itemBaseStyle}
-          {...rest}
-          label="Subscription"
-          icon={() => (
-            <Icon
-              type="MaterialCommunityIcons"
-              name="currency-usd-circle-outline"
-              style={styles.icon}
-            />
-          )}
-          focused={getActiveRouteState(
-            state.routes,
-            state.index,
-            Routes.Subscription
-          )}
-          onPress={() =>
-            navigation.navigate(Routes.Subscription, { state: true })
-          }
-        /> */}
         <DrawerItem
           {...itemBaseStyle}
           {...rest}
@@ -148,36 +106,6 @@ export const CustomDrawerContent: React.FC<DrawerContentComponentProps> = ({
           )}
           onPress={() => navigation.navigate(Routes.Introduction)}
         />
-        {/* <DrawerItem
-          {...itemBaseStyle}
-          {...rest}
-          label="FAQs"
-          icon={() => (
-            <Icon
-              type="MaterialCommunityIcons"
-              name="comment-question-outline"
-              style={styles.icon}
-            />
-          )}
-          focused={getActiveRouteState(state.routes, state.index, Routes.FAQs)}
-          onPress={() => navigation.navigate(Routes.FAQs)}
-        /> */}
-
-        {/* <DrawerItem
-          {...itemBaseStyle}
-          {...rest}
-          label="Privacy & Terms"
-          icon={() => (
-            <Icon type="MaterialIcons" name="privacy-tip" style={styles.icon} />
-          )}
-          focused={getActiveRouteState(
-            state.routes,
-            state.index,
-            Routes.Privacy
-          )}
-          onPress={() => navigation.navigate(Routes.Privacy)}
-        /> */}
-
         <DrawerItem
           {...itemBaseStyle}
           {...rest}
@@ -232,25 +160,8 @@ export const CustomDrawerContent: React.FC<DrawerContentComponentProps> = ({
           )}
           onPress={handlePrivacy}
         />
-        {/*   <DrawerItem
-          {...itemBaseStyle}
-          {...rest}
-          label="Cancel Account"
-          icon={() => (
-            <SvgXml
-              xml={Svgs.sidebarCancelIcon}
-              width={25 * scale}
-              height={25 * scale}
-            />
-          )}
-          onPress={cancelAccount}
-        /> */}
       </View>
       <FeedbackSidebar />
-      {/* <ModalCancelAccount
-        isModalVisible={isCancelAccountModal}
-        toggleModal={cancelAccount}
-      /> */}
     </DrawerContentScrollView>
   );
 };

@@ -4,11 +4,35 @@ import { useNavigation, useIsFocused } from '@react-navigation/core';
 import { StackNavigationProp } from '@react-navigation/stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Purchases from 'react-native-purchases';
+import appsFlyer from 'react-native-appsflyer';
 
 import { Loading } from '@Components';
-import { ENTITLEMENT_ID, API_APPLE_KEY, API_GOOGLE_KEY } from '@Lib/constants';
+import { ENTITLEMENT_ID } from '@Lib/constants';
 import { AuthContext, AuthContextType } from '@Context/AuthContext';
 import { Routes } from '@Navigators/routes';
+import {
+  API_APPLE_KEY,
+  API_GOOGLE_KEY,
+  APPSFLYER_DEV_KEY,
+  APPSFLYER_APP_ID
+} from '@env';
+
+// appsFlyer.initSdk(
+//   {
+//     devKey: APPSFLYER_DEV_KEY,
+//     isDebug: true,
+//     appId: APPSFLYER_APP_ID,
+//     onInstallConversionDataListener: true,
+//     timeToWaitForATTUserAuthorization: 10,
+//     onDeepLinkListener: true
+//   },
+//   result => {
+//     console.log(result);
+//   },
+//   error => {
+//     console.error(error);
+//   }
+// );
 
 const AppChecking: React.FC = () => {
   const { user } = useContext(AuthContext) as AuthContextType;
@@ -17,21 +41,29 @@ const AppChecking: React.FC = () => {
 
   useEffect(() => {
     // navigation.navigate(Routes.TabRoute);
-    if (isFocused) {
+    if (isFocused && user) {
       (async function () {
         await AsyncStorage.setItem('@loggedUser', 'true');
+
         let API_KEY = API_APPLE_KEY;
         if (Platform.OS === 'android') {
           API_KEY = API_GOOGLE_KEY;
         }
+
         await Purchases.configure({
           apiKey: API_KEY,
-          appUserID: user.uid,
+          // appUserID: user.uid,
           useAmazon: false
         });
 
+        // await appsFlyer.setCustomerUserId(user.uid, res => {
+        //   console.log(res);
+        // });
+
         try {
           const customerInfo = await Purchases.getCustomerInfo();
+          console.log('customerInfo----->', customerInfo);
+
           if (
             typeof customerInfo.entitlements.active[ENTITLEMENT_ID] !==
             'undefined'
@@ -41,13 +73,15 @@ const AppChecking: React.FC = () => {
             let expired =
               new Date().getTime() > activeData?.expirationDateMillis;
 
+            console.log('expired----->', expired);
+
             if (!expired) {
               navigation.navigate(Routes.TabRoute);
             } else {
-              navigation.navigate(Routes.Subscription, { selectItem: '' });
+              navigation.navigate(Routes.Subscription);
             }
           } else {
-            navigation.navigate(Routes.Subscription, { selectItem: '' });
+            navigation.navigate(Routes.Subscription);
           }
         } catch (e) {}
       })();

@@ -48,6 +48,8 @@ const Subscription: React.FC = () => {
         selectPackage
       );
 
+      console.log('=========>', purchaserInfo);
+
       if (
         typeof purchaserInfo.entitlements.active[ENTITLEMENT_ID] !== 'undefined'
       ) {
@@ -77,6 +79,8 @@ const Subscription: React.FC = () => {
       //     console.error(err);
       //   }
       // );
+      console.log('====Routes.AppChecking=====>');
+
       setIsPurchasing(false);
       navigation.navigate(Routes.AppChecking);
     }

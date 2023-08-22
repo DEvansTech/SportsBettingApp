@@ -41,7 +41,7 @@ const AppChecking: React.FC = () => {
 
   useEffect(() => {
     // navigation.navigate(Routes.TabRoute);
-    if (isFocused && user) {
+    if (isFocused) {
       (async function () {
         await AsyncStorage.setItem('@loggedUser', 'true');
 
@@ -52,7 +52,7 @@ const AppChecking: React.FC = () => {
 
         await Purchases.configure({
           apiKey: API_KEY,
-          // appUserID: user.uid,
+          appUserID: user.uid,
           useAmazon: false
         });
 
@@ -62,7 +62,6 @@ const AppChecking: React.FC = () => {
 
         try {
           const customerInfo = await Purchases.getCustomerInfo();
-          console.log('customerInfo----->', customerInfo);
 
           if (
             typeof customerInfo.entitlements.active[ENTITLEMENT_ID] !==
@@ -70,6 +69,7 @@ const AppChecking: React.FC = () => {
           ) {
             const activeData: any =
               customerInfo.entitlements.active[ENTITLEMENT_ID];
+
             let expired =
               new Date().getTime() > activeData?.expirationDateMillis;
 

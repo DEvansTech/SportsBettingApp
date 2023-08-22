@@ -54,9 +54,7 @@ const Splash: React.FC = () => {
 
   useEffect(() => {
     (async function () {
-      console.log('========splash=========');
       if (user) {
-        console.log('========splash==user=======');
         const docRef = await firestore().collection('users').doc(user.uid);
         await docRef.get().then(thisDoc => {
           if (!thisDoc.exists) {

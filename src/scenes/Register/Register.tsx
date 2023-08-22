@@ -106,32 +106,31 @@ const Register: React.FC = () => {
           (fullName?.givenName || '') + ' ' + (fullName?.familyName || '')
         );
 
-        if (result?.additionalUserInfo?.isNewUser) {
-          const userData = {
-            uid: result.user.uid,
-            email: result?.additionalUserInfo?.profile?.email,
-            firstName: fullName?.givenName || '',
-            lastName: fullName?.familyName || '',
-            registerType: 'apple',
-            registerDate: Date.now()
-          };
+        console.log('result======>', result);
 
-          const docRef = firestore().collection('users').doc(result.user.uid);
-          docRef.get().then(thisDoc => {
-            if (!thisDoc.exists) {
-              docRef.set(userData);
-            }
-          });
-          setLoading(false);
-        } else {
-          ToastMessage(
-            'The email address already exists.',
-            'warning',
-            'bottom'
-          );
-          setLoading(false);
-        }
+        const userData = {
+          uid: result.user.uid,
+          email: result?.additionalUserInfo?.profile?.email,
+          firstName: fullName?.givenName || '',
+          lastName: fullName?.familyName || '',
+          registerType: 'apple',
+          registerDate: Date.now()
+        };
+
+        const docRef = firestore().collection('users').doc(result.user.uid);
+        docRef.get().then(thisDoc => {
+          if (!thisDoc.exists) {
+            docRef.set(userData);
+          } else {
+            ToastMessage(
+              'The email address already exists.',
+              'warning',
+              'bottom'
+            );
+          }
+        });
       } catch (err) {
+      } finally {
         setLoading(false);
       }
     } else {

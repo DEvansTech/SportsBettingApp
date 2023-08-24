@@ -171,15 +171,10 @@ const MyAccount: React.FC = () => {
 
   useEffect(() => {
     if (isFocused) {
-      getUserData();
-    }
-  }, [navigation]);
-
-  useEffect(() => {
-    if (isFocused) {
       (async function () {
-        const customerInfo = await Purchases.getCustomerInfo();
-        setSubscriptionData(customerInfo.entitlements.active[ENTITLEMENT_ID]);
+        getUserData();
+        // const customerInfo = await Purchases.getCustomerInfo();
+        // setSubscriptionData(customerInfo.entitlements.active[ENTITLEMENT_ID]);
       })();
     }
   }, [isFocused]);

@@ -57,9 +57,7 @@ const Splash: React.FC = () => {
       if (user) {
         const docRef = await firestore().collection('users').doc(user.uid);
         await docRef.get().then(thisDoc => {
-          if (!thisDoc.exists) {
-            logout();
-          } else {
+          if (thisDoc.exists) {
             getUserName();
             navigation.navigate(Routes.DrawerRoute);
           }

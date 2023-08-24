@@ -40,52 +40,55 @@ const AppChecking: React.FC = () => {
   const isFocused = useIsFocused();
 
   useEffect(() => {
-    // navigation.navigate(Routes.TabRoute);
-    if (isFocused) {
-      (async function () {
-        await AsyncStorage.setItem('@loggedUser', 'true');
+    (async function () {
+      await AsyncStorage.setItem('@loggedUser', 'true');
+      navigation.navigate(Routes.TabRoute);
+    })();
+    // if (isFocused) {
+    //   (async function () {
+    //     await AsyncStorage.setItem('@loggedUser', 'true');
 
-        let API_KEY = API_APPLE_KEY;
-        if (Platform.OS === 'android') {
-          API_KEY = API_GOOGLE_KEY;
-        }
+    //     let API_KEY = API_APPLE_KEY;
+    //     if (Platform.OS === 'android') {
+    //       API_KEY = API_GOOGLE_KEY;
+    //     }
 
-        await Purchases.configure({
-          apiKey: API_KEY,
-          appUserID: user.uid,
-          useAmazon: false
-        });
+    //     await Purchases.configure({
+    //       apiKey: API_KEY,
+    //       appUserID: user.uid,
+    //       useAmazon: false
+    //     });
 
-        // await appsFlyer.setCustomerUserId(user.uid, res => {
-        //   console.log(res);
-        // });
+    //     // await appsFlyer.setCustomerUserId(user.uid, res => {
+    //     //   console.log(res);
+    //     // });
 
-        try {
-          const customerInfo = await Purchases.getCustomerInfo();
+    //     try {
+    //       const customerInfo = await Purchases.getCustomerInfo();
 
-          if (
-            typeof customerInfo.entitlements.active[ENTITLEMENT_ID] !==
-            'undefined'
-          ) {
-            const activeData: any =
-              customerInfo.entitlements.active[ENTITLEMENT_ID];
+    //       if (
+    //         typeof customerInfo.entitlements.active[ENTITLEMENT_ID] !==
+    //         'undefined'
+    //       ) {
+    //         const activeData: any =
+    //           customerInfo.entitlements.active[ENTITLEMENT_ID];
 
-            let expired =
-              new Date().getTime() > activeData?.expirationDateMillis;
+    //         let expired =
+    //           new Date().getTime() > activeData?.expirationDateMillis;
 
-            console.log('expired----->', expired);
+    //         console.log('expired----->', expired);
 
-            if (!expired) {
-              navigation.navigate(Routes.TabRoute);
-            } else {
-              navigation.navigate(Routes.Subscription);
-            }
-          } else {
-            navigation.navigate(Routes.Subscription);
-          }
-        } catch (e) {}
-      })();
-    }
+    //         if (!expired) {
+    //           navigation.navigate(Routes.TabRoute);
+    //         } else {
+    //           navigation.navigate(Routes.Subscription);
+    //         }
+    //       } else {
+    //         navigation.navigate(Routes.Subscription);
+    //       }
+    //     } catch (e) {}
+    //   })();
+    // }
   }, [isFocused]);
 
   return <Loading />;

@@ -14,7 +14,7 @@ import {
   statusCodes
 } from '@react-native-google-signin/google-signin';
 import { appleAuth } from '@invertase/react-native-apple-authentication';
-import { Container, Content, Icon, Text, View, Button } from 'native-base';
+import { Container, Content, Text, View, Button } from 'native-base';
 import { SvgXml } from 'react-native-svg';
 
 import { Loading, Button as CustomButton, TermsPrivacy } from '@Components';
@@ -33,7 +33,7 @@ GoogleSignin.configure({
 
 const Register: React.FC = () => {
   const navigation = useNavigation<StackNavigationProp<any, any>>();
-  const { user, setUser, setDisplayName } = useContext(
+  const { setUser, setDisplayName } = useContext(
     AuthContext
   ) as AuthContextType;
   const [loading, setLoading] = useState(false);
@@ -64,6 +64,7 @@ const Register: React.FC = () => {
         docRef.get().then(thisDoc => {
           if (!thisDoc.exists) {
             docRef.set(userData);
+            setUser(result.user);
           }
         });
         setDisplayName(userData.firstName + ' ' + userData.lastName);
@@ -95,7 +96,7 @@ const Register: React.FC = () => {
 
         const { identityToken, nonce, fullName } = appleAuthRequestResponse;
 
-        const appleCredential = auth.AppleAuthProvider.credential(
+        const appleCredential = await auth.AppleAuthProvider.credential(
           identityToken,
           nonce
         );
@@ -106,8 +107,6 @@ const Register: React.FC = () => {
           (fullName?.givenName || '') + ' ' + (fullName?.familyName || '')
         );
 
-        console.log('result======>', result);
-
         const userData = {
           uid: result.user.uid,
           email: result?.additionalUserInfo?.profile?.email,
@@ -117,10 +116,15 @@ const Register: React.FC = () => {
           registerDate: Date.now()
         };
 
-        const docRef = firestore().collection('users').doc(result.user.uid);
-        docRef.get().then(thisDoc => {
+        const docRef = await firestore()
+          .collection('users')
+          .doc(result.user.uid);
+
+        await docRef.get().then(thisDoc => {
           if (!thisDoc.exists) {
             docRef.set(userData);
+            setUser(result.user);
+            navigation.navigate(Routes.DrawerRoute);
           } else {
             ToastMessage(
               'The email address already exists.',
@@ -142,21 +146,21 @@ const Register: React.FC = () => {
     }
   };
 
-  const onAuthStateChanged = (authUser: any) => {
-    setUser(authUser);
-  };
+  // const onAuthStateChanged = (authUser: any) => {
+  //   setUser(authUser);
+  // };
 
-  useEffect(() => {
-    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+  // useEffect(() => {
+  //   const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
 
-    return subscriber;
-  }, []);
+  //   return subscriber;
+  // }, []);
 
-  useEffect(() => {
-    if (user) {
-      navigation.navigate(Routes.DrawerRoute);
-    }
-  }, [user]);
+  // useEffect(() => {
+  //   if (user) {
+  //     navigation.navigate(Routes.DrawerRoute);
+  //   }
+  // }, [user]);
 
   return (
     <Container style={styles.background}>

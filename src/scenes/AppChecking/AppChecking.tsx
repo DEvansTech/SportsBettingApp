@@ -17,78 +17,81 @@ import {
   APPSFLYER_APP_ID
 } from '@env';
 
-// appsFlyer.initSdk(
-//   {
-//     devKey: APPSFLYER_DEV_KEY,
-//     isDebug: true,
-//     appId: APPSFLYER_APP_ID,
-//     onInstallConversionDataListener: true,
-//     timeToWaitForATTUserAuthorization: 10,
-//     onDeepLinkListener: true
-//   },
-//   result => {
-//     console.log(result);
-//   },
-//   error => {
-//     console.error(error);
-//   }
-// );
+const initOptions = {
+  devKey: APPSFLYER_DEV_KEY,
+  isDebug: true,
+  appId: APPSFLYER_APP_ID,
+  onInstallConversionDataListener: true,
+  timeToWaitForATTUserAuthorization: 10,
+  onDeepLinkListener: false
+};
 
 const AppChecking: React.FC = () => {
+  if (Platform.OS == 'ios') {
+    appsFlyer.setCurrentDeviceLanguage('EN');
+  }
+  appsFlyer.initSdk(
+    initOptions,
+    result => {
+      console.log(result);
+    },
+    error => {
+      console.error(error);
+    }
+  );
+
   const { user } = useContext(AuthContext) as AuthContextType;
   const navigation = useNavigation<StackNavigationProp<any, any>>();
   const isFocused = useIsFocused();
 
   useEffect(() => {
-    (async function () {
-      await AsyncStorage.setItem('@loggedUser', 'true');
-      navigation.navigate(Routes.TabRoute);
-    })();
-    // if (isFocused) {
-    //   (async function () {
-    //     await AsyncStorage.setItem('@loggedUser', 'true');
+    //   await AsyncStorage.setItem('@loggedUser', 'true');
+    //   await appsFlyer.setCustomerUserId(user.uid, res => {
+    //     console.log(res);
+    //   });
+    //   navigation.navigate(Routes.TabRoute);
+    if (isFocused) {
+      (async function () {
+        await AsyncStorage.setItem('@loggedUser', 'true');
+        await appsFlyer.setCustomerUserId(user.uid, res => {
+          console.log(res);
+        });
 
-    //     let API_KEY = API_APPLE_KEY;
-    //     if (Platform.OS === 'android') {
-    //       API_KEY = API_GOOGLE_KEY;
-    //     }
+        let API_KEY = API_APPLE_KEY;
+        if (Platform.OS === 'android') {
+          API_KEY = API_GOOGLE_KEY;
+        }
 
-    //     await Purchases.configure({
-    //       apiKey: API_KEY,
-    //       appUserID: user.uid,
-    //       useAmazon: false
-    //     });
+        await Purchases.configure({
+          apiKey: API_KEY,
+          appUserID: user.uid,
+          useAmazon: false
+        });
 
-    //     // await appsFlyer.setCustomerUserId(user.uid, res => {
-    //     //   console.log(res);
-    //     // });
+        try {
+          const customerInfo = await Purchases.getCustomerInfo();
 
-    //     try {
-    //       const customerInfo = await Purchases.getCustomerInfo();
+          if (
+            typeof customerInfo.entitlements.active[ENTITLEMENT_ID] !==
+            'undefined'
+          ) {
+            const activeData: any =
+              customerInfo.entitlements.active[ENTITLEMENT_ID];
 
-    //       if (
-    //         typeof customerInfo.entitlements.active[ENTITLEMENT_ID] !==
-    //         'undefined'
-    //       ) {
-    //         const activeData: any =
-    //           customerInfo.entitlements.active[ENTITLEMENT_ID];
+            let expired =
+              new Date().getTime() > activeData?.expirationDateMillis;
 
-    //         let expired =
-    //           new Date().getTime() > activeData?.expirationDateMillis;
-
-    //         console.log('expired----->', expired);
-
-    //         if (!expired) {
-    //           navigation.navigate(Routes.TabRoute);
-    //         } else {
-    //           navigation.navigate(Routes.Subscription);
-    //         }
-    //       } else {
-    //         navigation.navigate(Routes.Subscription);
-    //       }
-    //     } catch (e) {}
-    //   })();
-    // }
+            if (!expired) {
+              navigation.navigate(Routes.TabRoute);
+            } else {
+              navigation.navigate(Routes.Subscription);
+            }
+          } else {
+            navigation.navigate(Routes.Subscription);
+          }
+        } catch (e) {}
+      })();
+    }
   }, [isFocused]);
 
   return <Loading />;

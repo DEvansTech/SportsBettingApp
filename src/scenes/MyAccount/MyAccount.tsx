@@ -173,8 +173,8 @@ const MyAccount: React.FC = () => {
     if (isFocused) {
       (async function () {
         getUserData();
-        // const customerInfo = await Purchases.getCustomerInfo();
-        // setSubscriptionData(customerInfo.entitlements.active[ENTITLEMENT_ID]);
+        const customerInfo = await Purchases.getCustomerInfo();
+        setSubscriptionData(customerInfo.entitlements.active[ENTITLEMENT_ID]);
       })();
     }
   }, [isFocused]);

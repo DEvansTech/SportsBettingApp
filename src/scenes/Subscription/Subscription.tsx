@@ -48,8 +48,6 @@ const Subscription: React.FC = () => {
         selectPackage
       );
 
-      console.log('=========>', purchaserInfo);
-
       if (
         typeof purchaserInfo.entitlements.active[ENTITLEMENT_ID] !== 'undefined'
       ) {
@@ -57,29 +55,28 @@ const Subscription: React.FC = () => {
       }
     } catch (e) {
     } finally {
-      // const {
-      //   product: { price, identifier }
-      // } = selectPackage;
+      const {
+        product: { price, identifier }
+      } = selectPackage;
 
-      // const eventName = 'af_purchase';
-      // const eventValues = {
-      //   af_content_id: identifier,
-      //   af_currency: 'USD',
-      //   af_revenue: price,
-      //   af_quantity: 1
-      // };
+      const eventName = 'af_purchase';
+      const eventValues = {
+        af_content_id: identifier,
+        af_currency: 'USD',
+        af_revenue: price,
+        af_quantity: 1
+      };
 
-      // appsFlyer.logEvent(
-      //   eventName,
-      //   eventValues,
-      //   res => {
-      //     console.log(res);
-      //   },
-      //   err => {
-      //     console.error(err);
-      //   }
-      // );
-      console.log('====Routes.AppChecking=====>');
+      appsFlyer.logEvent(
+        eventName,
+        eventValues,
+        res => {
+          console.log(res);
+        },
+        err => {
+          console.error(err);
+        }
+      );
 
       setIsPurchasing(false);
       navigation.navigate(Routes.AppChecking);

@@ -136,7 +136,7 @@ android {
         applicationId "com.pss.oddsr"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 128
+        versionCode 136
         versionName "1.0.0"
         multiDexEnabled true
         missingDimensionStrategy 'store', 'play'
@@ -226,6 +226,7 @@ dependencies {
 
     implementation 'androidx.work:work-runtime-ktx:2.7.0'
 
+    implementation project(':react-native-appsflyer')
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
       exclude group:'com.facebook.fbjni'
     }

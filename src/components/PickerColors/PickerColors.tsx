@@ -11,8 +11,6 @@ const PickerColors: React.FC<Props> = ({
   teamLogo,
   ballPosition,
   locationTeamAbbr,
-  awayTeamAbbr,
-  homeTeamAbbr,
   locationYardline,
   situationDown,
   situationYfd

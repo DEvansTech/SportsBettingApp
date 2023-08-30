@@ -19,7 +19,7 @@ import {
 
 const initOptions = {
   devKey: APPSFLYER_DEV_KEY,
-  isDebug: true,
+  isDebug: false,
   appId: APPSFLYER_APP_ID,
   onInstallConversionDataListener: true,
   timeToWaitForATTUserAuthorization: 10,
@@ -45,13 +45,14 @@ const AppChecking: React.FC = () => {
   const isFocused = useIsFocused();
 
   useEffect(() => {
-    //   await AsyncStorage.setItem('@loggedUser', 'true');
-    //   await appsFlyer.setCustomerUserId(user.uid, res => {
-    //     console.log(res);
-    //   });
-    //   navigation.navigate(Routes.TabRoute);
     if (isFocused) {
       (async function () {
+        // await AsyncStorage.setItem('@loggedUser', 'true');
+        // await appsFlyer.setCustomerUserId(user.uid, res => {
+        //   console.log(res);
+        // });
+        // navigation.navigate(Routes.TabRoute);
+
         await AsyncStorage.setItem('@loggedUser', 'true');
         await appsFlyer.setCustomerUserId(user.uid, res => {
           console.log(res);

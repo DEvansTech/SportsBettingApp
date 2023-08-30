@@ -107,6 +107,8 @@ const NFLWatch: React.FC<Props> = ({
     setPressGlass(selectionState);
   }, [selectionState]);
 
+  console.log(data);
+
   return (
     <View style={[styles.container, lastGame && styles.noBorder]}>
       <View style={styles.gameView}>
@@ -173,17 +175,15 @@ const NFLWatch: React.FC<Props> = ({
             teamLogo={checkTeamIcon(
               'ncaafb',
               data.away_team_abbr === data.possession_team_abbr
-                ? data.awayTeamIcon
-                : data.homeTeamIcon
+                ? data.away_team_abbr
+                : data.home_team_abbr
             )}
             ballPosition={
               data.location_team_abbr === data.away_team_abbr ? 'left' : 'right'
             }
             locationTeamAbbr={data.location_team_abbr}
-            awayTeamAbbr={checkTeamIcon('ncaafb', data.awayTeamIcon)}
-            homeTeamAbbr={checkTeamIcon('ncaafb', data.homeTeamIcon)}
             locationYardline={data.location_yardline}
-            situationDown={data.situation_down}
+            situationDown={data?.situation_down}
             situationYfd={data.situation_yfd}
           />
         </View>

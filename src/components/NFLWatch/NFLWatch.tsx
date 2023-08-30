@@ -181,8 +181,6 @@ const NFLWatch: React.FC<Props> = ({
               data.location_team_abbr === data.away_team_abbr ? 'left' : 'right'
             }
             locationTeamAbbr={data.location_team_abbr}
-            awayTeamAbbr={checkTeamIcon('nfl', data.away_team_abbr)}
-            homeTeamAbbr={checkTeamIcon('nfl', data.home_team_abbr)}
             locationYardline={data.location_yardline}
             situationDown={data.situation_down}
             situationYfd={data.situation_yfd}

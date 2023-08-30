@@ -53,35 +53,43 @@ export const checkTeamIcon = (
   sportName: string | undefined,
   teamName: string | undefined
 ) => {
-  // console.log('sportName----->', sportName, teamName?.replace('-', '_'));
   switch (sportName?.trim()) {
     case 'mlb':
     case 'MLB':
-      if (TeamLogos[`MLB_${teamName}`]) {
-        return TeamLogos[`MLB_${teamName}`];
+      if (`MLB_${teamName}` in TeamLogos) {
+        return getTeamLogo(TeamLogos)(`MLB_${teamName}` as any);
       }
     case 'nfl':
     case 'NFL':
-      if (TeamLogos[`NFL_${teamName}`]) {
-        return TeamLogos[`NFL_${teamName}`];
+      if (`NFL_${teamName}` in TeamLogos) {
+        return getTeamLogo(TeamLogos)(`NFL_${teamName}` as any);
       }
     case 'ncaafb':
     case 'NCAAFB':
-      if (TeamLogos[`NCAA_${teamName?.replace('-', '_')}`]) {
-        return TeamLogos[`NCAA_${teamName?.replace('-', '_')}`];
+      if (`NCAA_${teamName?.replace('-', '_')}` in TeamLogos) {
+        return getTeamLogo(TeamLogos)(
+          `NCAA_${teamName?.replace('-', '_')}` as any
+        );
+      } else {
+        return getTeamLogo(Images)(`NCAA_Generic.png` as any);
       }
     case 'ncaab':
     case 'NCAAM':
-      if (TeamLogos[`NCAA_${teamName?.replace('-', '_')}`]) {
-        return TeamLogos[`NCAA_${teamName?.replace('-', '_')}`];
+      if (`NCAA_${teamName?.replace('-', '_')}` in TeamLogos) {
+        return getTeamLogo(TeamLogos)(
+          `NCAA_${teamName?.replace('-', '_')}` as any
+        );
       } else {
         return getTeamLogo(Images)(`NCAA_Generic.png` as any);
       }
     case 'nba':
     case 'NBA':
-      if (TeamLogos[`NBA_${teamName}`]) {
-        return TeamLogos[`NBA_${teamName}`];
+      if (`NBA_${teamName}` in TeamLogos) {
+        return getTeamLogo(TeamLogos)(`NBA_${teamName}` as any);
+      } else {
+        return getTeamLogo(Images)(`NBA_Empty_Logo` as any);
       }
+
     default:
       return;
   }

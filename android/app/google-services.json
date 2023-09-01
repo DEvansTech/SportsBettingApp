@@ -22,6 +22,14 @@
           }
         },
         {
+          "client_id": "29630197922-tqbabc0g5ikvvq5l0ilt8sm18btip9mr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pss.oddsr",
+            "certificate_hash": "09543cdc60b579e514646ea6d895e8a3e3a8fc54"
+          }
+        },
+        {
           "client_id": "29630197922-lgnr9b48rp7edj33j26olrer97kksupa.apps.googleusercontent.com",
           "client_type": 3
         }

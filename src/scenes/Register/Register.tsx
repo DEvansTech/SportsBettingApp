@@ -28,7 +28,8 @@ import styles, { scale } from './styles';
 
 GoogleSignin.configure({
   webClientId: WEB_CLIENT_ID,
-  offlineAccess: false
+  offlineAccess: false,
+  forceCodeForRefreshToken: true
 });
 
 const Register: React.FC = () => {
@@ -41,6 +42,7 @@ const Register: React.FC = () => {
   const onGoogleResiger = async () => {
     try {
       setLoading(true);
+
       await GoogleSignin.hasPlayServices();
       const { idToken } = await GoogleSignin.signIn();
 
@@ -58,6 +60,7 @@ const Register: React.FC = () => {
           registerType: 'google',
           registerDate: Date.now()
         };
+        setDisplayName(userData.firstName + ' ' + userData.lastName);
         const docRef = await firestore()
           .collection('users')
           .doc(result.user.uid);
@@ -65,9 +68,10 @@ const Register: React.FC = () => {
           if (!thisDoc.exists) {
             docRef.set(userData);
             setUser(result.user);
+            navigation.navigate(Routes.DrawerRoute);
           }
         });
-        setDisplayName(userData.firstName + ' ' + userData.lastName);
+
         setLoading(false);
       } else {
         setLoading(false);

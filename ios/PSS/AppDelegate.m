@@ -36,7 +36,7 @@ static void InitializeFlipper(UIApplication *application) {
 
   if (![[NSUserDefaults standardUserDefaults] objectForKey:@"FirstRun"]) {
     // Delete values from keychain here
-    [[NSUserDefaults standardUserDefaults] setValue:@"1strun" forKey:@"FirstRun"];
+    // [[NSUserDefaults standardUserDefaults] setValue:@"1strun" forKey:@"FirstRun"];
     [[NSUserDefaults standardUserDefaults] synchronize];
   }
 

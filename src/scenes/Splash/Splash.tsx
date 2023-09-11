@@ -65,6 +65,7 @@ const Splash: React.FC = () => {
       } else {
         const isLogged = await AsyncStorage.getItem('@loggedUser');
         if (!isLogged) {
+          logout();
           navigation.navigate(Routes.Introduction);
         }
       }

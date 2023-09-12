@@ -9,7 +9,6 @@ import { AuthContext, AuthContextType } from '@Context/AuthContext';
 import { MainContext, MainContextType } from '@Context/MainContext';
 
 import { SubHeader, SegmentSort, MLBWatch, Loading } from '@Components';
-import { dateCompare } from '@Lib/utilities';
 import { RootState } from '@Store/store';
 import { getGamedata } from '@Store/schedule/actions';
 
@@ -155,11 +154,7 @@ const MLB: React.FC<Props> = ({ selectedDate, sportName }) => {
     return (
       <View style={styles.noDataView}>
         <Text style={styles.headerDateText}>
-          {exitGame
-            ? 'No games.'
-            : dateCompare(selectedDate)
-            ? 'Not yet rated.'
-            : 'No recommendation.'}
+          {exitGame ? 'No games.' : 'No recommendation.'}
         </Text>
       </View>
     );

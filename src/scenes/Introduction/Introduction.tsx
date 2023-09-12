@@ -17,6 +17,7 @@ import Spread from './Spread';
 import OBISays from './OBISays';
 import Watching from './Watching';
 import Feedback from './Feedback';
+import Scoreboard from './Scoreboard';
 
 import { Routes } from '@Navigators/routes';
 import styles, { deviceWidth } from './styles';
@@ -92,6 +93,11 @@ const Introduction: React.FC = () => {
     // <OverUnder nextPage={nextPage} prevPage={prevPage} closePage={closePage} />,
     <OBISays nextPage={nextPage} prevPage={prevPage} closePage={closePage} />,
     <Watching nextPage={nextPage} prevPage={prevPage} closePage={closePage} />,
+    <Scoreboard
+      nextPage={nextPage}
+      prevPage={prevPage}
+      closePage={closePage}
+    />,
     // <Partners nextPage={nextPage} prevPage={prevPage} closePage={closePage} />,
     <Feedback nextPage={nextPage} prevPage={prevPage} closePage={closePage} />
   ];

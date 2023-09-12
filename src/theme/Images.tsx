@@ -22,7 +22,7 @@ export default {
   carousel4: require('@Assets/images/carousel4.png'),
   carousel5: require('@Assets/images/carousel5.png'),
   carousel6: require('@Assets/images/carousel6.png'),
-  // carousel7: require('@Assets/images/carousel7.png'),
+  carousel7: require('@Assets/images/carousel7.png'),
   carousel8: require('@Assets/images/carousel8.png'),
 
   NCAA_Generic: require('@Assets/ncaa_teams/Generic.png'),

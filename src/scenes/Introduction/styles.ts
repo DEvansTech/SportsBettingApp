@@ -91,7 +91,7 @@ export default StyleSheet.create({
     fontFamily: Fonts.regular
   },
   content: {
-    padding: 20 * scale
+    paddingHorizontal: 20 * scale
   },
   barRatingView: {
     flexDirection: 'row',
@@ -159,6 +159,10 @@ export default StyleSheet.create({
   imageView: {
     width: '100%',
     height: deviceWidth
+  },
+  imageView1: {
+    width: '100%',
+    height: deviceWidth / 2
   },
   titleView: {
     flexDirection: 'row',

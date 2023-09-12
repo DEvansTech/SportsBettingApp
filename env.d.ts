@@ -11,6 +11,7 @@ declare module '@env' {
   export const API_GOOGLE_KEY: string;
   export const APPSFLYER_DEV_KEY: string;
   export const APPSFLYER_APP_ID: string;
+  export const ITERABLE_API_KEY: string;
 
   export const ENV: 'dev' | 'prod';
 }

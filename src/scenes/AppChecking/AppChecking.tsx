@@ -5,6 +5,7 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Purchases from 'react-native-purchases';
 import appsFlyer from 'react-native-appsflyer';
+import { Iterable, IterableConfig } from '@iterable/react-native-sdk';
 
 import { Loading } from '@Components';
 import { ENTITLEMENT_ID } from '@Lib/constants';
@@ -14,7 +15,8 @@ import {
   API_APPLE_KEY,
   API_GOOGLE_KEY,
   APPSFLYER_DEV_KEY,
-  APPSFLYER_APP_ID
+  APPSFLYER_APP_ID,
+  ITERABLE_API_KEY
 } from '@env';
 
 const initOptions = {
@@ -60,11 +62,6 @@ const AppChecking: React.FC = () => {
   useEffect(() => {
     if (isFocused) {
       (async function () {
-        // await AsyncStorage.setItem('@loggedUser', 'true');
-        // await appsFlyer.setCustomerUserId(user.uid, res => {
-        //   console.log(res);
-        // });
-        // navigation.navigate(Routes.TabRoute);
 
         await AsyncStorage.setItem('@loggedUser', 'true');
         await appsFlyer.setCustomerUserId(user.uid, res => {
@@ -98,6 +95,25 @@ const AppChecking: React.FC = () => {
           Name: user.firstName + ' ' + user.lastName,
           Email: user.email
         });
+
+        const config = new IterableConfig()
+        config.inAppDisplayInterval = 1.0 // Min gap between in-apps. No need to set this in production.
+        console.log('Iterable Initialization Information: ', ITERABLE_API_KEY, user.email, user.uid);
+        Iterable.initialize(ITERABLE_API_KEY, config);
+        Iterable.setEmail(user.email);
+        Iterable.setUserId(user.uid);
+
+        Iterable.getEmail().then(email => {
+          Purchases.setAttributes({'$email': email});
+        });
+
+        Iterable.getUserId().then(userId => {
+          Purchases.setAttributes({"$iterableUserId": userId});
+        });
+
+        // Purchases.setAttributes({'$iterableCampaignId': '1', '$iterableTemplateId': '1'});
+        
+        // navigation.navigate(Routes.TabRoute);
 
         try {
           const customerInfo = await Purchases.getCustomerInfo();

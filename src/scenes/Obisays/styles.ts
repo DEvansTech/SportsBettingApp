@@ -133,8 +133,7 @@ export default StyleSheet.create({
   descBoldText: {
     fontSize: 15 * scale,
     fontFamily: Fonts.black
-  },
-  detailView: {}
+  }
 });
 
 export const HTMLStyle = StyleSheet.create({

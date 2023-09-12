@@ -1,5 +1,5 @@
 import React from 'react';
-import RN, { TouchableOpacity, Image } from 'react-native';
+import { TouchableOpacity, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { Container, Content, Text, View, Icon, Header } from 'native-base';
@@ -15,37 +15,6 @@ const ObiDetail: React.FC<OBIDetailProps> = props => {
   const { obiData } = props?.route?.params;
   const navigation = useNavigation<StackNavigationProp<any, any>>();
 
-  const replaceText = (dataString: string) => {
-    const string = dataString.replace(/<br \/>/gi, '');
-    return string;
-  };
-  function mapStringToComponent(stringToRender: string) {
-    const parseResult = stringToRender.match(/<([a-z]*)>(.*)<\/[a-z]*>/i);
-    // result of this regex ["<Text>hello</Text>", "Text", "hello"]
-    console.log('parseResult=======>', parseResult);
-
-    if (parseResult !== null) {
-      const [, compName, innerText] = parseResult;
-
-      return React.createElement(
-        RN[compName],
-        null, // here may be an object with attributes if your node has any
-        innerText
-      );
-    }
-
-    return null;
-  }
-  const renderHTML = () => {
-    const htmlCode = obiData.fullText.trim();
-    const renderCode = replaceText(htmlCode);
-    console.log('=-----', renderCode);
-    return (
-      <View style={styles.detailView}>
-        <Text>{renderCode}</Text>
-      </View>
-    );
-  };
   return (
     <Container style={styles.background}>
       <Header
@@ -77,13 +46,12 @@ const ObiDetail: React.FC<OBIDetailProps> = props => {
       {Object.keys(obiData).length > 0 ? (
         <Content contentContainerStyle={styles.contentView}>
           <View style={styles.descView}>
-            {renderHTML()}
-            {/* <RenderHtml
+            <RenderHtml
               contentWidth={deviceWidth}
               source={{
                 html: obiData.fullText.trim()
               }}
-            /> */}
+            />
           </View>
         </Content>
       ) : (

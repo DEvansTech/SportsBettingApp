@@ -48,7 +48,7 @@ const Splash: React.FC = () => {
     }
   };
 
-  var authFlag = true;
+  let authFlag = true;
   const onAuthStateChanged = (authUser: any) => {
     if(authFlag) {
       setUser(authUser);

@@ -31,16 +31,16 @@ const AppChecking: React.FC = () => {
     appsFlyer.setCurrentDeviceLanguage('EN');
   }
 
-  appsFlyer.onInstallConversionData((res) => {
+  appsFlyer.onInstallConversionData(res => {
     console.log('OnInstallConversionData: ', res);
     if (JSON.parse(res.data.is_first_launch) === true) {
-      if(res.data.af_status === 'Non-organic') {
-        console.log("This is first launch and a Non-Organic install");
-      } else if (res.data.af_status="Organic") {
-        console.log("This is launch and a Organic Install");
+      if (res.data.af_status === 'Non-organic') {
+        console.log('This is first launch and a Non-Organic install');
+      } else if ((res.data.af_status = 'Organic')) {
+        console.log('This is launch and a Organic Install');
       }
     } else {
-      console.log("This is not first launch");
+      console.log('This is not first launch');
     }
   });
   appsFlyer.initSdk(
@@ -85,13 +85,19 @@ const AppChecking: React.FC = () => {
         appsFlyer.getAppsFlyerUID((err, uid) => {
           if (err) {
             Purchases.setAppsflyerID(user.uid);
-            console.log("Can not get AppsFlyer UID. Customer User ID: ", user.uid);
+            console.log(
+              'Can not get AppsFlyer UID. Customer User ID: ',
+              user.uid
+            );
           } else {
             Purchases.setAppsflyerID(uid);
-            console.log("AppsFlyerID for RevenueCat: ", uid);
+            console.log('AppsFlyerID for RevenueCat: ', uid);
           }
         });
-        Purchases.setAttributes({"Name": user.firstName + ' ' + user.lastName, "Email": user.email});
+        Purchases.setAttributes({
+          Name: user.firstName + ' ' + user.lastName,
+          Email: user.email
+        });
 
         try {
           const customerInfo = await Purchases.getCustomerInfo();

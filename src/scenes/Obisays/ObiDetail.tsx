@@ -29,7 +29,7 @@ const ObiDetail: React.FC<OBIDetailProps> = props => {
             name="arrow-left"
             style={styles.backIcon}
           />
-          <Text style={styles.headerText}>ROI Says</Text>
+          <Text style={styles.headerText}>Roi Says</Text>
         </TouchableOpacity>
         <SvgXml
           xml={Svgs.obiWhiteIcon}

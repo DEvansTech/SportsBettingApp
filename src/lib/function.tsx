@@ -42,10 +42,10 @@ export const responseFontSize = (
   defaultValue: number
 ) => {
   const deviceWidth = Dimensions.get('window').width;
-  const screenWidth = deviceWidth * width;
-  const elemWidth = value.length + 1;
-  const expectValue = PixelRatio.roundToNearestPixel(screenWidth / elemWidth);
-  const resultValue = expectValue > defaultValue ? defaultValue : expectValue;
+  const elementWidth = deviceWidth * width;
+  const elementLength = value.length + 1;
+  const expectValue = elementWidth / elementLength;
+  const resultValue = expectValue / (PixelRatio.getFontScale() * PixelRatio.get());
   return resultValue;
 };
 

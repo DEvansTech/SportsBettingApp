@@ -55,7 +55,7 @@ const SubHeader: React.FC = () => {
               color={Colors.white}
             />
           )}
-          style={pickerSelectStyles(responseFontSize(sportName, 0.3, 22))}
+          style={pickerSelectStyles(responseFontSize(sportName, 0.8, 22))}
           placeholder={placeholder}
         />
       </View>

@@ -107,11 +107,11 @@ const AppChecking: React.FC = () => {
         Iterable.setEmail(user.email);
         Iterable.setUserId(user.uid);
         Iterable.getEmail().then(email => {
-          Purchases.setAttributes({'$email': email || null});
+          Purchases.setAttributes({ $email: email || null });
         });
 
         Iterable.getUserId().then(userId => {
-          Purchases.setAttributes({"$iterableUserId": userId || null});
+          Purchases.setAttributes({ $iterableUserId: userId || null });
         });
 
         // Purchases.setAttributes({'$iterableCampaignId': '1', '$iterableTemplateId': '1'});

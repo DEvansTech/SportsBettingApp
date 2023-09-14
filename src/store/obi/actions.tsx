@@ -7,7 +7,7 @@ import { ACTION_TYPES } from '@Store/actionTypes';
 export const getObiDta = () => {
   return async (dispatch: Dispatch) => {
     dispatch({ type: ACTION_TYPES.OBI.GET_LOADING, payload: true });
-    const obiURI = `${OBI_API_URI}GetArticle`;
+    const obiURI = `https://pss-obisays.azurewebsites.net/v2/GetArticle`;
     const result = await axios.get(obiURI);
     let data = [];
     if (result.status === 200) {

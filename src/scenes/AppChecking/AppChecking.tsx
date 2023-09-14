@@ -106,13 +106,12 @@ const AppChecking: React.FC = () => {
         Iterable.initialize(ITERABLE_API_KEY, config);
         Iterable.setEmail(user.email);
         Iterable.setUserId(user.uid);
-
-        Iterable.getEmail().then((email: string) => {
-          Purchases.setAttributes({ $email: email });
+        Iterable.getEmail().then(email => {
+          Purchases.setAttributes({'$email': email || null});
         });
 
-        Iterable.getUserId().then((userId: string) => {
-          Purchases.setAttributes({ $iterableUserId: userId });
+        Iterable.getUserId().then(userId => {
+          Purchases.setAttributes({"$iterableUserId": userId || null});
         });
 
         // Purchases.setAttributes({'$iterableCampaignId': '1', '$iterableTemplateId': '1'});

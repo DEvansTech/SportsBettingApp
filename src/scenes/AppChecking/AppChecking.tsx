@@ -62,7 +62,6 @@ const AppChecking: React.FC = () => {
   useEffect(() => {
     if (isFocused) {
       (async function () {
-
         await AsyncStorage.setItem('@loggedUser', 'true');
         await appsFlyer.setCustomerUserId(user.uid, res => {
           console.log(res);
@@ -96,23 +95,27 @@ const AppChecking: React.FC = () => {
           Email: user.email
         });
 
-        const config = new IterableConfig()
-        config.inAppDisplayInterval = 1.0 // Min gap between in-apps. No need to set this in production.
-        console.log('Iterable Initialization Information: ', ITERABLE_API_KEY, user.email, user.uid);
+        const config = new IterableConfig();
+        config.inAppDisplayInterval = 1.0; // Min gap between in-apps. No need to set this in production.
+        console.log(
+          'Iterable Initialization Information: ',
+          ITERABLE_API_KEY,
+          user.email,
+          user.uid
+        );
         Iterable.initialize(ITERABLE_API_KEY, config);
         Iterable.setEmail(user.email);
         Iterable.setUserId(user.uid);
-
         Iterable.getEmail().then(email => {
-          Purchases.setAttributes({'$email': email || null});
+          Purchases.setAttributes({ $email: email || null });
         });
 
         Iterable.getUserId().then(userId => {
-          Purchases.setAttributes({"$iterableUserId": userId || null});
+          Purchases.setAttributes({ $iterableUserId: userId || null });
         });
 
         // Purchases.setAttributes({'$iterableCampaignId': '1', '$iterableTemplateId': '1'});
-        
+
         // navigation.navigate(Routes.TabRoute);
 
         try {

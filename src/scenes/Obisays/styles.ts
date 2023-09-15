@@ -133,6 +133,25 @@ export default StyleSheet.create({
   descBoldText: {
     fontSize: 15 * scale,
     fontFamily: Fonts.black
+  },
+  textStyle: {
+    fontSize: 15 * scale,
+    fontFamily: Fonts.regular,
+    lineHeight: 30 * scale
+  },
+  footerView: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 20 * scale
+  },
+  dotImg: {
+    width: 10 * scale,
+    height: 10 * scale
+  },
+  roisayImg: {
+    width: 100 * scale,
+    height: 110 * scale,
+    marginTop: 15 * scale
   }
 });
 

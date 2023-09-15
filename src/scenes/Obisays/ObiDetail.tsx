@@ -3,17 +3,32 @@ import { TouchableOpacity, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { Container, Content, Text, View, Icon, Header } from 'native-base';
-import RenderHtml from 'react-native-render-html';
 import { SvgXml } from 'react-native-svg';
 
 import { Loading } from '@Components';
 import { Colors, Svgs } from '@Theme';
 import { OBIDetailProps } from './types';
-import styles, { scale, deviceWidth } from './styles';
+import styles, { scale } from './styles';
 
 const ObiDetail: React.FC<OBIDetailProps> = props => {
   const { obiData } = props?.route?.params;
   const navigation = useNavigation<StackNavigationProp<any, any>>();
+
+  const renderOBI = (obi: any) => {
+    switch (obi.type) {
+      case 'text':
+        return <Text style={[styles.textStyle, obi.style]}>{obi.value}</Text>;
+      case 'image':
+        return (
+          <Image
+            source={{ uri: obi.uri.replace(/\s/g, '') }}
+            style={[obi.style]}
+          />
+        );
+      default:
+        return;
+    }
+  };
 
   return (
     <Container style={styles.background}>
@@ -46,11 +61,35 @@ const ObiDetail: React.FC<OBIDetailProps> = props => {
       {Object.keys(obiData).length > 0 ? (
         <Content contentContainerStyle={styles.contentView}>
           <View style={styles.descView}>
-            <RenderHtml
-              contentWidth={deviceWidth}
+            <Text>
+              {obiData?.fullText?.length > 0 &&
+                obiData.fullText.map((obi: any) => renderOBI(obi))}
+            </Text>
+          </View>
+          <View style={styles.footerView}>
+            <Image
               source={{
-                html: obiData.fullText.trim()
+                uri: 'https://oddsr-cdn-haeggkezhpf2h0g2.z01.azurefd.net/storage/images/roidot.png'
               }}
+              style={styles.dotImg}
+            />
+            <Image
+              source={{
+                uri: 'https://oddsr-cdn-haeggkezhpf2h0g2.z01.azurefd.net/storage/images/roidot.png'
+              }}
+              style={styles.dotImg}
+            />
+            <Image
+              source={{
+                uri: 'https://oddsr-cdn-haeggkezhpf2h0g2.z01.azurefd.net/storage/images/roidot.png'
+              }}
+              style={styles.dotImg}
+            />
+            <Image
+              source={{
+                uri: 'https://oddsr-cdn-haeggkezhpf2h0g2.z01.azurefd.net/storage/images/RoiSays.png'
+              }}
+              style={styles.roisayImg}
             />
           </View>
         </Content>

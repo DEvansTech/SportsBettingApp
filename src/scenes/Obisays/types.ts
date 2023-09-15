@@ -8,7 +8,7 @@ export type OBIDetailProps = {
         articleId: string;
         title: string;
         subTitle: string;
-        fullText: string;
+        fullText: any;
         author: string;
         order: number;
         displayOffset: number;

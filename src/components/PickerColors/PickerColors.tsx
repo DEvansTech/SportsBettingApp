@@ -100,11 +100,12 @@ const PickerColors: React.FC<Props> = ({
               ]}
             />
           </View>
-
-          <Text style={styles.colorDesc}>
-            {ordinalSuffixOf(situationDown)} and {situationYfd},{' '}
-            {locationTeamAbbr} {locationYardline}
-          </Text>
+          {situationDown && (
+            <Text style={styles.colorDesc}>
+              {ordinalSuffixOf(situationDown)} and {situationYfd},{' '}
+              {locationTeamAbbr} {locationYardline}
+            </Text>
+          )}
         </>
       ) : (
         <>

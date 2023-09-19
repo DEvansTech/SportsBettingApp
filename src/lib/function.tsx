@@ -45,7 +45,8 @@ export const responseFontSize = (
   const elementWidth = deviceWidth * width;
   const elementLength = value.length + 1;
   const expectValue = elementWidth / elementLength;
-  const resultValue = expectValue / (PixelRatio.getFontScale() * PixelRatio.get());
+  const resultValue =
+    expectValue / (PixelRatio.getFontScale() * PixelRatio.get());
   return resultValue;
 };
 
@@ -399,10 +400,8 @@ export const getAwaySpreadValue = (data: GameDataType) => {
 
   const oddsTypeValue = Number(data?.spread_last_spread_away);
   const oddsValue = Number(data?.spread_last_outcome_away);
-  if (oddsTypeValue && oddsValue) {
-    return getSpreadAwayRatingValue(data, oddsTypeValue, oddsValue);
-  }
-  return undefined;
+
+  return getSpreadAwayRatingValue(data, oddsTypeValue, oddsValue);
 };
 
 export const getHomeSpreadValue = (data: GameDataType) => {
@@ -415,11 +414,7 @@ export const getHomeSpreadValue = (data: GameDataType) => {
 
   const oddsTypeValue = Number(data?.spread_last_spread_home);
   const oddsValue = Number(data?.spread_last_outcome_home);
-
-  if (oddsTypeValue && oddsValue) {
-    return getSpreadHomeRatingValue(data, oddsTypeValue, oddsValue);
-  }
-  return undefined;
+  return getSpreadHomeRatingValue(data, oddsTypeValue, oddsValue);
 };
 
 export const getWinAwayRatingValue = (

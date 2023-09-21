@@ -11,6 +11,7 @@ import { MainContext, MainContextType } from '@Context/MainContext';
 
 import { RootState } from '@Store/store';
 import { getGamedata } from '@Store/schedule/actions';
+import { checkTopRankedGame } from '@Lib/function';
 
 import styles from './styles';
 import { Props } from './types';
@@ -28,6 +29,7 @@ const NFL: React.FC<Props> = ({ selectedDate, sportName }) => {
   );
   const [mySelections, setMyselections] = useState<number[]>();
   const [loadingBar, setLoadingBar] = useState(true);
+  const [loadGameData, setLoadGameData] = useState<GameDataType[]>([]);
 
   const saveSelection = async (gameID: number) => {
     if (user) {
@@ -138,6 +140,19 @@ const NFL: React.FC<Props> = ({ selectedDate, sportName }) => {
     }
   }, [loading]);
 
+  useEffect(() => {
+    if (gameData?.length > 0) {
+      if (matchSort === 'best') {
+        const data = gameData.filter((game: GameDataType) =>
+          checkTopRankedGame(game)
+        );
+        setLoadGameData(data);
+      } else {
+        setLoadGameData(gameData);
+      }
+    }
+  }, [gameData, matchSort]);
+
   const renderItem = (match: GameDataType, index: number) => {
     return (
       <NFLWatch
@@ -145,7 +160,7 @@ const NFL: React.FC<Props> = ({ selectedDate, sportName }) => {
         data={match}
         saveSelection={saveSelection}
         selectionState={checkSelectionState(match.gameID)}
-        lastGame={gameData.length === index + 1}
+        lastGame={loadGameData.length === index + 1}
       />
     );
   };
@@ -170,7 +185,7 @@ const NFL: React.FC<Props> = ({ selectedDate, sportName }) => {
       <SegmentSort />
       <Content contentContainerStyle={styles.contentView}>
         <FlatList
-          data={gameData}
+          data={loadGameData}
           renderItem={({ item, index }) => renderItem(item, index)}
           keyExtractor={(item: any) => item.game_uuid}
           ListEmptyComponent={renderEmpty}

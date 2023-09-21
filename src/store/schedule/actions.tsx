@@ -17,12 +17,9 @@ export const getGamedata = (
     }
     const offset = new Date().getTimezoneOffset();
     if (sportType === 'all') {
-      const baseballSort =
-        sort === 'all' ? 'baseballgamedata' : 'baseballbestbetsdata';
-      const footballSort =
-        sort === 'all' ? 'footballgamedata' : 'footballbestbetsdata';
-      const basketballSort =
-        sort === 'all' ? 'basketballgamedata' : 'basketballbestbetsdata';
+      const baseballSort = 'baseballgamedata';
+      const footballSort = 'footballgamedata';
+      const basketballSort = 'basketballgamedata';
 
       const allMlbURI = `${API_URI}baseballgamedata?date=${date}&offset=${offset}&apikey=${API_KEY}`;
       const allNflURI = `${API_URI}footballgamedata?date=${date}&offset=${offset}&apikey=${API_KEY}&sportid=nfl`;
@@ -96,8 +93,7 @@ export const getGamedata = (
           )
         );
     } else {
-      const gameSort =
-        sort === 'all' ? `${sportType}gamedata` : `${sportType}bestbetsdata`;
+      const gameSort = `${sportType}gamedata`;
 
       const allGames = await axios.get(
         `${API_URI}${sportType}gamedata?date=${date}&offset=${offset}&apikey=${API_KEY}&sportid=${sportID}`

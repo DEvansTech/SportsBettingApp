@@ -19,7 +19,9 @@ import { AuthContext, AuthContextType } from '@Context/AuthContext';
 import { MainContext, MainContextType } from '@Context/MainContext';
 import { RootState } from '@Store/store';
 import { getGamedata } from '@Store/schedule/actions';
+import { checkTopRankedGame } from '@Lib/function';
 
+import { GameDataType } from '@Store/types';
 import styles from './styles';
 import { Props } from './types';
 
@@ -40,6 +42,7 @@ const AllGames: React.FC<Props> = ({ selectedDate, sportName }) => {
   const [ncaabSelections, setNcaabselections] = useState<number[]>();
 
   const [loadingBar, setLoadingBar] = useState(true);
+  const [loadGameData, setLoadGameData] = useState<GameDataType[]>([]);
 
   const saveSelection = async (gameID: number, gameSort: string) => {
     if (user) {
@@ -196,6 +199,20 @@ const AllGames: React.FC<Props> = ({ selectedDate, sportName }) => {
     })();
   }, [isFocused]);
 
+  useEffect(() => {
+    if (gameData?.length > 0) {
+      if (matchSort === 'best') {
+        const data = gameData.filter(
+          (game: GameDataType) => checkTopRankedGame(game) === true
+        );
+        console.log('=========>', data);
+        setLoadGameData(data);
+      } else {
+        setLoadGameData(gameData);
+      }
+    }
+  }, [gameData, matchSort]);
+
   const renderItem = (match: any, index: number) => {
     return (
       <>
@@ -205,7 +222,7 @@ const AllGames: React.FC<Props> = ({ selectedDate, sportName }) => {
             key={index}
             saveSelection={saveSelection}
             selectionState={checkSelectionState(match.gameID, 'mlb')}
-            lastGame={gameData.length === index + 1}
+            lastGame={loadGameData.length === index + 1}
           />
         )}
         {match.sport_name === 'NFL' && (
@@ -214,7 +231,7 @@ const AllGames: React.FC<Props> = ({ selectedDate, sportName }) => {
             key={index}
             saveSelection={saveSelection}
             selectionState={checkSelectionState(match.gameID, 'nfl')}
-            lastGame={gameData.length === index + 1}
+            lastGame={loadGameData.length === index + 1}
           />
         )}
         {match.sport_name === 'NCAAFB' && (
@@ -223,7 +240,7 @@ const AllGames: React.FC<Props> = ({ selectedDate, sportName }) => {
             key={index}
             saveSelection={saveSelection}
             selectionState={checkSelectionState(match.gameID, 'ncaaf')}
-            lastGame={gameData.length === index + 1}
+            lastGame={loadGameData.length === index + 1}
           />
         )}
         {match.sport_name === 'NBA' && (
@@ -232,7 +249,7 @@ const AllGames: React.FC<Props> = ({ selectedDate, sportName }) => {
             key={index}
             saveSelection={saveSelection}
             selectionState={checkSelectionState(match.gameID, 'nba')}
-            lastGame={gameData.length === index + 1}
+            lastGame={loadGameData.length === index + 1}
           />
         )}
         {match.sport_name === 'NCAAM' && (
@@ -241,7 +258,7 @@ const AllGames: React.FC<Props> = ({ selectedDate, sportName }) => {
             key={index}
             saveSelection={saveSelection}
             selectionState={checkSelectionState(match.gameID, 'ncaab')}
-            lastGame={gameData.length === index + 1}
+            lastGame={loadGameData.length === index + 1}
           />
         )}
       </>
@@ -268,7 +285,7 @@ const AllGames: React.FC<Props> = ({ selectedDate, sportName }) => {
       <SegmentSort />
       <Content contentContainerStyle={styles.contentView}>
         <FlatList
-          data={gameData}
+          data={loadGameData}
           renderItem={({ item, index }) => renderItem(item, index)}
           keyExtractor={(item: any) => item.game_uuid}
           ListEmptyComponent={renderEmpty}

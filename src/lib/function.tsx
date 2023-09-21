@@ -390,6 +390,34 @@ export const getMLBSpreadHomeRatingValue = (
   return 1;
 };
 
+export const getMLBAwaySpreadValue = (data: GameDataType) => {
+  if (!(data?.run_line_last_outcome_away && data?.run_line_last_spread_away)) {
+    return undefined;
+  }
+  if (data.status === 'closed' || data.status === 'complete') {
+    return Number(data.algRatingAwaySpread);
+  }
+  const rangeValue = Number(data?.run_line_last_outcome_away);
+  const oddType =
+    Number(data?.run_line_last_spread_away) > 0 ? 'plus' : 'minus';
+
+  return getMLBSpreadAwayRatingValue(data, rangeValue, oddType);
+};
+
+export const getMLBHomeSpreadValue = (data: GameDataType) => {
+  if (!(data?.run_line_last_outcome_home && data?.run_line_last_spread_home)) {
+    return undefined;
+  }
+  if (data.status === 'closed' || data.status === 'complete') {
+    return Number(data.algRatingHomeSpread);
+  }
+  const rangeValue = Number(data?.run_line_last_outcome_home);
+  const oddType =
+    Number(data?.run_line_last_spread_home) > 0 ? 'plus' : 'minus';
+
+  return getMLBSpreadHomeRatingValue(data, rangeValue, oddType);
+};
+
 export const getAwaySpreadValue = (data: GameDataType) => {
   if (data.status === 'closed' || data.status === 'complete') {
     if (!data.algRatingAwaySpread) {
@@ -619,10 +647,7 @@ export const getOverRating = (gameData: GameDataType) => {
 
   const ovRangeValue = Number(gameData?.total_last_outcome_over_odds);
   const totalScore = Number(gameData.total_last_total);
-  if (ovRangeValue && totalScore) {
-    return getOverRatingValue(gameData, totalScore, ovRangeValue);
-  }
-  return undefined;
+  return getOverRatingValue(gameData, totalScore, ovRangeValue);
 };
 
 export const getUnderRating = (gameData: GameDataType) => {
@@ -635,10 +660,7 @@ export const getUnderRating = (gameData: GameDataType) => {
 
   const unRangeValue = Number(gameData?.total_last_outcome_under_odds);
   const totalScore = Number(gameData.total_last_total);
-  if (unRangeValue && totalScore) {
-    return getUnderRatingValue(gameData, totalScore, unRangeValue);
-  }
-  return undefined;
+  return getUnderRatingValue(gameData, totalScore, unRangeValue);
 };
 
 export const checkLineMasterState = (data: GameDataType) => {
@@ -715,5 +737,20 @@ export const checkAwayWinWhiteCircle = (data: GameDataType) => {
   if (Number(data?.algRatingPredAwaySpread) < 0) {
     return true;
   }
+  return false;
+};
+
+export const checkTopRankedGame = (data: GameDataType) => {
+  if (data.sport_name === 'MLB') {
+    if (Number(getMLBAwaySpreadValue(data)) > 3) return true;
+    if (Number(getMLBHomeSpreadValue(data)) > 3) return true;
+  } else {
+    if (Number(getAwaySpreadValue(data)) > 3) return true;
+    if (Number(getHomeSpreadValue(data)) > 3) return true;
+  }
+  if (Number(getAwayWinValue(data)) > 3) return true;
+  if (Number(getHomeWinValue(data)) > 3) return true;
+  if (Number(getOverRating(data)) > 3) return true;
+  if (Number(getUnderRating(data)) > 3) return true;
   return false;
 };

@@ -13,8 +13,8 @@ import { Routes } from '@Navigators/routes';
 import {
   checkTeamIcon,
   compareScore,
-  getMLBSpreadAwayRatingValue,
-  getMLBSpreadHomeRatingValue,
+  getMLBAwaySpreadValue,
+  getMLBHomeSpreadValue,
   getAwayWinValue,
   getHomeWinValue,
   getOverRating,
@@ -175,38 +175,6 @@ const MLBWatch: React.FC<Props> = ({
     navigation.navigate(Routes.LineRater, { gameData: data });
   };
 
-  const getAwaySpreadValue = useCallback(() => {
-    if (
-      !(data?.run_line_last_outcome_away && data?.run_line_last_spread_away)
-    ) {
-      return undefined;
-    }
-    if (data.status === 'closed' || data.status === 'complete') {
-      return Number(data.algRatingAwaySpread);
-    }
-    const rangeValue = Number(data?.run_line_last_outcome_away);
-    const oddType =
-      Number(data?.run_line_last_spread_away) > 0 ? 'plus' : 'minus';
-
-    return getMLBSpreadAwayRatingValue(data, rangeValue, oddType);
-  }, [data]);
-
-  const getHomeSpreadValue = useCallback(() => {
-    if (
-      !(data?.run_line_last_outcome_home && data?.run_line_last_spread_home)
-    ) {
-      return undefined;
-    }
-    if (data.status === 'closed' || data.status === 'complete') {
-      return Number(data.algRatingHomeSpread);
-    }
-    const rangeValue = Number(data?.run_line_last_outcome_home);
-    const oddType =
-      Number(data?.run_line_last_spread_home) > 0 ? 'plus' : 'minus';
-
-    return getMLBSpreadHomeRatingValue(data, rangeValue, oddType);
-  }, [data]);
-
   useEffect(() => {
     setPressGlass(selectionState);
   }, [selectionState]);
@@ -302,7 +270,7 @@ const MLBWatch: React.FC<Props> = ({
         <View style={styles.betRow}>
           <View style={styles.ratingRow}>
             <BarRating
-              value={getAwaySpreadValue()}
+              value={getMLBAwaySpreadValue(data)}
               status={data.status}
               outCome={checkSpread() === 'away'}
               pushScore={checkSpreadPushAway(data)}
@@ -315,7 +283,7 @@ const MLBWatch: React.FC<Props> = ({
               value1={data.run_line_last_spread_away}
               value2={data.run_line_last_outcome_away}
               status={data.status}
-              rating={getAwaySpreadValue()}
+              rating={getMLBAwaySpreadValue(data)}
               points={data.home_runs || data.away_runs}
             />
           </View>
@@ -329,11 +297,11 @@ const MLBWatch: React.FC<Props> = ({
               value1={data.run_line_last_spread_home}
               value2={data.run_line_last_outcome_home}
               status={data.status}
-              rating={getHomeSpreadValue()}
+              rating={getMLBHomeSpreadValue(data)}
               points={data.home_runs || data.away_runs}
             />
             <BarRating
-              value={getHomeSpreadValue()}
+              value={getMLBHomeSpreadValue(data)}
               status={data.status}
               outCome={checkSpread() === 'home'}
               pushScore={checkSpreadPushHome(data)}

@@ -249,8 +249,6 @@ const OverUnder: React.FC<OUProps> = ({ gameData }) => {
       let startBar = 0;
       let endBar = 0;
 
-      console.log(value);
-
       switch (value) {
         case 1:
           endBar = basic - 34 * scale;

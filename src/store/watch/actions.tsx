@@ -8,7 +8,7 @@ import { TeamType, FavortriteType } from '@Scenes/Myteam/types';
 
 export const getTeamsList = (sportID: string) => {
   return async (dispatch: Dispatch) => {
-    dispatch({ type: ACTION_TYPES.WATCH.GET_LOADING_TEAMS, payload: true });
+    // dispatch({ type: ACTION_TYPES.WATCH.GET_LOADING_TEAMS, payload: true });
     if (sportID === 'all') {
       const mlbURI = `${API_URI}teamdata?apikey=${API_KEY}&sportID=mlb`;
       const nflURI = `${API_URI}teamdata?apikey=${API_KEY}&sportID=nfl`;

@@ -228,7 +228,7 @@ const AllGames: React.FC<Props> = ({ selectedDate }) => {
     };
     dispatch(getTeamsAllGamedata(selectedDate, favoriteTeams, true));
     dispatch(getSelectionAllGameData(selectedDate, mySelections, true));
-  }, [selectedDate, isFocused]);
+  }, [selectedDate]);
 
   useEffect(() => {
     const mySelections = {
@@ -268,7 +268,7 @@ const AllGames: React.FC<Props> = ({ selectedDate }) => {
 
       dispatch(getTeamsAllGamedata(selectedDate, favoriteTeams, false));
       dispatch(getSelectionAllGameData(selectedDate, mySelections, false));
-    }, 1000);
+    }, 10000);
     if (!isFocused) {
       clearInterval(interval);
     }
@@ -286,7 +286,7 @@ const AllGames: React.FC<Props> = ({ selectedDate }) => {
 
   useEffect(() => {
     if (!teamsLoading || !selectionsLoading) {
-      setTimeout(() => setLoadingBar(teamsLoading || selectionsLoading), 3000);
+      setTimeout(() => setLoadingBar(teamsLoading || selectionsLoading), 2000);
     } else {
       setLoadingBar(teamsLoading || selectionsLoading);
     }

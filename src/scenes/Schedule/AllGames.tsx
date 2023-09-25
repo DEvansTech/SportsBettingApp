@@ -205,7 +205,6 @@ const AllGames: React.FC<Props> = ({ selectedDate, sportName }) => {
         const data = gameData.filter(
           (game: GameDataType) => checkTopRankedGame(game) === true
         );
-        console.log('=========>', data);
         setLoadGameData(data);
       } else {
         setLoadGameData(gameData);

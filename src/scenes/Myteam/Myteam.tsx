@@ -17,7 +17,7 @@ import firestore from '@react-native-firebase/firestore';
 import { SvgXml } from 'react-native-svg';
 import RNPickerSelect from 'react-native-picker-select';
 
-import { Loading, LoadingImage } from '@Components';
+import { LoadingImage } from '@Components';
 import { Routes } from '@Navigators/routes';
 import { RootState } from '@Store/store';
 import { getTeamsList } from '@Store/watch/actions';
@@ -38,16 +38,13 @@ const Myteam: React.FC = () => {
     MainContext
   ) as MainContextType;
 
-  const { myTeams, allTeams, teamsLoading } = useSelector(
-    (state: RootState) => state.watch
-  );
+  const { myTeams, allTeams } = useSelector((state: RootState) => state.watch);
 
   const [teamList, setTeamList] = useState<TeamType[]>([]);
   const [totalList, setTotalTeamList] = useState<TeamType[]>([]);
   const [allTeamList, setAllTeamList] = useState<TeamType[]>([]);
   const [favoriteTeams, setFavoriteTeams] = useState<FavortriteType[]>([]);
 
-  const [loadingBar, setLoadingBar] = useState(teamsLoading);
   const [searchKey, setSearchKey] = useState('');
 
   const saveUserTeam = async (
@@ -97,6 +94,7 @@ const Myteam: React.FC = () => {
         teams.push(teamIDs[i]);
       }
     }
+
     setFavoriteTeams(teams);
     saveFavoriteTeams(teams);
   };
@@ -142,7 +140,7 @@ const Myteam: React.FC = () => {
     if (isFocused) {
       getFavoriteTeams();
     }
-  }, [navigation]);
+  }, [isFocused]);
 
   useEffect(() => {
     const lists = myTeams.sort((a: any, b: any) =>
@@ -205,21 +203,8 @@ const Myteam: React.FC = () => {
   }, [allTeams, searchKey]);
 
   useEffect(() => {
-    setLoadingBar(true);
     dispatch(getTeamsList(sportName));
   }, [sportName]);
-
-  useEffect(() => {
-    if (!teamsLoading) {
-      setTimeout(() => setLoadingBar(teamsLoading), 1500);
-    } else {
-      setLoadingBar(teamsLoading);
-    }
-  }, [teamsLoading]);
-
-  if (loadingBar) {
-    return <Loading />;
-  }
 
   const renderItem = (team: any) => {
     return (

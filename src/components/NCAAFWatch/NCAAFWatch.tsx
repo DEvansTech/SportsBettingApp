@@ -107,8 +107,6 @@ const NFLWatch: React.FC<Props> = ({
     setPressGlass(selectionState);
   }, [selectionState]);
 
-  console.log(data);
-
   return (
     <View style={[styles.container, lastGame && styles.noBorder]}>
       <View style={styles.gameView}>

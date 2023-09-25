@@ -72,7 +72,7 @@ export const checkTeamIcon = (
           `NCAA_${teamName?.replace('-', '_')}` as any
         );
       } else {
-        return getTeamLogo(Images)(`NCAA_Generic.png` as any);
+        return getTeamLogo(Images)(`NCAA_Generic` as any);
       }
     case 'ncaab':
     case 'NCAAM':
@@ -81,7 +81,7 @@ export const checkTeamIcon = (
           `NCAA_${teamName?.replace('-', '_')}` as any
         );
       } else {
-        return getTeamLogo(Images)(`NCAA_Generic.png` as any);
+        return getTeamLogo(Images)(`NCAA_Generic` as any);
       }
     case 'nba':
     case 'NBA':

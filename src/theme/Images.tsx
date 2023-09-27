@@ -1,8 +1,18 @@
 export default {
   logo: require('@Assets/images/logo.png'),
-  background: require('@Assets/images/background.png'),
-  background1: require('@Assets/images/background1.png'),
-  splash: require('@Assets/images/splash.png'),
+  baseballBackground: require('@Assets/images/splash/baseball_background.png'),
+  baseballBackground1: require('@Assets/images/splash/baseball_background1.png'),
+  baseballSplash: require('@Assets/images/splash/baseball_splash.png'),
+  basketballBackground: require('@Assets/images/splash/basketball_background.png'),
+  basketballBackground1: require('@Assets/images/splash/basketball_background1.png'),
+  basketballSplash: require('@Assets/images/splash/basketball_splash.png'),
+  footballBackground: require('@Assets/images/splash/football_background.png'),
+  footballBackground1: require('@Assets/images/splash/football_background1.png'),
+  footballSplash: require('@Assets/images/splash/football_splash.png'),
+  hockeyBackground: require('@Assets/images/splash/hockey_background.png'),
+  hockeyBackground1: require('@Assets/images/splash/hockey_background1.png'),
+  hockeySplash: require('@Assets/images/splash/hockey_splash.png'),
+
   closeIcon: require('@Assets/images/CloseIcon.png'),
 
   //////

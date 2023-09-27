@@ -1,8 +1,3 @@
-export const getTeamLogo =
-  <T extends object, U extends keyof T>(obj: T) =>
-  (key: U) =>
-    obj[key];
-
 export type TeamType = {
   teamID: number;
   team_uuid: string;

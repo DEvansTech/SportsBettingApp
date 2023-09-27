@@ -18,7 +18,8 @@ import { Container, Content, Text, View, Button } from 'native-base';
 import { SvgXml } from 'react-native-svg';
 
 import { Loading, Button as CustomButton, TermsPrivacy } from '@Components';
-import { ToastMessage } from '@Lib/function';
+import { ToastMessage, getRandomSportName } from '@Lib/function';
+import { getImage } from '@Store/types';
 import { WEB_CLIENT_ID } from '@env';
 import { AuthContext, AuthContextType } from '@Context/AuthContext';
 import { Routes } from '@Navigators/routes';
@@ -169,7 +170,7 @@ const Register: React.FC = () => {
   return (
     <Container style={styles.background}>
       <ImageBackground
-        source={Images.background}
+        source={getImage(Images)(`${getRandomSportName()}Background` as any)}
         resizeMode="stretch"
         style={styles.backgroundImage}>
         <Content

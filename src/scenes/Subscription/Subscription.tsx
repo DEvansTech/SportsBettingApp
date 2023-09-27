@@ -15,6 +15,8 @@ import appsFlyer from 'react-native-appsflyer';
 
 import { Loading, TermsPrivacy } from '@Components';
 import { ENTITLEMENT_ID } from '@Lib/constants';
+import { getRandomSportName } from '@Lib/function';
+import { getImage } from '@Store/types';
 import { Routes } from '@Navigators/routes';
 import { Images, Svgs } from '@Theme';
 import styles from './styles';
@@ -193,7 +195,7 @@ const Subscription: React.FC = () => {
         textStyle={styles.spinnerTextStyle}
       />
       <ImageBackground
-        source={Images.background1}
+        source={getImage(Images)(`${getRandomSportName()}Background1` as any)}
         resizeMode="stretch"
         style={styles.backgroundImage}>
         {packages.length > 0 ? (

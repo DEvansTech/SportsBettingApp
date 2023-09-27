@@ -364,8 +364,8 @@ const MLBWatch: React.FC<Props> = ({
             <BetCalculator
               outCome={checkOU() === 'away'}
               matchType="away"
-              value1={data.total_last_outcome_under_total}
-              value2={data.total_last_outcome_under_odds}
+              value1={data.total_last_outcome_over_total}
+              value2={data.total_last_outcome_over_odds}
               status={data.status}
               rating={getOverRating(data)}
               valueType="OU"
@@ -379,8 +379,8 @@ const MLBWatch: React.FC<Props> = ({
             <BetCalculator
               outCome={checkOU() === 'home'}
               matchType="home"
-              value1={data.total_last_outcome_over_total}
-              value2={data.total_last_outcome_over_odds}
+              value1={data.total_last_outcome_under_total}
+              value2={data.total_last_outcome_under_odds}
               status={data.status}
               rating={getUnderRating(data)}
               points={data.home_runs || data.away_runs}

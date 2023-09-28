@@ -208,31 +208,31 @@ const Myteam: React.FC = () => {
 
   const renderItem = (team: any) => {
     return (
-      <View style={styles.teamView}>
-        <TouchableOpacity
-          onPress={() =>
-            saveUserTeam(
-              team.teamID,
-              team.team_market,
-              team.team_name,
-              team.team_sort,
-              team
-            )
-          }>
-          <Icon
-            type="Ionicons"
-            name={
-              checkFavoriteTeam(team.teamID, team.team_sort)
-                ? 'heart-sharp'
-                : 'heart-outline'
-            }
-            style={
-              checkFavoriteTeam(team.teamID, team.team_sort)
-                ? styles.favoriteRedIcon
-                : styles.favoriteBlackIcon
-            }
-          />
-        </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.teamView}
+        onPress={() =>
+          saveUserTeam(
+            team.teamID,
+            team.team_market,
+            team.team_name,
+            team.team_sort,
+            team
+          )
+        }>
+        <Icon
+          type="Ionicons"
+          name={
+            checkFavoriteTeam(team.teamID, team.team_sort)
+              ? 'heart-sharp'
+              : 'heart-outline'
+          }
+          style={
+            checkFavoriteTeam(team.teamID, team.team_sort)
+              ? styles.favoriteRedIcon
+              : styles.favoriteBlackIcon
+          }
+        />
+
         <LoadingImage
           source={checkTeamIcon(team.team_sort, team.team_abbr)}
           style={styles.teamImg}
@@ -240,7 +240,7 @@ const Myteam: React.FC = () => {
         <Text style={styles.teamName}>
           {team.team_market} {team.team_name}
         </Text>
-      </View>
+      </TouchableOpacity>
     );
   };
 
@@ -298,21 +298,12 @@ const Myteam: React.FC = () => {
       </View>
 
       <Content contentContainerStyle={styles.contentView}>
-        {sportName === 'all' ? (
-          <FlatList
-            data={allTeamList}
-            renderItem={({ item }) => renderItem(item)}
-            keyExtractor={(item: any) => item.team_uuid}
-            ListEmptyComponent={renderEmpty}
-          />
-        ) : (
-          <FlatList
-            data={teamList}
-            renderItem={({ item }) => renderItem(item)}
-            keyExtractor={(item: any) => item.team_uuid}
-            ListEmptyComponent={renderEmpty}
-          />
-        )}
+        <FlatList
+          data={sportName === 'all' ? allTeamList : teamList}
+          renderItem={({ item }) => renderItem(item)}
+          keyExtractor={(item: any) => item.team_uuid}
+          ListEmptyComponent={renderEmpty}
+        />
       </Content>
     </Container>
   );

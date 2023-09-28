@@ -136,7 +136,7 @@ android {
         applicationId "com.pss.oddsr"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 141
+        versionCode 142
         versionName "1.0.4"
         multiDexEnabled true
         missingDimensionStrategy 'store', 'play'

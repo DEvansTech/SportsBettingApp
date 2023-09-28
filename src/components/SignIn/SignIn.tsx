@@ -13,6 +13,8 @@ import { Content, Button, Icon, Text, View } from 'native-base';
 
 import { Loading } from '@Components';
 import { Routes } from '@Navigators/routes';
+import { getImage } from '@Store/types';
+import { getRandomSportName } from '@Lib/function';
 import { WEB_CLIENT_ID } from '@env';
 import { AuthContext, AuthContextType } from '@Context/AuthContext';
 import { Images } from '@Theme';
@@ -109,7 +111,7 @@ const SignIn: React.FC = () => {
         <Loading />
       ) : (
         <ImageBackground
-          source={Images.background}
+          source={getImage(Images)(`${getRandomSportName()}Background` as any)}
           resizeMode="cover"
           style={styles.backgroundImage}>
           <View style={styles.container}>

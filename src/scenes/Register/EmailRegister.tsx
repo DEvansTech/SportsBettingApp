@@ -17,7 +17,8 @@ import { SvgXml } from 'react-native-svg';
 
 import { AuthContext, AuthContextType } from '@Context/AuthContext';
 import { Button as CustomButton } from '@Components';
-import { ToastMessage, existUser } from '@Lib/function';
+import { ToastMessage, existUser, getRandomSportName } from '@Lib/function';
+import { getImage } from '@Store/types';
 import { Routes } from '@Navigators/routes';
 import { Images, Svgs } from '@Theme';
 
@@ -87,7 +88,7 @@ const EmailRegister: React.FC = () => {
   return (
     <Container style={styles.background}>
       <ImageBackground
-        source={Images.background1}
+        source={getImage(Images)(`${getRandomSportName()}Background1` as any)}
         resizeMode="stretch"
         style={styles.backgroundImage}>
         <Content contentContainerStyle={styles.contentView}>

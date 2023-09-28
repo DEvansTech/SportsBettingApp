@@ -1,8 +1,10 @@
 import { Dimensions, PixelRatio } from 'react-native';
 import firestore from '@react-native-firebase/firestore';
 import { Toast } from 'native-base';
+import moment from 'moment';
 import { Images, TeamLogos } from '@Theme';
-import { getTeamLogo, GameDataType } from '@Store/types';
+import { getImage, GameDataType } from '@Store/types';
+import { sportDateRange } from './constants';
 
 export const ToastMessage = (msg: string, type: any, position: any) => {
   return Toast.show({
@@ -58,37 +60,37 @@ export const checkTeamIcon = (
     case 'mlb':
     case 'MLB':
       if (`MLB_${teamName}` in TeamLogos) {
-        return getTeamLogo(TeamLogos)(`MLB_${teamName}` as any);
+        return getImage(TeamLogos)(`MLB_${teamName}` as any);
       }
     case 'nfl':
     case 'NFL':
       if (`NFL_${teamName}` in TeamLogos) {
-        return getTeamLogo(TeamLogos)(`NFL_${teamName}` as any);
+        return getImage(TeamLogos)(`NFL_${teamName}` as any);
       }
     case 'ncaafb':
     case 'NCAAFB':
       if (`NCAA_${teamName?.replace('-', '_')}` in TeamLogos) {
-        return getTeamLogo(TeamLogos)(
+        return getImage(TeamLogos)(
           `NCAA_${teamName?.replace('-', '_')}` as any
         );
       } else {
-        return getTeamLogo(Images)(`NCAA_Generic` as any);
+        return getImage(Images)(`NCAA_Generic` as any);
       }
     case 'ncaab':
     case 'NCAAM':
       if (`NCAA_${teamName?.replace('-', '_')}` in TeamLogos) {
-        return getTeamLogo(TeamLogos)(
+        return getImage(TeamLogos)(
           `NCAA_${teamName?.replace('-', '_')}` as any
         );
       } else {
-        return getTeamLogo(Images)(`NCAA_Generic` as any);
+        return getImage(Images)(`NCAA_Generic` as any);
       }
     case 'nba':
     case 'NBA':
       if (`NBA_${teamName}` in TeamLogos) {
-        return getTeamLogo(TeamLogos)(`NBA_${teamName}` as any);
+        return getImage(TeamLogos)(`NBA_${teamName}` as any);
       } else {
-        return getTeamLogo(Images)(`NBA_Empty_Logo` as any);
+        return getImage(Images)(`NBA_Empty_Logo` as any);
       }
 
     default:
@@ -753,4 +755,19 @@ export const checkTopRankedGame = (data: GameDataType) => {
   if (Number(getOverRating(data)) > 3) return true;
   if (Number(getUnderRating(data)) > 3) return true;
   return false;
+};
+
+export const getRandomSportName = () => {
+  let sportsName = [];
+  for (let i = 0; i < sportDateRange.length; i++) {
+    if (moment().isBetween(sportDateRange[i].from, sportDateRange[i].to)) {
+      sportsName.push(sportDateRange[i].sport);
+    }
+  }
+
+  if (sportsName.length > 1) {
+    const random = Math.floor(Math.random() * sportsName.length);
+    return sportsName[random];
+  }
+  return sportsName[0];
 };

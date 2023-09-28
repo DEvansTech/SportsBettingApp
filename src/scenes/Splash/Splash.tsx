@@ -9,6 +9,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { AuthContext, AuthContextType } from '@Context/AuthContext';
 import { Button as CustomButton } from '@Components';
+import { getRandomSportName } from '@Lib/function';
+import { getImage } from '@Store/types';
 import { Routes } from '@Navigators/routes';
 import { Images, Colors } from '@Theme';
 
@@ -50,7 +52,7 @@ const Splash: React.FC = () => {
 
   let authFlag = true;
   const onAuthStateChanged = (authUser: any) => {
-    if(authFlag) {
+    if (authFlag) {
       setUser(authUser);
       authFlag = false;
     }
@@ -84,7 +86,7 @@ const Splash: React.FC = () => {
   return (
     <Container style={styles.background}>
       <ImageBackground
-        source={Images.splash}
+        source={getImage(Images)(`${getRandomSportName()}Splash` as any)}
         resizeMode="stretch"
         style={styles.backgroundImage}
         imageStyle={styles.backgroundImageStyle}>

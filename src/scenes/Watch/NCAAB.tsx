@@ -110,7 +110,7 @@ const NCAAB: React.FC<Props> = ({ selectedDate, sportName }) => {
         favoriteTeams.join(),
         sportName.trim(),
         'basketball',
-        true
+        false
       )
     );
     dispatch(
@@ -119,7 +119,7 @@ const NCAAB: React.FC<Props> = ({ selectedDate, sportName }) => {
         mySelections.join(),
         sportName.trim(),
         'basketball',
-        true
+        false
       )
     );
   }, [selectedDate]);

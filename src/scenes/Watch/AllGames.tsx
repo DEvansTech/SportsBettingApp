@@ -226,8 +226,8 @@ const AllGames: React.FC<Props> = ({ selectedDate }) => {
       ncaab: ncaabSelections,
       nba: nbaSelections
     };
-    dispatch(getTeamsAllGamedata(selectedDate, favoriteTeams, true));
-    dispatch(getSelectionAllGameData(selectedDate, mySelections, true));
+    dispatch(getTeamsAllGamedata(selectedDate, favoriteTeams, false));
+    dispatch(getSelectionAllGameData(selectedDate, mySelections, false));
   }, [selectedDate]);
 
   useEffect(() => {

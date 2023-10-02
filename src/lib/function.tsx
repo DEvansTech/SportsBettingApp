@@ -766,7 +766,7 @@ export const getRandomSportName = () => {
   }
 
   if (sportsName.length > 1) {
-    const random = Math.floor(Math.random() * sportsName.length);
+    const random = Math.round(Math.random() * (sportsName.length - 1));
     return sportsName[random];
   }
   return sportsName[0];

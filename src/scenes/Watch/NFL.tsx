@@ -110,7 +110,7 @@ const NFL: React.FC<Props> = ({ selectedDate, sportName }) => {
         favoriteTeams.join(),
         sportName,
         'football',
-        true
+        false
       )
     );
     dispatch(
@@ -119,7 +119,7 @@ const NFL: React.FC<Props> = ({ selectedDate, sportName }) => {
         mySelections.join(),
         sportName,
         'football',
-        true
+        false
       )
     );
   }, [selectedDate]);

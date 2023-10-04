@@ -141,7 +141,7 @@ const NCAAF: React.FC<Props> = ({ selectedDate, sportName }) => {
   }, [loading]);
 
   useEffect(() => {
-    // if (gameData?.length > 0) {
+    if (gameData?.length > 0) {
       if (matchSort === 'best') {
         const data = gameData.filter((game: GameDataType) =>
           checkTopRankedGame(game)
@@ -150,7 +150,9 @@ const NCAAF: React.FC<Props> = ({ selectedDate, sportName }) => {
       } else {
         setLoadGameData(gameData);
       }
-    // }
+    } else {
+      setLoadGameData([]);
+    }
   }, [gameData]);
 
   const renderItem = (match: GameDataType, index: number) => {

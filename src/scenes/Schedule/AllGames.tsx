@@ -216,7 +216,7 @@ const AllGames: React.FC<Props> = ({ selectedDate, sportName }) => {
   }, [isFocused]);
 
   useEffect(() => {
-    // if (gameData?.length > 0) {
+    if (gameData?.length > 0) {
       if (matchSort === 'best') {
         const data = gameData.filter(
           (game: GameDataType) => checkTopRankedGame(game) === true
@@ -225,7 +225,9 @@ const AllGames: React.FC<Props> = ({ selectedDate, sportName }) => {
       } else {
         setLoadGameData(gameData);
       }
-    // }
+    } else {
+      setLoadGameData([]);
+    }
   }, [gameData, matchSort]);
 
   const renderItem = (match: any, index: number) => {

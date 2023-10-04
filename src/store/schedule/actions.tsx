@@ -20,12 +20,14 @@ export const getGamedata = (
       const baseballSort = 'baseballgamedata';
       const footballSort = 'footballgamedata';
       const basketballSort = 'basketballgamedata';
+      const hockeySort = 'hockeygamedata';
 
       const allMlbURI = `${API_URI}baseballgamedata?date=${date}&offset=${offset}&apikey=${API_KEY}`;
       const allNflURI = `${API_URI}footballgamedata?date=${date}&offset=${offset}&apikey=${API_KEY}&sportid=nfl`;
       const allNcaafbURI = `${API_URI}footballgamedata?date=${date}&offset=${offset}&apikey=${API_KEY}&sportid=ncaafb`;
       const allNbabURI = `${API_URI}basketballgamedata?date=${date}&offset=${offset}&apikey=${API_KEY}&sportid=nba`;
       const allNcaabURI = `${API_URI}basketballgamedata?date=${date}&offset=${offset}&apikey=${API_KEY}&sportid=ncaab`;
+      const allNhlURI = `${API_URI}hockeygamedata?date=${date}&offset=${offset}&apikey=${API_KEY}&sportid=nhl`;
 
       await axios
         .all([
@@ -33,7 +35,8 @@ export const getGamedata = (
           axios.get(allNflURI),
           axios.get(allNcaafbURI),
           axios.get(allNbabURI),
-          axios.get(allNcaabURI)
+          axios.get(allNcaabURI),
+          axios.get(allNhlURI)
         ])
         .then(
           axios.spread(
@@ -42,14 +45,16 @@ export const getGamedata = (
               allNflGames,
               allNcaafbGames,
               allNbaGames,
-              allNcaabGames
+              allNcaabGames,
+              allNhlGames
             ) => {
               if (
                 allMlbGames?.data[0]?.games?.length === 0 &&
                 allNflGames?.data[0]?.games?.length === 0 &&
                 allNcaafbGames?.data[0]?.games?.length === 0 &&
                 allNbaGames?.data[0]?.games?.length === 0 &&
-                allNcaabGames?.data[0]?.games?.length === 0
+                allNcaabGames?.data[0]?.games?.length === 0 &&
+                allNhlGames?.data[0]?.games?.length === 0
               ) {
                 dispatch({ type: ACTION_TYPES.BETS.EXIT_GAME, payload: true });
                 return;
@@ -62,6 +67,7 @@ export const getGamedata = (
       const ncaafbURI = `${API_URI}${footballSort}?date=${date}&offset=${offset}&apikey=${API_KEY}&sportid=ncaafb`;
       const nbaURI = `${API_URI}${basketballSort}?date=${date}&offset=${offset}&apikey=${API_KEY}&sportid=nba`;
       const ncaabURI = `${API_URI}${basketballSort}?date=${date}&offset=${offset}&apikey=${API_KEY}&sportid=ncaab`;
+      const nhlURI = `${API_URI}${hockeySort}?date=${date}&offset=${offset}&apikey=${API_KEY}&sportid=nhl`;
 
       await axios
         .all([
@@ -69,17 +75,19 @@ export const getGamedata = (
           axios.get(nflURI),
           axios.get(ncaafbURI),
           axios.get(nbaURI),
-          axios.get(ncaabURI)
+          axios.get(ncaabURI),
+          axios.get(nhlURI)
         ])
         .then(
           axios.spread(
-            async (mlbGames, nflGames, ncaafbGames, nbaGames, ncaabGames) => {
+            async (mlbGames, nflGames, ncaafbGames, nbaGames, ncaabGames, nhlGames) => {
               const allGames = [
                 ...mlbGames.data[0].games,
                 ...nflGames.data[0].games,
                 ...ncaafbGames.data[0].games,
                 ...nbaGames.data[0].games,
-                ...ncaabGames.data[0].games
+                ...ncaabGames.data[0].games,
+                ...nhlGames.data[0].games
               ].sort(
                 (a, b) =>
                   new Date(a.gameUTCDateTime).valueOf() -

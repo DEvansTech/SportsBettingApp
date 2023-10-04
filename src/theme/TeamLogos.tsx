@@ -513,6 +513,39 @@ import NCAA_WST from '@Assets/ncaa_teams/WST.png';
 import NCAA_WVU from '@Assets/ncaa_teams/WVU.png';
 import NCAA_WYO from '@Assets/ncaa_teams/WYO.png';
 
+import NHL_ANA from '@Assets/nhl_teams/ANA.png';
+import NHL_ARI from '@Assets/nhl_teams/ARI.png';
+import NHL_BOS from '@Assets/nhl_teams/BOS.png';
+import NHL_BUF from '@Assets/nhl_teams/BUF.png';
+import NHL_CAR from '@Assets/nhl_teams/CAR.png';
+import NHL_CBJ from '@Assets/nhl_teams/CBJ.png';
+import NHL_CGY from '@Assets/nhl_teams/CGY.png';
+import NHL_CHI from '@Assets/nhl_teams/CHI.png';
+import NHL_COL from '@Assets/nhl_teams/COL.png';
+import NHL_DAL from '@Assets/nhl_teams/DAL.png';
+import NHL_DET from '@Assets/nhl_teams/DET.png';
+import NHL_EDM from '@Assets/nhl_teams/EDM.png';
+import NHL_FLA from '@Assets/nhl_teams/FLA.png';
+import NHL_LA from '@Assets/nhl_teams/LA.png';
+import NHL_MIN from '@Assets/nhl_teams/MIN.png';
+import NHL_MTL from '@Assets/nhl_teams/MTL.png';
+import NHL_NJ from '@Assets/nhl_teams/NJ.png';
+import NHL_NSH from '@Assets/nhl_teams/NSH.png';
+import NHL_NYI from '@Assets/nhl_teams/NYI.png';
+import NHL_NYR from '@Assets/nhl_teams/NYR.png';
+import NHL_OTT from '@Assets/nhl_teams/OTT.png';
+import NHL_PHI from '@Assets/nhl_teams/PHI.png';
+import NHL_PIT from '@Assets/nhl_teams/PIT.png';
+import NHL_SEA from '@Assets/nhl_teams/SEA.png';
+import NHL_SJ from '@Assets/nhl_teams/SJ.png';
+import NHL_STL from '@Assets/nhl_teams/STL.png';
+import NHL_TB from '@Assets/nhl_teams/TB.png';
+import NHL_TOR from '@Assets/nhl_teams/TOR.png';
+import NHL_VAN from '@Assets/nhl_teams/VAN.png';
+import NHL_VGK from '@Assets/nhl_teams/VGK.png';
+import NHL_WPG from '@Assets/nhl_teams/WPG.png';
+import NHL_WSH from '@Assets/nhl_teams/WSH.png';
+
 export default {
   MLB_ARI,
   MLB_ATL,
@@ -1024,5 +1057,38 @@ export default {
   NBA_SAS,
   NBA_TOR,
   NBA_UTA,
-  NBA_WAS
+  NBA_WAS,
+  
+  NHL_ANA,
+  NHL_ARI,
+  NHL_BOS,
+  NHL_BUF,
+  NHL_CAR,
+  NHL_CBJ,
+  NHL_CGY,
+  NHL_CHI,
+  NHL_COL,
+  NHL_DAL,
+  NHL_DET,
+  NHL_EDM,
+  NHL_FLA,
+  NHL_LA,
+  NHL_MIN,
+  NHL_MTL,
+  NHL_NJ,
+  NHL_NSH,
+  NHL_NYI,
+  NHL_NYR,
+  NHL_OTT,
+  NHL_PHI,
+  NHL_PIT,
+  NHL_SEA,
+  NHL_SJ,
+  NHL_STL,
+  NHL_TB,
+  NHL_TOR,
+  NHL_VAN,
+  NHL_VGK,
+  NHL_WPG,
+  NHL_WSH
 };

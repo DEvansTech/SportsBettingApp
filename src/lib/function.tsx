@@ -92,7 +92,13 @@ export const checkTeamIcon = (
       } else {
         return getImage(Images)(`NBA_Empty_Logo` as any);
       }
-
+    case 'nhl':
+    case 'NHL':
+      if (`NHL_${teamName}` in TeamLogos) {
+        return getImage(TeamLogos)(`NHL_${teamName}` as any);
+      } else {
+        return getImage(Images)(`NHL_Empty_Logo` as any);
+      }
     default:
       return;
   }

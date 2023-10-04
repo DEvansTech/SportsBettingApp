@@ -9,6 +9,7 @@ export type ISelections = {
   ncaaf: number[];
   ncaab: number[];
   nba: number[];
+  nhl: number[];
 };
 
 export type FavortriteType = {

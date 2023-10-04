@@ -13,7 +13,8 @@ import {
   NCAAFWatch,
   NBAWatch,
   Loading,
-  NCAABWatch
+  NCAABWatch,
+  NHLWatch
 } from '@Components';
 import { AuthContext, AuthContextType } from '@Context/AuthContext';
 import { MainContext, MainContextType } from '@Context/MainContext';
@@ -40,6 +41,7 @@ const AllGames: React.FC<Props> = ({ selectedDate, sportName }) => {
   const [ncaafSelections, setNcaafselections] = useState<number[]>();
   const [nbaSelections, setNbaselections] = useState<number[]>();
   const [ncaabSelections, setNcaabselections] = useState<number[]>();
+  const [nhlSelections, setNhlselections] = useState<number[]>();
 
   const [loadingBar, setLoadingBar] = useState(true);
   const [loadGameData, setLoadGameData] = useState<GameDataType[]>([]);
@@ -141,6 +143,18 @@ const AllGames: React.FC<Props> = ({ selectedDate, sportName }) => {
         .catch(() => {
           setNcaabselections([]);
         });
+      await firestore()
+        .collection('nhlSelections')
+        .doc(user.uid)
+        .get()
+        .then((doc: any) => {
+          if (doc.exists) {
+            setNhlselections(doc.data().gameIDs);
+          }
+        })
+        .catch(() => {
+          setNhlselections([]);
+        });
     }
   };
 
@@ -156,6 +170,8 @@ const AllGames: React.FC<Props> = ({ selectedDate, sportName }) => {
         return nbaSelections?.includes(gameID);
       case 'ncaab':
         return ncaabSelections?.includes(gameID);
+      case 'nhl':
+        return nhlSelections?.includes(gameID);
       default:
         return false;
     }
@@ -259,6 +275,15 @@ const AllGames: React.FC<Props> = ({ selectedDate, sportName }) => {
             key={index}
             saveSelection={saveSelection}
             selectionState={checkSelectionState(match.gameID, 'ncaab')}
+            lastGame={loadGameData.length === index + 1}
+          />
+        )}
+        {match.sport_name === 'NHL' && (
+          <NHLWatch
+            data={match}
+            key={index}
+            saveSelection={saveSelection}
+            selectionState={checkSelectionState(match.gameID, 'nhl')}
             lastGame={loadGameData.length === index + 1}
           />
         )}

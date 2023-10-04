@@ -67,79 +67,79 @@ const AppChecking: React.FC = () => {
           console.log(res);
         });
 
-        // let API_KEY = API_APPLE_KEY;
-        // if (Platform.OS === 'android') {
-        //   API_KEY = API_GOOGLE_KEY;
-        // }
+        let API_KEY = API_APPLE_KEY;
+        if (Platform.OS === 'android') {
+          API_KEY = API_GOOGLE_KEY;
+        }
 
-        // await Purchases.configure({
-        //   apiKey: API_KEY,
-        //   appUserID: user.uid,
-        //   useAmazon: false
-        // });
-        // Purchases.collectDeviceIdentifiers();
-        // appsFlyer.getAppsFlyerUID((err, uid) => {
-        //   if (err) {
-        //     Purchases.setAppsflyerID(user.uid);
-        //     console.log(
-        //       'Can not get AppsFlyer UID. Customer User ID: ',
-        //       user.uid
-        //     );
-        //   } else {
-        //     Purchases.setAppsflyerID(uid);
-        //     console.log('AppsFlyerID for RevenueCat: ', uid);
-        //   }
-        // });
-        // Purchases.setAttributes({
-        //   Name: user.firstName + ' ' + user.lastName,
-        //   Email: user.email
-        // });
+        await Purchases.configure({
+          apiKey: API_KEY,
+          appUserID: user.uid,
+          useAmazon: false
+        });
+        Purchases.collectDeviceIdentifiers();
+        appsFlyer.getAppsFlyerUID((err, uid) => {
+          if (err) {
+            Purchases.setAppsflyerID(user.uid);
+            console.log(
+              'Can not get AppsFlyer UID. Customer User ID: ',
+              user.uid
+            );
+          } else {
+            Purchases.setAppsflyerID(uid);
+            console.log('AppsFlyerID for RevenueCat: ', uid);
+          }
+        });
+        Purchases.setAttributes({
+          Name: user.firstName + ' ' + user.lastName,
+          Email: user.email
+        });
 
-        // const config = new IterableConfig();
-        // config.inAppDisplayInterval = 1.0; // Min gap between in-apps. No need to set this in production.
-        // console.log(
-        //   'Iterable Initialization Information: ',
-        //   ITERABLE_API_KEY,
-        //   user.email,
-        //   user.uid
-        // );
-        // Iterable.initialize(ITERABLE_API_KEY, config);
-        // Iterable.setEmail(user.email);
-        // Iterable.setUserId(user.uid);
-        // Iterable.getEmail().then(email => {
-        //   Purchases.setAttributes({ $email: email || null });
-        // });
+        const config = new IterableConfig();
+        config.inAppDisplayInterval = 1.0; // Min gap between in-apps. No need to set this in production.
+        console.log(
+          'Iterable Initialization Information: ',
+          ITERABLE_API_KEY,
+          user.email,
+          user.uid
+        );
+        Iterable.initialize(ITERABLE_API_KEY, config);
+        Iterable.setEmail(user.email);
+        Iterable.setUserId(user.uid);
+        Iterable.getEmail().then(email => {
+          Purchases.setAttributes({ $email: email || null });
+        });
 
-        // Iterable.getUserId().then(userId => {
-        //   Purchases.setAttributes({ $iterableUserId: userId || null });
-        // });
+        Iterable.getUserId().then(userId => {
+          Purchases.setAttributes({ $iterableUserId: userId || null });
+        });
 
-        // // Purchases.setAttributes({'$iterableCampaignId': '1', '$iterableTemplateId': '1'});
+        // Purchases.setAttributes({'$iterableCampaignId': '1', '$iterableTemplateId': '1'});
 
-        navigation.navigate(Routes.TabRoute);
+        // navigation.navigate(Routes.TabRoute);
 
-        // try {
-        //   const customerInfo = await Purchases.getCustomerInfo();
+        try {
+          const customerInfo = await Purchases.getCustomerInfo();
 
-        //   if (
-        //     typeof customerInfo.entitlements.active[ENTITLEMENT_ID] !==
-        //     'undefined'
-        //   ) {
-        //     const activeData: any =
-        //       customerInfo.entitlements.active[ENTITLEMENT_ID];
+          if (
+            typeof customerInfo.entitlements.active[ENTITLEMENT_ID] !==
+            'undefined'
+          ) {
+            const activeData: any =
+              customerInfo.entitlements.active[ENTITLEMENT_ID];
 
-        //     let expired =
-        //       new Date().getTime() > activeData?.expirationDateMillis;
+            let expired =
+              new Date().getTime() > activeData?.expirationDateMillis;
 
-        //     if (!expired) {
-        //       navigation.navigate(Routes.TabRoute);
-        //     } else {
-        //       navigation.navigate(Routes.Subscription);
-        //     }
-        //   } else {
-        //     navigation.navigate(Routes.Subscription);
-        //   }
-        // } catch (e) {}
+            if (!expired) {
+              navigation.navigate(Routes.TabRoute);
+            } else {
+              navigation.navigate(Routes.Subscription);
+            }
+          } else {
+            navigation.navigate(Routes.Subscription);
+          }
+        } catch (e) {}
       })();
     }
   }, [isFocused]);

@@ -116,30 +116,30 @@ const AppChecking: React.FC = () => {
 
         // Purchases.setAttributes({'$iterableCampaignId': '1', '$iterableTemplateId': '1'});
 
-        navigation.navigate(Routes.TabRoute);
+        // navigation.navigate(Routes.TabRoute);
 
-        // try {
-        //   const customerInfo = await Purchases.getCustomerInfo();
+        try {
+          const customerInfo = await Purchases.getCustomerInfo();
 
-        //   if (
-        //     typeof customerInfo.entitlements.active[ENTITLEMENT_ID] !==
-        //     'undefined'
-        //   ) {
-        //     const activeData: any =
-        //       customerInfo.entitlements.active[ENTITLEMENT_ID];
+          if (
+            typeof customerInfo.entitlements.active[ENTITLEMENT_ID] !==
+            'undefined'
+          ) {
+            const activeData: any =
+              customerInfo.entitlements.active[ENTITLEMENT_ID];
 
-        //     let expired =
-        //       new Date().getTime() > activeData?.expirationDateMillis;
+            let expired =
+              new Date().getTime() > activeData?.expirationDateMillis;
 
-        //     if (!expired) {
-        //       navigation.navigate(Routes.TabRoute);
-        //     } else {
-        //       navigation.navigate(Routes.Subscription);
-        //     }
-        //   } else {
-        //     navigation.navigate(Routes.Subscription);
-        //   }
-        // } catch (e) {}
+            if (!expired) {
+              navigation.navigate(Routes.TabRoute);
+            } else {
+              navigation.navigate(Routes.Subscription);
+            }
+          } else {
+            navigation.navigate(Routes.Subscription);
+          }
+        } catch (e) {}
       })();
     }
   }, [isFocused]);

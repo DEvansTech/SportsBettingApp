@@ -31,6 +31,8 @@ const NFL: React.FC<Props> = ({ selectedDate, sportName }) => {
   const [loadingBar, setLoadingBar] = useState(true);
   const [loadGameData, setLoadGameData] = useState<GameDataType[]>([]);
 
+  console.log('=loadGameData====?', gameData);
+
   const saveSelection = async (gameID: number) => {
     if (user) {
       const docRef = await firestore()
@@ -150,6 +152,8 @@ const NFL: React.FC<Props> = ({ selectedDate, sportName }) => {
       } else {
         setLoadGameData(gameData);
       }
+    } else {
+      setLoadGameData([]);
     }
   }, [gameData, matchSort]);
 

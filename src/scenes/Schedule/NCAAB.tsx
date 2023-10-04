@@ -155,6 +155,8 @@ const NCAAB: React.FC<Props> = ({ selectedDate, sportName }) => {
       } else {
         setLoadGameData(gameData);
       }
+    } else {
+      setLoadGameData([]);
     }
   }, [gameData, matchSort]);
 

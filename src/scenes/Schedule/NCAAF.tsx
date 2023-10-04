@@ -150,6 +150,8 @@ const NCAAF: React.FC<Props> = ({ selectedDate, sportName }) => {
       } else {
         setLoadGameData(gameData);
       }
+    } else {
+      setLoadGameData([]);
     }
   }, [gameData]);
 

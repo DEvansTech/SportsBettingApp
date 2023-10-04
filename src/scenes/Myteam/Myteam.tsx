@@ -169,7 +169,8 @@ const Myteam: React.FC = () => {
         ...allTeams.nflTeams,
         ...allTeams.ncaafbTeams,
         ...allTeams.ncaabTeams,
-        ...allTeams.nbaTeams
+        ...allTeams.nbaTeams,
+        ...allTeams.nhlTeams
       ];
       setTotalTeamList(teamLists);
 

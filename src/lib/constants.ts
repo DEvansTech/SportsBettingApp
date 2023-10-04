@@ -22,6 +22,10 @@ export const sportSorts = [
   {
     label: 'NFL',
     value: 'nfl'
+  },
+  {
+    label: 'NHL',
+    value: 'nhl'
   }
 ];
 export const ENTITLEMENT_ID = 'standard';

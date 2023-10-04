@@ -5,6 +5,7 @@ import NFLWatch from './NFLWatch';
 import NCAAFWatch from './NCAAFWatch';
 import NBAWatch from './NBAWatch';
 import NCAABWatch from './NCAABWatch';
+import NHLWatch from './NHLWatch';
 import SubHeader from './SubHeader';
 import ModalCalendar from './ModalCalendar';
 import StarRating from './StarRating';
@@ -34,6 +35,7 @@ export {
   NCAAFWatch,
   NBAWatch,
   NCAABWatch,
+  NHLWatch,
   SubHeader,
   ModalCalendar,
   StarRating,

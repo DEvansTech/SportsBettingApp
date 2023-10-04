@@ -7,7 +7,8 @@ const initialState = {
     nflTeams: [],
     ncaafbTeams: [],
     ncaabTeams: [],
-    nbaTeams: []
+    nbaTeams: [],
+    nhlTeams: []
   },
   teamsGamedata: [],
   selectionsGamedata: [],

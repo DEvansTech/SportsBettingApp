@@ -14,7 +14,8 @@ import {
   NCAAFWatch,
   NCAABWatch,
   Loading,
-  NBAWatch
+  NBAWatch,
+  NHLWatch
 } from '@Components';
 import {
   getTeamsAllGamedata,
@@ -44,6 +45,7 @@ const AllGames: React.FC<Props> = ({ selectedDate }) => {
   const [ncaafSelections, setNcaafselections] = useState<number[]>([]);
   const [ncaabSelections, setNcaabselections] = useState<number[]>([]);
   const [nbaSelections, setNbaselections] = useState<number[]>([]);
+  const [nhlSelections, setNhlselections] = useState<number[]>([]);
   const [favoriteTeams, setFavoriteTeams] = useState<FavortriteType[]>([]);
 
   const [loadingBar, setLoadingBar] = useState(true);
@@ -70,6 +72,9 @@ const AllGames: React.FC<Props> = ({ selectedDate }) => {
       case 'NBA':
         selections = nbaSelections;
         break;
+      case 'NHL':
+        selections = nhlSelections;
+        break;
       default:
         break;
     }
@@ -93,6 +98,9 @@ const AllGames: React.FC<Props> = ({ selectedDate }) => {
         break;
       case 'NBA':
         setNbaselections(selections);
+        break;
+      case 'NHL':
+        setNhlselections(selections);
         break;
       default:
         break;
@@ -121,6 +129,9 @@ const AllGames: React.FC<Props> = ({ selectedDate }) => {
           break;
         case 'NBA':
           selections = 'nbaSelections';
+          break;
+        case 'NHL':
+          selections = 'nhlSelections';
           break;
         default:
           break;
@@ -215,6 +226,19 @@ const AllGames: React.FC<Props> = ({ selectedDate }) => {
         .catch(() => {
           setNbaselections([]);
         });
+
+      await firestore()
+        .collection('nhlSelections')
+        .doc(user.uid)
+        .get()
+        .then((doc: any) => {
+          if (doc.exists) {
+            setNhlselections(doc.data().gameIDs);
+          }
+        })
+        .catch(() => {
+          setNhlselections([]);
+        });
     }
   }, [isFocused]);
 
@@ -224,7 +248,8 @@ const AllGames: React.FC<Props> = ({ selectedDate }) => {
       nfl: nflSelections,
       ncaaf: ncaafSelections,
       ncaab: ncaabSelections,
-      nba: nbaSelections
+      nba: nbaSelections,
+      nhl: nhlSelections
     };
     dispatch(getTeamsAllGamedata(selectedDate, favoriteTeams, false));
     dispatch(getSelectionAllGameData(selectedDate, mySelections, false));
@@ -236,7 +261,8 @@ const AllGames: React.FC<Props> = ({ selectedDate }) => {
       nfl: nflSelections,
       ncaaf: ncaafSelections,
       ncaab: ncaabSelections,
-      nba: nbaSelections
+      nba: nbaSelections,
+      nhl: nhlSelections
     };
     dispatch(getSelectionAllGameData(selectedDate, mySelections, false));
   }, [
@@ -244,7 +270,8 @@ const AllGames: React.FC<Props> = ({ selectedDate }) => {
     nflSelections,
     ncaafSelections,
     ncaabSelections,
-    nbaSelections
+    nbaSelections,
+    nhlSelections
   ]);
 
   useEffect(() => {
@@ -263,7 +290,8 @@ const AllGames: React.FC<Props> = ({ selectedDate }) => {
         nfl: nflSelections,
         ncaaf: ncaafSelections,
         ncaab: ncaabSelections,
-        nba: nbaSelections
+        nba: nbaSelections,
+        nhl: nhlSelections
       };
 
       dispatch(getTeamsAllGamedata(selectedDate, favoriteTeams, false));
@@ -280,6 +308,7 @@ const AllGames: React.FC<Props> = ({ selectedDate }) => {
     ncaafSelections,
     ncaabSelections,
     nbaSelections,
+    nhlSelections,
     selectedDate,
     favoriteTeams
   ]);
@@ -321,6 +350,12 @@ const AllGames: React.FC<Props> = ({ selectedDate }) => {
         )}
         {match.sport_name === 'NBA' && (
           <NBAWatch
+            data={match}
+            lastGame={teamsGamedata.length === index + 1}
+          />
+        )}
+        {match.sport_name === 'NHL' && (
+          <NHLWatch
             data={match}
             lastGame={teamsGamedata.length === index + 1}
           />
@@ -368,6 +403,12 @@ const AllGames: React.FC<Props> = ({ selectedDate }) => {
           )}
           {match.sport_name === 'NBA' && (
             <NBAWatch
+              data={match}
+              lastGame={teamsGamedata.length === index + 1}
+            />
+          )}
+          {match.sport_name === 'NHL' && (
+            <NHLWatch
               data={match}
               lastGame={teamsGamedata.length === index + 1}
             />

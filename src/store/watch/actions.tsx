@@ -15,6 +15,7 @@ export const getTeamsList = (sportID: string) => {
       const ncaafbURI = `${API_URI}teamdata?apikey=${API_KEY}&sportID=ncaafb`;
       const ncaabURI = `${API_URI}teamdata?apikey=${API_KEY}&sportID=ncaab`;
       const nbaURI = `${API_URI}teamdata?apikey=${API_KEY}&sportID=nba`;
+      const nhlURI = `${API_URI}teamdata?apikey=${API_KEY}&sportID=nhl`;
 
       await axios
         .all([
@@ -22,11 +23,12 @@ export const getTeamsList = (sportID: string) => {
           axios.get(nflURI),
           axios.get(ncaafbURI),
           axios.get(ncaabURI),
-          axios.get(nbaURI)
+          axios.get(nbaURI),
+          axios.get(nhlURI)
         ])
         .then(
           axios.spread(
-            async (mlbTeams, nflTeams, ncaafbTeams, ncaabTeams, nbaTeams) => {
+            async (mlbTeams, nflTeams, ncaafbTeams, ncaabTeams, nbaTeams, nhlTeams) => {
               const mlb = await mlbTeams.data[0].teams.map((obj: TeamType) => ({
                 ...obj,
                 team_sort: 'mlb'
@@ -51,13 +53,18 @@ export const getTeamsList = (sportID: string) => {
                 ...obj,
                 team_sort: 'nba'
               }));
+              const nhl = await nhlTeams.data[0].teams.map((obj: TeamType) => ({
+                ...obj,
+                team_sort: 'nhl'
+              }));
 
               let allTeams = {
                 mlbTeams: mlb,
                 nflTeams: nfl,
                 ncaafbTeams: ncaafb,
                 ncaabTeams: ncaab,
-                nbaTeams: nba
+                nbaTeams: nba,
+                nhlTeams: nhl
               };
 
               dispatch({
@@ -128,12 +135,14 @@ export const getTeamsAllGamedata = (
     let allNcaafbGames = [];
     let allNcaabGames = [];
     let allNbaGames = [];
+    let allNhlGames = [];
 
     let mlbTeamIDs = [];
     let nflTeamIDs = [];
     let ncaafbTeamIDs = [];
     let ncaabTeamIDs = [];
     let nbaTeamIDs = [];
+    let nhlTeamIDs = [];
 
     if (teamIDs.length > 0) {
       mlbTeamIDs = teamIDs
@@ -163,6 +172,11 @@ export const getTeamsAllGamedata = (
           if (team.teamSort === 'nba') return team.teamID;
         })
         .filter(notUndefined => notUndefined !== undefined);
+      nhlTeamIDs = teamIDs
+        .map((team: FavortriteType) => {
+          if (team.teamSort === 'nhl') return team.teamID;
+        })
+        .filter(notUndefined => notUndefined !== undefined);
 
       if (mlbTeamIDs.length > 0) {
         const allMlbURI = `${API_URI}baseballgamedata?date=${date}&offset=${offset}&apikey=${API_KEY}&teamIDs=${mlbTeamIDs.join()}`;
@@ -189,6 +203,11 @@ export const getTeamsAllGamedata = (
         const resultNba = await axios.get(allNbaURI);
         allNbaGames = resultNba.data[0]?.games;
       }
+      if (nhlTeamIDs.length > 0) {
+        const allNhlURI = `${API_URI}hockeygamedata?date=${date}&offset=${offset}&apikey=${API_KEY}&sportid=nhl&teamIDs=${nhlTeamIDs.join()}`;
+        const resultNhl = await axios.get(allNhlURI);
+        allNhlGames = resultNhl.data[0]?.games;
+      }
     }
 
     const allGames = [
@@ -196,7 +215,8 @@ export const getTeamsAllGamedata = (
       ...allNflGames,
       ...allNcaafbGames,
       ...allNcaabGames,
-      ...allNbaGames
+      ...allNbaGames,
+      ...allNhlGames
     ].sort(
       (a, b) =>
         new Date(a.gameUTCDateTime).valueOf() -
@@ -254,6 +274,7 @@ export const getSelectionAllGameData = (
     let allNcaafbGames = [];
     let allNcaabGames = [];
     let allNbaGames = [];
+    let allNhlGames = [];
 
     if (gameIDs.mlb?.length > 0) {
       const allMlbURI = `${API_URI}baseballgamedata?date=${date}&offset=${offset}&apikey=${API_KEY}&gameIDs=${gameIDs.mlb.join()}`;
@@ -280,13 +301,19 @@ export const getSelectionAllGameData = (
       const resultNba = await axios.get(allNbaURI);
       allNbaGames = resultNba.data[0]?.games;
     }
+    if (gameIDs.nhl?.length > 0) {
+      const allNhlURI = `${API_URI}hockeygamedata?date=${date}&offset=${offset}&apikey=${API_KEY}&sportid=nhl&gameIDs=${gameIDs.nhl.join()}`;
+      const resultNhl = await axios.get(allNhlURI);
+      allNhlGames = resultNhl.data[0]?.games;
+    }
 
     const allGames = [
       ...allMlbGames,
       ...allNflGames,
       ...allNcaafbGames,
       ...allNcaabGames,
-      ...allNbaGames
+      ...allNbaGames,
+      ...allNhlGames
     ].sort(
       (a, b) =>
         new Date(a.gameUTCDateTime).valueOf() -

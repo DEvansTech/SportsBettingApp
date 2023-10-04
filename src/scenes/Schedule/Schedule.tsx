@@ -7,6 +7,7 @@ import NFL from './NFL';
 import NCAAF from './NCAAF';
 import NBA from './NBA';
 import NCAAB from './NCAAB';
+import NHL from './NHL';
 
 const Schedule: React.FC = () => {
   const { scheduleDate, sportName } = useContext(
@@ -30,6 +31,9 @@ const Schedule: React.FC = () => {
   }
   if (sportName === 'ncaab') {
     return <NCAAB selectedDate={scheduleDate} sportName={sportName} />;
+  }
+  if (sportName === 'nhl') {
+    return <NHL selectedDate={scheduleDate} sportName={sportName} />;
   }
   return <></>;
 };

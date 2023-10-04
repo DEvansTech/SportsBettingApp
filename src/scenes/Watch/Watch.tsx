@@ -6,6 +6,7 @@ import NFL from './NFL';
 import NCAAF from './NCAAF';
 import NCAAB from './NCAAB';
 import NBA from './NBA';
+import NHL from './NHL';
 import AllGames from './AllGames';
 
 const Watch: React.FC = () => {
@@ -30,6 +31,9 @@ const Watch: React.FC = () => {
   }
   if (sportName === 'nba') {
     return <NBA selectedDate={scheduleDate} sportName={sportName} />;
+  }
+  if (sportName === 'nhl') {
+    return <NHL selectedDate={scheduleDate} sportName={sportName} />;
   }
   return <></>;
 };

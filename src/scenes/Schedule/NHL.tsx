@@ -5,7 +5,7 @@ import { useIsFocused } from '@react-navigation/native';
 import { Container, Content, View, Text } from 'native-base';
 import firestore from '@react-native-firebase/firestore';
 
-import { SubHeader, SegmentSort, NBAWatch, Loading } from '@Components';
+import { SubHeader, SegmentSort, NHLWatch, Loading } from '@Components';
 import { AuthContext, AuthContextType } from '@Context/AuthContext';
 import { MainContext, MainContextType } from '@Context/MainContext';
 
@@ -17,7 +17,7 @@ import styles from './styles';
 import { Props } from './types';
 import { GameDataType } from '@Store/types';
 
-const NFL: React.FC<Props> = ({ selectedDate, sportName }) => {
+const NHL: React.FC<Props> = ({ selectedDate, sportName }) => {
   const { user } = useContext(AuthContext) as AuthContextType;
   const { matchSort } = useContext(MainContext) as MainContextType;
 
@@ -34,7 +34,7 @@ const NFL: React.FC<Props> = ({ selectedDate, sportName }) => {
   const saveSelection = async (gameID: number) => {
     if (user) {
       const docRef = await firestore()
-        .collection('nbaSelections')
+        .collection('nhlSelections')
         .doc(user.uid);
       docRef.get().then(async (thisDoc: any) => {
         if (thisDoc.exists) {
@@ -70,7 +70,7 @@ const NFL: React.FC<Props> = ({ selectedDate, sportName }) => {
   const getSelections = async () => {
     if (user) {
       await firestore()
-        .collection('nbaSelections')
+        .collection('nhlSelections')
         .doc(user.uid)
         .get()
         .then((doc: any) => {
@@ -96,7 +96,7 @@ const NFL: React.FC<Props> = ({ selectedDate, sportName }) => {
           selectedDate,
           matchSort,
           sportName.trim(),
-          'basketball',
+          'hockey',
           true
         )
       );
@@ -111,7 +111,7 @@ const NFL: React.FC<Props> = ({ selectedDate, sportName }) => {
           selectedDate,
           matchSort,
           sportName.trim(),
-          'basketball',
+          'hockey',
           false
         )
       );
@@ -130,7 +130,7 @@ const NFL: React.FC<Props> = ({ selectedDate, sportName }) => {
           selectedDate,
           matchSort,
           sportName.trim(),
-          'basketball',
+          'hockey',
           false
         )
       );
@@ -160,7 +160,7 @@ const NFL: React.FC<Props> = ({ selectedDate, sportName }) => {
 
   const renderItem = (match: GameDataType, index: number) => {
     return (
-      <NBAWatch
+      <NHLWatch
         data={match}
         saveSelection={saveSelection}
         selectionState={checkSelectionState(match.gameID)}
@@ -199,4 +199,4 @@ const NFL: React.FC<Props> = ({ selectedDate, sportName }) => {
   );
 };
 
-export default NFL;
+export default NHL;
